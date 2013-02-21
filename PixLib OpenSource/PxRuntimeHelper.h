@@ -29,4 +29,9 @@
 #import <objc/message.h>
 #import <objc/runtime.h>
 
+/**
+ Returns the concrete class of a property. 
+ 
+ If the return-type is primitive or _id_ **nil** is returned. If the return-type is primitive, the isPrimitive parameter is set to **YES**.
+ */
 Class property_getReturnClass(objc_property_t property, BOOL *isPrimitive);

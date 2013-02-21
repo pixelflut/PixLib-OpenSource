@@ -27,7 +27,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PxTableViewCell.h"
-#import "PxEditableCell.h"
+#import "PxEditableCellProtocol.h"
 
 @interface PxCellDeleteLayer : UIView
 @property(nonatomic, strong) PxTableViewCell<PxEditableCell> *cell;

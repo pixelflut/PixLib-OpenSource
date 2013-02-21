@@ -187,7 +187,7 @@ static PxInterpolationBlock squareEaseOut = ^CGFloat(CGFloat t, CGFloat start, C
 
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
-#pragma mark - C/C++ Helper
+#pragma mark - Macro Helpers
 
 #define MAKESTRING(__VA_ARGS__) #__VA_ARGS__
 #define TOSTRING(...) MAKESTRING(__VA_ARGS__)
@@ -197,7 +197,7 @@ static PxInterpolationBlock squareEaseOut = ^CGFloat(CGFloat t, CGFloat start, C
 
 #pragma mark - ARC Fuckup Helpers
 static inline unsigned char *pointerFromObject(void *object) {
-    return object;
+    return (unsigned char *)object;
 }
 
 static inline void *pointerToInstanceVariable(id object, char *variableName) {

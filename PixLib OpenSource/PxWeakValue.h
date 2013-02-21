@@ -28,13 +28,51 @@
 #import <Foundation/Foundation.h>
 #import "NSObject+PixLib.h"
 
+/**
+ * Use this class to store weak-references where you have not the option to set the reference weak, for example in arrays.
+ */
 @interface PxWeakValue : NSObject
 @property(nonatomic, weak) id value;
 
+#pragma mark - Creating a WeakValue
+/** @name Creating a WeakValue */
+
+/** Creates and returns a weakValue with the given _value_.
+ @param value The value.
+ @return A weakValue with the given _value_.
+ */
++ (id)weakValueWithValue:(id)value;
+
+
+#pragma mark - Initializing a WeakValue
+/** @name Initializing a WeakValue */
+
+/** Initializes a newly allocated weakValue by assigning the given _value_.
+ @param value The value.
+ @return A weakValue initialized by assigning the given _value_.
+ */
 - (id)initWithValue:(id)value;
 
+#pragma mark - Comparing WeakValues
+/** @name Comparing WeakValues */
+
+/** Compares the receiving weakValue to another weakValue.
+ 
+ Two weakValue have equal contents if _value_ satisfys the isEqual: test.
+ @param otherValue A weakValue.
+ @return **YES** if the _value_ of otherValue are equal to the contents of the receiving weakValue, otherwise **NO**.
+ */
+- (BOOL)isEqualToValue:(PxWeakValue *)otherValue;
+
+
 - (NSComparisonResult)compare:(id)anObject context:(void *)context;
-- (BOOL)isEqualToValue:(PxWeakValue *)anObject;
+
+#pragma mark - Testing Object Contents
+/** @name Testing Object Contents */
+
+/** Checks either or not the receiver contains a value.
+ @return **YES** if _value_ is not **nil**, otherwise **NO**.
+ */
 - (BOOL)isNotBlank;
 
 @end

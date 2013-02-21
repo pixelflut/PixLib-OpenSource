@@ -63,44 +63,24 @@ static NSBundle *bundle = nil;
     return self;
 }
 
-// Gets the current localized string as in NSLocalizedString.
-//
-// example calls:
-// PXLocalizedString(@"Text to localize",@"Alternative text, in case hte other is not find");
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)comment {
 	return [bundle localizedStringForKey:key value:comment table:nil];
 }
-
 
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)comment table:(NSString *)tableName {
     return [bundle localizedStringForKey:key value:comment table:tableName];
 }
 
-
-// Sets the desired language of the ones you have.
-// example calls:
-// PxLocalizeSetLanguage(@"Italian");
-// PxLocalizeSetLanguage(@"German");
-// PxLocalizeSetLanguage(@"Spanish");
-//
-// If this function is not called it will use the default OS language.
-// If the language does not exists y returns the default OS language.
 - (void)setLanguage:(NSString *)l {
 	NSString *path = [[NSBundle mainBundle] pathForResource:l ofType:@"lproj" ];
 	
 	if (path == nil) {
-        //in case the language does not exists
 		[self resetLocalization];
     }else{
         bundle = [NSBundle bundleWithPath:path];
     }
 }
 
-// Just gets the current setted up language.
-// returns "es","fr",...
-//
-// example call:
-// NSString * currentL = PxLocalizeGetLanguage;
 - (NSString *)getLanguage {
 	NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
 	NSString *preferredLang = [languages objectAtIndex:0];
@@ -108,10 +88,6 @@ static NSBundle *bundle = nil;
 	return preferredLang;
 }
 
-// Resets the localization system, so it uses the OS default language.
-//
-// example call:
-// PxLocalizeReset;
 - (void)resetLocalization {
 	bundle = [NSBundle mainBundle];
 }

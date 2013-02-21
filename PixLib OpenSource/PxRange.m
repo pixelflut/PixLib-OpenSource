@@ -59,8 +59,19 @@
     return array;
 }
 
+- (PxRange *)eachIndex:(void (^)(int nr))block {
+    int start = range.location;
+    int end = range.location+range.length;
+    
+    for (int i = 0; i<ABS(end-start); i++) {
+        int index = start + (ABS(end-start)/(end-start))*i;
+        block(index);
+    }
+    return self;
+}
+
 - (BOOL)isNotBlank {
-    return self.range.length > 0;
+    return ABS(self.range.length) > 0;
 }
 
 @end

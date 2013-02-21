@@ -30,7 +30,8 @@
 #import "PxSupport.h"
 #import "PxXMLHelper.h"
 
-#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((__var__ = getc_unlocked(__file__)) == EOF){ PxError(@"%s (Line %d)\nCXML Syntax Error: Unexpected End Of File!", __FILE__, __LINE__);} 
+
+#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((__var__ = getc_unlocked(__file__)) == EOF){ PxError(@"CXML Syntax Error: Unexpected End Of File!");}
 
 #define CLEAN_FILE_BEFORE_RETURN funlockfile(file);fclose(file);CFRelease(stack);CFRelease(parentStack);
 
@@ -146,7 +147,7 @@ static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current) {
     if (count==1) {
         return YES;
     }else if(count == 0){
-        PxError(@"%s (Line %d)\nCXML Syntax Error durring Tag-Parsing: Empty tag?", __FILE__, __LINE__);
+        PxError(@"CXML Syntax Error durring Tag-Parsing: Empty tag?");
         *ret = nil;
         return YES;
     }else {
@@ -202,16 +203,13 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     unsigned char character;
     
     char type[] = {'t', 'y', 'p', 'e'};
-    char tagName[256];
-    char attrName[256];
-    char attrValue[2048];
-    
+        
     NSString *nextTag = nil;
     NSString *nextType = nil;
     NSMutableDictionary *nextAttributes = nil;
     
     if(!checkXMLFile(file)) {
-        PxError(@"%s (Line %d)\nCXML Syntax Error durring XML-Check: Invalid XML-Header?", __FILE__, __LINE__);
+        PxError(@"CXML Syntax Error durring XML-Check: Invalid XML-Header?");
         CLEAN_FILE_BEFORE_RETURN
         return nil;
     }
@@ -232,14 +230,17 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 while ((character = getc_unlocked(file)) !='>' && character != EOF) {} // file/buffer overflow!
                 
             }else {// start an Object, get the tag-name first
-                unichar c = character;
+                unsigned char c = character;
                 int j=0;
+                
+
+                CFMutableDataRef tagName = CFDataCreateMutable(NULL, 0);
                 for (; c != ' ' && c != '>' && c != '/'; j++) {
-                    tagName[j] = c;
+                    CFDataAppendBytes(tagName, &c, 1);
                     GETC_UNLOCKED_SAVE(c, file);
                 }
-                
-                nextTag = [[NSString alloc] initWithBytes:tagName length:j encoding:NSUTF8StringEncoding];
+                nextTag = [[NSString alloc] initWithBytes:CFDataGetBytePtr(tagName) length:j encoding:NSUTF8StringEncoding];
+                CFRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
                 {
@@ -259,18 +260,22 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         // Skip starting Quote
                         fseek(file, 1, SEEK_CUR);
                         if (getc_unlocked(file) != '"') {//syntax Error
-                            PxError(@"%s (Line %d)\nCXML Syntax Error durring Type-Parsing: Missing Value", __FILE__, __LINE__);
+                            PxError(@"CXML Syntax Error durring Type-Parsing: Missing Value");
                             CLEAN_FILE_BEFORE_RETURN
                             return nil;
                         }
                         
                         int k=0;
                         GETC_UNLOCKED_SAVE(c, file);
+                        
+                        CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
                         for (; c != '"'; k++) {
-                            attrValue[k] = c;
+                            CFDataAppendBytes(attrValue, &c, 1);
                             GETC_UNLOCKED_SAVE(c, file);
                         }
-                        nextType = [[NSString alloc] initWithBytes:attrValue length:k encoding:NSUTF8StringEncoding];
+                        nextType = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:k encoding:NSUTF8StringEncoding];
+                        CFRelease(attrValue);
+
                     }
                     fsetpos(file, &pos);
                 }
@@ -288,32 +293,38 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             
         }else {
             if (!nextTag) {
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: No Working Object", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: No Working Object");
                 CLEAN_FILE_BEFORE_RETURN
                 return nil;
             }
             
             int j=0;
-            unichar c = character;
+            unsigned char c = character;
+            
+            CFMutableDataRef attrName = CFDataCreateMutable(NULL, 0);
             for (; c != '='; j++) {
-                attrName[j] = c;
+                CFDataAppendBytes(attrName, &c, 1);
                 GETC_UNLOCKED_SAVE(c, file);
             }
             
-            NSString *attr = [[NSString alloc] initWithBytes:attrName length:j encoding:NSUTF8StringEncoding];
+            NSString *attr = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrName) length:j encoding:NSUTF8StringEncoding];
+            CFRelease(attrName);
             
             // Skip starting Quote
 
             if (getc_unlocked(file) != '"') {//syntax Error
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: Missing Value", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: Missing Value");
                 CLEAN_FILE_BEFORE_RETURN
                 return nil;
             }
             GETC_UNLOCKED_SAVE(c, file);
             
             j=0;
+            
+            
+            CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
             for (; c != '"'; j++) {
-                attrValue[j] = c;
+                CFDataAppendBytes(attrValue, &c, 1);
                 GETC_UNLOCKED_SAVE(c, file);
             }
             
@@ -321,8 +332,9 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 nextAttributes = [[NSMutableDictionary alloc] init];
             }
             
-            NSString *value = [[NSString alloc] initWithBytes:attrValue length:j encoding:NSUTF8StringEncoding];
+            NSString *value = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:j encoding:NSUTF8StringEncoding];
             [nextAttributes setValue:PxXMLUnescape(value) forKey:attr];// could be impreved with char-array
+            CFRelease(attrValue);
         }
     }
     
@@ -349,9 +361,6 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     int length = [data length];
     char *bytes = (char *)[data bytes];
     char type[] = {'t', 'y', 'p', 'e'};
-    char tagName[256];
-    char attrName[256];
-    char attrValue[2048];
     
     NSString *nextTag = nil;
     NSString *nextType = nil;
@@ -359,7 +368,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     
     int i = 0;
     if(!checkXMLc(bytes, &i)) {
-        PxError(@"%s (Line %d)\nCXML Syntax Error durring XML-Check: Invalid XML-Header?", __FILE__, __LINE__);
+        PxError(@"CXML Syntax Error durring XML-Check: Invalid XML-Header?");
         CLEAN_DATA_BEFORE_RETURN
         return nil;
     }
@@ -380,19 +389,22 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 for(;bytes[i] != '>';i++) {}
             }else {// start an Object, get the tag-name first
                 if (nextTag) {
-                    PxError(@"%s (Line %d)\nCXML Syntax Error durring Tag-Parsing: New tag inside existing tag?", __FILE__, __LINE__);
+                    PxError(@"CXML Syntax Error durring Tag-Parsing: New tag inside existing tag?");
                     CLEAN_DATA_BEFORE_RETURN
                     return nil;
                 }
                 
-                unichar c = bytes[i];
+                unsigned char c = bytes[i];
                 int j=0;
+                
+                CFMutableDataRef tagName = CFDataCreateMutable(NULL, 0);
                 for (; c != ' ' && c != '>' && c != '/'; j++) {
-                    tagName[j] = c;
+                    CFDataAppendBytes(tagName, &c, 1);
                     i++; c = bytes[i];
                 }
                 
-                nextTag = [[NSString alloc] initWithBytes:tagName length:j encoding:NSUTF8StringEncoding];
+                nextTag = [[NSString alloc] initWithBytes:CFDataGetBytePtr(tagName) length:j encoding:NSUTF8StringEncoding];
+                CFRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
                 {
@@ -408,17 +420,21 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         // Skip starting Quote
                         j++;
                         if (bytes[i+1+j] != '"') {//syntax Error
-                            PxError(@"%s (Line %d)\nCXML Syntax Error durring Type-Parsing: Missing Value", __FILE__, __LINE__);
+                            PxError(@"CXML Syntax Error durring Type-Parsing: Missing Value");
                             CLEAN_DATA_BEFORE_RETURN
                             return nil;
                         }
                         j++;
                         
                         int k=0;
+                        
+                        CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
                         for (; bytes[i+1+j+k] != '"'; k++) {
-                            attrValue[k] = bytes[i+1+j+k];
+                            unsigned char c = bytes[i+1+j+k];
+                            CFDataAppendBytes(attrValue, &c, 0);
                         }
-                        nextType = [[NSString alloc] initWithBytes:attrValue length:k encoding:NSUTF8StringEncoding]; // Improvement: Dont use NSString
+                        nextType = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:k encoding:NSUTF8StringEncoding]; // Improvement: Dont use NSString
+                        CFRelease(attrValue);
                     }
                 }
             }
@@ -435,38 +451,46 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             
         }else {
             if (!nextTag) {
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: No Working Object", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: No Working Object");
                 CLEAN_DATA_BEFORE_RETURN
                 return nil;
             }
             
             int j=0;
+            
+            CFMutableDataRef attrName = CFDataCreateMutable(NULL, 0);
             for (; bytes[i] != '='; j++, i++) {
-                attrName[j] = bytes[i];
+                unsigned char c = bytes[i];
+                CFDataAppendBytes(attrName, &c, 0);
             }
             
-            NSString *attr = [[NSString alloc] initWithBytes:attrName length:j encoding:NSUTF8StringEncoding];
+            NSString *attr = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrName) length:j encoding:NSUTF8StringEncoding];
+            CFRelease(attrName);
             
             // Skip starting Quote
             i++;
             if (bytes[i] != '"') {//syntax Error
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: Missing Value", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: Missing Value");
                 CLEAN_DATA_BEFORE_RETURN
                 return nil;
             }
             i++;
             
             j=0;
+            
+            CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
             for (; bytes[i] != '"'; j++, i++) {
-                attrValue[j] = bytes[i];
+                unsigned char c = bytes[i];
+                CFDataAppendBytes(attrValue, &c, 0);
             }
             
             if (!nextAttributes) {
                 nextAttributes = [[NSMutableDictionary alloc] init];
             }
             
-            NSString *value = [[NSString alloc] initWithBytes:attrValue length:j encoding:NSUTF8StringEncoding];
+            NSString *value = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:j encoding:NSUTF8StringEncoding];
             [nextAttributes setValue:PxXMLUnescape(value) forKey:attr];
+            CFRelease(attrValue);
         }
     }
     CLEAN_DATA_BEFORE_RETURN
@@ -489,14 +513,11 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     
     int length = [data length];
     
-    unichar *bytes = malloc(data.length*sizeof(unichar));
+    unichar *bytes = (unichar *)malloc(data.length*sizeof(unichar));
     [data getCharacters:bytes range:NSMakeRange(0, data.length)];
     unichar character;
     
     char type[] = {'t', 'y', 'p', 'e'};
-    unichar tagName[256];
-    unichar attrName[256];
-    unichar attrValue[2048];
     
     NSString *nextTag = nil;
     NSString *nextType = nil;
@@ -504,7 +525,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     
     int i = 0;
     if(!checkXML(bytes, &i)) {
-        PxError(@"%s (Line %d)\nCXML Syntax Error durring XML-Check: Invalid XML-Header?", __FILE__, __LINE__);
+        PxError(@"CXML Syntax Error durring XML-Check: Invalid XML-Header?");
         CLEAN_STRING_BEFORE_RETURN
         return nil;
     }
@@ -523,19 +544,21 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 for(;bytes[i] != '>';i++) {}
             }else {// start an Object, get the tag-name first
                 if (nextTag) {
-                    PxError(@"%s (Line %d)\nCXML Syntax Error durring Tag-Parsing: New tag inside existing tag?", __FILE__, __LINE__);
+                    PxError(@"CXML Syntax Error durring Tag-Parsing: New tag inside existing tag?");
                     CLEAN_STRING_BEFORE_RETURN
                     return nil;
                 }
                 
                 unichar c = bytes[i];
                 int j=0;
+                                
+                CFMutableStringRef tagName = CFStringCreateMutable(NULL, 0);
                 for (; c != ' ' && c != '>' && c != '/'; j++) {
-                    tagName[j] = c;
+                    CFStringAppendCharacters(tagName, &c, 1);
                     i++; c = bytes[i];
                 }
-                
-                nextTag = [NSString stringWithCharacters:tagName length:j];
+                nextTag = [NSString stringWithCharacters:CFStringGetCharactersPtr(tagName) length:j];
+                CFRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
                 {
@@ -551,17 +574,20 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         // Skip starting Quote
                         j++;
                         if (bytes[i+1+j] != '"') {//syntax Error
-                            PxError(@"%s (Line %d)\nCXML Syntax Error durring Type-Parsing: Missing Value", __FILE__, __LINE__);
+                            PxError(@"CXML Syntax Error durring Type-Parsing: Missing Value");
                             CLEAN_STRING_BEFORE_RETURN
                             return nil;
                         }
                         j++;
                         
                         int k=0;
+                        
+                        CFMutableStringRef attrValue = CFStringCreateMutable(NULL, 0);
                         for (; bytes[i+1+j+k] != '"'; k++) {
-                            attrValue[k] = bytes[i+1+j+k];
+                            CFStringAppendCharacters(attrValue, &bytes[i+1+j+k], 1);
                         }
-                        nextType = [NSString stringWithCharacters:attrValue length:k]; // Improvement: Dont use NSString
+                        nextType = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrValue) length:k]; // Improvement: Dont use NSString
+                        CFRelease(attrValue);
                     }
                 }
             }
@@ -578,37 +604,43 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             
         }else {
             if (!nextTag) {
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: No Working Object", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: No Working Object");
                 CLEAN_STRING_BEFORE_RETURN
                 return nil;
             }
             
             int j=0;
+            CFMutableStringRef attrName = CFStringCreateMutable(NULL, 0);
+            
             for (; bytes[i] != '='; j++, i++) {
-                attrName[j] = bytes[i];
+                CFStringAppendCharacters(attrName, &bytes[i], 1);
             }
-            NSString *attr = [NSString stringWithCharacters:attrName length:j];
+            NSString *attr = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrName) length:j];
+            CFRelease(attrName);
             
             // Skip starting Quote
             i++;
             if (bytes[i] != '"') {//syntax Error
-                PxError(@"%s (Line %d)\nCXML Syntax Error durring Attribute-Parsing: Missing Value", __FILE__, __LINE__);
+                PxError(@"CXML Syntax Error durring Attribute-Parsing: Missing Value");
                 CLEAN_STRING_BEFORE_RETURN
                 return nil;
             }
             i++;
             
             j=0;
+            CFMutableStringRef attrValue = CFStringCreateMutable(NULL, 0);
+            
             for (; bytes[i] != '"'; j++, i++) {
-                attrValue[j] = bytes[i];
+                CFStringAppendCharacters(attrValue, &bytes[i], 1);
             }
             
             if (!nextAttributes) {
                 nextAttributes = [[NSMutableDictionary alloc] init];
             }
             
-            NSString *value = [NSString stringWithCharacters:attrValue length:j];
+            NSString *value = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrValue) length:j];
             [nextAttributes setValue:PxXMLUnescape(value) forKey:attr];
+            CFRelease(attrValue);
         }
     }
     CLEAN_STRING_BEFORE_RETURN

@@ -64,32 +64,6 @@
 	return [NSString stringWithFormat:@"<%@: %p>{\n\tfirst: %@\n\tsecond: %@\n}", [self class], self, _first, _second];
 }
 
-#pragma mark - Key/Value alias
-
-+ (id)pairWithKey:(id)key value:(id)value {
-    return [[[self class] alloc] initWithFirst:key second:value];
-}
-
-- (id)initWithKey:(id)key value:(id)value {
-    return [self initWithFirst:key second:value];
-}
-
-- (id)key {
-    return _first;
-}
-
-- (id)value {
-    return _second;
-}
-
-- (void)setKey:(id)key {
-    [self setFirst:key];
-}
-
-- (void)setValue:(id)value {
-    [self setSecond:value];
-}
-
 - (BOOL)isNotBlank {
     return (_first || _second);
 }

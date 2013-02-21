@@ -33,7 +33,7 @@
 - (PxPair*)pairForKey:(NSString *)key {
 	id value = [self valueForKey:key];
 	if (value) {
-		return [PxPair pairWithKey:key value:value];
+		return [PxPair pairWithFirst:key second:value];
 	}
 	return nil;
 }

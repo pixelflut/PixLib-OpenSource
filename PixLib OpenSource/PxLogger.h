@@ -67,6 +67,8 @@ typedef enum {
  */
 + (NSArray *)silenceFiles;
 
++ (void)debugRuntime:(NSString *)msg repeatCount:(unsigned int)repeatCount block:(void (^)(void))debugBlock;
+
 @end
 
 void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix, NSString *fmt, ...);

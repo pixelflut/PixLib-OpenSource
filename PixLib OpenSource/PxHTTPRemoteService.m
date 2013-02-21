@@ -1,9 +1,28 @@
+/*
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ */
+
 //
 //  PxHTTPRemoteService.m
-//  PixLib
+//  PixLib OpenSource
 //
-//  Created by Jonathan Cichon on 12.03.12.
-//  Copyright (c) 2012 pixelflut GmbH. All rights reserved.
+//  Created by Jonathan Cichon on 18.02.13.
 //
 
 #import "PxHTTPRemoteService.h"
@@ -356,6 +375,7 @@
         return !(caller.options & PxRemoteOptionNoCache);
     }];
     
+    // TODO: a little bit nicer!
     if ([[cacheAndNoCache first] count] > 0) {
         NSDate *creationDate = nil;
         NSDictionary *header = nil;
@@ -363,6 +383,12 @@
         NSString *filePath = [[self cache] pathForURL:url header:&header creationDate:&creationDate];
         if (creationDate && [[NSDate date] timeIntervalSinceDate:creationDate] < INT_MAX) {
             [self evalFile:filePath header:header forCallers:[cacheAndNoCache first] status:PxHTTPStatusCodeCache];
+        } else {
+            [(NSArray *)[cacheAndNoCache first] each:^(PxCaller *caller) {
+                PxResult *result = [[PxResult alloc] initWithCaller:caller];
+                [result setStatus:status];
+                [self sendResult:result];
+            }];
         }
     }
     

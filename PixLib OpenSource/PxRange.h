@@ -31,18 +31,72 @@
 
 #define NSRangeMake(location, length) NSMakeRange(location, length)
 
+/**
+ * Object oriented wrapper for _NSRange_.
+ */
 @interface PxRange : NSObject {
 @public
     NSRange range;
 }
+
+/** The wrapped range struct */
 @property(nonatomic, assign) NSRange range;
 
+#pragma mark - Creating a Range
+/** @name Creating a Range */
+
+/** Creates and returns a range with the given _NSRange_.
+ @param range The range.
+ @return A range with the given _NSRange_.
+ */
 + (PxRange *)rangeWithNSRange:(NSRange)range;
+
+
+#pragma mark - Initializing a Range
+/** @name Initializing a Range */
+
+/** Initializes a newly allocated range by assigning the given _NSRange_.
+ @param range The range.
+ @return A range initialized by assigning the given _NSRange_.
+ */
 - (id)initWithNSRange:(NSRange)range;
 
+
+#pragma mark - Iterating Content
+/** @name Iterating Content */
+
+/** Invokes block once for each element of the receiver. Creates a new array containing the values returned by the block.
+ 
+ Raises an Exception if _block_ returns nil. Use collect:skipNil: to avoid this pitfall if appropriate.
+ @param block The block to call on each element in the receiver.
+ @return Array containing the values returned by each block call.
+ @warning Raises an NSInvalidArgumentException if _block_ returns **nil**.
+ @see collect:skipNil:
+ */
 - (NSMutableArray *)collect:(id (^)(int nr))block;
+
+/** Invokes block once for each element of the receiver. Creates a new array containing the values returned by the block.
+ @param block The block to call on each element in the receiver.
+ @param skipNil Boolean either or not nil-Values should be ignored.
+ @return Array containing the values returned by each block call.
+ @warning Raises an NSInvalidArgumentException if _block_ returns **nil**, and _skipNil_ is **false**.
+ @see collect:
+ */
 - (NSMutableArray *)collect:(id (^)(int nr))block skipNil:(BOOL)skipNil;
 
+/** Invokes block once for each element of the receiver. Returns the receiver.
+ @param block The block to call on each element in self.
+ @return The receiver.
+ @see collect:
+ */
+- (PxRange *)eachIndex:(void (^)(int nr))block;
+
+#pragma mark - Testing Object Contents
+/** @name Testing Object Contents */
+
+/** Checks either or not the receiver contains a valid range.
+ @return **YES** if the length of the range != 0, otherwise **NO**.
+ */
 - (BOOL)isNotBlank;
 
 @end

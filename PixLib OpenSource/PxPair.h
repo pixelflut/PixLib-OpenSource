@@ -31,26 +31,58 @@
  * Use **PxPair** if you have to store a single key-value pair.
  */
 @interface PxPair : NSObject <NSCoding>
+
+/** The first element of the pair */
 @property(nonatomic, strong) id first;
+
+/** The second element of the pair */
 @property(nonatomic, strong) id second;
 
+#pragma mark - Creating a Pair
+/** @name Creating a Pair */
+
+/** Creates and returns a pair containing given objects.
+ @param first The first object.
+ @param second The second object.
+ @return A pair containing the given objects.
+ */
 + (id)pairWithFirst:(id)first second:(id)second;
+
+
+#pragma mark - Initializing a Pair
+/** @name Initializing a Pair */
+
+/** Initializes a newly allocated pair by storing the given objects.
+ @param first The first object.
+ @param second The second object.
+ @return A pair initialized to include the objects _first_ and _second_.
+ */
 - (id)initWithFirst:(id)first second:(id)second;
 
-- (BOOL)isEqualToPair:(PxPair *)object;
 
+#pragma mark - Comparing Pairs
+/** @name Comparing Pairs */
+
+/** Compares the receiving pair to another pair.
+ 
+ Two pairs have equal contents if _first_ and _second_ satisfy the isEqual: test.
+ @param otherPair A Pair.
+ @return YES if the contents of otherPair are equal to the contents of the receiving pair, otherwise NO.
+ */
+- (BOOL)isEqualToPair:(PxPair *)otherPair;
+
+
+#pragma mark - Testing Object Contents
+/** @name Testing Object Contents */
+
+/** Checks either or not the receiver contains any elements.
+ @return **YES** if either _first_ or _second_ is not **nil**, otherwise **NO**.
+ */
 - (BOOL)isNotBlank;
 
-#pragma mark - Key/Value alias
-+ (id)pairWithKey:(id)key value:(id)value;
-- (id)initWithKey:(id)key value:(id)value;
-
-- (void)setKey:(id)key;
-- (void)setValue:(id)value;
-- (id)key;
-- (id)value;
 
 #pragma mark - Modern Objective-C Accessor
+
 - (void)setObject:(id)anObject forKeyedSubscript:(NSString *)title;
 - (id)objectForKeyedSubscript:(id)key;
 

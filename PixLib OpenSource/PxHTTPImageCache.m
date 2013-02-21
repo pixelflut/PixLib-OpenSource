@@ -1,9 +1,28 @@
+/*
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ */
+
 //
 //  PxHTTPImageCache.m
-//  PixLib
+//  PixLib OpenSource
 //
-//  Created by Jonathan Cichon on 09.01.13.
-//
+//  Created by Jonathan Cichon on 18.02.13.
 //
 
 #import "PxHTTPImageCache.h"
@@ -36,9 +55,13 @@
 	return self;
 }
 
-#pragma mark - Path Handling
+#pragma mark - Path and Key Handling
 - (NSString *)cacheSubDir {
     return @"images";
+}
+
+- (NSString *)keyForURL:(NSURL *)url {
+    return [[url absoluteString] stringByAddingMD5Encoding];
 }
 
 #pragma mark - Low Memory Handling
@@ -48,18 +71,17 @@
 }
 
 #pragma mark - Storage Access
-- (UIImage *)imageForURLString:(NSString *)urlString interval:(NSTimeInterval)interval scale:(PxImageScale)scale {
-    if (![urlString isNotBlank]) {
+- (UIImage *)imageForURL:(NSURL *)url interval:(NSTimeInterval)interval scale:(PxImageScale)scale {
+    if (![[url absoluteString] isNotBlank]) {
         return nil;
     }
     
-	NSString *key = [urlString stringByAddingMD5Encoding];
+	NSString *key = [self keyForURL:url];
 	UIImage *result = [self imageForKey:key];
     
     if (result == nil) {
-        NSDictionary *header;
         NSDate *creationDate;
-        NSString *savePath = [self pathForURL:[NSURL URLWithString:urlString] header:&header creationDate:&creationDate];
+        NSString *savePath = [self pathForURL:url header:nil creationDate:&creationDate];
         if (savePath) {
             NSTimeInterval inter = [[NSDate date] timeIntervalSinceDate:creationDate];
             if( creationDate != nil && inter < interval) {
@@ -74,6 +96,10 @@
         }
     }
 	return result;
+}
+
+- (UIImage *)imageForURLString:(NSString *)urlString interval:(NSTimeInterval)interval scale:(PxImageScale)scale {
+    return [self imageForURL:[NSURL URLWithString:urlString] interval:interval scale:scale];
 }
 
 - (UIImage *)imageForKey:(NSString *)key {
@@ -101,6 +127,11 @@
 		[_fifoCache addObject:key];
 		[_dataCache setValue:[PxPair pairWithFirst:[NSNumber numberWithInt:[_fifoCache count]-1] second:img] forKey:key];
 	}
+}
+
+- (void)storeImage:(UIImage *)img forURL:(NSURL *)url header:(NSDictionary *)header {
+    [super storeData:UIImagePNGRepresentation(img) forURL:url header:header];
+    [self storeImage:img forKey:[self keyForURL:url]];
 }
 
 @end

@@ -27,52 +27,6 @@
 
 #import "PxLogger.h"
 
-@interface PxLogger ()
-@property(nonatomic, assign) PxLogLevel logLevel;
-@property(nonatomic, strong) NSArray *silenceFiles;
-+ (PxLogger *)defaultLogger;
-@end
-
-@implementation PxLogger
-
-+ (void)setLogLevel:(PxLogLevel)logLevel {
-    [[self defaultLogger] setLogLevel:logLevel];
-}
-
-+ (PxLogLevel)logLevel {
-    return [[self defaultLogger] logLevel];
-}
-
-+ (void)setSilenceFiles:(NSArray *)silenceFiles {
-    [[self defaultLogger] setSilenceFiles:silenceFiles];
-}
-
-+ (NSArray *)silenceFiles {
-    return [[self defaultLogger] silenceFiles];
-}
-
-#pragma mark - Singleton Handling
-static PxLogger* sharedLogger = nil;
-+ (PxLogger *)defaultLogger {
-    if (!sharedLogger) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            sharedLogger = [[super allocWithZone:NULL] init];
-        });
-    }
-    return sharedLogger;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    return [self defaultLogger];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return self;
-}
-
-@end
-
 #pragma mark - C Functions
 
 static inline void PxReportv(BOOL doLog, char const *file, int line, NSString *prefix, NSString *fmt, va_list argList) {
@@ -100,3 +54,61 @@ void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix,
     PxReportv(doLog, file, line, prefix, fmt, ap);
 	va_end(ap);
 }
+
+@interface PxLogger ()
+@property(nonatomic, assign) PxLogLevel logLevel;
+@property(nonatomic, strong) NSArray *silenceFiles;
++ (PxLogger *)defaultLogger;
+@end
+
+@implementation PxLogger
+
++ (void)setLogLevel:(PxLogLevel)logLevel {
+    [[self defaultLogger] setLogLevel:logLevel];
+}
+
++ (PxLogLevel)logLevel {
+    return [[self defaultLogger] logLevel];
+}
+
++ (void)setSilenceFiles:(NSArray *)silenceFiles {
+    [[self defaultLogger] setSilenceFiles:silenceFiles];
+}
+
++ (NSArray *)silenceFiles {
+    return [[self defaultLogger] silenceFiles];
+}
+
++ (void)debugRuntime:(NSString *)msg repeatCount:(unsigned int)repeatCount block:(void (^)(void))debugBlock {
+#ifdef DEBUG
+    NSDate *startTime = [NSDate date];
+    for (int i = 0; i<repeatCount; i++) {
+        debugBlock();
+    }
+    NSDate *endTime = [NSDate date];
+    PxDebug(@"%@\n\tTime: %f\n\trepeats: %d", msg, [endTime timeIntervalSinceReferenceDate] - [startTime timeIntervalSinceReferenceDate], repeatCount);
+#endif
+}
+
+#pragma mark - Singleton Handling
+static PxLogger* sharedLogger = nil;
++ (PxLogger *)defaultLogger {
+    if (!sharedLogger) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedLogger = [[super allocWithZone:NULL] init];
+            [sharedLogger setLogLevel:PxLogLevelLog];
+        });
+    }
+    return sharedLogger;
+}
+
++ (id)allocWithZone:(NSZone *)zone {
+    return [self defaultLogger];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    return self;
+}
+
+@end

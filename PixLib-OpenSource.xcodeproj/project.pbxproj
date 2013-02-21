@@ -8,164 +8,79 @@
 
 /* Begin PBXBuildFile section */
 		DB626E3416D224070014B5B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB626E3316D224070014B5B7 /* Foundation.framework */; };
-		DB626E4316D224070014B5B7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB626E4216D224070014B5B7 /* SenTestingKit.framework */; };
-		DB626E4516D224070014B5B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB626E4416D224070014B5B7 /* UIKit.framework */; };
-		DB626E4616D224070014B5B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB626E3316D224070014B5B7 /* Foundation.framework */; };
-		DB626E4916D224070014B5B7 /* libPixLib OpenSource.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB626E3016D224070014B5B7 /* libPixLib OpenSource.a */; };
-		DB626E4F16D224070014B5B7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB626E4D16D224070014B5B7 /* InfoPlist.strings */; };
-		DB626E5216D224070014B5B7 /* PixLib_OpenSourceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E5116D224070014B5B7 /* PixLib_OpenSourceTests.m */; };
 		DB626E8B16D22ABD0014B5B7 /* NSArray+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E5E16D22ABD0014B5B7 /* NSArray+PixLib.m */; };
-		DB626E8C16D22ABD0014B5B7 /* NSArray+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E5E16D22ABD0014B5B7 /* NSArray+PixLib.m */; };
 		DB626E8D16D22ABD0014B5B7 /* NSAttributedString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6016D22ABD0014B5B7 /* NSAttributedString+PixLib.m */; };
-		DB626E8E16D22ABD0014B5B7 /* NSAttributedString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6016D22ABD0014B5B7 /* NSAttributedString+PixLib.m */; };
 		DB626E8F16D22ABD0014B5B7 /* NSData+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6216D22ABD0014B5B7 /* NSData+PixLib.m */; };
-		DB626E9016D22ABD0014B5B7 /* NSData+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6216D22ABD0014B5B7 /* NSData+PixLib.m */; };
 		DB626E9116D22ABD0014B5B7 /* NSDate+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6416D22ABD0014B5B7 /* NSDate+PixLib.m */; };
-		DB626E9216D22ABD0014B5B7 /* NSDate+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6416D22ABD0014B5B7 /* NSDate+PixLib.m */; };
 		DB626E9316D22ABD0014B5B7 /* NSDictionary+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6616D22ABD0014B5B7 /* NSDictionary+PixLib.m */; };
-		DB626E9416D22ABD0014B5B7 /* NSDictionary+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6616D22ABD0014B5B7 /* NSDictionary+PixLib.m */; };
 		DB626E9516D22ABD0014B5B7 /* NSFileManager+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6816D22ABD0014B5B7 /* NSFileManager+PixLib.m */; };
-		DB626E9616D22ABD0014B5B7 /* NSFileManager+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6816D22ABD0014B5B7 /* NSFileManager+PixLib.m */; };
 		DB626E9716D22ABD0014B5B7 /* NSMutableArray+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6A16D22ABD0014B5B7 /* NSMutableArray+PixLib.m */; };
-		DB626E9816D22ABD0014B5B7 /* NSMutableArray+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6A16D22ABD0014B5B7 /* NSMutableArray+PixLib.m */; };
 		DB626E9916D22ABD0014B5B7 /* NSMutableAttributedString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6C16D22ABD0014B5B7 /* NSMutableAttributedString+PixLib.m */; };
-		DB626E9A16D22ABD0014B5B7 /* NSMutableAttributedString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6C16D22ABD0014B5B7 /* NSMutableAttributedString+PixLib.m */; };
 		DB626E9B16D22ABD0014B5B7 /* NSMutableDictionary+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6E16D22ABD0014B5B7 /* NSMutableDictionary+PixLib.m */; };
-		DB626E9C16D22ABD0014B5B7 /* NSMutableDictionary+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E6E16D22ABD0014B5B7 /* NSMutableDictionary+PixLib.m */; };
 		DB626E9D16D22ABD0014B5B7 /* NSMutableSet+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7016D22ABD0014B5B7 /* NSMutableSet+PixLib.m */; };
-		DB626E9E16D22ABD0014B5B7 /* NSMutableSet+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7016D22ABD0014B5B7 /* NSMutableSet+PixLib.m */; };
 		DB626E9F16D22ABD0014B5B7 /* NSMutableURLRequest+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7216D22ABD0014B5B7 /* NSMutableURLRequest+PixLib.m */; };
-		DB626EA016D22ABD0014B5B7 /* NSMutableURLRequest+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7216D22ABD0014B5B7 /* NSMutableURLRequest+PixLib.m */; };
 		DB626EA116D22ABD0014B5B7 /* NSNull+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7416D22ABD0014B5B7 /* NSNull+PixLib.m */; };
-		DB626EA216D22ABD0014B5B7 /* NSNull+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7416D22ABD0014B5B7 /* NSNull+PixLib.m */; };
 		DB626EA316D22ABD0014B5B7 /* NSNumber+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7616D22ABD0014B5B7 /* NSNumber+PixLib.m */; };
-		DB626EA416D22ABD0014B5B7 /* NSNumber+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7616D22ABD0014B5B7 /* NSNumber+PixLib.m */; };
 		DB626EA516D22ABD0014B5B7 /* NSObject+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7816D22ABD0014B5B7 /* NSObject+PixLib.m */; };
-		DB626EA616D22ABD0014B5B7 /* NSObject+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7816D22ABD0014B5B7 /* NSObject+PixLib.m */; };
 		DB626EA716D22ABD0014B5B7 /* NSSet+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7A16D22ABD0014B5B7 /* NSSet+PixLib.m */; };
-		DB626EA816D22ABD0014B5B7 /* NSSet+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7A16D22ABD0014B5B7 /* NSSet+PixLib.m */; };
 		DB626EA916D22ABD0014B5B7 /* NSString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7C16D22ABD0014B5B7 /* NSString+PixLib.m */; };
-		DB626EAA16D22ABD0014B5B7 /* NSString+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7C16D22ABD0014B5B7 /* NSString+PixLib.m */; };
 		DB626EAB16D22ABD0014B5B7 /* UIColor+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7E16D22ABD0014B5B7 /* UIColor+PixLib.m */; };
-		DB626EAC16D22ABD0014B5B7 /* UIColor+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E7E16D22ABD0014B5B7 /* UIColor+PixLib.m */; };
 		DB626EAD16D22ABD0014B5B7 /* UIDevice+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8016D22ABD0014B5B7 /* UIDevice+PixLib.m */; };
-		DB626EAE16D22ABD0014B5B7 /* UIDevice+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8016D22ABD0014B5B7 /* UIDevice+PixLib.m */; };
 		DB626EAF16D22ABD0014B5B7 /* UIImage+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8216D22ABD0014B5B7 /* UIImage+PixLib.m */; };
-		DB626EB016D22ABD0014B5B7 /* UIImage+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8216D22ABD0014B5B7 /* UIImage+PixLib.m */; };
 		DB626EB116D22ABD0014B5B7 /* UIImageView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8416D22ABD0014B5B7 /* UIImageView+PixLib.m */; };
-		DB626EB216D22ABD0014B5B7 /* UIImageView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8416D22ABD0014B5B7 /* UIImageView+PixLib.m */; };
 		DB626EB316D22ABD0014B5B7 /* UILabel+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8616D22ABD0014B5B7 /* UILabel+PixLib.m */; };
-		DB626EB416D22ABD0014B5B7 /* UILabel+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8616D22ABD0014B5B7 /* UILabel+PixLib.m */; };
 		DB626EB516D22ABD0014B5B7 /* UIScrollView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8816D22ABD0014B5B7 /* UIScrollView+PixLib.m */; };
-		DB626EB616D22ABD0014B5B7 /* UIScrollView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8816D22ABD0014B5B7 /* UIScrollView+PixLib.m */; };
 		DB626EB716D22ABD0014B5B7 /* UIView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8A16D22ABD0014B5B7 /* UIView+PixLib.m */; };
-		DB626EB816D22ABD0014B5B7 /* UIView+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626E8A16D22ABD0014B5B7 /* UIView+PixLib.m */; };
 		DB626EC716D22AE80014B5B7 /* PxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EBA16D22AE70014B5B7 /* PxPair.m */; };
-		DB626EC816D22AE80014B5B7 /* PxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EBA16D22AE70014B5B7 /* PxPair.m */; };
 		DB626ECB16D22AE80014B5B7 /* PxRange.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EBE16D22AE70014B5B7 /* PxRange.m */; };
-		DB626ECC16D22AE80014B5B7 /* PxRange.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EBE16D22AE70014B5B7 /* PxRange.m */; };
 		DB626ECD16D22AE80014B5B7 /* PxRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EC016D22AE70014B5B7 /* PxRuntimeHelper.m */; };
-		DB626ECE16D22AE80014B5B7 /* PxRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EC016D22AE70014B5B7 /* PxRuntimeHelper.m */; };
 		DB626ED316D22AE80014B5B7 /* PxWeakValue.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EC616D22AE80014B5B7 /* PxWeakValue.m */; };
-		DB626ED416D22AE80014B5B7 /* PxWeakValue.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EC616D22AE80014B5B7 /* PxWeakValue.m */; };
 		DB626ED816D22CC70014B5B7 /* PxLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626ED716D22CC70014B5B7 /* PxLogger.m */; };
-		DB626ED916D22CC70014B5B7 /* PxLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626ED716D22CC70014B5B7 /* PxLogger.m */; };
-		DB626EE316D235230014B5B7 /* PxImageKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE216D235230014B5B7 /* PxImageKitHelper.m */; };
 		DB626EE916D2382A0014B5B7 /* hnjalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE516D2382A0014B5B7 /* hnjalloc.c */; };
-		DB626EEA16D2382A0014B5B7 /* hnjalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE516D2382A0014B5B7 /* hnjalloc.c */; };
 		DB626EEB16D2382A0014B5B7 /* hyphen.c in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE716D2382A0014B5B7 /* hyphen.c */; };
-		DB626EEC16D2382A0014B5B7 /* hyphen.c in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE716D2382A0014B5B7 /* hyphen.c */; };
 		DB626EF016D23B620014B5B7 /* PxLocalize.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EEF16D23B620014B5B7 /* PxLocalize.m */; };
-		DB626EF116D23B620014B5B7 /* PxLocalize.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EEF16D23B620014B5B7 /* PxLocalize.m */; };
 		DB626EF716D23C730014B5B7 /* PxXMLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EF616D23C730014B5B7 /* PxXMLHelper.m */; };
-		DB626EF816D23C730014B5B7 /* PxXMLHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EF616D23C730014B5B7 /* PxXMLHelper.m */; };
 		DB626F0016D23D1C0014B5B7 /* PxCXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EFF16D23D1C0014B5B7 /* PxCXMLBuilder.m */; };
-		DB626F0116D23D1C0014B5B7 /* PxCXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EFF16D23D1C0014B5B7 /* PxCXMLBuilder.m */; };
 		DB626F0816D23D260014B5B7 /* PxMarkupBuildService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0516D23D260014B5B7 /* PxMarkupBuildService.m */; };
-		DB626F0916D23D260014B5B7 /* PxMarkupBuildService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0516D23D260014B5B7 /* PxMarkupBuildService.m */; };
 		DB626F1416D259340014B5B7 /* PxCXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0D16D259340014B5B7 /* PxCXMLParser.m */; };
-		DB626F1516D259340014B5B7 /* PxCXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0D16D259340014B5B7 /* PxCXMLParser.m */; };
 		DB626F1616D259340014B5B7 /* PxHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0F16D259340014B5B7 /* PxHTMLParser.m */; };
-		DB626F1716D259340014B5B7 /* PxHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F0F16D259340014B5B7 /* PxHTMLParser.m */; };
 		DB626F1816D259340014B5B7 /* PxJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1116D259340014B5B7 /* PxJSONParser.m */; };
-		DB626F1916D259340014B5B7 /* PxJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1116D259340014B5B7 /* PxJSONParser.m */; };
 		DB626F1A16D259340014B5B7 /* PxXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1316D259340014B5B7 /* PxXMLParser.m */; };
-		DB626F1B16D259340014B5B7 /* PxXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1316D259340014B5B7 /* PxXMLParser.m */; };
 		DB626F2016D259420014B5B7 /* PxAsyncParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1D16D259420014B5B7 /* PxAsyncParseService.m */; };
-		DB626F2116D259420014B5B7 /* PxAsyncParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1D16D259420014B5B7 /* PxAsyncParseService.m */; };
 		DB626F2216D259420014B5B7 /* PxParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1F16D259420014B5B7 /* PxParseService.m */; };
-		DB626F2316D259420014B5B7 /* PxParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F1F16D259420014B5B7 /* PxParseService.m */; };
 		DB626F3116D25E870014B5B7 /* PxSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2A16D25E870014B5B7 /* PxSuperViewController.m */; };
-		DB626F3216D25E870014B5B7 /* PxSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2A16D25E870014B5B7 /* PxSuperViewController.m */; };
 		DB626F3316D25E870014B5B7 /* PxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2C16D25E870014B5B7 /* PxTableViewController.m */; };
-		DB626F3416D25E870014B5B7 /* PxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2C16D25E870014B5B7 /* PxTableViewController.m */; };
 		DB626F3516D25E870014B5B7 /* PxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2E16D25E870014B5B7 /* PxViewController.m */; };
-		DB626F3616D25E870014B5B7 /* PxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2E16D25E870014B5B7 /* PxViewController.m */; };
 		DB626F3716D25E870014B5B7 /* PxWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3016D25E870014B5B7 /* PxWebController.m */; };
-		DB626F3816D25E870014B5B7 /* PxWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3016D25E870014B5B7 /* PxWebController.m */; };
 		DB626F3D16D25EA80014B5B7 /* PxActionButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3A16D25EA80014B5B7 /* PxActionButtonConfig.m */; };
-		DB626F3E16D25EA80014B5B7 /* PxActionButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3A16D25EA80014B5B7 /* PxActionButtonConfig.m */; };
 		DB626F3F16D25EA80014B5B7 /* PxInputAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3C16D25EA80014B5B7 /* PxInputAnimation.m */; };
-		DB626F4016D25EA80014B5B7 /* PxInputAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3C16D25EA80014B5B7 /* PxInputAnimation.m */; };
 		DB626F4816D25F140014B5B7 /* PxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4516D25F140014B5B7 /* PxTextField.m */; };
-		DB626F4916D25F140014B5B7 /* PxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4516D25F140014B5B7 /* PxTextField.m */; };
 		DB626F4A16D25F140014B5B7 /* PxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4716D25F140014B5B7 /* PxTextView.m */; };
-		DB626F4B16D25F140014B5B7 /* PxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4716D25F140014B5B7 /* PxTextView.m */; };
 		DB626F6116D25FA50014B5B7 /* PxActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4E16D25FA50014B5B7 /* PxActionSheet.m */; };
-		DB626F6216D25FA50014B5B7 /* PxActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4E16D25FA50014B5B7 /* PxActionSheet.m */; };
 		DB626F6316D25FA50014B5B7 /* PxAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5016D25FA50014B5B7 /* PxAlertView.m */; };
-		DB626F6416D25FA50014B5B7 /* PxAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5016D25FA50014B5B7 /* PxAlertView.m */; };
 		DB626F6516D25FA50014B5B7 /* PxAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5216D25FA50014B5B7 /* PxAttributedLabel.m */; };
-		DB626F6616D25FA50014B5B7 /* PxAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5216D25FA50014B5B7 /* PxAttributedLabel.m */; };
 		DB626F6716D25FA50014B5B7 /* PxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5416D25FA50014B5B7 /* PxButton.m */; };
-		DB626F6816D25FA50014B5B7 /* PxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5416D25FA50014B5B7 /* PxButton.m */; };
 		DB626F6916D25FA50014B5B7 /* PxControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5616D25FA50014B5B7 /* PxControl.m */; };
-		DB626F6A16D25FA50014B5B7 /* PxControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5616D25FA50014B5B7 /* PxControl.m */; };
 		DB626F6B16D25FA50014B5B7 /* PxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5816D25FA50014B5B7 /* PxLabel.m */; };
-		DB626F6C16D25FA50014B5B7 /* PxLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5816D25FA50014B5B7 /* PxLabel.m */; };
 		DB626F6F16D25FA50014B5B7 /* PxRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5C16D25FA50014B5B7 /* PxRemoteImageView.m */; };
-		DB626F7016D25FA50014B5B7 /* PxRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5C16D25FA50014B5B7 /* PxRemoteImageView.m */; };
 		DB626F7116D25FA50014B5B7 /* PxRotatingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5E16D25FA50014B5B7 /* PxRotatingScreen.m */; };
-		DB626F7216D25FA50014B5B7 /* PxRotatingScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5E16D25FA50014B5B7 /* PxRotatingScreen.m */; };
 		DB626F7316D25FA50014B5B7 /* PxSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F6016D25FA50014B5B7 /* PxSwitch.m */; };
-		DB626F7416D25FA50014B5B7 /* PxSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F6016D25FA50014B5B7 /* PxSwitch.m */; };
 		DB626F7B16D25FD60014B5B7 /* PxPickerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7616D25FD60014B5B7 /* PxPickerContainer.m */; };
-		DB626F7C16D25FD60014B5B7 /* PxPickerContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7616D25FD60014B5B7 /* PxPickerContainer.m */; };
 		DB626F7D16D25FD60014B5B7 /* PxDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7816D25FD60014B5B7 /* PxDatePicker.m */; };
-		DB626F7E16D25FD60014B5B7 /* PxDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7816D25FD60014B5B7 /* PxDatePicker.m */; };
 		DB626F7F16D25FD60014B5B7 /* PxPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7A16D25FD60014B5B7 /* PxPicker.m */; };
-		DB626F8016D25FD60014B5B7 /* PxPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F7A16D25FD60014B5B7 /* PxPicker.m */; };
 		DB626F8716D25FF00014B5B7 /* PxDataTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8216D25FF00014B5B7 /* PxDataTableView.m */; };
-		DB626F8816D25FF00014B5B7 /* PxDataTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8216D25FF00014B5B7 /* PxDataTableView.m */; };
 		DB626F8916D25FF00014B5B7 /* PxTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8416D25FF00014B5B7 /* PxTableView.m */; };
-		DB626F8A16D25FF00014B5B7 /* PxTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8416D25FF00014B5B7 /* PxTableView.m */; };
 		DB626F8B16D25FF00014B5B7 /* PxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8616D25FF00014B5B7 /* PxTableViewCell.m */; };
-		DB626F8C16D25FF00014B5B7 /* PxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F8616D25FF00014B5B7 /* PxTableViewCell.m */; };
 		DB626F9316D260350014B5B7 /* PxCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9016D260350014B5B7 /* PxCaller.m */; };
-		DB626F9416D260350014B5B7 /* PxCaller.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9016D260350014B5B7 /* PxCaller.m */; };
 		DB626F9516D260350014B5B7 /* PxResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9216D260350014B5B7 /* PxResult.m */; };
-		DB626F9616D260350014B5B7 /* PxResult.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9216D260350014B5B7 /* PxResult.m */; };
 		DB626F9F16D2605E0014B5B7 /* PxHTTPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9816D2605E0014B5B7 /* PxHTTPCache.m */; };
-		DB626FA016D2605E0014B5B7 /* PxHTTPCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9816D2605E0014B5B7 /* PxHTTPCache.m */; };
 		DB626FA116D2605E0014B5B7 /* PxHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9A16D2605E0014B5B7 /* PxHTTPConnection.m */; };
-		DB626FA216D2605E0014B5B7 /* PxHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9A16D2605E0014B5B7 /* PxHTTPConnection.m */; };
 		DB626FA316D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9C16D2605E0014B5B7 /* PxHTTPImageCache.m */; };
-		DB626FA416D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9C16D2605E0014B5B7 /* PxHTTPImageCache.m */; };
 		DB626FA516D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9E16D2605E0014B5B7 /* PxHTTPRemoteService.m */; };
-		DB626FA616D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9E16D2605E0014B5B7 /* PxHTTPRemoteService.m */; };
 		DB626FA916D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */; };
-		DB626FAA16D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */; };
+		DBBC9A3316D663EE00C92649 /* PxDrawService.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBC9A3216D663EE00C92649 /* PxDrawService.m */; };
+		DBF81D8C16D4C479003D0453 /* PxImageKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626EE216D235230014B5B7 /* PxImageKitHelper.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DB626E4716D224070014B5B7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB626E2816D224070014B5B7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB626E2F16D224070014B5B7;
-			remoteInfo = "PixLib OpenSource";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		DB626E2E16D224070014B5B7 /* CopyFiles */ = {
@@ -180,16 +95,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DB626E3016D224070014B5B7 /* libPixLib OpenSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPixLib OpenSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB626E3016D224070014B5B7 /* libPixLib-OpenSource.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPixLib-OpenSource.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB626E3316D224070014B5B7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		DB626E3716D224070014B5B7 /* PixLib OpenSource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PixLib OpenSource-Prefix.pch"; sourceTree = "<group>"; };
-		DB626E4116D224070014B5B7 /* PixLib OpenSourceTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PixLib OpenSourceTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB626E4216D224070014B5B7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		DB626E4416D224070014B5B7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		DB626E4C16D224070014B5B7 /* PixLib OpenSourceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PixLib OpenSourceTests-Info.plist"; sourceTree = "<group>"; };
-		DB626E4E16D224070014B5B7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DB626E5016D224070014B5B7 /* PixLib_OpenSourceTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PixLib_OpenSourceTests.h; sourceTree = "<group>"; };
-		DB626E5116D224070014B5B7 /* PixLib_OpenSourceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PixLib_OpenSourceTests.m; sourceTree = "<group>"; };
+		DB626E3716D224070014B5B7 /* PixLib-OpenSource-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PixLib-OpenSource-Prefix.pch"; sourceTree = "<group>"; };
 		DB626E5D16D22ABD0014B5B7 /* NSArray+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+PixLib.h"; sourceTree = "<group>"; };
 		DB626E5E16D22ABD0014B5B7 /* NSArray+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+PixLib.m"; sourceTree = "<group>"; };
 		DB626E5F16D22ABD0014B5B7 /* NSAttributedString+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+PixLib.h"; sourceTree = "<group>"; };
@@ -341,7 +249,19 @@
 		DB626F9E16D2605E0014B5B7 /* PxHTTPRemoteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxHTTPRemoteService.m; sourceTree = "<group>"; };
 		DB626FA716D260B10014B5B7 /* PxCellDeleteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCellDeleteLayer.h; sourceTree = "<group>"; };
 		DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCellDeleteLayer.m; sourceTree = "<group>"; };
-		DB626FAB16D260DE0014B5B7 /* PxEditableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxEditableCell.h; sourceTree = "<group>"; };
+		DB626FAB16D260DE0014B5B7 /* PxEditableCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxEditableCellProtocol.h; sourceTree = "<group>"; };
+		DBBC9A3116D663EE00C92649 /* PxDrawService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxDrawService.h; sourceTree = "<group>"; };
+		DBBC9A3216D663EE00C92649 /* PxDrawService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxDrawService.m; sourceTree = "<group>"; };
+		DBF81D5016D4C2FA003D0453 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		DBF81D5216D4C2FA003D0453 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DBF81DB016D4C52F003D0453 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DBF81DB216D4C56F003D0453 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DBF81DB416D4C58D003D0453 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		DBF81DB516D4C58F003D0453 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DBF81DB616D4C590003D0453 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		DBF81DB716D4C592003D0453 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		DBF81DBC16D4C5BC003D0453 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		DBF81E5A16D4D6E1003D0453 /* PxOpenLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxOpenLib.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,17 +273,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB626E3D16D224070014B5B7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB626E4316D224070014B5B7 /* SenTestingKit.framework in Frameworks */,
-				DB626E4516D224070014B5B7 /* UIKit.framework in Frameworks */,
-				DB626E4616D224070014B5B7 /* Foundation.framework in Frameworks */,
-				DB626E4916D224070014B5B7 /* libPixLib OpenSource.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -371,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				DB626E3516D224070014B5B7 /* PixLib OpenSource */,
-				DB626E4A16D224070014B5B7 /* PixLib OpenSourceTests */,
 				DB626E3216D224070014B5B7 /* Frameworks */,
 				DB626E3116D224070014B5B7 /* Products */,
 			);
@@ -380,8 +288,7 @@
 		DB626E3116D224070014B5B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DB626E3016D224070014B5B7 /* libPixLib OpenSource.a */,
-				DB626E4116D224070014B5B7 /* PixLib OpenSourceTests.octest */,
+				DB626E3016D224070014B5B7 /* libPixLib-OpenSource.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -389,9 +296,16 @@
 		DB626E3216D224070014B5B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBF81DBC16D4C5BC003D0453 /* ImageIO.framework */,
+				DBF81DB416D4C58D003D0453 /* CoreImage.framework */,
+				DBF81DB516D4C58F003D0453 /* CoreLocation.framework */,
+				DBF81DB616D4C590003D0453 /* CoreMedia.framework */,
+				DBF81DB716D4C592003D0453 /* CoreText.framework */,
+				DBF81DB216D4C56F003D0453 /* CoreGraphics.framework */,
+				DBF81DB016D4C52F003D0453 /* QuartzCore.framework */,
 				DB626E3316D224070014B5B7 /* Foundation.framework */,
-				DB626E4216D224070014B5B7 /* SenTestingKit.framework */,
-				DB626E4416D224070014B5B7 /* UIKit.framework */,
+				DBF81D5016D4C2FA003D0453 /* SenTestingKit.framework */,
+				DBF81D5216D4C2FA003D0453 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -399,6 +313,7 @@
 		DB626E3516D224070014B5B7 /* PixLib OpenSource */ = {
 			isa = PBXGroup;
 			children = (
+				DBF81E5A16D4D6E1003D0453 /* PxOpenLib.h */,
 				DB626F8D16D260060014B5B7 /* Communication */,
 				DB626E5B16D22A8F0014B5B7 /* Core */,
 				DB626EDF16D235040014B5B7 /* ImageKit */,
@@ -413,26 +328,7 @@
 		DB626E3616D224070014B5B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DB626E3716D224070014B5B7 /* PixLib OpenSource-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DB626E4A16D224070014B5B7 /* PixLib OpenSourceTests */ = {
-			isa = PBXGroup;
-			children = (
-				DB626E5016D224070014B5B7 /* PixLib_OpenSourceTests.h */,
-				DB626E5116D224070014B5B7 /* PixLib_OpenSourceTests.m */,
-				DB626E4B16D224070014B5B7 /* Supporting Files */,
-			);
-			path = "PixLib OpenSourceTests";
-			sourceTree = "<group>";
-		};
-		DB626E4B16D224070014B5B7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DB626E4C16D224070014B5B7 /* PixLib OpenSourceTests-Info.plist */,
-				DB626E4D16D224070014B5B7 /* InfoPlist.strings */,
+				DB626E3716D224070014B5B7 /* PixLib-OpenSource-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -516,6 +412,7 @@
 			children = (
 				DB626F2616D25E480014B5B7 /* Controllers */,
 				DB626F2716D25E520014B5B7 /* Models */,
+				DBBC9A3016D663D500C92649 /* Services */,
 				DB626F2816D25E5C0014B5B7 /* Views */,
 				DB626F2516D25E430014B5B7 /* PxUIkit.h */,
 				DB626EDE16D234540014B5B7 /* PxUIkitSupport.h */,
@@ -674,7 +571,7 @@
 				DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */,
 				DB626F8116D25FF00014B5B7 /* PxDataTableView.h */,
 				DB626F8216D25FF00014B5B7 /* PxDataTableView.m */,
-				DB626FAB16D260DE0014B5B7 /* PxEditableCell.h */,
+				DB626FAB16D260DE0014B5B7 /* PxEditableCellProtocol.h */,
 				DB626F8316D25FF00014B5B7 /* PxTableView.h */,
 				DB626F8416D25FF00014B5B7 /* PxTableView.m */,
 				DB626F8516D25FF00014B5B7 /* PxTableViewCell.h */,
@@ -759,12 +656,21 @@
 			name = HTTP;
 			sourceTree = "<group>";
 		};
+		DBBC9A3016D663D500C92649 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DBBC9A3116D663EE00C92649 /* PxDrawService.h */,
+				DBBC9A3216D663EE00C92649 /* PxDrawService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DB626E2F16D224070014B5B7 /* PixLib OpenSource */ = {
+		DB626E2F16D224070014B5B7 /* PixLib-OpenSource */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DB626E5516D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib OpenSource" */;
+			buildConfigurationList = DB626E5516D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib-OpenSource" */;
 			buildPhases = (
 				DB626E2C16D224070014B5B7 /* Sources */,
 				DB626E2D16D224070014B5B7 /* Frameworks */,
@@ -774,29 +680,10 @@
 			);
 			dependencies = (
 			);
-			name = "PixLib OpenSource";
+			name = "PixLib-OpenSource";
 			productName = "PixLib OpenSource";
-			productReference = DB626E3016D224070014B5B7 /* libPixLib OpenSource.a */;
+			productReference = DB626E3016D224070014B5B7 /* libPixLib-OpenSource.a */;
 			productType = "com.apple.product-type.library.static";
-		};
-		DB626E4016D224070014B5B7 /* PixLib OpenSourceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB626E5816D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib OpenSourceTests" */;
-			buildPhases = (
-				DB626E3C16D224070014B5B7 /* Sources */,
-				DB626E3D16D224070014B5B7 /* Frameworks */,
-				DB626E3E16D224070014B5B7 /* Resources */,
-				DB626E3F16D224070014B5B7 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DB626E4816D224070014B5B7 /* PBXTargetDependency */,
-			);
-			name = "PixLib OpenSourceTests";
-			productName = "PixLib OpenSourceTests";
-			productReference = DB626E4116D224070014B5B7 /* PixLib OpenSourceTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -807,7 +694,7 @@
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "pixelflut GmbH";
 			};
-			buildConfigurationList = DB626E2B16D224070014B5B7 /* Build configuration list for PBXProject "PixLib OpenSource" */;
+			buildConfigurationList = DB626E2B16D224070014B5B7 /* Build configuration list for PBXProject "PixLib-OpenSource" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -819,38 +706,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DB626E2F16D224070014B5B7 /* PixLib OpenSource */,
-				DB626E4016D224070014B5B7 /* PixLib OpenSourceTests */,
+				DB626E2F16D224070014B5B7 /* PixLib-OpenSource */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		DB626E3E16D224070014B5B7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB626E4F16D224070014B5B7 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DB626E3F16D224070014B5B7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DB626E2C16D224070014B5B7 /* Sources */ = {
@@ -927,108 +786,12 @@
 				DB626FA316D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */,
 				DB626FA516D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */,
 				DB626FA916D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DB626E3C16D224070014B5B7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB626E5216D224070014B5B7 /* PixLib_OpenSourceTests.m in Sources */,
-				DB626E8C16D22ABD0014B5B7 /* NSArray+PixLib.m in Sources */,
-				DB626E8E16D22ABD0014B5B7 /* NSAttributedString+PixLib.m in Sources */,
-				DB626E9016D22ABD0014B5B7 /* NSData+PixLib.m in Sources */,
-				DB626E9216D22ABD0014B5B7 /* NSDate+PixLib.m in Sources */,
-				DB626E9416D22ABD0014B5B7 /* NSDictionary+PixLib.m in Sources */,
-				DB626E9616D22ABD0014B5B7 /* NSFileManager+PixLib.m in Sources */,
-				DB626E9816D22ABD0014B5B7 /* NSMutableArray+PixLib.m in Sources */,
-				DB626E9A16D22ABD0014B5B7 /* NSMutableAttributedString+PixLib.m in Sources */,
-				DB626E9C16D22ABD0014B5B7 /* NSMutableDictionary+PixLib.m in Sources */,
-				DB626E9E16D22ABD0014B5B7 /* NSMutableSet+PixLib.m in Sources */,
-				DB626EA016D22ABD0014B5B7 /* NSMutableURLRequest+PixLib.m in Sources */,
-				DB626EA216D22ABD0014B5B7 /* NSNull+PixLib.m in Sources */,
-				DB626EA416D22ABD0014B5B7 /* NSNumber+PixLib.m in Sources */,
-				DB626EA616D22ABD0014B5B7 /* NSObject+PixLib.m in Sources */,
-				DB626EA816D22ABD0014B5B7 /* NSSet+PixLib.m in Sources */,
-				DB626EAA16D22ABD0014B5B7 /* NSString+PixLib.m in Sources */,
-				DB626EAC16D22ABD0014B5B7 /* UIColor+PixLib.m in Sources */,
-				DB626EAE16D22ABD0014B5B7 /* UIDevice+PixLib.m in Sources */,
-				DB626EB016D22ABD0014B5B7 /* UIImage+PixLib.m in Sources */,
-				DB626EB216D22ABD0014B5B7 /* UIImageView+PixLib.m in Sources */,
-				DB626EB416D22ABD0014B5B7 /* UILabel+PixLib.m in Sources */,
-				DB626EB616D22ABD0014B5B7 /* UIScrollView+PixLib.m in Sources */,
-				DB626EB816D22ABD0014B5B7 /* UIView+PixLib.m in Sources */,
-				DB626EC816D22AE80014B5B7 /* PxPair.m in Sources */,
-				DB626ECC16D22AE80014B5B7 /* PxRange.m in Sources */,
-				DB626ECE16D22AE80014B5B7 /* PxRuntimeHelper.m in Sources */,
-				DB626ED416D22AE80014B5B7 /* PxWeakValue.m in Sources */,
-				DB626ED916D22CC70014B5B7 /* PxLogger.m in Sources */,
-				DB626EE316D235230014B5B7 /* PxImageKitHelper.m in Sources */,
-				DB626EEA16D2382A0014B5B7 /* hnjalloc.c in Sources */,
-				DB626EEC16D2382A0014B5B7 /* hyphen.c in Sources */,
-				DB626EF116D23B620014B5B7 /* PxLocalize.m in Sources */,
-				DB626EF816D23C730014B5B7 /* PxXMLHelper.m in Sources */,
-				DB626F0116D23D1C0014B5B7 /* PxCXMLBuilder.m in Sources */,
-				DB626F0916D23D260014B5B7 /* PxMarkupBuildService.m in Sources */,
-				DB626F1516D259340014B5B7 /* PxCXMLParser.m in Sources */,
-				DB626F1716D259340014B5B7 /* PxHTMLParser.m in Sources */,
-				DB626F1916D259340014B5B7 /* PxJSONParser.m in Sources */,
-				DB626F1B16D259340014B5B7 /* PxXMLParser.m in Sources */,
-				DB626F2116D259420014B5B7 /* PxAsyncParseService.m in Sources */,
-				DB626F2316D259420014B5B7 /* PxParseService.m in Sources */,
-				DB626F3216D25E870014B5B7 /* PxSuperViewController.m in Sources */,
-				DB626F3416D25E870014B5B7 /* PxTableViewController.m in Sources */,
-				DB626F3616D25E870014B5B7 /* PxViewController.m in Sources */,
-				DB626F3816D25E870014B5B7 /* PxWebController.m in Sources */,
-				DB626F3E16D25EA80014B5B7 /* PxActionButtonConfig.m in Sources */,
-				DB626F4016D25EA80014B5B7 /* PxInputAnimation.m in Sources */,
-				DB626F4916D25F140014B5B7 /* PxTextField.m in Sources */,
-				DB626F4B16D25F140014B5B7 /* PxTextView.m in Sources */,
-				DB626F6216D25FA50014B5B7 /* PxActionSheet.m in Sources */,
-				DB626F6416D25FA50014B5B7 /* PxAlertView.m in Sources */,
-				DB626F6616D25FA50014B5B7 /* PxAttributedLabel.m in Sources */,
-				DB626F6816D25FA50014B5B7 /* PxButton.m in Sources */,
-				DB626F6A16D25FA50014B5B7 /* PxControl.m in Sources */,
-				DB626F6C16D25FA50014B5B7 /* PxLabel.m in Sources */,
-				DB626F7016D25FA50014B5B7 /* PxRemoteImageView.m in Sources */,
-				DB626F7216D25FA50014B5B7 /* PxRotatingScreen.m in Sources */,
-				DB626F7416D25FA50014B5B7 /* PxSwitch.m in Sources */,
-				DB626F7C16D25FD60014B5B7 /* PxPickerContainer.m in Sources */,
-				DB626F7E16D25FD60014B5B7 /* PxDatePicker.m in Sources */,
-				DB626F8016D25FD60014B5B7 /* PxPicker.m in Sources */,
-				DB626F8816D25FF00014B5B7 /* PxDataTableView.m in Sources */,
-				DB626F8A16D25FF00014B5B7 /* PxTableView.m in Sources */,
-				DB626F8C16D25FF00014B5B7 /* PxTableViewCell.m in Sources */,
-				DB626F9416D260350014B5B7 /* PxCaller.m in Sources */,
-				DB626F9616D260350014B5B7 /* PxResult.m in Sources */,
-				DB626FA016D2605E0014B5B7 /* PxHTTPCache.m in Sources */,
-				DB626FA216D2605E0014B5B7 /* PxHTTPConnection.m in Sources */,
-				DB626FA416D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */,
-				DB626FA616D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */,
-				DB626FAA16D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */,
+				DBF81D8C16D4C479003D0453 /* PxImageKitHelper.m in Sources */,
+				DBBC9A3316D663EE00C92649 /* PxDrawService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DB626E4816D224070014B5B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB626E2F16D224070014B5B7 /* PixLib OpenSource */;
-			targetProxy = DB626E4716D224070014B5B7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DB626E4D16D224070014B5B7 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB626E4E16D224070014B5B7 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB626E5316D224070014B5B7 /* Debug */ = {
@@ -1087,15 +850,18 @@
 		DB626E5616D224070014B5B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "PixLib-OpenSource";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1103,53 +869,25 @@
 		DB626E5716D224070014B5B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "PixLib-OpenSource";
 				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		DB626E5916D224070014B5B7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib OpenSource-Prefix.pch";
-				INFOPLIST_FILE = "PixLib OpenSourceTests/PixLib OpenSourceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		DB626E5A16D224070014B5B7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib OpenSource-Prefix.pch";
-				INFOPLIST_FILE = "PixLib OpenSourceTests/PixLib OpenSourceTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DB626E2B16D224070014B5B7 /* Build configuration list for PBXProject "PixLib OpenSource" */ = {
+		DB626E2B16D224070014B5B7 /* Build configuration list for PBXProject "PixLib-OpenSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB626E5316D224070014B5B7 /* Debug */,
@@ -1158,20 +896,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DB626E5516D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib OpenSource" */ = {
+		DB626E5516D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib-OpenSource" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DB626E5616D224070014B5B7 /* Debug */,
 				DB626E5716D224070014B5B7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB626E5816D224070014B5B7 /* Build configuration list for PBXNativeTarget "PixLib OpenSourceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB626E5916D224070014B5B7 /* Debug */,
-				DB626E5A16D224070014B5B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

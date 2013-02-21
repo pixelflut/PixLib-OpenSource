@@ -31,18 +31,19 @@
 
 #define PxLocalizedStringFromTable(__key__, __table__) [[PxLocalize sharedLocalSystem] localizedStringForKey:(__key__) value:nil table:(__table__)]
 
-#define PxLocalizeSetLanguage(language) \
-[[PxLocalize sharedLocalSystem] setLanguage:(language)]
+#define PxLocalizeSetLanguage(language) [[PxLocalize sharedLocalSystem] setLanguage:(language)]
 
-#define PxLocalizeGetLanguage \
-[[PxLocalize sharedLocalSystem] getLanguage]
+#define PxLocalizeGetLanguage [[PxLocalize sharedLocalSystem] getLanguage]
 
-#define PxLocalizeReset \
-[[PxLocalize sharedLocalSystem] resetLocalization]
+#define PxLocalizeReset [[PxLocalize sharedLocalSystem] resetLocalization]
 
 #define T(s) PxLocalizedString(s)
 #define TT(s, t) PxLocalizedStringFromTable(s, t)
 
+/**
+ * Use this class for convinient access to apples localization strings.
+ * Support for on-the-fly language change without the need of restarting the application.
+ */
 @interface PxLocalize : NSObject
 
 + (PxLocalize *)sharedLocalSystem;
