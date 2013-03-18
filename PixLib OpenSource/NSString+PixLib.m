@@ -48,6 +48,20 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     return dict;
 }
 
+- (NSString *)eachCharacter:(void (^)(unichar character))block {
+    for (int i = 0; i<[self length]; i++) {
+        block([self characterAtIndex:i]);
+    }
+    return self;
+}
+
+- (NSString *)eachCharacterWithIndex:(void (^)(unichar character, unsigned int index))block {
+    for (int i = 0; i<[self length]; i++) {
+        block([self characterAtIndex:i], i);
+    }
+    return self;
+}
+
 - (BOOL)isNotBlank {
     return ([self length] > 0);
 }

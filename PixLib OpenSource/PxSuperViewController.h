@@ -27,6 +27,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Empty Subclass for the sole purpose of having a class below _UIViewController_ you can add categories at. This can be espacialy usefull for overwritting methods in categories.
+ */
 @interface PxSuperViewController : UIViewController
 
 @end

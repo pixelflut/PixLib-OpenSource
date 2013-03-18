@@ -31,8 +31,6 @@
 #import <objc/runtime.h>
 
 @implementation PxTableViewController
-@synthesize data            = _data;
-@synthesize table           = _table;
 
 + (void)initialize {
     if ([[self class] dynamicHeight] && ![[self class] instancesRespondToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
@@ -68,24 +66,24 @@
 }
 
 - (void)updateView {
-    [self.table reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)loadTable {
-    _table = [[[self.class tableViewClass] alloc] initWithFrame:CGRectFromSize(self.view.frame.size) style:[[self class] tableViewStyle]];
-    [_table setDefaultResizingMask];
-    [_table setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [_table setSectional:[[self class] sectional]];
-    [_table setPxDataSource:self];
-    [_table setDelegate:self];
-    [self.view addSubview:_table];
+    _tableView = [[[self.class tableViewClass] alloc] initWithFrame:CGRectFromSize(self.view.frame.size) style:[[self class] tableViewStyle]];
+    [_tableView setDefaultResizingMask];
+    [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_tableView setSectional:[[self class] sectional]];
+    [_tableView setPxDataSource:self];
+    [_tableView setDelegate:self];
+    [self.view addSubview:_tableView];
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    [_table setDelegate:nil];
-    [_table setPxDataSource:nil];
-    _table = nil;
+    [_tableView setDelegate:nil];
+    [_tableView setPxDataSource:nil];
+    _tableView = nil;
 }
 
 - (void)setData:(NSArray *)data {
@@ -96,7 +94,7 @@
     if (data != _data) {
         _data = data;
         if (reload) {
-            [self.table reloadData];
+            [self.tableView reloadData];
         }
     }
 }
@@ -112,7 +110,7 @@
 }
 
 - (CGFloat)__template__tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.table heightForRowAtIndexPath:indexPath];
+    return [self.tableView heightForRowAtIndexPath:indexPath];
 }
 
 - (void)tableView:(PxDataTableView *)tableView didUpdateData:(NSArray *)data {

@@ -27,9 +27,10 @@
 
 #import "PxSuperViewController.h"
 
+/** PxViewController */
 @interface PxViewController : PxSuperViewController
 
-- (UIView*)loadStdView;
+- (UIView *)loadStdView;
 - (void)updateView;
 - (void)reloadData;
 

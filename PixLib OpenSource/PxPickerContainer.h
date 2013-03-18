@@ -32,6 +32,9 @@ UIKIT_EXTERN NSString *const PxPickerFrameEndKey;
 UIKIT_EXTERN NSString *const PxPickerAnimationDurationKey;
 UIKIT_EXTERN NSString *const PxPickerAnimationCurveKey;
 
+/**
+ Abstract class for presenting various picker views in a similar way the keyboard does.
+ */
 @interface PxPickerContainer : UIView
 @property (nonatomic, strong) UIView *contentView;
 

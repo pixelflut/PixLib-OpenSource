@@ -27,6 +27,7 @@
 
 #import "PxViewController.h"
 
+/** PxWebController */
 @interface PxWebController : PxViewController <UIWebViewDelegate>
 @property(nonatomic, strong, readonly) UIWebView *webView;
 @property(nonatomic, strong) NSString *urlString;

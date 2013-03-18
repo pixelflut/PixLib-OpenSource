@@ -35,6 +35,9 @@ typedef enum {
 
 typedef void (^PxActionButtonConfigBlock)(void);
 
+/**
+ Used to control PxActionSheet and PxAlertView behaviors
+ */
 @interface PxActionButtonConfig : NSObject
 @property(nonatomic, readonly, assign) int visibleButtonCount;
 

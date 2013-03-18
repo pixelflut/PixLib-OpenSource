@@ -27,6 +27,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Wrapps the informations from keyboard (or picker) show/hide notifications to get access in an object-oriented way.
+ */
 @interface PxInputAnimation : NSObject
 @property (nonatomic, assign) CGRect startFrame;
 @property (nonatomic, assign) CGRect endFrame;

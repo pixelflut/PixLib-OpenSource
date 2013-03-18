@@ -42,6 +42,7 @@
  */
 - (BOOL)isNotBlank;
 
+
 #pragma mark - Identifying and Comparing Strings
 /** @name Identifying and Comparing Strings */
 
@@ -63,6 +64,25 @@
 - (BOOL)isValidEmail;
 
 
+#pragma mark - Enumerating Strings
+/** @name Enumerating Strings */
+
+/** Calls _block_ on each character in the receiver.
+ @param block The block called on each character.
+ @return The receiver.
+ @see eachCharacterWithIndex:
+ */
+- (NSString *)eachCharacter:(void (^)(unichar character))block;
+
+
+/** Calls _block_ on each character in the receiver.
+ @param block The block called on each character.
+ @return The receiver.
+ @see eachCharacter:
+ */
+- (NSString *)eachCharacterWithIndex:(void (^)(unichar character, unsigned int index))block;
+
+
 #pragma mark - Computing Metrics for Drawing Strings
 /** @name Computing Metrics for Drawing Strings */
 
@@ -71,6 +91,7 @@
  @param config The font and Linebreak informations to use for rendering the string.
  */
 - (float)heightForWidth:(float)width config:(PxFontConfig)config;
+
 
 #pragma mark - Misc
 /** @name Misc */
@@ -92,6 +113,7 @@
  @return The hyphenated string.
  */
 - (NSString *)stringByHyphenatingWithLocale:(NSLocale *)locale;
+
 
 #pragma mark - Encrypting Strings
 /** @name Encrypting Strings */
@@ -129,6 +151,7 @@
  */
 - (NSString *)stringByAddingSHA256Encoding;
 
+
 #pragma mark - Working with URLs
 /** @name Working with URLs */
 
@@ -143,6 +166,7 @@
  @return The parsed query-parameters.
  */
 - (NSMutableDictionary *)dictionaryFromQueryString;
+
 
 #pragma mark - Working with UUIDs
 /** @name Working with UUIDs */
