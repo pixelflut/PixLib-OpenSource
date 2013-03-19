@@ -71,7 +71,7 @@ typedef enum {
 
 @end
 
-void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix, NSString *fmt, ...);
+void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix, NSString *fmt, ...) NS_FORMAT_FUNCTION(5,6);
 
 /** Logging Errors */
 #define PxError(...) PxReport(PxLogLevelError, __FILE__, __LINE__, @"[ERROR]", __VA_ARGS__)
