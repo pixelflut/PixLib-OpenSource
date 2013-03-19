@@ -38,7 +38,10 @@
         if ([self respondsToSelector:@selector(minimumScaleFactor)]) {
             self.minimumScaleFactor = fontConfig.minimumScaleFactor;
         } else if([self respondsToSelector:@selector(minimumFontSize)]) {
-            [self setMinimumFontSize:fontConfig.minimumScaleFactor];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            [self setMinimumFontSize:fontConfig.minimumScaleFactor/self.font.pointSize];
+#pragma clang diagnostic pop
         }
         
         self.lineBreakMode = fontConfig.lineBreakMode;
@@ -52,7 +55,10 @@
     if ([self respondsToSelector:@selector(minimumScaleFactor)]) {
         return PxFontConfigMake(self.font, self.minimumScaleFactor, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
     } else if([self respondsToSelector:@selector(minimumFontSize)]){
-        return PxFontConfigMake(self.font, self.minimumFontSize, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        return PxFontConfigMake(self.font, self.minimumFontSize/self.font.pointSize, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
+#pragma clang diagnostic pop
     }
     return PxFontConfigMake(self.font, 0.0, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
 }
