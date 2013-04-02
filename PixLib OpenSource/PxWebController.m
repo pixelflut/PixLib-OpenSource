@@ -36,7 +36,6 @@
 @implementation PxWebController
 
 - (id)initWithURL:(NSString*)url title:(NSString*)t {
-#warning check for super/self init in groceryliest/firstyears
     self = [super init];
     if (self) {
         _urlString = url;

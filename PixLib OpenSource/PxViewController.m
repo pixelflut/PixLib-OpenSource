@@ -30,7 +30,7 @@
 
 @implementation PxViewController
 
-- (UIView*)loadStdView {
+- (UIView *)loadStdView {
     CGRect frame;
     if (self.wantsFullScreenLayout) {
         frame = [[UIScreen mainScreen] bounds];
