@@ -97,10 +97,6 @@ NSString *const PxDatePickerDidHideNotification = @"PxDatePickerDidHide";
     return self;
 }
 
-- (void)setDatePickerMode:(UIDatePickerMode)datePickerMode {
-	[_datePicker setDatePickerMode:datePickerMode];
-}
-
 - (void)__cancel {
     if ([_delegate respondsToSelector:@selector(datePickerDidCancel:)]) {
         [_delegate datePickerDidCancel:self];
@@ -134,6 +130,84 @@ NSString *const PxDatePickerDidHideNotification = @"PxDatePickerDidHide";
             }
         }
     }
+}
+
+#pragma mark - UIDatePicker property forwarding
+- (NSCalendar *)calendar {
+	return [_datePicker calendar];
+}
+
+- (void)setCalendar:(NSCalendar *)calendar {
+	[_datePicker setCalendar:calendar];
+}
+
+- (NSTimeInterval)countDownDuration {
+	return [_datePicker countDownDuration];
+}
+
+- (void)setCountDownDuration:(NSTimeInterval)timeInterval {
+	[_datePicker setCountDownDuration:timeInterval];
+}
+
+- (NSDate *)date {
+	return [_datePicker date];
+}
+
+- (void)setDate:(NSDate *)date {
+	[_datePicker setDate:date];
+}
+
+- (UIDatePickerMode)datePickerMode {
+	return [_datePicker datePickerMode];
+}
+
+- (void)setDatePickerMode:(UIDatePickerMode)datePickerMode {
+	[_datePicker setDatePickerMode:datePickerMode];
+}
+
+- (NSLocale *)locale {
+	return [_datePicker locale];
+}
+
+- (void)setLocale:(NSLocale *)locale {
+	[_datePicker setLocale:locale];
+}
+
+- (NSDate *)maximumDate {
+	return [_datePicker maximumDate];
+}
+
+- (void)setMaximumDate:(NSDate *)maximumDate {
+	[_datePicker setMaximumDate:maximumDate];
+}
+
+- (NSDate *)minimumDate {
+	return [_datePicker minimumDate];
+}
+
+- (void)setMinimumDate:(NSDate *)minimumDate {
+	[_datePicker setMinimumDate:minimumDate];
+}
+
+- (NSInteger)minuteInterval {
+	return [_datePicker minuteInterval];
+}
+
+- (void)setMinuteInterval:(NSInteger)minuteInterval {
+	[_datePicker setMinuteInterval:minuteInterval];
+}
+
+- (NSTimeZone *)timeZone {
+	return [_datePicker timeZone];
+}
+
+- (void)setTimeZone:(NSTimeZone *)timeZone {
+	[_datePicker setTimeZone:timeZone];
+}
+
+#pragma mark - UIDatePicker instance method forwarding
+- (void)setDate:(NSDate *)date animated:(BOOL)animated {
+	[_datePicker setDate:date animated:animated];
 }
 
 #pragma mark - Callbacks

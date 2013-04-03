@@ -49,7 +49,7 @@
 
 - (NSDate *)dateWithOptions:(void (^)(PxDateOptions *options))block {
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [gregorian components:NSUIntegerMax fromDate:self];
+    NSDateComponents *components = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
     
     PxDateOptions opts = {components.year, components.month, components.day, components.hour, components.minute, components.second};
     block(&opts);
@@ -285,7 +285,7 @@
     
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
-	NSDateComponents *from = [gregorian components:NSUIntegerMax fromDate:self];
+	NSDateComponents *from = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
     NSDateComponents *to = [[NSDateComponents alloc] init];
     
     [to setYear:[from year] + opts.year];
