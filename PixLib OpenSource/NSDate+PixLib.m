@@ -276,7 +276,7 @@
 }
 
 - (NSInteger)second {
-    return [[[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:self] minute];
+    return [[[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:self] second];
 }
 
 - (NSDate *)advance:(void (^)(PxDateOptions *options))block {
