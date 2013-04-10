@@ -75,6 +75,13 @@
 	return [formatter stringFromDate:self];
 }
 
+- (NSString *)stringWithDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle {
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setDateStyle:dateStyle];
+	[formatter setTimeStyle:timeStyle];
+	return [formatter stringFromDate:self];
+}
+
 - (NSString *)distanceOfTimeInWords {
 	return [self distanceOfTimeInWords:[NSDate date]];
 }

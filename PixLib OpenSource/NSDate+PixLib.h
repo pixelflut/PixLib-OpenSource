@@ -88,6 +88,13 @@ typedef struct {
  */
 - (NSString *)stringWithStyle:(NSDateFormatterStyle)style;
 
+/** Returns a String representating the receiver in a given style.
+ @param dateStyle The date style for the receiver.
+ @param timeStyle The time style for the receiver.
+ @return A string representation of self formatted using the _style_ settings.
+ */
+- (NSString *)stringWithDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle;
+
 /** Returns a String representating the distance between the receiver and the current time in a human readable way.
  @return A string.
  @see distanceOfTimeInWords:
