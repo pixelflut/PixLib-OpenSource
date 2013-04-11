@@ -36,11 +36,22 @@ UIKIT_EXTERN NSString *const PxDatePickerDidHideNotification;
 
 @interface PxDatePicker : PxPickerContainer 
 @property(weak, nonatomic) id<PxDatePickerDelegate> delegate;
+#pragma mark - UIDatePicker property forwarding
+@property(nonatomic, strong) NSCalendar *calendar;
+@property(nonatomic, assign) NSTimeInterval countDownDuration;
+@property(nonatomic, strong) NSDate *date;
+@property(nonatomic, assign) UIDatePickerMode datePickerMode;
+@property(nonatomic, strong) NSLocale *locale;
+@property(nonatomic, strong) NSDate *maximumDate;
+@property(nonatomic, strong) NSDate *minimumDate;
+@property(nonatomic, assign) NSInteger minuteInterval;
+@property(nonatomic, strong) NSTimeZone *timeZone;
 
 + (void)showWithDelegate:(id<PxDatePickerDelegate>)delegate;
 + (void)close:(BOOL)done;
 
-- (void)setDatePickerMode:(UIDatePickerMode)datePickerMode;
+#pragma mark - UIDatePicker instance method forwarding
+- (void)setDate:(NSDate *)date animated:(BOOL)animated;
 
 @end
 
