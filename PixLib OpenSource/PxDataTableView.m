@@ -204,6 +204,14 @@ typedef struct {
     return nil;
 }
 
+- (id)dataForSection:(unsigned int)section {
+    if (self.sectional) {
+        return [(PxPair *)[self.data objectAtIndex:section] first];
+    } else {
+        return nil;
+    }
+}
+
 - (NSIndexPath *)indexPathForItem:(id)item {
     if (self.sectional) {
         return [self sectionalIndexPathForItem:item];

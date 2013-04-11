@@ -39,6 +39,7 @@
 
 - (NSString*)identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
 - (id)dataForCellAtIndexPath:(NSIndexPath *)indexPath;
+- (id)dataForSection:(unsigned int)section;
 - (float)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForItem:(id)item;
 - (unsigned int)numberOfRowsInSection:(unsigned int)section useData:(BOOL)useData;
