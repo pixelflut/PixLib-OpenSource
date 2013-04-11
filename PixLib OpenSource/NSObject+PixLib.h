@@ -27,6 +27,25 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define PxSingleton(__singletonGetter__) + (instancetype)__singletonGetter__;
+#define PxSingletonImp(__singletonGetter__) + (instancetype)__singletonGetter__ {\
+    static id singletonInstance = nil; \
+    if (!singletonInstance) {\
+        static dispatch_once_t onceToken;\
+        dispatch_once(&onceToken, ^{\
+            singletonInstance = [[super allocWithZone:NULL] init];\
+        });\
+    }\
+    return singletonInstance;\
+}\
++ (id)allocWithZone:(NSZone *)zone {\
+    return [self defaultLogger];\
+}\
+- (id)copyWithZone:(NSZone *)zone {\
+    return self;\
+}
+
 /**
  * PixLib Category for NSData
  */

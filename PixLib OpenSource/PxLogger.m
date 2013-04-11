@@ -26,6 +26,7 @@
 //
 
 #import "PxLogger.h"
+#import "PxCore.h"
 
 #pragma mark - C Functions
 
@@ -58,7 +59,7 @@ void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix,
 @interface PxLogger ()
 @property(nonatomic, assign) PxLogLevel logLevel;
 @property(nonatomic, strong) NSArray *silenceFiles;
-+ (PxLogger *)defaultLogger;
+PxSingleton(defaultLogger)
 @end
 
 @implementation PxLogger
@@ -90,25 +91,15 @@ void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix,
 #endif
 }
 
-#pragma mark - Singleton Handling
-static PxLogger* sharedLogger = nil;
-+ (PxLogger *)defaultLogger {
-    if (!sharedLogger) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            sharedLogger = [[super allocWithZone:NULL] init];
-            [sharedLogger setLogLevel:PxLogLevelLog];
-        });
+- (id)init {
+    self = [super init];
+    if (self) {
+        [self setLogLevel:PxLogLevelLog];
     }
-    return sharedLogger;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    return [self defaultLogger];
-}
-
-- (id)copyWithZone:(NSZone *)zone {
     return self;
 }
+
+#pragma mark - Singleton Handling
+PxSingletonImp(defaultLogger)
 
 @end
