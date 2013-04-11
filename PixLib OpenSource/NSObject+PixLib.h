@@ -40,7 +40,7 @@
     return singletonInstance;\
 }\
 + (id)allocWithZone:(NSZone *)zone {\
-    return [self defaultLogger];\
+    return [self __singletonGetter__];\
 }\
 - (id)copyWithZone:(NSZone *)zone {\
     return self;\
