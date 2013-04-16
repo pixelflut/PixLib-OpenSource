@@ -29,18 +29,20 @@
 
 Class property_getReturnClass(objc_property_t property, BOOL *isPrimitive) {
     const char *attributes = property_getAttributes(property);
-    char *c = ((char *)attributes+1);
+    unsigned char *c = ((unsigned char *)attributes+1);
     if (*c == '@') {
         *isPrimitive = NO;
         c++;
         if (*c == '"') {
-            unichar buffer[512];
+            CFMutableDataRef buffer = CFDataCreateMutable(NULL, 0);
             int i = 0;
             while (*(++c) != '"' ) {
-                buffer[i] = *c;
+                CFDataAppendBytes(buffer, c, 1);
                 i++;
             }
-            return NSClassFromString([[NSString alloc] initWithCharacters:buffer length:i]);
+            NSString *klass = [[NSString alloc] initWithBytes:CFDataGetBytePtr(buffer) length:i encoding:NSUTF8StringEncoding];
+            CFRelease(buffer);
+            return NSClassFromString(klass);
         }
     } else {
         if (isPrimitive) {*isPrimitive = YES;}
