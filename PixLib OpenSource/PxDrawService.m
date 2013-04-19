@@ -49,7 +49,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearMemcacheOnLowMemory:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearMemcacheOnLowMemory) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
 }
@@ -60,7 +60,7 @@
     UIImage *img;
     NSString *internalIdentifier;
     
-    if (!reuseIdentifier) {
+    if ([reuseIdentifier isNotBlank]) {
         internalIdentifier = [self internalIdentifier:reuseIdentifier size:actualSize];
         img = [self.imageCache imageForURLString:internalIdentifier interval:INT_MAX scale:PxDeviceScale()];
     }

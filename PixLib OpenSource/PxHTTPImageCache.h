@@ -29,8 +29,9 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    PxImageScaleDefault = 0,
-    PxImageScaleRetina  = 1
+    PxImageScaleNone = 0,
+    PxImageScaleDefault = 1,
+    PxImageScaleRetina  = 2
 } PxImageScale;
 
 @interface PxHTTPImageCache : PxHTTPCache
