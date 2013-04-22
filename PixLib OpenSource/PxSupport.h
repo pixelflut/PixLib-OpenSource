@@ -196,8 +196,8 @@ static PxInterpolationBlock squareEaseOut = ^CGFloat(CGFloat t, CGFloat start, C
 
 
 #pragma mark - ARC Fuckup Helpers
-static inline int *pointerFromObject(void *object) {
-    return (int *)object;
+static inline unsigned char *pointerFromObject(void *object) {
+    return (unsigned char *)object;
 }
 
 static inline void *pointerToInstanceVariable(id object, char *variableName) {
