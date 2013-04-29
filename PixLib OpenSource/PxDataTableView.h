@@ -37,7 +37,7 @@
 @property (nonatomic, assign) id<PxDataTableDelegate> delegate;
 @property (nonatomic, assign) id<UITableViewDataSource> dataSource OBJC2_UNAVAILABLE;
 
-- (NSString*)identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
 - (id)dataForCellAtIndexPath:(NSIndexPath *)indexPath;
 - (id)dataForSection:(unsigned int)section;
 - (float)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
@@ -50,7 +50,7 @@
 
 
 @protocol PxDataTableDelegate <UITableViewDelegate>
-- (Class)tableView:(PxDataTableView *)tableView classForCellatIndexPath:(NSIndexPath *)indexPath;
+- (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 

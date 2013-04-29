@@ -88,7 +88,7 @@ typedef struct {
 
 - (void)reloadData {
 	if (!_dynamicHeight) {
-		Class klass = [self.delegate tableView:self classForCellatIndexPath:nil];
+		Class klass = [self.delegate tableView:self classForCellAtIndexPath:nil];
 		self.rowHeight = [klass cellHeightWithData:0 reuseIdentifier:nil tableView:self];
 	}
     self.data = [self.pxDataSource dataForTableView:self];
@@ -121,7 +121,7 @@ typedef struct {
     if(indexPath.row == rowCount-1){cellPosition |= PxCellPositionBottom;}
     if(indexPath.row == 0) {cellPosition |= PxCellPositionTop;}
     
-    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, NSStringFromClass([self.delegate tableView:self classForCellatIndexPath:indexPath])];
+    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, NSStringFromClass([self.delegate tableView:self classForCellAtIndexPath:indexPath])];
     
     if (self.alternating) {
         return [identifier stringByAppendingFormat:@"_%d", indexPath.row%2];
@@ -136,7 +136,7 @@ typedef struct {
 
 - (float)heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_dynamicHeight) {
-        Class klass = [self.delegate tableView:self classForCellatIndexPath:indexPath];
+        Class klass = [self.delegate tableView:self classForCellAtIndexPath:indexPath];
         return [klass cellHeightWithData:[self dataForCellAtIndexPath:indexPath] reuseIdentifier:[self identifierForCellAtIndexPath:indexPath] tableView:self];
     }else {
         return self.rowHeight;
@@ -155,7 +155,7 @@ typedef struct {
     PxTableViewCell *cell = (PxTableViewCell*)[tableView dequeueReusableCellWithIdentifier:identifier];
     
 	if (cell == nil) {
-        Class klass = [self.delegate tableView:self classForCellatIndexPath:indexPath];
+        Class klass = [self.delegate tableView:self classForCellAtIndexPath:indexPath];
         cell = [[klass alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier tableView:tableView];
         [cell setDelegate:self.delegate];
 	}
@@ -397,7 +397,7 @@ typedef struct {
     if (delegate) {
         _dynamicHeight = [delegate respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)];
         if (!_dynamicHeight) {
-            Class klass = [delegate tableView:self classForCellatIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            Class klass = [delegate tableView:self classForCellAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
             self.rowHeight = [klass cellHeightWithData:0 reuseIdentifier:nil tableView:self];
         }
     }

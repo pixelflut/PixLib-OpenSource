@@ -103,6 +103,6 @@
 /** @name PxDataTableDelegate */
 
 /** Needs to be overwritten by sublcasses. The default implementation raises an Exception. */
-- (Class)tableView:(PxDataTableView *)tableView classForCellatIndexPath:(NSIndexPath *)indexPath;
+- (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

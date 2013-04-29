@@ -100,8 +100,8 @@
 }
 
 #pragma mark - Table Handling
-- (Class)tableView:(PxDataTableView *)tableView classForCellatIndexPath:(NSIndexPath *)indexPath {
-    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method - (Class)tableView:(PxDataTableView *)tableView classForCellatIndexPath:(NSIndexPath *)indexPath in Subclasses", [self class]];
+- (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath {
+    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method - (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath in Subclasses", [self class]];
     return nil;
 }
 
