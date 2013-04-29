@@ -225,26 +225,50 @@
 
 #pragma mark - Helpers
 
+- (void)setEnabled:(BOOL)enabled {
+    if (enabled != self.enabled) {
+        [super setEnabled:enabled];
+        [@[_thumbView, _leftView, _rightView, _backgroundView] each:^(id obj) {
+            if([obj respondsToSelector:@selector(pxSwitchIsEnabled:)]) {
+                [obj pxSwitchIsEnabled:enabled];
+            }
+            if ([obj respondsToSelector:@selector(pxSwitchDidChangeState:)]) {
+                [obj pxSwitchDidChangeState:self.state];
+            }
+        }];
+    }
+}
+
 - (void)setHighlighted:(BOOL)highlighted {
     if (highlighted != self.isHighlighted) {
-        if([_thumbView respondsToSelector:@selector(pxSwitchIsHighlighted:)]) {
-            [_thumbView pxSwitchIsHighlighted:highlighted];
-        }
-        if([_leftView respondsToSelector:@selector(pxSwitchIsHighlighted:)]) {
-            [_leftView pxSwitchIsHighlighted:highlighted];
-        }
-        if([_rightView respondsToSelector:@selector(pxSwitchIsHighlighted:)]) {
-            [_rightView pxSwitchIsHighlighted:highlighted];
-        }
-        if([_backgroundView respondsToSelector:@selector(pxSwitchIsHighlighted:)]) {
-            [_backgroundView pxSwitchIsHighlighted:highlighted];
-        }
         [super setHighlighted:highlighted];
+        [@[_thumbView, _leftView, _rightView, _backgroundView] each:^(id obj) {
+            if([obj respondsToSelector:@selector(pxSwitchIsHighlighted:)]) {
+                [obj pxSwitchIsHighlighted:highlighted];
+            }
+            if ([obj respondsToSelector:@selector(pxSwitchDidChangeState:)]) {
+                [obj pxSwitchDidChangeState:self.state];
+            }
+        }];
+    }
+}
+
+- (void)setSelected:(BOOL)selected {
+    if (selected != self.selected) {
+        [super setSelected:selected];
+        [@[_thumbView, _leftView, _rightView, _backgroundView] each:^(id obj) {
+            if([obj respondsToSelector:@selector(pxSwitchIsSelected:)]) {
+                [obj pxSwitchIsSelected:selected];
+            }
+            if ([obj respondsToSelector:@selector(pxSwitchDidChangeState:)]) {
+                [obj pxSwitchDidChangeState:self.state];
+            }
+        }];
     }
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    if ((!self.isHidden && self.userInteractionEnabled && self.alpha > 0) && CGRectContainsPoint(CGRectFromSize(self.frame.size), point) ) {
+    if ((!self.isHidden && self.userInteractionEnabled && self.alpha > 0 && self.enabled) && CGRectContainsPoint(CGRectFromSize(self.frame.size), point) ) {
         return [_contentView hitTest:[self convertPoint:point toView:_contentView] withEvent:event];
     }
     return nil;

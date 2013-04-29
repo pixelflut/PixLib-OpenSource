@@ -49,6 +49,9 @@
 
 @optional
 
+- (void)pxSwitchDidChangeState:(UIControlState)state;
+- (void)pxSwitchIsEnabled:(BOOL)enabled;
 - (void)pxSwitchIsHighlighted:(BOOL)highlighted;
+- (void)pxSwitchIsSelected:(BOOL)selected;
 
 @end
