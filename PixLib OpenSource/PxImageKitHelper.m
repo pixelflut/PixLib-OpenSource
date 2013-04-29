@@ -99,7 +99,7 @@ static NSDateFormatter *PxTIFFormater() {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             formater = [[NSDateFormatter alloc] init];
-            [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            [formater setDateFormat:@"yyyy:MM:dd HH:mm:ss"];
         });
         
     }
