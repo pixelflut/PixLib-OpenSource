@@ -58,7 +58,7 @@ static NSBundle *bundle = nil;
 - (id)init {
     self = [super init];
     if (self) {
-		bundle = [NSBundle mainBundle];
+		[self resetLocalization];
 	}
     return self;
 }
@@ -75,7 +75,7 @@ static NSBundle *bundle = nil;
 	NSString *path = [[NSBundle mainBundle] pathForResource:l ofType:@"lproj" ];
 	
 	if (path == nil) {
-		[self resetLocalization];
+		bundle = [NSBundle mainBundle];
     }else{
         bundle = [NSBundle bundleWithPath:path];
     }
@@ -89,7 +89,7 @@ static NSBundle *bundle = nil;
 }
 
 - (void)resetLocalization {
-	bundle = [NSBundle mainBundle];
+	[self setLanguage:[self getLanguage]];
 }
 
 @end
