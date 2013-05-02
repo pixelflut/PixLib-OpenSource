@@ -107,10 +107,10 @@ static NSBundle *bundle = nil;
 	NSString *path = [[NSBundle mainBundle] pathForResource:l ofType:@"lproj" ];
 	if (path == nil) {
 		bundle = _mainLanguageBundle;
-        self.language = self.mainLanguage;
+        _language = self.mainLanguage;
     }else{
         bundle = [NSBundle bundleWithPath:path];
-        self.language = l;
+        _language = l;
     }
 }
 
