@@ -42,7 +42,7 @@
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-	if(!self.isHidden && self.userInteractionEnabled && self.alpha > 0) {
+	if(!self.isHidden && self.userInteractionEnabled && self.alpha > 0 && self.enabled) {
 		CGRect rect = UIEdgeInsetsInsetRect(CGRectFromSize(self.frame.size), _hitInsets);
 		
 		if(_adjustsHitSizeToMinimum) {
