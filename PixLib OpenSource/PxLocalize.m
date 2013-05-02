@@ -26,10 +26,16 @@
 //
 
 #import "PxLocalize.h"
+#import "PxCore.h"
 
-@implementation PxLocalize {
-	NSString *language;
-}
+@interface PxLocalize ()
+@property(nonatomic, strong) NSString *language;
+@property(nonatomic, strong) NSString *mainLanguage;
+@property(nonatomic, strong) NSBundle *mainLanguageBundle;
+
+@end
+
+@implementation PxLocalize
 
 #pragma mark - Singleton Handling
 static PxLocalize *_sharedLocalSystem = nil;
@@ -58,34 +64,59 @@ static NSBundle *bundle = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        _mainLanguage = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"CFBundleDevelopmentRegion"];
+        if (_mainLanguage) {
+            NSString *path = [[NSBundle mainBundle] pathForResource:_mainLanguage ofType:@"lproj" ];
+            _mainLanguageBundle = [NSBundle bundleWithPath:path];
+        }
+        if (!_mainLanguageBundle) {
+            _mainLanguageBundle = [NSBundle mainBundle];
+        }
+        
 		[self resetLocalization];
 	}
     return self;
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)comment {
-	return [bundle localizedStringForKey:key value:comment table:nil];
+    return [self localizedStringForKey:key value:comment table:nil];
 }
 
 - (NSString *)localizedStringForKey:(NSString *)key value:(NSString *)comment table:(NSString *)tableName {
-    return [bundle localizedStringForKey:key value:comment table:tableName];
+    NSString *value = [bundle localizedStringForKey:key value:comment table:tableName];
+    
+    // use Localizable.strings table as fallback
+    if ([value isEqualToString:key] && tableName) {
+        value = [bundle localizedStringForKey:key value:comment table:nil];
+    }
+    
+    // use main language as fallback
+    if ([value isEqualToString:key] && ![self.language isEqualToString:self.mainLanguage]) {
+        value = [self.mainLanguageBundle localizedStringForKey:key value:value table:tableName];
+    }
+    
+    // use main language and Localizeable.strings table as fallback
+    if ([value isEqualToString:key] && tableName) {
+        value = [self.mainLanguageBundle localizedStringForKey:key value:value table:nil];
+    }
+    
+    return value;
 }
 
 - (void)setLanguage:(NSString *)l {
 	NSString *path = [[NSBundle mainBundle] pathForResource:l ofType:@"lproj" ];
-	
 	if (path == nil) {
-		bundle = [NSBundle mainBundle];
+		bundle = _mainLanguageBundle;
+        self.language = self.mainLanguage;
     }else{
         bundle = [NSBundle bundleWithPath:path];
+        self.language = l;
     }
 }
 
 - (NSString *)getLanguage {
 	NSArray *languages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-	NSString *preferredLang = [languages objectAtIndex:0];
-    
-	return preferredLang;
+	return [languages firstObject];
 }
 
 - (void)resetLocalization {
