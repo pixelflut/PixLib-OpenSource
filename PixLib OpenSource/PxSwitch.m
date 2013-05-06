@@ -286,6 +286,7 @@
         [self setShowsHorizontalScrollIndicator:FALSE];
         [self setBackgroundColor:[UIColor clearColor]];
         [self setBounces:NO];
+        [self setScrollsToTop:NO];
     }
     return self;
 }

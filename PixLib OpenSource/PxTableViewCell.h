@@ -36,7 +36,7 @@ typedef enum {
     PxCellPositionSingle    = 1<<5,
 } PxCellPosition;
 
-#define hasPosition(__identifier__, __position__) ([__identifier__ intValue] & __position__)
+#define hasPosition(__identifier__, __position__) ([__identifier__ intValue] & __position__ || [__identifier__ intValue] == __position__)
 
 @interface PxTableViewCell : UITableViewCell
 @property(nonatomic, weak) UITableView *table;
