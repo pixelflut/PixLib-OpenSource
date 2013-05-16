@@ -29,7 +29,11 @@
 
 #define PxLocalizedString(__key__) [[PxLocalize sharedLocalSystem] localizedStringForKey:(__key__) value:nil]
 
+#define PxLocalizedStringWithComment(__key__, __comment__) [[PxLocalize sharedLocalSystem] localizedStringForKey:(__key__) value:(__comment__)]
+
 #define PxLocalizedStringFromTable(__key__, __table__) [[PxLocalize sharedLocalSystem] localizedStringForKey:(__key__) value:nil table:(__table__)]
+
+#define PxLocalizedStringFromTableWithComment(__key__, __table__, __comment__) [[PxLocalize sharedLocalSystem] localizedStringForKey:(__key__) value:(__comment__) table:(__table__)]
 
 #define PxLocalizeSetLanguage(language) [[PxLocalize sharedLocalSystem] setLanguage:(language)]
 
@@ -38,7 +42,9 @@
 #define PxLocalizeReset [[PxLocalize sharedLocalSystem] resetLocalization]
 
 #define T(s) PxLocalizedString(s)
+#define TC(s, c) PxLocalizedStringWithComment(s, c)
 #define TT(s, t) PxLocalizedStringFromTable(s, t)
+#define TTC(s, t, c) PxLocalizedStringFromTableWithComment(s, t, c)
 
 /**
  * Use this class for convinient access to apples localization strings.
