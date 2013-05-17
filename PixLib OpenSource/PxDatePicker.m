@@ -106,6 +106,7 @@ NSString *const PxDatePickerDidHideNotification = @"PxDatePickerDidHide";
 
 - (void)__finish {
     [_delegate datePicker:self didFinishWithDate:_datePicker.date];
+	[self setDelegate:nil];
 }
 
 - (void)changedDate:(UIDatePicker *)datePicker {
