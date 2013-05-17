@@ -44,13 +44,8 @@ typedef struct {
 @end
 
 @implementation PxDataTableView
-@synthesize alternating         = _alternating;
-@synthesize sectional           = _sectional;
-@synthesize pxDataSource        = _pxDataSource;
-@synthesize data                = _data;
-@synthesize dynamicHeight       = _dynamicHeight;
-@synthesize dynamicIdentifier   = _dynamicIdentifier;
-@synthesize selectorLookUp      = _selectorLookUp;
+
+
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     self = [super initWithFrame:frame style:style];
@@ -177,10 +172,11 @@ typedef struct {
     
     if ([indexPaths count] > 0 || [indexSet count] > 0) {
         [self beginUpdates];
-    
+        
         if ([indexSet count] > 0) {
             [self deleteSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
         }
+        
         if ([indexPaths count] > 0) {
             [self deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationFade];
         }
@@ -264,7 +260,10 @@ typedef struct {
 }
 
 - (NSInteger)plainNumberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+    if ([self.data count] > 0) {
+        return 1;
+    }
+	return 0;
 }
 
 - (NSInteger)plainTableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
