@@ -30,6 +30,18 @@
 
 @implementation PxLabel
 
+- (id)initWithFrame:(CGRect)frame labelConfig:(PxLabelConfig)labelConfig {
+	self = [super initWithFrame:frame fontConfig:labelConfig.fontConfig];
+	if(self) {
+		self.insets = labelConfig.insets;
+	}
+	return self;
+}
+
+- (PxLabelConfig)labelConfig {
+	return PxLabelConfigMake([self fontConfig], self.insets);
+}
+
 - (void)drawTextInRect:(CGRect)rect {
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _insets)];
 }

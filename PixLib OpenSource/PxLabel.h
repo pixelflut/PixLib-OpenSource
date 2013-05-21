@@ -26,6 +26,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PxUIkitSupport.h"
+
+typedef struct {
+	PxFontConfig fontConfig;
+	UIEdgeInsets insets;
+} PxLabelConfig;
+
+static inline PxLabelConfig
+PxLabelConfigMake(PxFontConfig fontConfig, UIEdgeInsets insets) {
+    PxLabelConfig config;
+	config.fontConfig = fontConfig;
+	config.insets = insets;
+    return config;
+}
 
 @interface PxLabel : UILabel {
 	BOOL _widthToFit;
@@ -33,5 +47,21 @@
 }
 
 @property(nonatomic, assign) UIEdgeInsets insets;
+
+#pragma mark - Initializing Labels
+/** @name Initializing Labels */
+
+/** Returns an label initialized with the specified label settings.
+ @param frame The frame rectangle for the view, measured in points. The origin of the frame is relative to the superview in which you plan to add it. This method uses the frame rectangle to set the center and bounds properties accordingly.
+ @param labelConfig The label settings to use.
+ @return An initialized label object.
+ */
+- (id)initWithFrame:(CGRect)frame labelConfig:(PxLabelConfig)labelConfig;
+
+/** Returns the label settings of the receiver.
+ @return The label settings of the receiver.
+ */
+- (PxLabelConfig)labelConfig;
+
 
 @end
