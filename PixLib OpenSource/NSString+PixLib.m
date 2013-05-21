@@ -76,17 +76,21 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
 }
 
 - (float)heightForWidth:(float)width config:(PxFontConfig)config {
-    CGSize s = CGSizeZero;
     if(config.adjustsFontSizeToFitWidth) {
-        s = [self sizeWithFont:config.font minFontSize:config.minimumScaleFactor actualFontSize:nil forWidth:width lineBreakMode:config.lineBreakMode];
+        return [self sizeWithFont:config.font minFontSize:config.minimumScaleFactor actualFontSize:nil forWidth:width lineBreakMode:config.lineBreakMode].height;
     } else {
-        if(config.numberOfLines != 1) {
-            s = [self sizeWithFont:config.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:config.lineBreakMode];
+        if (config.numberOfLines == 1) {
+            return [self sizeWithFont:config.font forWidth:width lineBreakMode:config.lineBreakMode].height;
         } else {
-            s = [self sizeWithFont:config.font forWidth:width lineBreakMode:config.lineBreakMode];
+            float h1 = [self sizeWithFont:config.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:config.lineBreakMode].height;
+            if (config.numberOfLines == 0) {
+                return h1;
+            }
+            float h2 = [self sizeWithFont:config.font].height * config.numberOfLines;
+            return MIN(h1, h2);
         }
     }
-    return s.height;
+    return 0;
 }
 
 - (NSString *)stringByAddingMD5Encoding {
