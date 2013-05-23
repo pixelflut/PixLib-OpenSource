@@ -137,12 +137,12 @@ static inline NSString* PxImageName(NSString *imageName) {
 	return imageName;
 }
 
+static inline void PxBeginImageContextWithOptions(CGSize size, BOOL opaque) {
+    UIGraphicsBeginImageContextWithOptions(size, opaque, PxDeviceScale());
+}
+
 static inline void PxBeginImageContext(CGSize size){
-	if(PxDeviceIsScale2()) {
-		UIGraphicsBeginImageContextWithOptions(size, NO, 2.0);
-	} else {
-		UIGraphicsBeginImageContext(size);
-	}
+    PxBeginImageContextWithOptions(size, NO);
 }
 
 #define PxCompare(a,b) ( a<b ? NSOrderedAscending : a>b ? NSOrderedDescending : NSOrderedSame)

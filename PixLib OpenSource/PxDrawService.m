@@ -56,6 +56,10 @@
 
 #pragma mark - Public Methods
 - (UIImage *)imageWithSize:(CGSize)size reuseIdentifier:(NSString *)reuseIdentifier drawingBlock:(void (^)(CGContextRef))drawBlock {
+    return [self imageWithSize:size reuseIdentifier:reuseIdentifier drawingBlock:drawBlock opaque:NO];
+}
+
+- (UIImage *)imageWithSize:(CGSize)size reuseIdentifier:(NSString *)reuseIdentifier drawingBlock:(void (^)(CGContextRef ctx))drawBlock opaque:(BOOL)opaque {
     CGSize actualSize = CGSizeMake((int)size.width, (int)size.height);
     UIImage *img;
     NSString *internalIdentifier;
@@ -66,7 +70,7 @@
     }
     
     if (!img && drawBlock) {
-        PxBeginImageContext(actualSize);
+        PxBeginImageContextWithOptions(actualSize, opaque);
         CGContextRef ctx = UIGraphicsGetCurrentContext();
         drawBlock(ctx);
         img = UIGraphicsGetImageFromCurrentImageContext();

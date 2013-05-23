@@ -95,7 +95,7 @@
         NSDictionary *header = nil;
         NSString *filePath = [[self cache] pathForURL:[request URL] header:&header creationDate:&creationDate];
         if (creationDate && [[NSDate date] timeIntervalSinceDate:creationDate] < interval) {
-            PxWarn(@"cache: %@", [request URL]);
+            PxDebug(@"cache: %@", [request URL]);
             
             [self evalFile:filePath header:header forCallers:[NSArray arrayWithObject:caller] status:200];
             return nil;
@@ -106,7 +106,7 @@
             }
         }
     }
-    PxWarn(@"call: %@", [request URL]);
+    PxDebug(@"call: %@", [request URL]);
     return [self enqueueRequest:request caller:caller];
 }
 
