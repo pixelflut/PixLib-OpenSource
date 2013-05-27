@@ -151,6 +151,8 @@ hsv_color HSVfromRGB(rgb_color rgb){
     return hsv;
 }
 
+
+// optimize using UIImage instead of CGImage, so apple caching/purge can be used
 typedef struct {
     CGImageRef image;
     CGPoint phaseShift;

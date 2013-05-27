@@ -161,7 +161,15 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
     [w bringSubviewToFront:self];
 }
 
+- (void)cancelShow {
+    if (_shouldShow) {
+        _shouldShow = NO;
+        [[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(__doShow) target:self argument:nil];
+    }
+}
+
 - (void)__show {
+    [self cancelHide];
     if (!_shouldShow) {
         _shouldShow = YES;
         [[NSRunLoop currentRunLoop] performSelector:@selector(__doShow) target:self argument:nil order:1 modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
@@ -215,7 +223,15 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
     }
 }
 
+- (void)cancelHide {
+    if (_shouldHide) {
+        _shouldHide = NO;
+        [[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(__doHide) target:self argument:nil];
+    }
+}
+
 - (void)__hide {
+    [self cancelShow];
     if (!_shouldHide) {
         _shouldHide = YES;
         [[NSRunLoop currentRunLoop] performSelector:@selector(__doHide) target:self argument:nil order:2 modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]];
