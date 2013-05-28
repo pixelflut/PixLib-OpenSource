@@ -42,7 +42,7 @@
 }
 
 + (CGFloat)cellHeightWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView *)tableView {
-    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method + (CGFloat)cellHeightWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier in Subclasses", [self class]];
+    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method +cellHeightWithData:reuseIdentifier:tableView: in Subclasses", [self class]];
     return 0;
 }
 
