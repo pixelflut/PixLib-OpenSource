@@ -110,39 +110,18 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
 - (void)__doShow {
     _shouldHide = NO;
     UIWindow *w = self.keyWindow;
-    if (!_visible && _shouldShow) {
-        [self setAlpha:1.0];
-        
-        CGRect startRect = [self containerFrameClose:self.orientation];
-        CGRect endRect = [self containerFrameOpen:self.orientation];
-        
-        CGRect startNotFrame = [self closeFrame:self.orientation];
-        CGRect endNotFrame = [self openFrame:self.orientation];
-        
-		[self __willShow];
-        [[NSNotificationCenter defaultCenter] postNotificationName:[self __willShowNotificationName]
-                                                            object:self
-                                                          userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                                    [NSValue valueWithCGRect:startNotFrame],
-                                                                    PxPickerFrameBeginKey,
-                                                                    [NSValue valueWithCGRect:endNotFrame],
-                                                                    PxPickerFrameEndKey,
-                                                                    [NSNumber numberWithFloat:SHOW_ANIMATE_SPEED],
-                                                                    PxPickerAnimationDurationKey,
-                                                                    [NSNumber numberWithInt:SHOW_ANIMATE_CURVE],
-                                                                    PxPickerAnimationCurveKey,
-                                                                    nil]];
-        
-        if (![self window]) {
-            [_contentView setFrame:startRect];
-            [w addSubview:self];
-        }
-        
-        [UIView animateWithDuration:HIDE_ANIMATE_SPEED delay:0 options:HIDE_ANIMATE_CURVE<<16 animations:^{
-            [_contentView setFrame:endRect];
-        } completion:^(BOOL finished) {
-            [self __didShow];
-            [[NSNotificationCenter defaultCenter] postNotificationName:[self __didShowNotificationName]
+    if (_shouldShow) {
+        if (!_visible) {
+            [self setAlpha:1.0];
+            
+            CGRect startRect = [self containerFrameClose:self.orientation];
+            CGRect endRect = [self containerFrameOpen:self.orientation];
+            
+            CGRect startNotFrame = [self closeFrame:self.orientation];
+            CGRect endNotFrame = [self openFrame:self.orientation];
+            
+            [self __willShow];
+            [[NSNotificationCenter defaultCenter] postNotificationName:[self __willShowNotificationName]
                                                                 object:self
                                                               userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                         [NSValue valueWithCGRect:startNotFrame],
@@ -155,9 +134,36 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
                                                                         PxPickerAnimationCurveKey,
                                                                         nil]];
             
-            _visible = YES;
-        }];
+            if (![self window]) {
+                [_contentView setFrame:startRect];
+                [w addSubview:self];
+            }
+            
+            [UIView animateWithDuration:HIDE_ANIMATE_SPEED delay:0 options:HIDE_ANIMATE_CURVE<<16 animations:^{
+                [_contentView setFrame:endRect];
+            } completion:^(BOOL finished) {
+                [self __didShow];
+                [[NSNotificationCenter defaultCenter] postNotificationName:[self __didShowNotificationName]
+                                                                    object:self
+                                                                  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                            [NSValue valueWithCGRect:startNotFrame],
+                                                                            PxPickerFrameBeginKey,
+                                                                            [NSValue valueWithCGRect:endNotFrame],
+                                                                            PxPickerFrameEndKey,
+                                                                            [NSNumber numberWithFloat:SHOW_ANIMATE_SPEED],
+                                                                            PxPickerAnimationDurationKey,
+                                                                            [NSNumber numberWithInt:SHOW_ANIMATE_CURVE],
+                                                                            PxPickerAnimationCurveKey,
+                                                                            nil]];
+                
+                _visible = YES;
+            }];
+        } else if(_visible) {
+            [self __willShow];
+            [self __didShow];
+        }
     }
+
     [w bringSubviewToFront:self];
 }
 
