@@ -96,7 +96,8 @@
 }
 
 - (void)sizeToFit {
-	[self setSize:CGSizeMake([self widthToFit], [self heightToFit])];
+	float width = [self widthToFit];
+	[self setSize:CGSizeMake(width, [self heightToFitWidth:width])];
 }
 
 - (void)sizeToFitWithMaxWidth:(int)maxWidth {
