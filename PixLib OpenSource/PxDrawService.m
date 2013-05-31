@@ -49,7 +49,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearMemcacheOnLowMemory) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearMemcacheOnLowMemory:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
     }
     return self;
 }
@@ -143,7 +143,7 @@
     return _imageCache;
 }
 
-- (void)clearMemcacheOnLowMemory {
+- (void)clearMemcacheOnLowMemory:(NSNotification *)notification {
     self.layerCache = nil;
 }
 

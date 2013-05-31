@@ -134,4 +134,8 @@
     [self storeImage:img forKey:[self keyForURL:url]];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end
