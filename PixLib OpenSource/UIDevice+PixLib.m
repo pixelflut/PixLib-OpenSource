@@ -53,7 +53,12 @@
     static NSString *agentIdentifier = nil;
     if (!agentIdentifier) {
         NSDictionary *di = [[NSBundle mainBundle] infoDictionary];
-        agentIdentifier = [NSString stringWithFormat:@"px|%@|%@|%@|%@|%@", [di valueForKey:@"CFBundleExecutable"], [di valueForKey:@"CFBundleVersion"], [self hardwareIdentifier], [self systemVersion], [[NSLocale currentLocale] localeIdentifier]];
+        
+        NSString *bundleVersion = [di valueForKey:@"CFBundleShortVersionString"];
+        if (!bundleVersion) {
+            bundleVersion = [di valueForKey:@"CFBundleVersion"];
+        }
+        agentIdentifier = [NSString stringWithFormat:@"px|%@|%@|%@|%@|%@", [di valueForKey:@"CFBundleExecutable"], bundleVersion, [self hardwareIdentifier], [self systemVersion], [[NSLocale currentLocale] localeIdentifier]];
     }
     return agentIdentifier;
 }
