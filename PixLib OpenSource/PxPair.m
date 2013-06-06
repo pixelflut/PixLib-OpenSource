@@ -57,7 +57,17 @@
 }
 
 - (BOOL)isEqualToPair:(PxPair *)object {
-    return [_first isEqual:[object first]] && [_second isEqual:[object second]];
+    if (self == object)
+        return YES;
+    
+    if (_first && _second) {
+        return [_first isEqual:[object first]] && [_second isEqual:[object second]];
+    } else if (_first) {
+        return [_first isEqual:[object first]] && ![object second];
+    } else if (_second) {
+        return [_second isEqual:object.second] && ![object first];
+    }
+    return ![object first] && ![object second];
 }
 
 - (NSString*)description {
