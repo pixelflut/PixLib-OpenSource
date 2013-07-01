@@ -43,6 +43,7 @@
  */
 #import "NSArray+PixLib.h"
 #import "NSAttributedString+PixLib.h"
+#import "NSCalendar+PixLib.h"
 #import "NSData+PixLib.h"
 #import "NSDate+PixLib.h"
 #import "NSDictionary+PixLib.h"

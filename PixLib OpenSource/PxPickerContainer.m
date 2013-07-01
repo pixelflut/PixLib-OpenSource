@@ -98,7 +98,6 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
 
         _contentView = [[PxPickerContainerView alloc] initWithFrame:CGRectZero];
         [self addSubview:_contentView];
-        [_contentView setBackgroundColor:[UIColor greenColor]];
         
         [self rotate:self.orientation];
         _visible = NO;

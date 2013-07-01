@@ -77,7 +77,6 @@
         }
         CFRelease(frame);
     }
-    
     return height;
 }
 
@@ -149,7 +148,8 @@
 
 #pragma mark - Private
 
--(CTFrameRef)cfframeForPath:(CGPathRef)p {
+- (CTFrameRef)cfframeForPath:(CGPathRef)p {
+    // hack to avoid bugs width different behavior in iOS <4.3 and >4.3
 	CGMutablePathRef path = CGPathCreateMutable();
     CGRect r = CGPathGetBoundingBox(p);
     
@@ -160,16 +160,16 @@
     t = CGAffineTransformTranslate(t, r.origin.x, - ( r.origin.y + r.size.height ));
     CGPathAddPath(path, &t, p);
     
-    CGPathMoveToPoint(path, NULL, 0, 0); // hack to avoid bugs
+    CGPathMoveToPoint(path, NULL, 0, 0);
     CGPathCloseSubpath(path);
+    // hack end
 	
-	/* draw the text */
 	CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)self);
 	CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
 	
 	CFRelease(framesetter);
     CGPathRelease(path);
 	return frame;
-}	
+}
 
 @end

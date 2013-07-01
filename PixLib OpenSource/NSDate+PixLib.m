@@ -43,12 +43,12 @@
 	[comps setMinute:opts.minute];
 	[comps setSecond:opts.second];
 
-	NSDate *ret = [[NSCalendar currentCalendar] dateFromComponents:comps];
+	NSDate *ret = [[NSCalendar sharedCalendar] dateFromComponents:comps];
     return ret;
 }
 
 - (NSDate *)dateWithOptions:(void (^)(PxDateOptions *options))block {
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [NSCalendar gregorianCalendar];
     NSDateComponents *components = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
     
     PxDateOptions opts = {components.year, components.month, components.day, components.hour, components.minute, components.second};
@@ -211,7 +211,7 @@
 }
 
 - (NSDate *)dateAtBeginningOfDay {
-	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSCalendar *cal = [NSCalendar sharedCalendar];
 	NSUInteger flags = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
 	NSDateComponents *components = [cal components:flags fromDate:self];
 	
@@ -223,7 +223,7 @@
 }
 
 - (NSInteger)yearsFromNow {
-	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSCalendar *cal = [NSCalendar sharedCalendar];
 	NSUInteger flag = NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit;
 	
 	NSDateComponents *from = [cal components:flag fromDate:self];
@@ -237,7 +237,7 @@
 }
 
 - (NSInteger)daysFromNow:(Boolean)annualy {
-	NSCalendar *cal = [NSCalendar currentCalendar];
+	NSCalendar *cal = [NSCalendar sharedCalendar];
 	NSUInteger flag = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
 	NSDateComponents *cur = [cal components:flag fromDate:[NSDate date]];
 	NSDateComponents *to = [cal components:flag fromDate:self];
@@ -263,34 +263,34 @@
 }
 
 - (NSInteger)year {
-    return [[[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self] year];
+    return [[[NSCalendar sharedCalendar] components:NSYearCalendarUnit fromDate:self] year];
 }
 
 - (NSInteger)month {
-    return [[[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self] month];
+    return [[[NSCalendar sharedCalendar] components:NSMonthCalendarUnit fromDate:self] month];
 }
 
 - (NSInteger)day {
-    return [[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+    return [[[NSCalendar sharedCalendar] components:NSDayCalendarUnit fromDate:self] day];
 }
 
 - (NSInteger)hour {
-    return [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self] hour];
+    return [[[NSCalendar sharedCalendar] components:NSHourCalendarUnit fromDate:self] hour];
 }
 
 - (NSInteger)minute {
-    return [[[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
+    return [[[NSCalendar sharedCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
 }
 
 - (NSInteger)second {
-    return [[[NSCalendar currentCalendar] components:NSSecondCalendarUnit fromDate:self] second];
+    return [[[NSCalendar sharedCalendar] components:NSSecondCalendarUnit fromDate:self] second];
 }
 
 - (NSDate *)advance:(void (^)(PxDateOptions *options))block {
     PxDateOptions opts = {0,0,0,0,0,0};
     block(&opts);
     
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [NSCalendar gregorianCalendar];
     
 	NSDateComponents *from = [gregorian components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit fromDate:self];
     NSDateComponents *to = [[NSDateComponents alloc] init];

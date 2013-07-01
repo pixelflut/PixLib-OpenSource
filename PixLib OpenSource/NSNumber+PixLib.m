@@ -34,7 +34,7 @@
     return [self compare:object];
 }
 
-- (NSMutableArray*)times:(id (^)(int nr))block {
+- (NSMutableArray *)times:(id (^)(int nr))block {
     int end = [self intValue];
     NSMutableArray *retVal = [NSMutableArray arrayWithCapacity:ABS(end)];
     if (end > 0) {

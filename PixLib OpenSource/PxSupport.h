@@ -205,7 +205,8 @@ static inline void *pointerToInstanceVariable(id object, char *variableName) {
     if (!instanceVar) {
         return nil;
     }
-    return pointerFromObject((__bridge void *)(object)) + ivar_getOffset(instanceVar);
+    return (__bridge void *)object + ivar_getOffset(instanceVar);
+//    return pointerFromObject((__bridge void *)(object)) + ivar_getOffset(instanceVar);
 }
 
 #define SuppressPerformSelectorLeakWarning(Stuff) \

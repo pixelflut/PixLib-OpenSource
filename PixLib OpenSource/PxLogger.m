@@ -43,7 +43,7 @@ static inline void PxReportv(BOOL doLog, char const *file, int line, NSString *p
             }
         }
         
-        if (prefix) {
+        if ([prefix isNotBlank]) {
             printf("%s ", [prefix cStringUsingEncoding:NSUTF8StringEncoding]);
         }
         
