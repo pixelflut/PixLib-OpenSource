@@ -38,4 +38,5 @@ typedef enum {
 - (UIImage *)imageForURLString:(NSString *)urlString interval:(NSTimeInterval)interval scale:(PxImageScale)scale;
 - (UIImage *)imageForURL:(NSURL *)url interval:(NSTimeInterval)interval scale:(PxImageScale)scale;
 - (void)storeImage:(UIImage *)img forURL:(NSURL *)url header:(NSDictionary *)header;
+- (void)storeImage:(UIImage *)img forURL:(NSURL *)url header:(NSDictionary *)header useJPG:(BOOL)useJPG;
 @end

@@ -136,7 +136,17 @@
 }
 
 - (void)storeImage:(UIImage *)img forURL:(NSURL *)url header:(NSDictionary *)header {
-    [super storeData:UIImagePNGRepresentation(img) forURL:url header:header];
+    [self storeImage:img forURL:url header:header useJPG:NO];
+}
+
+- (void)storeImage:(UIImage *)img forURL:(NSURL *)url header:(NSDictionary *)header useJPG:(BOOL)useJPG {
+    NSData *imageData;
+    if (useJPG) {
+        imageData = UIImageJPEGRepresentation(img, 1);
+    } else {
+        imageData = UIImagePNGRepresentation(img);
+    }
+    [super storeData:imageData forURL:url header:header];
     [self storeImage:img forKey:[self keyForURL:url]];
 }
 
