@@ -81,10 +81,16 @@
     
     if (result == nil) {
         NSDate *creationDate;
-        NSString *savePath = [self pathForURL:url header:nil creationDate:&creationDate];
+        NSString *savePath;
+        if (interval == MAXFLOAT) {
+            savePath = [self pathForURL:url header:nil creationDate:nil];
+        } else {
+            savePath = [self pathForURL:url header:nil creationDate:&creationDate];
+        }
+        
         if (savePath) {
             NSTimeInterval inter = [[NSDate date] timeIntervalSinceDate:creationDate];
-            if( creationDate != nil && inter < interval) {
+            if((creationDate != nil && inter < interval) || interval == MAXFLOAT) {
                 result = [[UIImage alloc] initWithContentsOfFile:savePath];
                 if (scale == PxImageScaleRetina) {
                     result = [[UIImage alloc] initWithCGImage:[result CGImage] scale:2.0 orientation:UIImageOrientationUp];
