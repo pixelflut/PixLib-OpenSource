@@ -222,6 +222,9 @@
 }
 
 - (void)drawInRect:(CGRect)rect contentMode:(UIViewContentMode)mode blendMode:(CGBlendMode)blendMode alpha:(float)alpha {
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGContextClipToRect(ctx, rect);
     switch (mode) {
         case UIViewContentModeScaleToFill:
             [self drawInRect:rect blendMode:blendMode alpha:alpha];
@@ -263,6 +266,7 @@
             [self drawInRect:rect blendMode:blendMode alpha:alpha];
             break;
     }
+    CGContextRestoreGState(ctx);
 }
 
 @end
