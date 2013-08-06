@@ -31,6 +31,11 @@
 #import <objc/message.h>
 #import <objc/runtime.h>
 
+static inline CGFloat PxDeviceScale();
+static inline CGFloat CGFloatNormalizeForDevice(CGFloat f);
+static inline CGPoint CGPointNormalizeForDevice(CGPoint point);
+static inline CGSize CGSizeNormalizeForDevice(CGSize size);
+
 
 #pragma mark - CGRect
 static inline CGRect CGRectFromSize(CGSize s) {
@@ -63,12 +68,29 @@ static inline UIEdgeInsets UIEdgeInsetsFlipVertical(UIEdgeInsets insets) {
 	return insets;
 }
 
-#pragma mark - CGPoint
+static inline CGRect CGRectNormalizeForDevice(CGRect rect) {
+	return CGRectMake(CGFloatNormalizeForDevice(rect.origin.x), CGFloatNormalizeForDevice(rect.origin.y), CGFloatNormalizeForDevice(rect.size.width), CGFloatNormalizeForDevice(rect.size.height));
+}
 
+#pragma mark - CGSize
+static inline CGSize CGSizeNormalizeForDevice(CGSize size) {
+	return CGSizeMake(CGFloatNormalizeForDevice(size.width), CGFloatNormalizeForDevice(size.height));
+}
+
+#pragma mark - CGPoint
 static inline CGFloat CGPointDistance(CGPoint p1, CGPoint p2) {
     CGFloat dx = p1.x-p2.x;
     CGFloat dy = p1.y-p2.y;
     return sqrtf(dx*dx+dy*dy);
+}
+
+static inline CGPoint CGPointNormalizeForDevice(CGPoint point) {
+	return CGPointMake(CGFloatNormalizeForDevice(point.x), CGFloatNormalizeForDevice(point.y));
+}
+
+#pragma mark - CGFloat
+static inline CGFloat CGFloatNormalizeForDevice(CGFloat f) {
+	return roundf(f * PxDeviceScale()) / PxDeviceScale();
 }
 
 #pragma mark - Device
