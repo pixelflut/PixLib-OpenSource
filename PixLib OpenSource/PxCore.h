@@ -58,6 +58,7 @@
 #import "NSSet+PixLib.h"
 #import "NSString+PixLib.h"
 
+#import "UIApplication+PixLib.h"
 #import "UIColor+PixLib.h"
 #import "UIDevice+PixLib.h"
 #import "UIImage+PixLib.h"

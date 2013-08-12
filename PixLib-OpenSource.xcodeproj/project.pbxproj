@@ -78,6 +78,7 @@
 		DB626FA316D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9C16D2605E0014B5B7 /* PxHTTPImageCache.m */; };
 		DB626FA516D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9E16D2605E0014B5B7 /* PxHTTPRemoteService.m */; };
 		DB626FA916D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */; };
+		DB792B2F17B8F2E700E195C4 /* UIApplication+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB792B2E17B8F2E700E195C4 /* UIApplication+PixLib.m */; };
 		DBB10141178179D600DF196D /* NSCalendar+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB10140178179D600DF196D /* NSCalendar+PixLib.m */; };
 		DBB101471781946200DF196D /* PxMutableIntegerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB101461781946200DF196D /* PxMutableIntegerDictionary.m */; };
 		DBBC9A3316D663EE00C92649 /* PxDrawService.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBC9A3216D663EE00C92649 /* PxDrawService.m */; };
@@ -252,6 +253,8 @@
 		DB626FA716D260B10014B5B7 /* PxCellDeleteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCellDeleteLayer.h; sourceTree = "<group>"; };
 		DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCellDeleteLayer.m; sourceTree = "<group>"; };
 		DB626FAB16D260DE0014B5B7 /* PxEditableCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxEditableCellProtocol.h; sourceTree = "<group>"; };
+		DB792B2D17B8F2E700E195C4 /* UIApplication+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+PixLib.h"; sourceTree = "<group>"; };
+		DB792B2E17B8F2E700E195C4 /* UIApplication+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+PixLib.m"; sourceTree = "<group>"; };
 		DBB1013F178179D600DF196D /* NSCalendar+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+PixLib.h"; sourceTree = "<group>"; };
 		DBB10140178179D600DF196D /* NSCalendar+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+PixLib.m"; sourceTree = "<group>"; };
 		DBB101451781946200DF196D /* PxMutableIntegerDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxMutableIntegerDictionary.h; sourceTree = "<group>"; };
@@ -399,6 +402,8 @@
 				DB626E7A16D22ABD0014B5B7 /* NSSet+PixLib.m */,
 				DB626E7B16D22ABD0014B5B7 /* NSString+PixLib.h */,
 				DB626E7C16D22ABD0014B5B7 /* NSString+PixLib.m */,
+				DB792B2D17B8F2E700E195C4 /* UIApplication+PixLib.h */,
+				DB792B2E17B8F2E700E195C4 /* UIApplication+PixLib.m */,
 				DB626E7D16D22ABD0014B5B7 /* UIColor+PixLib.h */,
 				DB626E7E16D22ABD0014B5B7 /* UIColor+PixLib.m */,
 				DB626E7F16D22ABD0014B5B7 /* UIDevice+PixLib.h */,
@@ -800,6 +805,7 @@
 				DBBC9A3316D663EE00C92649 /* PxDrawService.m in Sources */,
 				DBB10141178179D600DF196D /* NSCalendar+PixLib.m in Sources */,
 				DBB101471781946200DF196D /* PxMutableIntegerDictionary.m in Sources */,
+				DB792B2F17B8F2E700E195C4 /* UIApplication+PixLib.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
