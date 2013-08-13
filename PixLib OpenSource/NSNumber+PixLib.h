@@ -29,6 +29,7 @@
 #import "PxXMLHelper.h"
 
 #define NR(__COUNT__) [NSNumber numberWithInt:__COUNT__]
+#define NRF(__COUNT__) [NSNumber numberWithFloat:__COUNT__]
 
 /**
  * Adds convinient methods for iterating numbers and time-calculations. The time-calculations are similar to those found in the famous ruby-gem active-support.
