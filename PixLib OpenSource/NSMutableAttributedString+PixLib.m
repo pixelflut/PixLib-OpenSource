@@ -127,6 +127,15 @@ CTTextAlignment alignmentMapping[4] = {
     [self setUnderlineStyle:style range:NSMakeRange(0, self.length)];
 }
 
+#pragma mark - Letter spacing
+- (void)setKerning:(float)amountToKern range:(NSRange)range {
+	[self addAttribute:(__bridge NSString*)kCTKernAttributeName value:[NSNumber numberWithFloat:amountToKern] range:range];
+}
+
+- (void)setKerning:(float)amountToKern {
+	[self setKerning:amountToKern range:NSMakeRange(0, self.length)];
+}
+
 #pragma mark - ParagraphStyle
 - (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock {
     PxParagraphStyleOptions opts = PxDefaultParagraphOptions;

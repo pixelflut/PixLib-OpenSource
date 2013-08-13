@@ -37,8 +37,10 @@ typedef struct {
     NSLineBreakMode lineBreakMode;
     BOOL adjustsFontSizeToFitWidth;
     int numberOfLines;
+	float amountOfKerning;
 } PxFontConfig;
 
+#warning add amountOfKerning to PxFontConfigMake
 static inline PxFontConfig
 PxFontConfigMake(UIFont *font, float minimumScaleFactor, NSLineBreakMode lineBreakMode, BOOL adjustsFontSizeToFitWidth, int numberOfLines) {
     PxFontConfig config;

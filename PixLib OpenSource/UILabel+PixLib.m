@@ -64,6 +64,7 @@
 }
 
 - (float)heightToFitWidth:(float)width {
+#warning calculate height when attributed string is not nil. see widthToFitHeight:
     return [self.text heightForWidth:width config:self.fontConfig];
 }
 
@@ -80,7 +81,11 @@
 }
 
 - (float)widthToFitHeight:(float)height {
-    return [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(INT_MAX, height) lineBreakMode:[self lineBreakMode]].width;
+	if([self attributedText]) {
+		return [[self attributedText] boundingRectWithSize:CGSizeMake(INT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:nil].size.width;
+	} else {
+		return [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(INT_MAX, height) lineBreakMode:[self lineBreakMode]].width;
+	}
 }
 
 - (float)widthToFit {

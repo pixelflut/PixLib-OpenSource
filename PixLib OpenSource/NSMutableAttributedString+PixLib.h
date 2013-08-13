@@ -200,6 +200,18 @@ typedef struct {
  */
 - (void)setUnderlineStyle:(CTUnderlineStyle)style;
 
+/** style the kerning of the string in a given range.
+ @param amountToKern The amount of kerning (a positive kern indicates a shift farther away from and a negative kern indicates a shift closer to the characters in range).
+ @param range The range of characters the kerning should apply to.
+ @see setKerning:
+ */
+- (void)setKerning:(float)amountToKern range:(NSRange)range;
+
+/** style the kerning of the string in a given range.
+ @param amountToKern The amount of kerning (a positive kern indicates a shift farther away from and a negative kern indicates a shift closer to the characters in range).
+ @see setKerning:range:
+ */
+- (void)setKerning:(float)amountToKern;
 
 #pragma mark - Changing Paragraph Attributes
 /** @name Changing Attributes */
