@@ -81,12 +81,13 @@
 }
 
 - (float)widthToFitHeight:(float)height {
-	if([self attributedText]) {
+//	if([self attributedText]) {
 #warning test when ios7 is final
-		return [[self attributedText] boundingRectWithSize:CGSizeMake(INT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:nil].size.width;
-	} else {
+//		NSLog(@"%@", [self attributedText]);
+//		return CGFloatNormalizeForDevice([[self attributedText] boundingRectWithSize:CGSizeMake(INT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading context:nil].size.width);
+//	} else {
 		return [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(INT_MAX, height) lineBreakMode:[self lineBreakMode]].width;
-	}
+//	}
 }
 
 - (float)widthToFit {
