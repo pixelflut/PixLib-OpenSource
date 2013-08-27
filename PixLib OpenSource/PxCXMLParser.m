@@ -557,8 +557,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                     CFStringAppendCharacters(tagName, &c, 1);
                     i++; c = bytes[i];
                 }
-                nextTag = [NSString stringWithCharacters:CFStringGetCharactersPtr(tagName) length:j];
-                CFRelease(tagName);
+                nextTag = CFBridgingRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
                 {
@@ -586,8 +585,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         for (; bytes[i+1+j+k] != '"'; k++) {
                             CFStringAppendCharacters(attrValue, &bytes[i+1+j+k], 1);
                         }
-                        nextType = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrValue) length:k]; // Improvement: Dont use NSString
-                        CFRelease(attrValue);
+                        nextType = CFBridgingRelease(attrValue);
                     }
                 }
             }
@@ -615,8 +613,8 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             for (; bytes[i] != '='; j++, i++) {
                 CFStringAppendCharacters(attrName, &bytes[i], 1);
             }
-            NSString *attr = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrName) length:j];
-            CFRelease(attrName);
+            
+            NSString *attr = CFBridgingRelease(attrName);
             
             // Skip starting Quote
             i++;
@@ -638,9 +636,8 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 nextAttributes = [[NSMutableDictionary alloc] init];
             }
             
-            NSString *value = [NSString stringWithCharacters:CFStringGetCharactersPtr(attrValue) length:j];
+            NSString *value = CFBridgingRelease(attrValue);
             [nextAttributes setValue:PxXMLUnescape(value) forKey:attr];
-            CFRelease(attrValue);
         }
     }
     CLEAN_STRING_BEFORE_RETURN
