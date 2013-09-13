@@ -282,15 +282,16 @@
             origImg = [cache imageForURLString:result.caller.userInfo interval:_cacheInterval scale:[self scaleForUrl:result.caller.userInfo]];
         }
         
+        __weak PxRemoteImageView *weakRef = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            if( _delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoadOriginalImage:)] ) {
-                [_delegate imageView:self didLoadOriginalImage:origImg];
+            if(weakRef.delegate != nil && [weakRef.delegate respondsToSelector:@selector(imageView:didLoadOriginalImage:)] ) {
+                [weakRef.delegate imageView:weakRef didLoadOriginalImage:origImg];
             }
             
-            [self setImage:origImg];
+            [weakRef setImage:origImg];
             
-            if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
-                [_delegate imageView:self didLoad:YES];
+            if (weakRef.delegate != nil && [weakRef.delegate respondsToSelector:@selector(imageView:didLoad:)]) {
+                [weakRef.delegate imageView:weakRef didLoad:YES];
             }
         });
 	}else {
@@ -300,13 +301,15 @@
 		}else if (!PxDeviceIsScale2() && [_smallUrl isNotBlank] && [_smallUrl isEqualToString:result.caller.userInfo] && [_bigUrl isNotBlank]) {
 			[self getImageForUrl:_bigUrl];
 		}else if([_currentCacheString isEqualToString:result.caller.userInfo]) {
+            
+            __weak PxRemoteImageView *weakRef = self;
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (_errorImage != nil) {
-                    [_bgImageView setImage:_errorImage];
-                    [self setImageVisible:NO];
+                if (weakRef.errorImage != nil) {
+                    [weakRef.bgImageView setImage:weakRef.errorImage];
+                    [weakRef setImageVisible:NO];
                 }
-                if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
-                    [_delegate imageView:self didLoad:NO];
+                if (weakRef.delegate != nil && [weakRef.delegate respondsToSelector:@selector(imageView:didLoad:)]) {
+                    [weakRef.delegate imageView:weakRef didLoad:NO];
                 }
             });
 		}
