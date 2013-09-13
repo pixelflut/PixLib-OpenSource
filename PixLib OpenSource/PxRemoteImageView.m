@@ -282,15 +282,17 @@
             origImg = [cache imageForURLString:result.caller.userInfo interval:_cacheInterval scale:[self scaleForUrl:result.caller.userInfo]];
         }
         
-        if( _delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoadOriginalImage:)] ) {
-            [_delegate imageView:self didLoadOriginalImage:origImg];
-        }
-        
-        [self setImage:origImg];
-        
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
-            [_delegate imageView:self didLoad:YES];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if( _delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoadOriginalImage:)] ) {
+                [_delegate imageView:self didLoadOriginalImage:origImg];
+            }
+            
+            [self setImage:origImg];
+            
+            if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
+                [_delegate imageView:self didLoad:YES];
+            }
+        });
 	}else {
 		// Get the other image if device-specific failed
 		if (PxDeviceIsScale2() && [_bigUrl isNotBlank] && [_bigUrl isEqualToString:result.caller.userInfo] && [_smallUrl isNotBlank]) {
@@ -298,13 +300,15 @@
 		}else if (!PxDeviceIsScale2() && [_smallUrl isNotBlank] && [_smallUrl isEqualToString:result.caller.userInfo] && [_bigUrl isNotBlank]) {
 			[self getImageForUrl:_bigUrl];
 		}else if([_currentCacheString isEqualToString:result.caller.userInfo]) {
-			if (_errorImage != nil) {
-                [_bgImageView setImage:_errorImage];
-                [self setImageVisible:NO];
-			}
-			if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
-				[_delegate imageView:self didLoad:NO];
-			}
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (_errorImage != nil) {
+                    [_bgImageView setImage:_errorImage];
+                    [self setImageVisible:NO];
+                }
+                if (_delegate != nil && [_delegate respondsToSelector:@selector(imageView:didLoad:)]) {
+                    [_delegate imageView:self didLoad:NO];
+                }
+            });
 		}
 	}
 }
