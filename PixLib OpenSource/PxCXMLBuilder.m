@@ -59,7 +59,7 @@ static inline BOOL isBlockElement(id element) {
         if ([value isKindOfClass:[NSArray class]]){
             [outputString appendFormat:@"<%@ type=\"array\">", key];
             [value each:^(id obj) {[outputString appendString:[self recursiveMarkup:obj rootTag:nil]];}];
-            [outputString appendFormat:@"</%@", key];
+            [outputString appendFormat:@"</%@>", key];
         }else if ([value isKindOfClass:[NSDictionary class]]) {
             [outputString appendString:[self recursiveMarkup:value rootTag:key]];
         }        
