@@ -42,7 +42,7 @@ static inline BOOL isBlockElement(id element) {
 @implementation PxCXMLBuilder
 
 + (NSString *)recursiveMarkup:(NSDictionary*)dict rootTag:(NSString*)rootTag {
-    if (!rootTag) {rootTag = [dict valueForKey:@"root"];}
+    if (!rootTag) {rootTag = [dict valueForKey:@"pxCXMLroot"];}
     if (!rootTag) {return nil;}
     
     __block BOOL inlineElement = YES;
@@ -51,7 +51,9 @@ static inline BOOL isBlockElement(id element) {
     [outputString appendFormat:@"<%@", rootTag];
     
     [[dict selectAll:^BOOL(NSString *key, id value) {return isInlineElement(value);}] eachPair:^(NSString *key, id value) {
-        [outputString appendFormat:@" %@=\"%@\"", key, PxXMLEscape(value)];
+        if (![key isEqualToString:@"pxCXMLroot"]) {
+            [outputString appendFormat:@" %@=\"%@\"", key, PxXMLEscape(value)];
+        }
     }];
     
     [[dict selectAll:^BOOL(NSString *key, id value) {return isBlockElement(value);}] eachPair:^(NSString *key, id value) {
