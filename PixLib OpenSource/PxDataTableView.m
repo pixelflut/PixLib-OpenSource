@@ -254,9 +254,13 @@ typedef struct {
 }
 
 - (NSIndexPath *)plainIndexPathForItem:(id)item {
-    return [NSIndexPath indexPathForRow:[self.data index:^BOOL(id obj) {
+    NSUInteger row = [self.data index:^BOOL(id obj) {
         return obj == item;
-    }] inSection:0];
+    }];
+    if (row != NSNotFound) {
+        return [NSIndexPath indexPathForRow:row inSection:0];
+    }
+    return nil;
 }
 
 - (NSInteger)plainNumberOfSectionsInTableView:(UITableView *)tableView {
