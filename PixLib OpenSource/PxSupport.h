@@ -146,6 +146,10 @@ static inline BOOL PxOSAvailable(int os) {
 	}
 }
 
+static inline BOOL PxOSIsVersion(int osVersion) {
+    return [[[[[UIDevice currentDevice] systemVersion] componentsSeparatedByString:@"."] objectAtIndex:0] intValue] == osVersion;
+}
+
 static inline NSString* PxImageName(NSString *imageName) {
 	if (PxDeviceIsWide()) {
 		NSString *extension = [imageName pathExtension];

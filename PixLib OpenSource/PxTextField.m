@@ -30,6 +30,8 @@
 
 @implementation PxTextField
 
+#warning check calculations and check if draw...InRect is necessary in addition to ...RectForBounds
+
 - (CGRect)placeholderRectForBounds:(CGRect)bounds {
 	return [self textRectForBounds:bounds];
 }
