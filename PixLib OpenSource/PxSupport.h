@@ -146,8 +146,12 @@ static inline BOOL PxOSAvailable(int os) {
 	}
 }
 
+static inline BOOL PxOSVersionMajor() {
+    return [[[UIDevice currentDevice] systemVersion] intValue];
+}
+
 static inline BOOL PxOSIsVersion(int osVersion) {
-    return [[[UIDevice currentDevice] systemVersion] intValue] == osVersion;
+    return PxOSVersionMajor() == osVersion;
 }
 
 static inline NSString* PxImageName(NSString *imageName) {
