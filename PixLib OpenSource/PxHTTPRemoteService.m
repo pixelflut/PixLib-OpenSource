@@ -192,7 +192,8 @@
 
 #pragma mark - Private Methods -
 - (void)sendResult:(PxResult *)result {
-    objc_msgSend([result.caller target], [result.caller action], result);
+    void (*action)(id, SEL, id) = (void (*)(id, SEL, id))objc_msgSend;
+    action(result.caller.target, result.caller.action, result);
     
     if ([result.caller.target respondsToSelector:@selector(remoteService:didFinishConnection:)]) {
         [result.caller.target remoteService:self didFinishConnection:result];

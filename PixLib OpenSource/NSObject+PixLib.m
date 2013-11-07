@@ -53,15 +53,18 @@ static NSDictionary *__associationKeys = nil;
 }
 
 + (id)classPerformSelector:(SEL)aSelector {
-    return objc_msgSend(self, aSelector);
+    id (*action)(id, SEL) = (id (*)(id, SEL))objc_msgSend;
+    return action(self, aSelector);
 }
 
 + (id)classPerformSelector:(SEL)aSelector withObject:(id)anObject {
-    return objc_msgSend(self, aSelector, anObject);
+    id (*action)(id, SEL, id) = (id (*)(id, SEL, id))objc_msgSend;
+    return action(self, aSelector, anObject);
 }
 
 + (id)classPerformSelector:(SEL)aSelector withObject:(id)anObject withObject:(id)anotherObject {
-    return objc_msgSend(self, aSelector, anObject, anotherObject);
+    id (*action)(id, SEL, id, id) = (id (*)(id, SEL, id, id))objc_msgSend;
+    return action(self, aSelector, anObject, anotherObject);
 }
 
 + (void)printImplementation {
