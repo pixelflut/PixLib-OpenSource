@@ -122,7 +122,7 @@ NSString *const PxPickerDidHideNotification = @"PxPickerDidHide";
 	
 	if([_dataSource respondsToSelector:@selector(pickerView:startIndexForComponent:)]) {
 		[NR([_picker numberOfComponents]) times:^id(int component) {
-			int row = [_dataSource pickerView:_picker startIndexForComponent:component];
+			NSInteger row = [_dataSource pickerView:_picker startIndexForComponent:component];
 			[_picker selectRow:row inComponent:component animated:YES];
 			if(_delegate) {
 				[_delegate pickerView:_picker didSelectRow:row inComponent:component];

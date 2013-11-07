@@ -73,7 +73,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil**.
  @see collect:skipNil:
  */
-- (NSMutableArray *)collect:(id (^)(int nr))block;
+- (NSMutableArray *)collect:(id (^)(NSInteger nr))block;
 
 /** Invokes block once for each element of the receiver. Creates a new array containing the values returned by the block.
  @param block The block to call on each element in the receiver.
@@ -82,14 +82,14 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil**, and _skipNil_ is **false**.
  @see collect:
  */
-- (NSMutableArray *)collect:(id (^)(int nr))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collect:(id (^)(NSInteger nr))block skipNil:(BOOL)skipNil;
 
 /** Invokes block once for each element of the receiver. Returns the receiver.
  @param block The block to call on each element in self.
  @return The receiver.
  @see collect:
  */
-- (PxRange *)eachIndex:(void (^)(int nr))block;
+- (PxRange *)eachIndex:(void (^)(NSInteger nr))block;
 
 #pragma mark - Testing Object Contents
 /** @name Testing Object Contents */

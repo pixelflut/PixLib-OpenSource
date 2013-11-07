@@ -845,6 +845,7 @@
 		C545FAE017E9C9CF003A467C /* ContentDe */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
@@ -894,6 +895,7 @@
 		C545FAE217E9C9D8003A467C /* ContentEn */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
@@ -966,6 +968,7 @@
 		DB626E5616D224070014B5B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
@@ -985,6 +988,7 @@
 		DB626E5716D224070014B5B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;

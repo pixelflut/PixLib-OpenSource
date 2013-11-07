@@ -202,7 +202,7 @@
  @return Array containing the values until _block_ returned **false**
  @see drop:
  */
-- (NSMutableArray *)take:(BOOL (^)(id obj, unsigned int index))block;
+- (NSMutableArray*)take:(BOOL (^)(id obj, NSUInteger index))block;
 
 
 #pragma mark - Searching Items
@@ -230,7 +230,7 @@
  @see find:
  @see include:
  */
-- (unsigned int)index:(BOOL (^)(id obj))block;
+- (NSUInteger)index:(BOOL (^)(id obj))block;
 
 /** Returns the element in self which the block evals as max value.
  @param block The block to compare the current max-value element with the next element

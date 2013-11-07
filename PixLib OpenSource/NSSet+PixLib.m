@@ -101,7 +101,7 @@
 }
 
 - (id)max:(NSComparisonResult (^)(id a, id b))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     if (count == 0) {
         return nil;
     }
@@ -116,7 +116,7 @@
 }
 
 - (id)min:(NSComparisonResult (^)(id a, id b))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     if (count == 0) {
         return nil;
     }

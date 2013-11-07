@@ -62,7 +62,7 @@ typedef enum {
 }
 @property(nonatomic, weak) id<PxHTTPConnectionDelegate> delegate;
 @property(nonatomic, readonly) PxHTTPConnectionState state;
-@property(nonatomic, readonly) int statusCode;
+@property(nonatomic, readonly) NSInteger statusCode;
 @property(nonatomic, readonly) long long expectedByteCount;
 @property(nonatomic, readonly) long long currentByteCount;
 @property(nonatomic, readonly, strong) NSString *URLString;
@@ -94,7 +94,7 @@ typedef enum {
 
 @protocol PxHTTPConnectionDelegate <NSObject>
 
-- (void)connection:(PxHTTPConnection *)c didCompleteWithStatus:(int)status;
+- (void)connection:(PxHTTPConnection *)c didCompleteWithStatus:(NSInteger)status;
 - (void)connection:(PxHTTPConnection *)c didStop:(BOOL)connectionCleaned;
 
 @end

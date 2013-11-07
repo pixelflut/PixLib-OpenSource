@@ -96,7 +96,7 @@
             [self setSecond:anObject];
             break;
         default:
-            [NSException raise:NSRangeException format:@"index (%d) out of range (0 1)", idx];
+            [NSException raise:NSRangeException format:@"index (%lu) out of range (0 1)", (unsigned long)idx];
             break;
     }
 }
@@ -110,7 +110,7 @@
             return _second;
             break;
         default:
-            [NSException raise:NSRangeException format:@"index (%d) out of range (0 1)", idx];
+            [NSException raise:NSRangeException format:@"index (%lu) out of range (0 1)", (unsigned long)idx];
             return nil;
             break;
     }

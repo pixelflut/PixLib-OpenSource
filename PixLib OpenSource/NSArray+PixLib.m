@@ -133,9 +133,9 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
             break;
         }
     }
-    int count = [self count];
+    NSUInteger count = [self count];
     if (count-c > 0 ) {
-        return [RANGE(c, count-c) collect:^id(int index) {
+        return [RANGE(c, count-c) collect:^id(NSInteger index) {
             return [self objectAtIndex:index];
         }];
     }else {
@@ -144,7 +144,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 }
 
 - (NSArray*)eachCons:(unsigned int)number block:(void (^)(NSArray *objs))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     if (number>=count) {
         block(self);
     }else {
@@ -156,7 +156,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 }
 
 - (NSArray*)eachSlice:(unsigned int)number block:(void (^)(NSArray *objs))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     for (int i = 0; i<count; i+=number) {
         block([self subarrayWithRange:NSMakeRange(i, MIN(number, count-i))]);
     }
@@ -210,7 +210,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return NO;
 }
 
-- (unsigned int)index:(BOOL (^)(id obj))block {
+- (NSUInteger)index:(BOOL (^)(id obj))block {
     unsigned int i = 0;
     for (id obj in self) {
         if (block(obj)) {
@@ -261,7 +261,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 }
 
 - (id)max:(NSComparisonResult (^)(id a, id b))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     if (count == 0) {
         return nil;
     }
@@ -277,7 +277,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 }
 
 - (id)min:(NSComparisonResult (^)(id a, id b))block {
-    int count = [self count];
+    NSUInteger count = [self count];
     if (count == 0) {
         return nil;
     }
@@ -308,7 +308,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 }
 
 - (NSMutableArray*)paginate:(int)pageSize {
-    int count = [self count];
+    NSUInteger count = [self count];
     NSMutableArray *ret = [NSMutableArray arrayWithCapacity:(count+1)/pageSize];
     for (int i = 0; i<count; i+=pageSize) {
         [ret addObject:[self subarrayWithRange:NSMakeRange(i, MIN(pageSize, count-i))]];
@@ -342,9 +342,9 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 - (NSMutableArray*)random {
     NSMutableArray *source = [[NSMutableArray alloc] initWithArray:self];
     NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:[self count]];
-    int count = [source count];
+    NSUInteger count = [source count];
     while (count > 0) {
-        int index = arc4random_uniform(count);
+        NSUInteger index = arc4random_uniform((u_int32_t) count);
         [ret addObject:[source objectAtIndex:index]];
         [source removeObjectAtIndex:index];
         count--;
@@ -389,7 +389,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 	return sum;
 }
 
-- (NSMutableArray*)take:(BOOL (^)(id obj, unsigned int index))block {
+- (NSMutableArray*)take:(BOOL (^)(id obj, NSUInteger index))block {
     int c = 0;
     for (id obj in self) {
         if (block(obj, c)) {
@@ -399,7 +399,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
         }
     }
     if (c > 0 ) {
-        return [RANGE(0, c) collect:^id(int index) {
+        return [RANGE(0, c) collect:^id(NSInteger index) {
             return [self objectAtIndex:index];
         }];
     }else {

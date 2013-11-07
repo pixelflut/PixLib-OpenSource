@@ -64,7 +64,7 @@
     if (imageURL) {
         CGImageSourceRef imageSourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)imageURL, NULL);
         if (imageSourceRef) {
-            unsigned int count = CGImageSourceGetCount(imageSourceRef);
+            NSUInteger count = CGImageSourceGetCount(imageSourceRef);
             NSMutableArray *imageArray = [[NSMutableArray alloc] initWithCapacity:count];
             for (int i = 0; i<count; i++) {
                 CGImageRef img = CGImageSourceCreateImageAtIndex(imageSourceRef, i, NULL);

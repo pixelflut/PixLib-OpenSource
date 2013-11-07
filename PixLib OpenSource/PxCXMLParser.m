@@ -31,7 +31,7 @@
 #import "PxXMLHelper.h"
 
 
-#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((__var__ = getc_unlocked(__file__)) == EOF){ PxError(@"CXML Syntax Error: Unexpected End Of File!");}
+#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((char)(__var__ = getc_unlocked(__file__)) == EOF){ PxError(@"CXML Syntax Error: Unexpected End Of File!");}
 
 #define CLEAN_FILE_BEFORE_RETURN funlockfile(file);fclose(file);CFRelease(stack);CFRelease(parentStack);
 
@@ -143,7 +143,7 @@ static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack
 }
 
 static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current) {
-    int count = CFArrayGetCount(stack);
+    CFIndex count = CFArrayGetCount(stack);
     if (count==1) {
         return YES;
     }else if(count == 0){
@@ -159,7 +159,7 @@ static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current) {
 
 static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *parent, id *current) {
     if (*current == *parent) {
-        int parentCount = CFArrayGetCount(parentStack);
+        CFIndex parentCount = CFArrayGetCount(parentStack);
         if(parentCount >= 2) {
             *parent = (__bridge id)CFArrayGetValueAtIndex(parentStack, parentCount-2);
             CFArrayRemoveValueAtIndex(parentStack, parentCount-1);
@@ -214,7 +214,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
         return nil;
     }
     
-    while ( (character=getc_unlocked(file)) != EOF) {
+    while ( (character=getc_unlocked(file)) != (unsigned char)EOF) {
         
         if (character == '<') {// start or end an Object
             GETC_UNLOCKED_SAVE(character,file);
@@ -227,7 +227,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                     return ret;
                 }
                 
-                while ((character = getc_unlocked(file)) !='>' && character != EOF) {} // file/buffer overflow!
+                while ((character = getc_unlocked(file)) !='>' && character != (unsigned char)EOF) {} // file/buffer overflow!
                 
             }else {// start an Object, get the tag-name first
                 unsigned char c = character;
@@ -358,7 +358,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     
     unsigned char character;
     
-    int length = [data length];
+    NSUInteger length = [data length];
     char *bytes = (char *)[data bytes];
     char type[] = {'t', 'y', 'p', 'e'};
     
@@ -511,7 +511,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     id ret = nil;
     CFDictionaryRef map = (__bridge CFDictionaryRef)mapping;
     
-    int length = [data length];
+    NSUInteger length = [data length];
     
     unichar *bytes = (unichar *)malloc(data.length*sizeof(unichar));
     [data getCharacters:bytes range:NSMakeRange(0, data.length)];

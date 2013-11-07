@@ -189,4 +189,9 @@ NSString *const PxHTTPHeaderRange = @"Range";
         [header writeToFile:[self headerPath:destinationPath] atomically:YES];
     }
 }
+
+#pragma mark - Memory cleanup
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

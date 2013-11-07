@@ -33,13 +33,13 @@ static char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz012
 @implementation NSData (PixLib)
 
 - (NSString *)base64Encoding {
-    int encodedLength = (((([self length] % 3) + [self length]) / 3) * 4) + 1;  
+    NSInteger encodedLength = (((([self length] % 3) + [self length]) / 3) * 4) + 1;
     char *outputBuffer = malloc(encodedLength);  
     char *inputBuffer = (char *)[self bytes];  
     
     NSInteger i;  
     NSInteger j = 0;  
-    int remain;  
+    NSInteger remain;
     
     for(i = 0; i < [self length]; i += 3) {  
         remain = [self length] - i;  

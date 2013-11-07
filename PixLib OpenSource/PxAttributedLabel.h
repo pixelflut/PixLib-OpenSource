@@ -67,7 +67,7 @@
 @property(nonatomic, readonly, assign) BOOL needsParsing;
 @property(nonatomic, weak) id<PxAttributedLabelLinkDelegate> linkDelegate;
 
-- (CGFloat)setHeightForWidth:(float)width;
+- (CGFloat)setHeightForWidth:(CGFloat)width;
 - (CGFloat)setHeightToFit;
 
 //- (void)setWidthForHeight:(float)height;

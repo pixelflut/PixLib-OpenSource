@@ -47,9 +47,10 @@ static inline void PxReportv(BOOL doLog, char const *file, int line, NSString *p
             printf("%s ", [prefix cStringUsingEncoding:NSUTF8StringEncoding]);
         }
         
-        NSString *print = [[[NSString alloc] initWithFormat:[[NSString alloc] initWithFormat:@"<%@ [%d]> %@\n", fileNameWithExtension, line, fmt] arguments:argList] stringByReplacingOccurrencesOfString:@"%" withString:@"%%"];
-        
-        vprintf([print cStringUsingEncoding:NSUTF8StringEncoding], NULL);
+        NSString *print = [[[NSString alloc] initWithFormat:[[NSString alloc] initWithFormat:@"<%@ [%d]> %@\n", fileNameWithExtension, (int32_t)line, fmt] arguments:argList] stringByReplacingOccurrencesOfString:@"%" withString:@"%%"];
+        const char *string = [print cStringUsingEncoding:NSUTF8StringEncoding];
+        printf(string);
+        print = nil;
     }
 }
 

@@ -30,7 +30,7 @@
 
 @interface PxActionSheet : UIActionSheet <UIActionSheetDelegate>
 
-- (id)initWithTitle:(NSString *)title block:(void (^)(int buttonIndex, id userInfo))block userInfo:(id)userInfo cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
+- (id)initWithTitle:(NSString *)title block:(void (^)(NSInteger buttonIndex, id userInfo))block userInfo:(id)userInfo cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
 
 - (id)initWithTitle:(NSString *)title block:(void (^)(PxActionButtonConfig *buttonConfig))block;
 

@@ -43,28 +43,28 @@
     return self;
 }
 
-- (NSMutableArray*)collect:(id (^)(int index))block {
+- (NSMutableArray*)collect:(id (^)(NSInteger index))block {
     return [self collect:block skipNil:NO];
 }
 
-- (NSMutableArray*)collect:(id (^)(int index))block skipNil:(BOOL)skipNil {
+- (NSMutableArray*)collect:(id (^)(NSInteger index))block skipNil:(BOOL)skipNil {
     NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:range.length];
-    int start = range.location;
-    int end = range.location+range.length;
+    NSInteger start = range.location;
+    NSInteger end = range.location+range.length;
     
     for (int i = 0; i<ABS(end-start); i++) {
-        int index = start + (ABS(end-start)/(end-start))*i;
+        NSInteger index = start + (ABS(end-start)/(end-start))*i;
         [array addObject:block(index) skipNil:skipNil];
     }
     return array;
 }
 
-- (PxRange *)eachIndex:(void (^)(int nr))block {
-    int start = range.location;
-    int end = range.location+range.length;
+- (PxRange *)eachIndex:(void (^)(NSInteger nr))block {
+    NSInteger start = range.location;
+    NSInteger end = range.location+range.length;
     
     for (int i = 0; i<ABS(end-start); i++) {
-        int index = start + (ABS(end-start)/(end-start))*i;
+        NSInteger index = start + (ABS(end-start)/(end-start))*i;
         block(index);
     }
     return self;

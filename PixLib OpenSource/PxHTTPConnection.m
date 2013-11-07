@@ -242,7 +242,7 @@
         }
     }
     if ([self shouldMemoryStore]) {
-        int length;
+        NSInteger length;
         if (_expectedByteCount != NSURLResponseUnknownLength) {
             length = _expectedByteCount;
         }else {

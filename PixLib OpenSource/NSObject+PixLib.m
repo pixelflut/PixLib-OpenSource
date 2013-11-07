@@ -35,8 +35,8 @@ static NSDictionary *__associationKeys = nil;
 @implementation NSObject (PixLib)
 
 - (NSComparisonResult)compare:(id)object context:(void *)context {
-    unsigned int a = [self hash];
-    unsigned int b = [object hash];
+    NSUInteger a = [self hash];
+    NSUInteger b = [object hash];
     return PxCompare(a, b);
 }
 
@@ -114,7 +114,7 @@ static NSDictionary *__associationKeys = nil;
         key = name;
         [__associationKeys setValue:key forKey:key];
     }
-    objc_setAssociatedObject(self, (__bridge void *)key, value, OBJC_ASSOCIATION_RETAIN);
+    objc_setAssociatedObject(self, (__bridge void *)key, value, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id)runtimeProperty:(NSString *)property {

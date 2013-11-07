@@ -115,7 +115,7 @@
 		if (tmp != nil) {
 			// move the Image to the front of the cache again
 			NSInteger oldIndex = [(NSNumber*)[tmp first] intValue];
-			[tmp setFirst:[NSNumber numberWithInt:[_fifoCache count]-1]];
+			[tmp setFirst:[NSNumber numberWithInteger:[_fifoCache count]-1]];
 			[_fifoCache removeObjectAtIndex:oldIndex];
 			[_fifoCache addObject:key];
 			result = [tmp second];
@@ -131,7 +131,7 @@
 			[_fifoCache removeObjectAtIndex:0];
 		}
 		[_fifoCache addObject:key];
-		[_dataCache setValue:[PxPair pairWithFirst:[NSNumber numberWithInt:[_fifoCache count]-1] second:img] forKey:key];
+		[_dataCache setValue:[PxPair pairWithFirst:[NSNumber numberWithInteger:[_fifoCache count]-1] second:img] forKey:key];
 	}
 }
 

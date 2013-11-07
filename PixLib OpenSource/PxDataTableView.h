@@ -39,10 +39,10 @@
 
 - (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
 - (id)dataForCellAtIndexPath:(NSIndexPath *)indexPath;
-- (id)dataForSection:(unsigned int)section;
+- (id)dataForSection:(NSInteger)section;
 - (float)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (NSIndexPath *)indexPathForItem:(id)item;
-- (unsigned int)numberOfRowsInSection:(unsigned int)section useData:(BOOL)useData;
+- (NSInteger)numberOfRowsInSection:(NSInteger)section useData:(BOOL)useData;
 
 - (void)removeEntriesFromTable:(NSArray *)entries;
 

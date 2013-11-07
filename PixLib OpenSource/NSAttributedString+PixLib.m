@@ -55,7 +55,7 @@
     if (frame != NULL) {
         NSArray* lines = (__bridge NSArray*)CTFrameGetLines(frame);
         
-        int l = [lines count];
+        NSUInteger l = [lines count];
         if (l > 1) {
             CGPoint origins[l];
             
@@ -122,6 +122,8 @@
             CTLineRef justifiedLine = CTLineCreateJustifiedLine(hyphenLine, 1.0, bounds.size.width);
             
             CTLineDraw(justifiedLine, c);
+            CFRelease(justifiedLine);
+            CFRelease(hyphenLine);
         } else {
             CTLineDraw(line, c);
         }

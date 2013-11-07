@@ -46,13 +46,13 @@ typedef void (^PxActionButtonConfigBlock)(void);
 - (void)setCancelButton:(NSString *)title block:(PxActionButtonConfigBlock)block;
 
 - (void)setObject:(id)block forKeyedSubscript:(NSString *)title;
-- (void)executeButtonAtIndex:(unsigned int)index;
+- (void)executeButtonAtIndex:(NSInteger)index;
 
-- (NSString *)titleAtIndex:(unsigned int)index;
-- (unsigned int)indexOfTitle:(NSString *)title;
+- (NSString *)titleAtIndex:(NSInteger)index;
+- (NSInteger)indexOfTitle:(NSString *)title;
 
-- (unsigned int)cancelIndex;
-- (unsigned int)destructiveIndex;
+- (NSInteger)cancelIndex;
+- (NSInteger)destructiveIndex;
 
 - (void)reorderButtons;
 

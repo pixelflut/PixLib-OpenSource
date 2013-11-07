@@ -32,14 +32,14 @@
 @property(nonatomic, readonly, strong) NSMutableDictionary *styleDictionary;
 @property(nonatomic, readonly, strong) NSSet *disabledButtons;
 @property(nonatomic, readonly, strong) id userInfo;
-@property(nonatomic, readonly, strong) void (^actionBlock)(int buttonIndex, id userInfo);
+@property(nonatomic, readonly, strong) void (^actionBlock)(NSInteger buttonIndex, id userInfo);
 @property(nonatomic, readonly, strong) PxActionButtonConfig *config;
 
 @end
 
 @implementation PxActionSheet
 
-- (id)initWithTitle:(NSString *)title block:(void (^)(int buttonIndex, id userInfo))block userInfo:(id)userInfo cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
+- (id)initWithTitle:(NSString *)title block:(void (^)(NSInteger buttonIndex, id userInfo))block userInfo:(id)userInfo cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [super initWithTitle:title delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     if (self) {
 		int i = 0;
@@ -80,8 +80,8 @@
         block(_config);
         [_config reorderButtons];
         
-        int d = [_config destructiveIndex];
-        int c = [_config cancelIndex];
+        NSInteger d = [_config destructiveIndex];
+        NSInteger c = [_config cancelIndex];
         
         for (int i = 0; i<_config.visibleButtonCount; i++) {
             NSString *title = [_config titleAtIndex:i];

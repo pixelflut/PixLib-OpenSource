@@ -73,7 +73,7 @@ NSString *PxXMLUnescape(NSString *string) {
 }
 
 NSString *xmlEscapedString(NSString *string) {
-    int length = [string length];
+    NSUInteger length = [string length];
     NSMutableString *outputString = [[NSMutableString alloc] initWithCapacity:length];
     
     unichar buffer[MEM_PAGE_SIZE*(MAX_SEQ_LENGTH+2)];
@@ -133,7 +133,7 @@ NSString *xmlEscapedString(NSString *string) {
 }
 
 NSString *xmlUnescapedString(NSString *string) {
-    int length = [string length];
+    NSUInteger length = [string length];
     unichar *retBuffer = malloc(length*sizeof(unichar));
     unichar seqBuffer[MAX_SEQ_LENGTH];
     memset(seqBuffer, 0, MAX_SEQ_LENGTH);

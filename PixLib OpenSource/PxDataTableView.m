@@ -107,8 +107,8 @@ typedef struct {
 #pragma mark - Shared Table Handling
 - (NSString*)identifierForCellAtIndexPath:(NSIndexPath *)indexPath {
     int cellPosition = PxCellPositionMiddle;
-    int rowCount = [self tableView:nil numberOfRowsInSection:indexPath.section];
-	int sectionCount = [self numberOfSectionsInTableView:nil];
+    NSInteger rowCount = [self tableView:nil numberOfRowsInSection:indexPath.section];
+	NSInteger sectionCount = [self numberOfSectionsInTableView:nil];
 	
 	if(indexPath.row == rowCount-1 && indexPath.section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
     if(indexPath.row == rowCount-1 && indexPath.row == 0) {cellPosition |= PxCellPositionSingle;}
@@ -119,7 +119,7 @@ typedef struct {
     NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, NSStringFromClass([self.delegate tableView:self classForCellAtIndexPath:indexPath])];
     
     if (self.alternating) {
-        return [identifier stringByAppendingFormat:@"_%d", indexPath.row%2];
+        return [identifier stringByAppendingFormat:@"_%d", (int32_t)indexPath.row%2];
     }
     
     if (_dynamicIdentifier) {
@@ -138,7 +138,7 @@ typedef struct {
     }
 }
 
-- (unsigned int)numberOfRowsInSection:(unsigned int)section useData:(BOOL)useData {
+- (NSInteger)numberOfRowsInSection:(NSInteger)section useData:(BOOL)useData {
     if (useData) {
         return [self tableView:self numberOfRowsInSection:section];
     }
@@ -200,7 +200,7 @@ typedef struct {
     return nil;
 }
 
-- (id)dataForSection:(unsigned int)section {
+- (id)dataForSection:(NSInteger)section {
     if (self.sectional) {
         return [(PxPair *)[self.data objectAtIndex:section] first];
     } else {
@@ -314,11 +314,11 @@ typedef struct {
     return nil;
 }
 
-- (int)sectionalTableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)sectionalTableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[(PxPair*)[self.data objectAtIndex:section] second] count];
 }
 
-- (int)sectionalNumberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)sectionalNumberOfSectionsInTableView:(UITableView *)tableView {
     return [self.data count];
 }
 

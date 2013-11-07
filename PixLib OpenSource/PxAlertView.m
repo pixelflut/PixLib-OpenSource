@@ -29,7 +29,7 @@
 
 @interface PxAlertView ()
 @property(nonatomic, strong) void (^confirmBlock)(BOOL confirm, id userInfo);
-@property(nonatomic, strong) void (^actionBlock)(int index, id userInfo);
+@property(nonatomic, strong) void (^actionBlock)(NSInteger index, id userInfo);
 @property(nonatomic, strong) PxActionButtonConfig *config;
 
 @end
@@ -45,7 +45,7 @@
     return self;
 }
 
-- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle userInfo:(id)userInfo block:(void (^)(int, id))block otherButtonTitles:(NSString *)otherButtonTitles, ... {
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle userInfo:(id)userInfo block:(void (^)(NSInteger, id))block otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [super initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
     if (self) {
 		va_list ap;
@@ -79,7 +79,7 @@
         block(_config);
         [_config reorderButtons];
         
-        int c = [_config cancelIndex];
+        NSInteger c = [_config cancelIndex];
         
         for (int i = 0; i<_config.visibleButtonCount; i++) {
             NSString *title = [_config titleAtIndex:i];

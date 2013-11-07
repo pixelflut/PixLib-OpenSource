@@ -67,7 +67,7 @@ static char * hnj_strdup(const char *s) {
   char *new;
   int l;
 
-  l = strlen (s);
+  l = (int)strlen (s);
   new = hnj_malloc (l + 1);
   memcpy (new, s, l);
   new[l] = 0;
@@ -77,7 +77,7 @@ static char * hnj_strdup(const char *s) {
 /* remove cross-platform text line end characters */
 void hnj_strchomp(char * s);
 void hnj_strchomp(char * s) {
-  int k = strlen(s);
+  int k = (int)strlen(s);
   if ((k > 0) && ((*(s+k-1)=='\r') || (*(s+k-1)=='\n'))) *(s+k-1) = '\0';
   if ((k > 1) && (*(s+k-2) == '\r')) *(s+k-2) = '\0';
 }
@@ -607,7 +607,7 @@ int hnj_hyphen_hyphenate (HyphenDict *dict,
       /* replacing rules not handled by hyphen_hyphenate() */
       if (match && !dict->states[state].repl)
 	{
-	  offset = i + 1 - strlen (match);
+	  offset = i + 1 - (int)strlen (match);
 #ifdef VERBOSE
 	  for (k = 0; k < offset; k++)
 	    putchar (' ');
@@ -698,7 +698,7 @@ int hnj_hyphen_lhmin(int utf8, const char *word, int word_size, char * hyphens,
       if (*rep && *pos && *cut && (*rep)[j]) {
         char * rh = strchr((*rep)[j], '=');
         if (rh && (hnj_hyphen_strnlen(word, j - (*pos)[j] + 1, utf8) +
-          hnj_hyphen_strnlen((*rep)[j], rh - (*rep)[j], utf8)) < lhmin) {
+          hnj_hyphen_strnlen((*rep)[j], (int)rh - (int)(*rep)[j], utf8)) < lhmin) {
             free((*rep)[j]);
             (*rep)[j] = NULL;
             hyphens[j] = '0';
@@ -731,7 +731,7 @@ int hnj_hyphen_rhmin(int utf8, const char *word, int word_size, char * hyphens,
       if (*rep && *pos && *cut && (*rep)[j]) {
         char * rh = strchr((*rep)[j], '=');
         if (rh && (hnj_hyphen_strnlen(word + j - (*pos)[j] + (*cut)[j] + 1, 100, utf8) +
-          hnj_hyphen_strnlen(rh + 1, strlen(rh + 1), utf8)) < rhmin) {
+          hnj_hyphen_strnlen(rh + 1, (int)strlen(rh + 1), utf8)) < rhmin) {
             free((*rep)[j]);
             (*rep)[j] = NULL;
             hyphens[j] = '0';
@@ -768,7 +768,7 @@ int hnj_hyphen_hyph_(HyphenDict *dict, const char *word, int word_size,
   int isrepl = 0;
   int nHyphCount;
 
-  size_t prep_word_size = word_size + 3;
+  int prep_word_size = word_size + 3;
   prep_word = hnj_malloc (prep_word_size);
   matchlen = hnj_malloc ((word_size + 3) * sizeof(int));
   matchindex = hnj_malloc ((word_size + 3) * sizeof(int));
@@ -847,7 +847,7 @@ int hnj_hyphen_hyph_(HyphenDict *dict, const char *word, int word_size,
       /* replacing rules not handled by hyphen_hyphenate() */
       if (match)
 	{
-	  offset = i + 1 - strlen (match);
+	  offset = i + 1 - (int)strlen (match);
 #ifdef VERBOSE
 	  for (k = 0; k < offset; k++)
 	    putchar (' ');
@@ -954,7 +954,7 @@ int hnj_hyphen_hyph_(HyphenDict *dict, const char *word, int word_size,
                 strncpy(prep_word + offset, (*rep)[i], prep_word_size - offset - 1);
                 prep_word[prep_word_size - 1] = '\0';
                 if (l) {
-                    hyph = (l - (*rep)[i]) - (*pos)[i];
+                    hyph = (int)(l - (*rep)[i]) - (*pos)[i];
                     prep_word[2 + i + hyph] = '\0';
                 }
             }

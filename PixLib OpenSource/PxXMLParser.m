@@ -97,13 +97,13 @@
 }
 
 - (void)parser:(NSXMLParser *)parser validationErrorOccurred:(NSError *)validError {
-    PxError(@"NSXMLParser: Validation error at line: %d column: %d description: %@",[parser lineNumber],[parser columnNumber],validError);
+    PxError(@"NSXMLParser: Validation error at line: %ld column: %ld description: %@",(long)[parser lineNumber],(long)[parser columnNumber],validError);
     _objectStack = nil;
     _returnValue = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    PxError(@"NSXMLParser: Parse error at line: %d column: %d description: %@",[parser lineNumber],[parser columnNumber],parseError);
+    PxError(@"NSXMLParser: Parse error at line: %ld column: %ld description: %@",(long)[parser lineNumber],(long)[parser columnNumber],parseError);
     _objectStack = nil;
     _returnValue = nil;
 }

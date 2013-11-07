@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "PxXMLHelper.h"
 
-#define NR(__COUNT__) [NSNumber numberWithInt:__COUNT__]
+#define NR(__COUNT__) [NSNumber numberWithInteger:__COUNT__]
 #define NRF(__COUNT__) [NSNumber numberWithFloat:__COUNT__]
 
 /**

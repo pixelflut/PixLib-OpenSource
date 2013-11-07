@@ -33,16 +33,16 @@
 
 typedef struct {
     __unsafe_unretained UIFont *font;
-    float minimumScaleFactor;
+    CGFloat minimumScaleFactor;
     NSLineBreakMode lineBreakMode;
     BOOL adjustsFontSizeToFitWidth;
-    int numberOfLines;
-	float amountOfKerning;
+    NSInteger numberOfLines;
+	CGFloat amountOfKerning;
 } PxFontConfig;
 
 #warning add amountOfKerning to PxFontConfigMake
 static inline PxFontConfig
-PxFontConfigMake(UIFont *font, float minimumScaleFactor, NSLineBreakMode lineBreakMode, BOOL adjustsFontSizeToFitWidth, int numberOfLines) {
+PxFontConfigMake(UIFont *font, CGFloat minimumScaleFactor, NSLineBreakMode lineBreakMode, BOOL adjustsFontSizeToFitWidth, NSInteger numberOfLines) {
     PxFontConfig config;
     config.font = font;
     config.minimumScaleFactor = minimumScaleFactor;

@@ -97,7 +97,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     if ([self isNotBlank]) {
         const char *cStr = [self UTF8String];
         unsigned char result[CC_MD5_DIGEST_LENGTH];
-        CC_MD5( cStr, strlen(cStr), result);
+        CC_MD5( cStr, (CC_LONG)strlen(cStr), result);
         return [NSString stringWithFormat: @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
                 result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
                 result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
@@ -108,7 +108,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
 - (NSString *)stringByAddingSHA1Encoding {
     const char *cStr = [self UTF8String];
     unsigned char result[CC_SHA1_DIGEST_LENGTH];
-    CC_SHA1(cStr, strlen(cStr), result);
+    CC_SHA1(cStr, (CC_LONG)strlen(cStr), result);
     return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
             result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
 			result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15],
@@ -127,7 +127,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     if ([self isNotBlank]) {
         const char *cStr = [self UTF8String];
         unsigned char result[CC_SHA256_DIGEST_LENGTH];
-        CC_SHA256( cStr, strlen(cStr), result );
+        CC_SHA256( cStr, (CC_LONG)strlen(cStr), result );
         return [NSString stringWithFormat:
                 @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
                 result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
@@ -148,7 +148,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
 
 - (NSString *)stringByApplyingKFC:(BOOL)compact {
     const char *constStr = [self cStringUsingEncoding:NSUTF8StringEncoding];
-	int len = strlen(constStr);
+	NSUInteger len = strlen(constStr);
     char *buffer = malloc(len+1);
     int n = 0;
     BOOL doublicate = NO;
@@ -278,7 +278,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
             [result appendString:token];
         } else {
             char const* tokenChars = [[token lowercaseString] UTF8String];
-            wordLength = strlen(tokenChars);
+            wordLength = (int)strlen(tokenChars);
             // This is the buffer size the algorithm needs.
             hyphens = (char*)malloc(wordLength + 5); // +5, see hypen.h
             rep = NULL; // Will be allocated by the algorithm

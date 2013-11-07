@@ -30,11 +30,11 @@
 
 @interface PxActionButtonConfigStore : NSObject
 @property(nonatomic, strong) NSString *title;
-@property(nonatomic, assign) int index;
+@property(nonatomic, assign) NSInteger index;
 @property(nonatomic, strong) PxActionButtonConfigBlock block;
 @property(nonatomic, assign) PxActionButtonType type;
 
-- (id)initWithTitle:(NSString *)title index:(int)index block:(PxActionButtonConfigBlock)block type:(PxActionButtonType)type;
+- (id)initWithTitle:(NSString *)title index:(NSInteger)index block:(PxActionButtonConfigBlock)block type:(PxActionButtonType)type;
 - (void)execute;
 
 @end
@@ -83,26 +83,26 @@
     }
 }
 
-- (void)executeButtonAtIndex:(unsigned int)index {
+- (void)executeButtonAtIndex:(NSInteger)index {
     PxActionButtonConfigStore *config = self.buttonConfigs[NR(index)];
     if (!config) {
-        PxError(@"<PxActionButtonConfig> executeButtonAtIndex: object not found at index: %d", index);
+        PxError(@"<PxActionButtonConfig> executeButtonAtIndex: object not found at index: %ld", (long)index);
     }else {
         [config execute];
     }
 }
 
-- (NSString *)titleAtIndex:(unsigned int)index {
+- (NSString *)titleAtIndex:(NSInteger)index {
     PxActionButtonConfigStore *config = self.buttonConfigs[NR(index)];
     if (!config) {
-        PxError(@"<PxActionButtonConfig> titleAtIndex: object not found at index: %d", index);
+        PxError(@"<PxActionButtonConfig> titleAtIndex: object not found at index: %ld", (long)index);
     }else {
         return [config title];
     }
     return nil;
 }
 
-- (unsigned int)indexOfTitle:(NSString *)title {
+- (NSInteger)indexOfTitle:(NSString *)title {
     NSNumber *num = [[self.buttonConfigs find:^BOOL(id key, PxActionButtonConfigStore *conf) {
         return [[conf title] isEqualToString:title];
     }] first];
@@ -112,7 +112,7 @@
     return NSNotFound;
 }
 
-- (unsigned int)specialIndex:(PxActionButtonType)type {
+- (NSInteger)specialIndex:(PxActionButtonType)type {
     NSNumber *num = [[self.buttonConfigs find:^BOOL(id key, PxActionButtonConfigStore *conf) {
         return [conf type] == type;
     }] first];
@@ -122,11 +122,11 @@
     return NSNotFound;
 }
 
-- (unsigned int)cancelIndex {
+- (NSInteger)cancelIndex {
     return [self specialIndex:PxActionButtonTypeCancel];
 }
 
-- (unsigned int)destructiveIndex {
+- (NSInteger)destructiveIndex {
     return [self specialIndex:PxActionButtonTypeDestroy];
 }
 
@@ -142,8 +142,8 @@
 }
 
 - (void)reorderButtons {
-    int d = [self destructiveIndex];
-    int c = [self cancelIndex];
+    NSInteger d = [self destructiveIndex];
+    NSInteger c = [self cancelIndex];
     if (d != NSNotFound || (c != NSNotFound && c>-1 && c<_visibleButtonCount-1)) {
         NSMutableArray *orderedButtonTitles = [NR(_visibleButtonCount) times:^id(int nr) {
             return [self titleAtIndex:nr];
@@ -180,7 +180,7 @@
 @synthesize block = _block;
 @synthesize type  = _type;
 
-- (id)initWithTitle:(NSString *)title index:(int)index block:(PxActionButtonConfigBlock)block type:(PxActionButtonType)type {
+- (id)initWithTitle:(NSString *)title index:(NSInteger)index block:(PxActionButtonConfigBlock)block type:(PxActionButtonType)type {
     self = [super init];
     if (self) {
         _title = title;

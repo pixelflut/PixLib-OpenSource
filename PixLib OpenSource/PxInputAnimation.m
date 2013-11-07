@@ -55,7 +55,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@\nstartFrame: %@\nendFrame: %@\nduration: %f\ncurve: %d\nname: %@", [super description], NSStringFromCGRect(_startFrame), NSStringFromCGRect(_endFrame), _duration, _curve, _name];
+    return [NSString stringWithFormat:@"%@\nstartFrame: %@\nendFrame: %@\nduration: %f\ncurve: %ld\nname: %@", [super description], NSStringFromCGRect(_startFrame), NSStringFromCGRect(_endFrame), _duration, (long)_curve, _name];
 }
 
 @end

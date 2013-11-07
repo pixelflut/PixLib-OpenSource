@@ -34,9 +34,9 @@
 @interface PxHTTPRemoteService (hidden)
 
 - (PxHTTPConnection *)enqueueRequest:(NSMutableURLRequest *)request caller:(PxCaller *)caller;
-- (PxPair *)partitionedCallers:(NSArray *)callerArray filePath:(NSString *)file status:(int)status;
-- (void)evalFile:(NSString *)file header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(int)status;
-- (void)evalData:(NSData *)data header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(int)status;
+- (PxPair *)partitionedCallers:(NSArray *)callerArray filePath:(NSString *)file status:(NSInteger)status;
+- (void)evalFile:(NSString *)file header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(NSInteger)status;
+- (void)evalData:(NSData *)data header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(NSInteger)status;
 - (void)evalConnenctionQueue;
 - (void)showNetworkActivity;
 - (void)hideNetworkActivity;
@@ -143,7 +143,7 @@
     // Dont know ...
 }
 
-- (void)connection:(PxHTTPConnection *)c didCompleteWithStatus:(int)status {
+- (void)connection:(PxHTTPConnection *)c didCompleteWithStatus:(NSInteger)status {
     [self hideNetworkActivity];
     
     [_connectionQueue deleteIf:^BOOL(id obj) {
@@ -200,7 +200,7 @@
 }
 
 
-- (PxPair *)partitionedCallers:(NSArray *)callerArray filePath:(NSString *)file status:(int)status {
+- (PxPair *)partitionedCallers:(NSArray *)callerArray filePath:(NSString *)file status:(NSInteger)status {
     return [[callerArray collect:^id(PxCaller *caller) {
         if ([caller target] && [caller action]) {
             PxResult *result = [[PxResult alloc] initWithCaller:caller];
@@ -214,7 +214,7 @@
     }];
 }
 
-- (void)evalFile:(NSString *)file header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(int)status {
+- (void)evalFile:(NSString *)file header:(NSDictionary *)header forCallers:(NSArray *)callerArray status:(NSInteger)status {
     PxPair *parseAndNotParse = [self partitionedCallers:callerArray filePath:file status:status];
     NSURL *fileURL = [NSURL fileURLWithPath:file isDirectory:NO];
     
@@ -289,7 +289,7 @@
     NSArray *callerArray = [connection caller];
     NSString *filePath = [connection filePath];
     id parseInput = nil;
-    int status = [connection statusCode];
+    NSInteger status = [connection statusCode];
     NSError *error = nil;
     
     
@@ -368,7 +368,7 @@
 }
 
 - (void)handleFailure:(PxHTTPConnection *)connection {
-    int status = [connection statusCode];
+    NSInteger status = [connection statusCode];
     NSArray *callerArray = [connection caller];
     
     PxPair *cacheAndNoCache = [callerArray partition:^BOOL(PxCaller *caller) {

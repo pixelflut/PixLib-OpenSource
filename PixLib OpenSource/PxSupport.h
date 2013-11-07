@@ -72,6 +72,10 @@ static inline CGRect CGRectNormalizeForDevice(CGRect rect) {
 	return CGRectMake(CGFloatNormalizeForDevice(rect.origin.x), CGFloatNormalizeForDevice(rect.origin.y), CGFloatNormalizeForDevice(rect.size.width), CGFloatNormalizeForDevice(rect.size.height));
 }
 
+static inline CGPoint CGRectGetCenter(CGRect rect) {
+    return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+}
+
 #pragma mark - CGSize
 static inline CGSize CGSizeNormalizeForDevice(CGSize size) {
 	return CGSizeMake(CGFloatNormalizeForDevice(size.width), CGFloatNormalizeForDevice(size.height));
@@ -86,6 +90,10 @@ static inline CGFloat CGPointDistance(CGPoint p1, CGPoint p2) {
 
 static inline CGPoint CGPointNormalizeForDevice(CGPoint point) {
 	return CGPointMake(CGFloatNormalizeForDevice(point.x), CGFloatNormalizeForDevice(point.y));
+}
+
+static inline CGPoint CGPointAdd(CGPoint point1, CGPoint point2) {
+    return CGPointMake(point1.x + point2.x, point1.y + point2.y);
 }
 
 #pragma mark - CGFloat
@@ -216,6 +224,11 @@ static PxInterpolationBlock squareEaseOut = ^CGFloat(CGFloat t, CGFloat start, C
 };
 
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
+
+typedef struct {
+	CGFloat outerRadius;
+	CGFloat innerRadius;
+} PxTorus;
 
 #pragma mark - Macro Helpers
 

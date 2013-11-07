@@ -269,7 +269,7 @@ UIImageOrientation PxOrientationConvertTIFFToUIImage(PxTIFFOrientation orientati
 }
 
 PxTIFFOrientation PxOrientationConvertUIImageToTIFF(UIImageOrientation orientation) {
-    if (orientation < 8) {
+    if ((int)orientation < 8) {
         return PxUIImage_TIFFOrientationLUT[orientation];
     }
     return PxTIFFOrientationUnknown;

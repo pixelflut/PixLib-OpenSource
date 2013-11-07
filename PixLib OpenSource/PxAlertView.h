@@ -34,7 +34,7 @@
 @property(nonatomic, readonly, strong) id userInfo;
 
 - (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelTitle okButtonTitle:(NSString *)okTitle userInfo:(id)info block:(void (^)(BOOL confirm, id info))block;
-- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle userInfo:(id)userInfo block:(void (^)(int  buttonIndex, id info))block otherButtonTitles:(NSString *)otherButtonTitles, ...;
+- (id)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle userInfo:(id)userInfo block:(void (^)(NSInteger buttonIndex, id info))block otherButtonTitles:(NSString *)otherButtonTitles, ...;
 - (id)initWithTitle:(NSString *)title message:(NSString *)message block:(void (^)(PxActionButtonConfig *buttonConfig))block;
 
 @end

@@ -30,7 +30,7 @@
 
 @interface PxResult : NSObject
 @property(nonatomic, readonly, strong) PxCaller *caller;
-@property(nonatomic, assign) int status;
+@property(nonatomic, assign) NSInteger status;
 @property(nonatomic, strong) id returnObject;
 @property(nonatomic, strong) NSString *filePath;
 
