@@ -31,7 +31,7 @@
 #import "PxXMLHelper.h"
 
 
-#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((char)(__var__ = getc_unlocked(__file__)) == EOF){ PxError(@"CXML Syntax Error: Unexpected End Of File!");}
+#define GETC_UNLOCKED_SAVE(__var__, __file__) if ((__var__ = getc_unlocked(__file__)) == (unsigned char)EOF){ PxError(@"CXML Syntax Error: Unexpected End Of File!");}
 
 #define CLEAN_FILE_BEFORE_RETURN funlockfile(file);fclose(file);CFRelease(stack);CFRelease(parentStack);
 
@@ -202,7 +202,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     
     unsigned char character;
     
-    char type[] = {'t', 'y', 'p', 'e'};
+    unsigned char type[] = {'t', 'y', 'p', 'e'};
         
     NSString *nextTag = nil;
     NSString *nextType = nil;
@@ -256,6 +256,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                             t=NO;
                         }
                     }
+
                     if (t) {
                         // Skip starting Quote
                         fseek(file, 1, SEEK_CUR);
