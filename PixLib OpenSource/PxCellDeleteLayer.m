@@ -54,7 +54,8 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    objc_msgSend(_target, _action, self);
+    void (*action)(id, SEL, id) = (void (*)(id, SEL, id))objc_msgSend;
+    action(_target, _action, self);
 }
 
 - (void)setTarget:(id)target action:(SEL)action {
