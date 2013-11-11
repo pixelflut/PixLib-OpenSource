@@ -74,6 +74,7 @@
     [_tableView setDefaultResizingMask];
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_tableView setSectional:[[self class] sectional]];
+    [_tableView setAlternating:[[self class] alternating]];
     [_tableView setPxDataSource:self];
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
