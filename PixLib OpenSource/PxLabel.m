@@ -43,7 +43,23 @@
 }
 
 - (void)drawTextInRect:(CGRect)rect {
-    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _insets)];
+    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.insets)];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    size = [super sizeThatFits:size];
+    size.width += self.insets.left + self.insets.right;
+    size.height += self.insets.top + self.insets.bottom;
+    return size;
+}
+
+- (void)sizeToFit {
+    [super sizeToFit];
+    
+    CGSize selfSize = self.size;
+    selfSize.width += self.insets.left + self.insets.right;
+    selfSize.height += self.insets.top + self.insets.bottom;
+    [self setSize:selfSize];
 }
 
 - (float)heightToFitWidth:(float)width {
