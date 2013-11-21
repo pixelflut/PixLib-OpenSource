@@ -46,22 +46,6 @@
     return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.insets)];
 }
 
-- (CGSize)sizeThatFits:(CGSize)size {
-    size = [super sizeThatFits:size];
-    size.width += self.insets.left + self.insets.right;
-    size.height += self.insets.top + self.insets.bottom;
-    return size;
-}
-
-- (void)sizeToFit {
-    [super sizeToFit];
-    
-    CGSize selfSize = self.size;
-    selfSize.width += self.insets.left + self.insets.right;
-    selfSize.height += self.insets.top + self.insets.bottom;
-    [self setSize:selfSize];
-}
-
 - (float)heightToFitWidth:(float)width {
 	return [super heightToFitWidth:MAX(0, width-self.insets.left-self.insets.right)] + self.insets.top + self.insets.bottom;
 }
