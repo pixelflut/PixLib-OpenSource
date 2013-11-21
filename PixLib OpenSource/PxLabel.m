@@ -43,7 +43,7 @@
 }
 
 - (void)drawTextInRect:(CGRect)rect {
-    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, _insets)];
+    return [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.insets)];
 }
 
 - (float)heightToFitWidth:(float)width {
