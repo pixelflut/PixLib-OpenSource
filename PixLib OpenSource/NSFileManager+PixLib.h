@@ -34,4 +34,6 @@ NSString * PxTempDirectory(void);
 
 @interface NSFileManager (PixLib)
 
+- (unsigned long long int)sizeOfDirectoryAtPath:(NSString *)directoryPath;
+
 @end

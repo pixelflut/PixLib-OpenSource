@@ -29,4 +29,6 @@
 
 @interface PxRotatingScreen : UIView
 
+- (id)initWithSupportedOrientations:(NSUInteger)supportedOrientations targetWindow:(UIWindow *)targetWindow;
+
 @end

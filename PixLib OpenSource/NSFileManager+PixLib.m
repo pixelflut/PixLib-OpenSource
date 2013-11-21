@@ -70,4 +70,18 @@ NSString * PxTempDirectory() {
 
 @implementation NSFileManager (PixLib)
 
+- (unsigned long long int)sizeOfDirectoryAtPath:(NSString *)directoryPath {
+    NSArray *filesArray = [self subpathsOfDirectoryAtPath:directoryPath error:nil];
+    NSEnumerator *filesEnumerator = [filesArray objectEnumerator];
+    NSString *fileName;
+    unsigned long long int fileSize = 0;
+    
+    while (fileName = [filesEnumerator nextObject]) {
+        NSDictionary *fileDictionary = [[NSFileManager defaultManager] attributesOfItemAtPath:[directoryPath stringByAppendingPathComponent:fileName] error:nil];
+        fileSize += [fileDictionary fileSize];
+    }
+    
+    return fileSize;
+}
+
 @end

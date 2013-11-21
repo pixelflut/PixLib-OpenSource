@@ -30,7 +30,11 @@
 #import "PxCore.h"
 
 @interface PxRotatingScreen ()
+@property(nonatomic, weak) UIWindow *keyWindow;
 @property(nonatomic, strong) UIView *contentView;
+@property(nonatomic, assign) NSUInteger supportedOrientations;
+
+- (NSString *)orientationNotificationName;
 
 @end
 
@@ -40,15 +44,16 @@
     return [[UIApplication sharedApplication] statusBarOrientation];
 }
 
-- (UIWindow *)keyWindow {
-    return [[UIApplication sharedApplication] keyWindow];
+- (NSString *)orientationNotificationName {
+    return UIApplicationWillChangeStatusBarOrientationNotification;
 }
 
-- (id)init {
-    self = [super initWithFrame:CGRectFromSize(self.keyWindow.frame.size)];
+- (id)initWithSupportedOrientations:(NSUInteger)supportedOrientations targetWindow:(UIWindow *)targetWindow {
+    self = [super initWithFrame:CGRectFromSize(targetWindow.frame.size)];
     if (self) {
+        self.keyWindow = targetWindow;
         [self.layer setAnchorPoint:CGPointMake(0.5, 0.5)];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationWillChange:) name:[self orientationNotificationName] object:nil];
         
         _contentView = [[UIView alloc] initWithFrame:CGRectZero];
         [super addSubview:_contentView];
@@ -59,28 +64,30 @@
 }
 
 - (void)rotate:(UIInterfaceOrientation)orientation {
-    CGSize windowSize = self.keyWindow.frame.size;
-    switch (orientation) {
-        case UIInterfaceOrientationPortrait:
-            [self.layer setBounds:CGRectFromSize(windowSize)];
-            self.layer.transform = CATransform3DIdentity;
-            break;
-        case UIInterfaceOrientationLandscapeLeft:
-            [self.layer setBounds:CGRectMake(0, 0, windowSize.height, windowSize.width)];
-            self.layer.transform = CATransform3DMakeRotation(-M_PI_2, 0, 0, 1);
-            break;
-        case UIInterfaceOrientationLandscapeRight:
-            [self.layer setBounds:CGRectMake(0, 0, windowSize.height, windowSize.width)];
-            self.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 1);
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            [self.layer setBounds:CGRectFromSize(windowSize)];
-            self.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-            break;
-        default:
-            break;
+    if ((1 << orientation) & self.supportedOrientations) {
+        CGSize windowSize = self.keyWindow.frame.size;
+        switch (orientation) {
+            case UIInterfaceOrientationPortrait:
+                [self.layer setBounds:CGRectFromSize(windowSize)];
+                self.layer.transform = CATransform3DIdentity;
+                break;
+            case UIInterfaceOrientationLandscapeLeft:
+                [self.layer setBounds:CGRectMake(0, 0, windowSize.height, windowSize.width)];
+                self.layer.transform = CATransform3DMakeRotation(-M_PI_2, 0, 0, 1);
+                break;
+            case UIInterfaceOrientationLandscapeRight:
+                [self.layer setBounds:CGRectMake(0, 0, windowSize.height, windowSize.width)];
+                self.layer.transform = CATransform3DMakeRotation(M_PI_2, 0, 0, 1);
+                break;
+            case UIInterfaceOrientationPortraitUpsideDown:
+                [self.layer setBounds:CGRectFromSize(windowSize)];
+                self.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+                break;
+            default:
+                break;
+        }
+        [_contentView setFrame:[self contentFrameOpen:orientation]];
     }
-    [_contentView setFrame:[self contentFrameOpen:orientation]];
 }
 
 - (CGRect)contentFrameOpen:(UIInterfaceOrientation)orientation {
