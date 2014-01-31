@@ -16,6 +16,10 @@
 		DB06F391189BBD1500F8C52E /* PxImageStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F390189BBD1500F8C52E /* PxImageStorage.m */; };
 		DB06F394189BC78E00F8C52E /* PxRemoteImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F393189BC78E00F8C52E /* PxRemoteImageService.m */; };
 		DB06F397189BC9E400F8C52E /* PxRemoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F396189BC9E400F8C52E /* PxRemoteImageView.m */; };
+		DB06F39A189BF31E00F8C52E /* PxActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F399189BF31E00F8C52E /* PxActionSheet.m */; };
+		DB06F39E189BF35900F8C52E /* PxActionButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F39D189BF35900F8C52E /* PxActionButtonConfig.m */; };
+		DB06F3A1189BF43C00F8C52E /* PxInputAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F3A0189BF43C00F8C52E /* PxInputAnimation.m */; };
+		DB06F3A4189BF61F00F8C52E /* PxAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F3A3189BF61F00F8C52E /* PxAlertView.m */; };
 		DB26BBD2189A67A700FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BBD1189A67A700FC2211 /* Foundation.framework */; };
 		DB26BBD7189A67A700FC2211 /* PxUIKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB26BBD6189A67A700FC2211 /* PxUIKit.h */; };
 		DB26BBE0189A67A700FC2211 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BBDF189A67A700FC2211 /* XCTest.framework */; };
@@ -83,6 +87,14 @@
 		DB06F393189BC78E00F8C52E /* PxRemoteImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxRemoteImageService.m; sourceTree = "<group>"; };
 		DB06F395189BC9E400F8C52E /* PxRemoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxRemoteImageView.h; sourceTree = "<group>"; };
 		DB06F396189BC9E400F8C52E /* PxRemoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxRemoteImageView.m; sourceTree = "<group>"; };
+		DB06F398189BF31E00F8C52E /* PxActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxActionSheet.h; sourceTree = "<group>"; };
+		DB06F399189BF31E00F8C52E /* PxActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxActionSheet.m; sourceTree = "<group>"; };
+		DB06F39C189BF35900F8C52E /* PxActionButtonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxActionButtonConfig.h; sourceTree = "<group>"; };
+		DB06F39D189BF35900F8C52E /* PxActionButtonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxActionButtonConfig.m; sourceTree = "<group>"; };
+		DB06F39F189BF43C00F8C52E /* PxInputAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxInputAnimation.h; sourceTree = "<group>"; };
+		DB06F3A0189BF43C00F8C52E /* PxInputAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxInputAnimation.m; sourceTree = "<group>"; };
+		DB06F3A2189BF61F00F8C52E /* PxAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxAlertView.h; sourceTree = "<group>"; };
+		DB06F3A3189BF61F00F8C52E /* PxAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxAlertView.m; sourceTree = "<group>"; };
 		DB26BBCE189A67A700FC2211 /* libPxUIKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPxUIKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB26BBD1189A67A700FC2211 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB26BBD5189A67A700FC2211 /* PxUIKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PxUIKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -162,6 +174,17 @@
 				DB06F385189BA93400F8C52E /* PxDataCollectionGridView.m */,
 			);
 			name = CollectionView;
+			sourceTree = "<group>";
+		};
+		DB06F39B189BF33300F8C52E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DB06F39C189BF35900F8C52E /* PxActionButtonConfig.h */,
+				DB06F39D189BF35900F8C52E /* PxActionButtonConfig.m */,
+				DB06F39F189BF43C00F8C52E /* PxInputAnimation.h */,
+				DB06F3A0189BF43C00F8C52E /* PxInputAnimation.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		DB26BBC5189A67A700FC2211 = {
@@ -265,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				DB26BBFC189A68A600FC2211 /* Controllers */,
+				DB06F39B189BF33300F8C52E /* Models */,
 				DB26BBFE189A68B500FC2211 /* Services */,
 				DB26BBFD189A68AE00FC2211 /* Storage */,
 				DB26BBFF189A68BC00FC2211 /* Views */,
@@ -327,6 +351,10 @@
 		DB26BC2F189A7D3700FC2211 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				DB06F398189BF31E00F8C52E /* PxActionSheet.h */,
+				DB06F399189BF31E00F8C52E /* PxActionSheet.m */,
+				DB06F3A2189BF61F00F8C52E /* PxAlertView.h */,
+				DB06F3A3189BF61F00F8C52E /* PxAlertView.m */,
 				DB06F395189BC9E400F8C52E /* PxRemoteImageView.h */,
 				DB06F396189BC9E400F8C52E /* PxRemoteImageView.m */,
 			);
@@ -426,14 +454,18 @@
 				DB26BC2B189A7BFC00FC2211 /* PxViewController.m in Sources */,
 				DB06F386189BA93400F8C52E /* PxDataCollectionGridView.m in Sources */,
 				DB06F383189BA8F000F8C52E /* PxCollectionViewGridLayout.m in Sources */,
+				DB06F3A4189BF61F00F8C52E /* PxAlertView.m in Sources */,
 				DB26BC1A189A69F900FC2211 /* UILabel+PxUIKit.m in Sources */,
 				DB26BC25189A6FFA00FC2211 /* PxUIKitImageSupport.m in Sources */,
 				DB26BC0B189A696600FC2211 /* UIApplication+PxUIKit.m in Sources */,
 				DB06F397189BC9E400F8C52E /* PxRemoteImageView.m in Sources */,
 				DB26BC1D189A6A0800FC2211 /* UIScrollView+PxUIKit.m in Sources */,
+				DB06F39A189BF31E00F8C52E /* PxActionSheet.m in Sources */,
 				DB26BC17189A69EB00FC2211 /* UIImageView+PxUIKit.m in Sources */,
+				DB06F3A1189BF43C00F8C52E /* PxInputAnimation.m in Sources */,
 				DB26BC08189A694100FC2211 /* NSAttributedString+PxUIKit.m in Sources */,
 				DB26BC05189A692A00FC2211 /* NSMutableAttributedString+PxUIKit.m in Sources */,
+				DB06F39E189BF35900F8C52E /* PxActionButtonConfig.m in Sources */,
 				DB06F38E189BB5DD00F8C52E /* PxDrawService.m in Sources */,
 				DB06F38B189BB38600F8C52E /* PxCollectionViewController.m in Sources */,
 				DB06F37D189BA6E100F8C52E /* PxCollectionView.m in Sources */,
