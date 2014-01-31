@@ -1,0 +1,709 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		DB26BBBE189A619200FC2211 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB26BBBF189A619200FC2211 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				DB26BBC4189A61DB00FC2211 /* Build Framework */,
+			);
+			dependencies = (
+				DB26BBC3189A61CF00FC2211 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		DB26BB55189A57DB00FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB54189A57DB00FC2211 /* Foundation.framework */; };
+		DB26BB5A189A57DB00FC2211 /* PxMarkupKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */; };
+		DB26BB63189A57DB00FC2211 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB62189A57DB00FC2211 /* XCTest.framework */; };
+		DB26BB64189A57DB00FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB54189A57DB00FC2211 /* Foundation.framework */; };
+		DB26BB69189A57DB00FC2211 /* libPxMarkupKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */; };
+		DB26BB6F189A57DB00FC2211 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */; };
+		DB26BB71189A57DB00FC2211 /* PxMarkupKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */; };
+		DB26BB7D189A583500FC2211 /* NSDate+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB7C189A583500FC2211 /* NSDate+PxMarkupKit.m */; };
+		DB26BB80189A585A00FC2211 /* NSNumber+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB7F189A585A00FC2211 /* NSNumber+PxMarkupKit.m */; };
+		DB26BB83189A588000FC2211 /* NSString+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB82189A588000FC2211 /* NSString+PxMarkupKit.m */; };
+		DB26BB8D189A5A5100FC2211 /* PxMarkupKitXMLSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB8C189A5A5100FC2211 /* PxMarkupKitXMLSupport.m */; };
+		DB26BB95189A5C3100FC2211 /* PxAsyncParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB92189A5C3100FC2211 /* PxAsyncParseService.m */; };
+		DB26BB96189A5C3100FC2211 /* PxParseService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB94189A5C3100FC2211 /* PxParseService.m */; };
+		DB26BB9F189A5C6E00FC2211 /* PxCXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB98189A5C6E00FC2211 /* PxCXMLParser.m */; };
+		DB26BBA0189A5C6E00FC2211 /* PxHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB9A189A5C6E00FC2211 /* PxHTMLParser.m */; };
+		DB26BBA1189A5C6E00FC2211 /* PxJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB9C189A5C6E00FC2211 /* PxJSONParser.m */; };
+		DB26BBA2189A5C6E00FC2211 /* PxXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB9E189A5C6E00FC2211 /* PxXMLParser.m */; };
+		DB26BBA4189A5DD500FC2211 /* PxCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BBA3189A5DD500FC2211 /* PxCore.framework */; };
+		DB26BBA9189A5EA400FC2211 /* PxMarkupBuildService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BBA8189A5EA400FC2211 /* PxMarkupBuildService.m */; };
+		DB26BBAC189A5EAF00FC2211 /* PxCXMLBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BBAB189A5EAF00FC2211 /* PxCXMLBuilder.m */; };
+		DB26BBAE189A60BB00FC2211 /* PxMarkupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBAF189A60BD00FC2211 /* NSDate+PxMarkupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB7B189A583500FC2211 /* NSDate+PxMarkupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB0189A60BF00FC2211 /* NSNumber+PxMarkupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB7E189A585A00FC2211 /* NSNumber+PxMarkupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB1189A60C100FC2211 /* NSString+PxMarkupKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB81189A588000FC2211 /* NSString+PxMarkupKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB2189A60C400FC2211 /* PxCXMLBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BBAA189A5EAF00FC2211 /* PxCXMLBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB3189A60C800FC2211 /* PxMarkupBuildService.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BBA7189A5EA400FC2211 /* PxMarkupBuildService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB4189A60CB00FC2211 /* PxCXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB97189A5C6E00FC2211 /* PxCXMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB5189A60D000FC2211 /* PxHTMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB99189A5C6E00FC2211 /* PxHTMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB6189A60D300FC2211 /* PxJSONParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB9B189A5C6E00FC2211 /* PxJSONParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB7189A60D500FC2211 /* PxXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB9D189A5C6E00FC2211 /* PxXMLParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB8189A60D700FC2211 /* PxAsyncParseService.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB91189A5C3100FC2211 /* PxAsyncParseService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBB9189A60DA00FC2211 /* PxParseService.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB93189A5C3100FC2211 /* PxParseService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBBA189A60DC00FC2211 /* PxMarkupKitMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB8E189A5AA500FC2211 /* PxMarkupKitMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBBB189A60DE00FC2211 /* PxMarkupKitSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB88189A597000FC2211 /* PxMarkupKitSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BBBC189A60E100FC2211 /* PxMarkupKitXMLSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BB8B189A5A5100FC2211 /* PxMarkupKitXMLSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB26BB67189A57DB00FC2211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB26BB49189A57DB00FC2211 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB26BB50189A57DB00FC2211;
+			remoteInfo = PxMarkupKit;
+		};
+		DB26BBC2189A61CF00FC2211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB26BB49189A57DB00FC2211 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB26BB50189A57DB00FC2211;
+			remoteInfo = PxMarkupKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DB26BB4F189A57DB00FC2211 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				DB26BB5A189A57DB00FC2211 /* PxMarkupKit.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPxMarkupKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB26BB54189A57DB00FC2211 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DB26BB58189A57DB00FC2211 /* PxMarkupKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PxMarkupKit-Prefix.pch"; sourceTree = "<group>"; };
+		DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PxMarkupKit.h; sourceTree = "<group>"; };
+		DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PxMarkupKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB26BB62189A57DB00FC2211 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DB26BB6C189A57DB00FC2211 /* PxMarkupKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PxMarkupKitTests-Info.plist"; sourceTree = "<group>"; };
+		DB26BB6E189A57DB00FC2211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PxMarkupKitTests.m; sourceTree = "<group>"; };
+		DB26BB7B189A583500FC2211 /* NSDate+PxMarkupKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PxMarkupKit.h"; sourceTree = "<group>"; };
+		DB26BB7C189A583500FC2211 /* NSDate+PxMarkupKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PxMarkupKit.m"; sourceTree = "<group>"; };
+		DB26BB7E189A585A00FC2211 /* NSNumber+PxMarkupKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+PxMarkupKit.h"; sourceTree = "<group>"; };
+		DB26BB7F189A585A00FC2211 /* NSNumber+PxMarkupKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+PxMarkupKit.m"; sourceTree = "<group>"; };
+		DB26BB81189A588000FC2211 /* NSString+PxMarkupKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PxMarkupKit.h"; sourceTree = "<group>"; };
+		DB26BB82189A588000FC2211 /* NSString+PxMarkupKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PxMarkupKit.m"; sourceTree = "<group>"; };
+		DB26BB88189A597000FC2211 /* PxMarkupKitSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxMarkupKitSupport.h; sourceTree = "<group>"; };
+		DB26BB8B189A5A5100FC2211 /* PxMarkupKitXMLSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxMarkupKitXMLSupport.h; sourceTree = "<group>"; };
+		DB26BB8C189A5A5100FC2211 /* PxMarkupKitXMLSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxMarkupKitXMLSupport.m; sourceTree = "<group>"; };
+		DB26BB8E189A5AA500FC2211 /* PxMarkupKitMapping.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PxMarkupKitMapping.h; sourceTree = "<group>"; };
+		DB26BB91189A5C3100FC2211 /* PxAsyncParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxAsyncParseService.h; sourceTree = "<group>"; };
+		DB26BB92189A5C3100FC2211 /* PxAsyncParseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxAsyncParseService.m; sourceTree = "<group>"; };
+		DB26BB93189A5C3100FC2211 /* PxParseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxParseService.h; sourceTree = "<group>"; };
+		DB26BB94189A5C3100FC2211 /* PxParseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxParseService.m; sourceTree = "<group>"; };
+		DB26BB97189A5C6E00FC2211 /* PxCXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCXMLParser.h; sourceTree = "<group>"; };
+		DB26BB98189A5C6E00FC2211 /* PxCXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCXMLParser.m; sourceTree = "<group>"; };
+		DB26BB99189A5C6E00FC2211 /* PxHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxHTMLParser.h; sourceTree = "<group>"; };
+		DB26BB9A189A5C6E00FC2211 /* PxHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxHTMLParser.m; sourceTree = "<group>"; };
+		DB26BB9B189A5C6E00FC2211 /* PxJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxJSONParser.h; sourceTree = "<group>"; };
+		DB26BB9C189A5C6E00FC2211 /* PxJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxJSONParser.m; sourceTree = "<group>"; };
+		DB26BB9D189A5C6E00FC2211 /* PxXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxXMLParser.h; sourceTree = "<group>"; };
+		DB26BB9E189A5C6E00FC2211 /* PxXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxXMLParser.m; sourceTree = "<group>"; };
+		DB26BBA3189A5DD500FC2211 /* PxCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PxCore.framework; path = ../Frameworks/PxCore.framework; sourceTree = "<group>"; };
+		DB26BBA7189A5EA400FC2211 /* PxMarkupBuildService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxMarkupBuildService.h; sourceTree = "<group>"; };
+		DB26BBA8189A5EA400FC2211 /* PxMarkupBuildService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxMarkupBuildService.m; sourceTree = "<group>"; };
+		DB26BBAA189A5EAF00FC2211 /* PxCXMLBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCXMLBuilder.h; sourceTree = "<group>"; };
+		DB26BBAB189A5EAF00FC2211 /* PxCXMLBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCXMLBuilder.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB26BB4E189A57DB00FC2211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB55189A57DB00FC2211 /* Foundation.framework in Frameworks */,
+				DB26BBA4189A5DD500FC2211 /* PxCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB26BB5E189A57DB00FC2211 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB63189A57DB00FC2211 /* XCTest.framework in Frameworks */,
+				DB26BB69189A57DB00FC2211 /* libPxMarkupKit.a in Frameworks */,
+				DB26BB64189A57DB00FC2211 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB26BB48189A57DB00FC2211 = {
+			isa = PBXGroup;
+			children = (
+				DB26BB56189A57DB00FC2211 /* PxMarkupKit */,
+				DB26BB6A189A57DB00FC2211 /* PxMarkupKitTests */,
+				DB26BB53189A57DB00FC2211 /* Frameworks */,
+				DB26BB52189A57DB00FC2211 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB26BB52189A57DB00FC2211 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */,
+				DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB26BB53189A57DB00FC2211 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BBA3189A5DD500FC2211 /* PxCore.framework */,
+				DB26BB54189A57DB00FC2211 /* Foundation.framework */,
+				DB26BB62189A57DB00FC2211 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB26BB56189A57DB00FC2211 /* PxMarkupKit */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */,
+				DB26BB7A189A581800FC2211 /* Categories */,
+				DB26BB84189A58E600FC2211 /* Classes */,
+				DB26BB87189A591800FC2211 /* Support */,
+				DB26BB57189A57DB00FC2211 /* Supporting Files */,
+			);
+			path = PxMarkupKit;
+			sourceTree = "<group>";
+		};
+		DB26BB57189A57DB00FC2211 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB58189A57DB00FC2211 /* PxMarkupKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB26BB6A189A57DB00FC2211 /* PxMarkupKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */,
+				DB26BB6B189A57DB00FC2211 /* Supporting Files */,
+			);
+			path = PxMarkupKitTests;
+			sourceTree = "<group>";
+		};
+		DB26BB6B189A57DB00FC2211 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB6C189A57DB00FC2211 /* PxMarkupKitTests-Info.plist */,
+				DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB26BB7A189A581800FC2211 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB7B189A583500FC2211 /* NSDate+PxMarkupKit.h */,
+				DB26BB7C189A583500FC2211 /* NSDate+PxMarkupKit.m */,
+				DB26BB7E189A585A00FC2211 /* NSNumber+PxMarkupKit.h */,
+				DB26BB7F189A585A00FC2211 /* NSNumber+PxMarkupKit.m */,
+				DB26BB81189A588000FC2211 /* NSString+PxMarkupKit.h */,
+				DB26BB82189A588000FC2211 /* NSString+PxMarkupKit.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		DB26BB84189A58E600FC2211 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB85189A58F300FC2211 /* Builder */,
+				DB26BB86189A58F800FC2211 /* Parser */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		DB26BB85189A58F300FC2211 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BBA6189A5E9400FC2211 /* ContentTypes */,
+				DB26BBA5189A5E8A00FC2211 /* Services */,
+			);
+			name = Builder;
+			sourceTree = "<group>";
+		};
+		DB26BB86189A58F800FC2211 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB8F189A5C0D00FC2211 /* ContentTypes */,
+				DB26BB90189A5C1D00FC2211 /* Services */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		DB26BB87189A591800FC2211 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB8E189A5AA500FC2211 /* PxMarkupKitMapping.h */,
+				DB26BB88189A597000FC2211 /* PxMarkupKitSupport.h */,
+				DB26BB8B189A5A5100FC2211 /* PxMarkupKitXMLSupport.h */,
+				DB26BB8C189A5A5100FC2211 /* PxMarkupKitXMLSupport.m */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		DB26BB8F189A5C0D00FC2211 /* ContentTypes */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB97189A5C6E00FC2211 /* PxCXMLParser.h */,
+				DB26BB98189A5C6E00FC2211 /* PxCXMLParser.m */,
+				DB26BB99189A5C6E00FC2211 /* PxHTMLParser.h */,
+				DB26BB9A189A5C6E00FC2211 /* PxHTMLParser.m */,
+				DB26BB9B189A5C6E00FC2211 /* PxJSONParser.h */,
+				DB26BB9C189A5C6E00FC2211 /* PxJSONParser.m */,
+				DB26BB9D189A5C6E00FC2211 /* PxXMLParser.h */,
+				DB26BB9E189A5C6E00FC2211 /* PxXMLParser.m */,
+			);
+			name = ContentTypes;
+			sourceTree = "<group>";
+		};
+		DB26BB90189A5C1D00FC2211 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BB91189A5C3100FC2211 /* PxAsyncParseService.h */,
+				DB26BB92189A5C3100FC2211 /* PxAsyncParseService.m */,
+				DB26BB93189A5C3100FC2211 /* PxParseService.h */,
+				DB26BB94189A5C3100FC2211 /* PxParseService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		DB26BBA5189A5E8A00FC2211 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BBA7189A5EA400FC2211 /* PxMarkupBuildService.h */,
+				DB26BBA8189A5EA400FC2211 /* PxMarkupBuildService.m */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		DB26BBA6189A5E9400FC2211 /* ContentTypes */ = {
+			isa = PBXGroup;
+			children = (
+				DB26BBAA189A5EAF00FC2211 /* PxCXMLBuilder.h */,
+				DB26BBAB189A5EAF00FC2211 /* PxCXMLBuilder.m */,
+			);
+			name = ContentTypes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DB26BBAD189A60B000FC2211 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BBAE189A60BB00FC2211 /* PxMarkupKit.h in Headers */,
+				DB26BBAF189A60BD00FC2211 /* NSDate+PxMarkupKit.h in Headers */,
+				DB26BBB0189A60BF00FC2211 /* NSNumber+PxMarkupKit.h in Headers */,
+				DB26BBB1189A60C100FC2211 /* NSString+PxMarkupKit.h in Headers */,
+				DB26BBB2189A60C400FC2211 /* PxCXMLBuilder.h in Headers */,
+				DB26BBB3189A60C800FC2211 /* PxMarkupBuildService.h in Headers */,
+				DB26BBB4189A60CB00FC2211 /* PxCXMLParser.h in Headers */,
+				DB26BBB5189A60D000FC2211 /* PxHTMLParser.h in Headers */,
+				DB26BBB6189A60D300FC2211 /* PxJSONParser.h in Headers */,
+				DB26BBB7189A60D500FC2211 /* PxXMLParser.h in Headers */,
+				DB26BBB8189A60D700FC2211 /* PxAsyncParseService.h in Headers */,
+				DB26BBB9189A60DA00FC2211 /* PxParseService.h in Headers */,
+				DB26BBBA189A60DC00FC2211 /* PxMarkupKitMapping.h in Headers */,
+				DB26BBBB189A60DE00FC2211 /* PxMarkupKitSupport.h in Headers */,
+				DB26BBBC189A60E100FC2211 /* PxMarkupKitXMLSupport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DB26BB50189A57DB00FC2211 /* PxMarkupKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB26BB74189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKit" */;
+			buildPhases = (
+				DB26BB4D189A57DB00FC2211 /* Sources */,
+				DB26BB4E189A57DB00FC2211 /* Frameworks */,
+				DB26BB4F189A57DB00FC2211 /* CopyFiles */,
+				DB26BBAD189A60B000FC2211 /* Headers */,
+				DB26BBBD189A613B00FC2211 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PxMarkupKit;
+			productName = PxMarkupKit;
+			productReference = DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		DB26BB60189A57DB00FC2211 /* PxMarkupKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB26BB77189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKitTests" */;
+			buildPhases = (
+				DB26BB5D189A57DB00FC2211 /* Sources */,
+				DB26BB5E189A57DB00FC2211 /* Frameworks */,
+				DB26BB5F189A57DB00FC2211 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB26BB68189A57DB00FC2211 /* PBXTargetDependency */,
+			);
+			name = PxMarkupKitTests;
+			productName = PxMarkupKitTests;
+			productReference = DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB26BB49189A57DB00FC2211 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "pixelflut GmbH";
+			};
+			buildConfigurationList = DB26BB4C189A57DB00FC2211 /* Build configuration list for PBXProject "PxMarkupKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DB26BB48189A57DB00FC2211;
+			productRefGroup = DB26BB52189A57DB00FC2211 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB26BB50189A57DB00FC2211 /* PxMarkupKit */,
+				DB26BB60189A57DB00FC2211 /* PxMarkupKitTests */,
+				DB26BBBE189A619200FC2211 /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB26BB5F189A57DB00FC2211 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB6F189A57DB00FC2211 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DB26BBBD189A613B00FC2211 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		DB26BBC4189A61DB00FC2211 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB26BB4D189A57DB00FC2211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB8D189A5A5100FC2211 /* PxMarkupKitXMLSupport.m in Sources */,
+				DB26BBAC189A5EAF00FC2211 /* PxCXMLBuilder.m in Sources */,
+				DB26BB80189A585A00FC2211 /* NSNumber+PxMarkupKit.m in Sources */,
+				DB26BBA9189A5EA400FC2211 /* PxMarkupBuildService.m in Sources */,
+				DB26BB7D189A583500FC2211 /* NSDate+PxMarkupKit.m in Sources */,
+				DB26BBA0189A5C6E00FC2211 /* PxHTMLParser.m in Sources */,
+				DB26BB9F189A5C6E00FC2211 /* PxCXMLParser.m in Sources */,
+				DB26BB96189A5C3100FC2211 /* PxParseService.m in Sources */,
+				DB26BB95189A5C3100FC2211 /* PxAsyncParseService.m in Sources */,
+				DB26BBA1189A5C6E00FC2211 /* PxJSONParser.m in Sources */,
+				DB26BBA2189A5C6E00FC2211 /* PxXMLParser.m in Sources */,
+				DB26BB83189A588000FC2211 /* NSString+PxMarkupKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB26BB5D189A57DB00FC2211 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB71189A57DB00FC2211 /* PxMarkupKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB26BB68189A57DB00FC2211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB26BB50189A57DB00FC2211 /* PxMarkupKit */;
+			targetProxy = DB26BB67189A57DB00FC2211 /* PBXContainerItemProxy */;
+		};
+		DB26BBC3189A61CF00FC2211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB26BB50189A57DB00FC2211 /* PxMarkupKit */;
+			targetProxy = DB26BBC2189A61CF00FC2211 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB26BB6E189A57DB00FC2211 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB26BB72189A57DB00FC2211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		DB26BB73189A57DB00FC2211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB26BB75189A57DB00FC2211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PxMarkupKit.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DB26BB76189A57DB00FC2211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PxMarkupKit.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DB26BB78189A57DB00FC2211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PxMarkupKitTests/PxMarkupKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DB26BB79189A57DB00FC2211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
+				INFOPLIST_FILE = "PxMarkupKitTests/PxMarkupKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		DB26BBC0189A619200FC2211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		DB26BBC1189A619200FC2211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB26BB4C189A57DB00FC2211 /* Build configuration list for PBXProject "PxMarkupKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB26BB72189A57DB00FC2211 /* Debug */,
+				DB26BB73189A57DB00FC2211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB26BB74189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB26BB75189A57DB00FC2211 /* Debug */,
+				DB26BB76189A57DB00FC2211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DB26BB77189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB26BB78189A57DB00FC2211 /* Debug */,
+				DB26BB79189A57DB00FC2211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DB26BBBF189A619200FC2211 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB26BBC0189A619200FC2211 /* Debug */,
+				DB26BBC1189A619200FC2211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB26BB49189A57DB00FC2211 /* Project object */;
+}

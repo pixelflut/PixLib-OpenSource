@@ -1,0 +1,757 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		DB26BB41189A564B00FC2211 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB26BB42189A564B00FC2211 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				DB26BB47189A568C00FC2211 /* Build Framework */,
+			);
+			dependencies = (
+				DB26BB46189A565A00FC2211 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		DB26BB28189A549500FC2211 /* PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D59189A45FB00349292 /* PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB29189A549E00FC2211 /* NSArray+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D98189A49F600349292 /* NSArray+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2A189A54A100FC2211 /* NSAttributedString+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D9A189A49F600349292 /* NSAttributedString+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2B189A54A400FC2211 /* NSCalendar+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D9C189A49F600349292 /* NSCalendar+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2C189A54A700FC2211 /* NSData+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D9E189A49F600349292 /* NSData+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2D189A54AA00FC2211 /* NSDate+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DA0189A49F600349292 /* NSDate+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2E189A54AD00FC2211 /* NSDictionary+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DA2189A49F600349292 /* NSDictionary+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB2F189A54B000FC2211 /* NSFileManager+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DA4189A49F600349292 /* NSFileManager+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB30189A54B300FC2211 /* NSMutableArray+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DA6189A49F600349292 /* NSMutableArray+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB31189A54B500FC2211 /* NSMutableDictionary+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DAA189A49F600349292 /* NSMutableDictionary+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB32189A54B900FC2211 /* NSMutableSet+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DAC189A49F600349292 /* NSMutableSet+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB33189A54BE00FC2211 /* NSMutableURLRequest+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DAE189A49F600349292 /* NSMutableURLRequest+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB34189A54C100FC2211 /* NSNull+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DB0189A49F600349292 /* NSNull+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB35189A54C500FC2211 /* NSNumber+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DB2189A49F600349292 /* NSNumber+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB36189A54C800FC2211 /* NSObject+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DB4189A49F600349292 /* NSObject+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB37189A54CA00FC2211 /* NSSet+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DB6189A49F600349292 /* NSSet+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB38189A54CD00FC2211 /* NSString+PxCore.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829DB8189A49F600349292 /* NSString+PxCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB39189A54D500FC2211 /* PxLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D83189A498400349292 /* PxLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3A189A54D900FC2211 /* PxMutableIntegerDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D85189A498400349292 /* PxMutableIntegerDictionary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3B189A54DC00FC2211 /* PxPair.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D87189A498400349292 /* PxPair.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3C189A54DF00FC2211 /* PxRange.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D89189A498400349292 /* PxRange.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3D189A54E200FC2211 /* PxWeakValue.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D8B189A498400349292 /* PxWeakValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3E189A54ED00FC2211 /* PxRuntimeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D80189A488100349292 /* PxRuntimeHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB26BB3F189A54F500FC2211 /* PxCoreSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = DB829D7E189A485400349292 /* PxCoreSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB829D55189A45FB00349292 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB829D54189A45FB00349292 /* Foundation.framework */; };
+		DB829D5A189A45FB00349292 /* PxCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB829D59189A45FB00349292 /* PxCore.h */; };
+		DB829D63189A45FB00349292 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB829D62189A45FB00349292 /* XCTest.framework */; };
+		DB829D64189A45FB00349292 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB829D54189A45FB00349292 /* Foundation.framework */; };
+		DB829D69189A45FB00349292 /* libPxCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB829D51189A45FB00349292 /* libPxCore.a */; };
+		DB829D6F189A45FB00349292 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB829D6D189A45FB00349292 /* InfoPlist.strings */; };
+		DB829D71189A45FB00349292 /* PxCoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D70189A45FB00349292 /* PxCoreTests.m */; };
+		DB829D82189A488100349292 /* PxRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D81189A488100349292 /* PxRuntimeHelper.m */; };
+		DB829D8D189A498400349292 /* PxLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D84189A498400349292 /* PxLogger.m */; };
+		DB829D8E189A498400349292 /* PxMutableIntegerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D86189A498400349292 /* PxMutableIntegerDictionary.m */; };
+		DB829D8F189A498400349292 /* PxPair.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D88189A498400349292 /* PxPair.m */; };
+		DB829D90189A498400349292 /* PxRange.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D8A189A498400349292 /* PxRange.m */; };
+		DB829D91189A498400349292 /* PxWeakValue.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D8C189A498400349292 /* PxWeakValue.m */; };
+		DB829D96189A49E400349292 /* hnjalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = DB829D92189A49E400349292 /* hnjalloc.c */; };
+		DB829D97189A49E400349292 /* hyphen.c in Sources */ = {isa = PBXBuildFile; fileRef = DB829D94189A49E400349292 /* hyphen.c */; };
+		DB829DBA189A49F600349292 /* NSArray+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D99189A49F600349292 /* NSArray+PxCore.m */; };
+		DB829DBB189A49F600349292 /* NSAttributedString+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D9B189A49F600349292 /* NSAttributedString+PxCore.m */; };
+		DB829DBC189A49F600349292 /* NSCalendar+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D9D189A49F600349292 /* NSCalendar+PxCore.m */; };
+		DB829DBD189A49F600349292 /* NSData+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829D9F189A49F600349292 /* NSData+PxCore.m */; };
+		DB829DBE189A49F600349292 /* NSDate+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DA1189A49F600349292 /* NSDate+PxCore.m */; };
+		DB829DBF189A49F600349292 /* NSDictionary+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DA3189A49F600349292 /* NSDictionary+PxCore.m */; };
+		DB829DC0189A49F600349292 /* NSFileManager+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DA5189A49F600349292 /* NSFileManager+PxCore.m */; };
+		DB829DC1189A49F600349292 /* NSMutableArray+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DA7189A49F600349292 /* NSMutableArray+PxCore.m */; };
+		DB829DC3189A49F600349292 /* NSMutableDictionary+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DAB189A49F600349292 /* NSMutableDictionary+PxCore.m */; };
+		DB829DC4189A49F600349292 /* NSMutableSet+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DAD189A49F600349292 /* NSMutableSet+PxCore.m */; };
+		DB829DC5189A49F600349292 /* NSMutableURLRequest+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DAF189A49F600349292 /* NSMutableURLRequest+PxCore.m */; };
+		DB829DC6189A49F600349292 /* NSNull+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB1189A49F600349292 /* NSNull+PxCore.m */; };
+		DB829DC7189A49F600349292 /* NSNumber+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB3189A49F600349292 /* NSNumber+PxCore.m */; };
+		DB829DC8189A49F600349292 /* NSObject+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB5189A49F600349292 /* NSObject+PxCore.m */; };
+		DB829DC9189A49F600349292 /* NSSet+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB7189A49F600349292 /* NSSet+PxCore.m */; };
+		DB829DCA189A49F600349292 /* NSString+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB9189A49F600349292 /* NSString+PxCore.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB26BB45189A565A00FC2211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB829D49189A45FB00349292 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB829D50189A45FB00349292;
+			remoteInfo = PxCore;
+		};
+		DB829D67189A45FB00349292 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB829D49189A45FB00349292 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB829D50189A45FB00349292;
+			remoteInfo = PxCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DB829D4F189A45FB00349292 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				DB829D5A189A45FB00349292 /* PxCore.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DB829D51189A45FB00349292 /* libPxCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPxCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB829D54189A45FB00349292 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DB829D58189A45FB00349292 /* PxCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PxCore-Prefix.pch"; sourceTree = "<group>"; };
+		DB829D59189A45FB00349292 /* PxCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxCore.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D61189A45FB00349292 /* PxCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PxCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB829D62189A45FB00349292 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DB829D6C189A45FB00349292 /* PxCoreTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PxCoreTests-Info.plist"; sourceTree = "<group>"; };
+		DB829D6E189A45FB00349292 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB829D70189A45FB00349292 /* PxCoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PxCoreTests.m; sourceTree = "<group>"; };
+		DB829D7E189A485400349292 /* PxCoreSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxCoreSupport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D80189A488100349292 /* PxRuntimeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxRuntimeHelper.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D81189A488100349292 /* PxRuntimeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxRuntimeHelper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D83189A498400349292 /* PxLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxLogger.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D84189A498400349292 /* PxLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxLogger.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D85189A498400349292 /* PxMutableIntegerDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxMutableIntegerDictionary.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D86189A498400349292 /* PxMutableIntegerDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxMutableIntegerDictionary.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D87189A498400349292 /* PxPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxPair.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D88189A498400349292 /* PxPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxPair.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D89189A498400349292 /* PxRange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxRange.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D8A189A498400349292 /* PxRange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxRange.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D8B189A498400349292 /* PxWeakValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PxWeakValue.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D8C189A498400349292 /* PxWeakValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxWeakValue.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D92189A49E400349292 /* hnjalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hnjalloc.c; sourceTree = "<group>"; };
+		DB829D93189A49E400349292 /* hnjalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hnjalloc.h; sourceTree = "<group>"; };
+		DB829D94189A49E400349292 /* hyphen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hyphen.c; sourceTree = "<group>"; };
+		DB829D95189A49E400349292 /* hyphen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hyphen.h; sourceTree = "<group>"; };
+		DB829D98189A49F600349292 /* NSArray+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSArray+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D99189A49F600349292 /* NSArray+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSArray+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D9A189A49F600349292 /* NSAttributedString+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSAttributedString+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D9B189A49F600349292 /* NSAttributedString+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSAttributedString+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D9C189A49F600349292 /* NSCalendar+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSCalendar+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D9D189A49F600349292 /* NSCalendar+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSCalendar+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829D9E189A49F600349292 /* NSData+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSData+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829D9F189A49F600349292 /* NSData+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSData+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DA0189A49F600349292 /* NSDate+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDate+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DA1189A49F600349292 /* NSDate+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSDate+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DA2189A49F600349292 /* NSDictionary+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSDictionary+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DA3189A49F600349292 /* NSDictionary+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSDictionary+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DA4189A49F600349292 /* NSFileManager+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSFileManager+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DA5189A49F600349292 /* NSFileManager+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSFileManager+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DA6189A49F600349292 /* NSMutableArray+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableArray+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DA7189A49F600349292 /* NSMutableArray+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableArray+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DAA189A49F600349292 /* NSMutableDictionary+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableDictionary+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DAB189A49F600349292 /* NSMutableDictionary+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableDictionary+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DAC189A49F600349292 /* NSMutableSet+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableSet+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DAD189A49F600349292 /* NSMutableSet+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableSet+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DAE189A49F600349292 /* NSMutableURLRequest+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSMutableURLRequest+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DAF189A49F600349292 /* NSMutableURLRequest+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSMutableURLRequest+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DB0189A49F600349292 /* NSNull+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSNull+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DB1189A49F600349292 /* NSNull+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSNull+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DB2189A49F600349292 /* NSNumber+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSNumber+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DB3189A49F600349292 /* NSNumber+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSNumber+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DB4189A49F600349292 /* NSObject+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSObject+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DB5189A49F600349292 /* NSObject+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSObject+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DB6189A49F600349292 /* NSSet+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSSet+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DB7189A49F600349292 /* NSSet+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSSet+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DB829DB8189A49F600349292 /* NSString+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSString+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		DB829DB9189A49F600349292 /* NSString+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB829D4E189A45FB00349292 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB829D55189A45FB00349292 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB829D5E189A45FB00349292 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB829D63189A45FB00349292 /* XCTest.framework in Frameworks */,
+				DB829D69189A45FB00349292 /* libPxCore.a in Frameworks */,
+				DB829D64189A45FB00349292 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB829D48189A45FB00349292 = {
+			isa = PBXGroup;
+			children = (
+				DB829D56189A45FB00349292 /* PxCore */,
+				DB829D6A189A45FB00349292 /* PxCoreTests */,
+				DB829D53189A45FB00349292 /* Frameworks */,
+				DB829D52189A45FB00349292 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB829D52189A45FB00349292 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D51189A45FB00349292 /* libPxCore.a */,
+				DB829D61189A45FB00349292 /* PxCoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB829D53189A45FB00349292 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D54189A45FB00349292 /* Foundation.framework */,
+				DB829D62189A45FB00349292 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB829D56189A45FB00349292 /* PxCore */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D59189A45FB00349292 /* PxCore.h */,
+				DB829D7B189A46C200349292 /* Categories */,
+				DB829D7C189A46D400349292 /* Classes */,
+				DB829D7A189A46B200349292 /* cLibs */,
+				DB829D7F189A486F00349292 /* Runtime */,
+				DB829D7D189A481500349292 /* Support */,
+				DB829D57189A45FB00349292 /* Supporting Files */,
+			);
+			path = PxCore;
+			sourceTree = "<group>";
+		};
+		DB829D57189A45FB00349292 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D58189A45FB00349292 /* PxCore-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB829D6A189A45FB00349292 /* PxCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D70189A45FB00349292 /* PxCoreTests.m */,
+				DB829D6B189A45FB00349292 /* Supporting Files */,
+			);
+			path = PxCoreTests;
+			sourceTree = "<group>";
+		};
+		DB829D6B189A45FB00349292 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D6C189A45FB00349292 /* PxCoreTests-Info.plist */,
+				DB829D6D189A45FB00349292 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB829D7A189A46B200349292 /* cLibs */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D92189A49E400349292 /* hnjalloc.c */,
+				DB829D93189A49E400349292 /* hnjalloc.h */,
+				DB829D94189A49E400349292 /* hyphen.c */,
+				DB829D95189A49E400349292 /* hyphen.h */,
+			);
+			name = cLibs;
+			sourceTree = "<group>";
+		};
+		DB829D7B189A46C200349292 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D98189A49F600349292 /* NSArray+PxCore.h */,
+				DB829D99189A49F600349292 /* NSArray+PxCore.m */,
+				DB829D9A189A49F600349292 /* NSAttributedString+PxCore.h */,
+				DB829D9B189A49F600349292 /* NSAttributedString+PxCore.m */,
+				DB829D9C189A49F600349292 /* NSCalendar+PxCore.h */,
+				DB829D9D189A49F600349292 /* NSCalendar+PxCore.m */,
+				DB829D9E189A49F600349292 /* NSData+PxCore.h */,
+				DB829D9F189A49F600349292 /* NSData+PxCore.m */,
+				DB829DA0189A49F600349292 /* NSDate+PxCore.h */,
+				DB829DA1189A49F600349292 /* NSDate+PxCore.m */,
+				DB829DA2189A49F600349292 /* NSDictionary+PxCore.h */,
+				DB829DA3189A49F600349292 /* NSDictionary+PxCore.m */,
+				DB829DA4189A49F600349292 /* NSFileManager+PxCore.h */,
+				DB829DA5189A49F600349292 /* NSFileManager+PxCore.m */,
+				DB829DA6189A49F600349292 /* NSMutableArray+PxCore.h */,
+				DB829DA7189A49F600349292 /* NSMutableArray+PxCore.m */,
+				DB829DAA189A49F600349292 /* NSMutableDictionary+PxCore.h */,
+				DB829DAB189A49F600349292 /* NSMutableDictionary+PxCore.m */,
+				DB829DAC189A49F600349292 /* NSMutableSet+PxCore.h */,
+				DB829DAD189A49F600349292 /* NSMutableSet+PxCore.m */,
+				DB829DAE189A49F600349292 /* NSMutableURLRequest+PxCore.h */,
+				DB829DAF189A49F600349292 /* NSMutableURLRequest+PxCore.m */,
+				DB829DB0189A49F600349292 /* NSNull+PxCore.h */,
+				DB829DB1189A49F600349292 /* NSNull+PxCore.m */,
+				DB829DB2189A49F600349292 /* NSNumber+PxCore.h */,
+				DB829DB3189A49F600349292 /* NSNumber+PxCore.m */,
+				DB829DB4189A49F600349292 /* NSObject+PxCore.h */,
+				DB829DB5189A49F600349292 /* NSObject+PxCore.m */,
+				DB829DB6189A49F600349292 /* NSSet+PxCore.h */,
+				DB829DB7189A49F600349292 /* NSSet+PxCore.m */,
+				DB829DB8189A49F600349292 /* NSString+PxCore.h */,
+				DB829DB9189A49F600349292 /* NSString+PxCore.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		DB829D7C189A46D400349292 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D83189A498400349292 /* PxLogger.h */,
+				DB829D84189A498400349292 /* PxLogger.m */,
+				DB829D85189A498400349292 /* PxMutableIntegerDictionary.h */,
+				DB829D86189A498400349292 /* PxMutableIntegerDictionary.m */,
+				DB829D87189A498400349292 /* PxPair.h */,
+				DB829D88189A498400349292 /* PxPair.m */,
+				DB829D89189A498400349292 /* PxRange.h */,
+				DB829D8A189A498400349292 /* PxRange.m */,
+				DB829D8B189A498400349292 /* PxWeakValue.h */,
+				DB829D8C189A498400349292 /* PxWeakValue.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		DB829D7D189A481500349292 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D7E189A485400349292 /* PxCoreSupport.h */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		DB829D7F189A486F00349292 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				DB829D80189A488100349292 /* PxRuntimeHelper.h */,
+				DB829D81189A488100349292 /* PxRuntimeHelper.m */,
+			);
+			name = Runtime;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DB26BB27189A548300FC2211 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB26BB28189A549500FC2211 /* PxCore.h in Headers */,
+				DB26BB29189A549E00FC2211 /* NSArray+PxCore.h in Headers */,
+				DB26BB2A189A54A100FC2211 /* NSAttributedString+PxCore.h in Headers */,
+				DB26BB2B189A54A400FC2211 /* NSCalendar+PxCore.h in Headers */,
+				DB26BB2C189A54A700FC2211 /* NSData+PxCore.h in Headers */,
+				DB26BB2D189A54AA00FC2211 /* NSDate+PxCore.h in Headers */,
+				DB26BB2E189A54AD00FC2211 /* NSDictionary+PxCore.h in Headers */,
+				DB26BB2F189A54B000FC2211 /* NSFileManager+PxCore.h in Headers */,
+				DB26BB30189A54B300FC2211 /* NSMutableArray+PxCore.h in Headers */,
+				DB26BB31189A54B500FC2211 /* NSMutableDictionary+PxCore.h in Headers */,
+				DB26BB32189A54B900FC2211 /* NSMutableSet+PxCore.h in Headers */,
+				DB26BB33189A54BE00FC2211 /* NSMutableURLRequest+PxCore.h in Headers */,
+				DB26BB34189A54C100FC2211 /* NSNull+PxCore.h in Headers */,
+				DB26BB35189A54C500FC2211 /* NSNumber+PxCore.h in Headers */,
+				DB26BB36189A54C800FC2211 /* NSObject+PxCore.h in Headers */,
+				DB26BB37189A54CA00FC2211 /* NSSet+PxCore.h in Headers */,
+				DB26BB38189A54CD00FC2211 /* NSString+PxCore.h in Headers */,
+				DB26BB39189A54D500FC2211 /* PxLogger.h in Headers */,
+				DB26BB3A189A54D900FC2211 /* PxMutableIntegerDictionary.h in Headers */,
+				DB26BB3B189A54DC00FC2211 /* PxPair.h in Headers */,
+				DB26BB3C189A54DF00FC2211 /* PxRange.h in Headers */,
+				DB26BB3D189A54E200FC2211 /* PxWeakValue.h in Headers */,
+				DB26BB3E189A54ED00FC2211 /* PxRuntimeHelper.h in Headers */,
+				DB26BB3F189A54F500FC2211 /* PxCoreSupport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DB829D50189A45FB00349292 /* PxCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB829D74189A45FB00349292 /* Build configuration list for PBXNativeTarget "PxCore" */;
+			buildPhases = (
+				DB829D4D189A45FB00349292 /* Sources */,
+				DB829D4E189A45FB00349292 /* Frameworks */,
+				DB829D4F189A45FB00349292 /* CopyFiles */,
+				DB26BB27189A548300FC2211 /* Headers */,
+				DB26BB40189A55C100FC2211 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PxCore;
+			productName = PxCore;
+			productReference = DB829D51189A45FB00349292 /* libPxCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		DB829D60189A45FB00349292 /* PxCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB829D77189A45FB00349292 /* Build configuration list for PBXNativeTarget "PxCoreTests" */;
+			buildPhases = (
+				DB829D5D189A45FB00349292 /* Sources */,
+				DB829D5E189A45FB00349292 /* Frameworks */,
+				DB829D5F189A45FB00349292 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB829D68189A45FB00349292 /* PBXTargetDependency */,
+			);
+			name = PxCoreTests;
+			productName = PxCoreTests;
+			productReference = DB829D61189A45FB00349292 /* PxCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB829D49189A45FB00349292 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "pixelflut GmbH";
+			};
+			buildConfigurationList = DB829D4C189A45FB00349292 /* Build configuration list for PBXProject "PxCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DB829D48189A45FB00349292;
+			productRefGroup = DB829D52189A45FB00349292 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB829D50189A45FB00349292 /* PxCore */,
+				DB829D60189A45FB00349292 /* PxCoreTests */,
+				DB26BB41189A564B00FC2211 /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB829D5F189A45FB00349292 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB829D6F189A45FB00349292 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DB26BB40189A55C100FC2211 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		DB26BB47189A568C00FC2211 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB829D4D189A45FB00349292 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB829DBD189A49F600349292 /* NSData+PxCore.m in Sources */,
+				DB829DCA189A49F600349292 /* NSString+PxCore.m in Sources */,
+				DB829D90189A498400349292 /* PxRange.m in Sources */,
+				DB829D82189A488100349292 /* PxRuntimeHelper.m in Sources */,
+				DB829D8D189A498400349292 /* PxLogger.m in Sources */,
+				DB829DBE189A49F600349292 /* NSDate+PxCore.m in Sources */,
+				DB829DC5189A49F600349292 /* NSMutableURLRequest+PxCore.m in Sources */,
+				DB829DC0189A49F600349292 /* NSFileManager+PxCore.m in Sources */,
+				DB829DC7189A49F600349292 /* NSNumber+PxCore.m in Sources */,
+				DB829DC8189A49F600349292 /* NSObject+PxCore.m in Sources */,
+				DB829DC9189A49F600349292 /* NSSet+PxCore.m in Sources */,
+				DB829D8E189A498400349292 /* PxMutableIntegerDictionary.m in Sources */,
+				DB829DBA189A49F600349292 /* NSArray+PxCore.m in Sources */,
+				DB829DC4189A49F600349292 /* NSMutableSet+PxCore.m in Sources */,
+				DB829DC3189A49F600349292 /* NSMutableDictionary+PxCore.m in Sources */,
+				DB829D96189A49E400349292 /* hnjalloc.c in Sources */,
+				DB829D97189A49E400349292 /* hyphen.c in Sources */,
+				DB829DBC189A49F600349292 /* NSCalendar+PxCore.m in Sources */,
+				DB829DBF189A49F600349292 /* NSDictionary+PxCore.m in Sources */,
+				DB829D8F189A498400349292 /* PxPair.m in Sources */,
+				DB829D91189A498400349292 /* PxWeakValue.m in Sources */,
+				DB829DBB189A49F600349292 /* NSAttributedString+PxCore.m in Sources */,
+				DB829DC1189A49F600349292 /* NSMutableArray+PxCore.m in Sources */,
+				DB829DC6189A49F600349292 /* NSNull+PxCore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB829D5D189A45FB00349292 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB829D71189A45FB00349292 /* PxCoreTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB26BB46189A565A00FC2211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB829D50189A45FB00349292 /* PxCore */;
+			targetProxy = DB26BB45189A565A00FC2211 /* PBXContainerItemProxy */;
+		};
+		DB829D68189A45FB00349292 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB829D50189A45FB00349292 /* PxCore */;
+			targetProxy = DB829D67189A45FB00349292 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB829D6D189A45FB00349292 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB829D6E189A45FB00349292 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB26BB43189A564B00FC2211 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		DB26BB44189A564B00FC2211 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Release;
+		};
+		DB829D72189A45FB00349292 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+			};
+			name = Debug;
+		};
+		DB829D73189A45FB00349292 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
+				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB829D75189A45FB00349292 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PxCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxCore/PxCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(inherited)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DB829D76189A45FB00349292 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/PxCore.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxCore/PxCore-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(inherited)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DB829D78189A45FB00349292 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxCore/PxCore-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PxCoreTests/PxCoreTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DB829D79189A45FB00349292 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PxCore/PxCore-Prefix.pch";
+				INFOPLIST_FILE = "PxCoreTests/PxCoreTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB26BB42189A564B00FC2211 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB26BB43189A564B00FC2211 /* Debug */,
+				DB26BB44189A564B00FC2211 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DB829D4C189A45FB00349292 /* Build configuration list for PBXProject "PxCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB829D72189A45FB00349292 /* Debug */,
+				DB829D73189A45FB00349292 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB829D74189A45FB00349292 /* Build configuration list for PBXNativeTarget "PxCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB829D75189A45FB00349292 /* Debug */,
+				DB829D76189A45FB00349292 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB829D77189A45FB00349292 /* Build configuration list for PBXNativeTarget "PxCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB829D78189A45FB00349292 /* Debug */,
+				DB829D79189A45FB00349292 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB829D49189A45FB00349292 /* Project object */;
+}

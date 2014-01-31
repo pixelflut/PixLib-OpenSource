@@ -19,46 +19,41 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  NSMutableURLRequest+PxCore.m
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "NSMutableURLRequest+PxCore.h"
+#import "PxCore.h"
 
-- (NSString *)stringForXMLAttribute;
+@implementation NSMutableURLRequest (PxCore)
 
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
+static NSString *__pxAgentIdentifier__;
++ (void)setPxAgentIdentifier:(NSString *)agentIdentifier {
+    __pxAgentIdentifier__ = agentIdentifier;
 }
 
+
++ (NSMutableURLRequest*)requestWithUrlString:(NSString*)urlStr {
+    return [self requestWithUrlString:urlStr user:nil password:nil];
+}
+
++ (NSMutableURLRequest*)requestWithUrlString:(NSString*)urlStr user:(NSString*)user password:(NSString*)pw {
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    [req addPxAgent];
+    if (user && pw) {
+        NSString *authString = [[[NSString stringWithFormat:@"%@:%@", user, pw] dataUsingEncoding:NSUTF8StringEncoding] base64Encoding];        
+        [req setValue:[NSString stringWithFormat:@"Basic %@", authString] forHTTPHeaderField:@"Authorization"];
+    }
+    return req;
+}
+
+- (void)addPxAgent {
+    if (__pxAgentIdentifier__) {
+        [self setValue:__pxAgentIdentifier__ forHTTPHeaderField:@"Px-Agent"];
+    }
+}
+
+@end

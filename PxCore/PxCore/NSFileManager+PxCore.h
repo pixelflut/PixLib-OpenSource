@@ -19,46 +19,21 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  NSFileManager+PxCore.h
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import <Foundation/Foundation.h>
 
-- (NSString *)stringForXMLAttribute;
+NSString * PxHomeDirectory(void);
+NSString * PxDocumentDirectory(void);
+NSString * PxCacheDirectory(void);
+NSString * PxTempDirectory(void);
+
+@interface NSFileManager (PxCore)
+
+- (unsigned long long int)sizeOfDirectoryAtPath:(NSString *)directoryPath;
 
 @end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-

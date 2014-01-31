@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,23 +19,14 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxMarkupKitSupport.h
+//  PxMarkupKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 30.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
-
-- (NSString *)stringForXMLAttribute;
-
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
+#import <Foundation/Foundation.h>
 
 typedef enum {
     PxContentTypeNone   = 0,
@@ -44,8 +35,6 @@ typedef enum {
     PxContentTypeXML    = 3,
     PxContentTypePlain  = 4
 } PxContentType;
-
-
 
 static inline PxContentType PxContentTypeFromNSString(NSString *string) {
     if ([string isEqualToString:@"text/cxml"]) {
@@ -61,4 +50,3 @@ static inline PxContentType PxContentTypeFromNSString(NSString *string) {
     }
     return PxContentTypeNone;
 }
-

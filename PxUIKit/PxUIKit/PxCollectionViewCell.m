@@ -19,50 +19,36 @@
  */
 
 //
-//  PxTableViewCell.m
-//  PixLib OpenSource
+//  PxCollectionViewCell.m
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 31.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import "PxTableViewCell.h"
+#import "PxCollectionViewCell.h"
 
-@implementation PxTableViewCell
-@synthesize table = _table;
-@synthesize delegate = _delegate;
-@synthesize data = _data;
+@implementation PxCollectionViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView *)tableView {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        self.table = tableView;
-        [self buildUI];
-    }
-    return self;
-}
-
-+ (CGFloat)cellHeightWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier tableView:(UITableView *)tableView {
-    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method +cellHeightWithData:reuseIdentifier:tableView: in Subclasses", [self class]];
-    return 0;
-}
-
-- (void)buildUI {
-    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method - (void)buildUI in Subclasses", [self class]];
-}
-
-- (void)setUI {
-    [NSException raise:@"Not Implemented Error" format:@"<%@> You have to implement the Method - (void)setUI in Subclasses", [self class]];
+- (id)initWithFrame:(CGRect)frame {
+	self = [super initWithFrame:frame];
+	if(self) {
+		[self buildUI];
+	}
+	return self;
 }
 
 - (void)setData:(id)data {
-	[self setData:data setUI:YES];
+    [self setData:data setUI:YES];
 }
 
 - (void)setData:(id)data setUI:(BOOL)setUI {
-    if (_data != data) {
+    if (data != _data) {
         _data = data;
+        if(setUI) {
+            [self setUI];
+        }
     }
-    if(setUI) [self setUI];
 }
 
 - (PxCellPosition)cellPosition {
@@ -70,7 +56,7 @@
 }
 
 - (BOOL)hasPosition:(PxCellPosition)position {
-    NSInteger identifier = [self.reuseIdentifier intValue];
+    NSInteger identifier = [self.reuseIdentifier integerValue];
     return (identifier & position || identifier == position);
 }
 

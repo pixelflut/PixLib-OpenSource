@@ -19,46 +19,40 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  UIDevice+PxUIKit.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 30.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import <UIKit/UIKit.h>
 
-- (NSString *)stringForXMLAttribute;
+/**
+ * PxUIKit Category for UIDevice
+ */
+@interface UIDevice (PxUIKit)
+
+#pragma mark - Getting Device Informations
+/** @name Getting Device Informations */
+
+/** Returns a string identifying the hardware of the receiver.
+ @return A string identifying the hardware of the receiver.
+ @see agentIdentifier
+ */
+- (NSString *)hardwareIdentifier;
+
+/** Returns a string identifying the hardware of the receiver, as well the current executable and os.
+ 
+ Format of the string: px|{executableName}|{bundleVersion}|{hardwareIdentifier}|{os-version}|{locale-identifier}.
+ @return A string identifying the hardware of the receiver, as well the current executable and os.
+ see hardwareIdentifier
+ */
+- (NSString *)agentIdentifier;
+
+/** Returns the mac address of the receiver in hex-notation.
+ @return The mac address of the receiver in hex-notation.
+ */
+- (NSString *)macAddress NS_DEPRECATED_IOS(2_0, 6_0);
 
 @end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-

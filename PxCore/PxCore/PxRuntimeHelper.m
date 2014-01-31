@@ -19,46 +19,33 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxRuntimeHelper.m
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "PxRuntimeHelper.h"
 
-- (NSString *)stringForXMLAttribute;
-
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
+Class property_getReturnClass(objc_property_t property, BOOL *isPrimitive) {
+    const char *attributes = property_getAttributes(property);
+    unsigned char *c = ((unsigned char *)attributes+1);
+    if (*c == '@') {
+        *isPrimitive = NO;
+        c++;
+        if (*c == '"') {
+            CFMutableDataRef buffer = CFDataCreateMutable(NULL, 0);
+            int i = 0;
+            while (*(++c) != '"' ) {
+                CFDataAppendBytes(buffer, c, 1);
+                i++;
+            }
+            NSString *klass = [[NSString alloc] initWithBytes:CFDataGetBytePtr(buffer) length:i encoding:NSUTF8StringEncoding];
+            CFRelease(buffer);
+            return NSClassFromString(klass);
+        }
+    } else {
+        if (isPrimitive) {*isPrimitive = YES;}
     }
-    return PxContentTypeNone;
+    return nil;
 }
-

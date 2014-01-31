@@ -19,46 +19,31 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxCollectionViewGridLayout.m
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 31.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "PxCollectionViewGridLayout.h"
+#import "UIView+PxUIKit.h"
 
-- (NSString *)stringForXMLAttribute;
+@implementation PxCollectionViewGridLayout
 
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        if (newBounds.size.height != self.collectionView.size.height) {
+            [self invalidateLayout];
+            return YES;
+        }
+    } else {
+        if (newBounds.size.width != self.collectionView.size.width) {
+            [self invalidateLayout];
+            return YES;
+        }
     }
-    return PxContentTypeNone;
+    return NO;
 }
 
+@end

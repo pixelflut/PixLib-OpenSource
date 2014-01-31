@@ -19,46 +19,41 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxWeakValue.m
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "PxWeakValue.h"
 
-- (NSString *)stringForXMLAttribute;
+@implementation PxWeakValue
 
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
++ (id)weakValueWithValue:(id)value {
+    return [[self alloc] initWithValue:value];
 }
 
+- (id)initWithValue:(id)value {
+    self = [super init];
+    if (self) {
+        _value = value;
+    }
+    return self;
+}
+
+- (NSComparisonResult)compare:(id)anObject context:(void *)context {
+    if ([anObject isKindOfClass:[self class]]) {
+        return [_value compare:[(PxWeakValue *)anObject value] context:context];
+    }
+    return [_value compare:anObject context:context];
+}
+
+- (BOOL)isEqualToValue:(PxWeakValue *)anObject {
+    return [[(PxWeakValue *)anObject value] isEqual:self.value];
+}
+
+- (BOOL)isNotBlank {
+    return _value != nil;
+}
+
+@end

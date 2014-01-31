@@ -19,46 +19,31 @@
  */
 
 //
-//  PxXMLHelper.h
+//  PxAsyncParseService.h
 //  PixLib OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import <Foundation/Foundation.h>
+#import "PxMarkupKitSupport.h"
 
-- (NSString *)stringForXMLAttribute;
+@protocol PxAsyncParserDelegate;
+
+@interface PxAsyncParseService : NSObject
+
++ (int)parseObject:(id)object type:(PxContentType)type delegate:(id<PxAsyncParserDelegate>)delegate userInfos:(id)userInfos error:(NSError**)error;
+
++ (void)parseFile:(NSURL *)fileUrl type:(PxContentType)type delegate:(id<PxAsyncParserDelegate>)delegate userInfos:(id)userInfos;
++ (void)parseData:(NSData *)data type:(PxContentType)type delegate:(id<PxAsyncParserDelegate>)delegate userInfos:(id)userInfos;
+
++ (void)parseString:(NSString *)data type:(PxContentType)type delegate:(id<PxAsyncParserDelegate>)delegate userInfos:(id)userInfos;
 
 @end
 
-@protocol PxXMLMapping <NSObject>
+@protocol PxAsyncParserDelegate <NSObject>
 
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
+- (NSDictionary*)mappingForAsyncParsing:(id)userInfos;
+- (void)asyncParsingDidFinish:(id)data userInfos:(id)userInfos;
 
 @end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-

@@ -19,46 +19,41 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxCollectionViewCell.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 31.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
-
-- (NSString *)stringForXMLAttribute;
-
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
+#import <UIKit/UIKit.h>
 
 typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
+    PxCellPositionMiddle    = 0,
+    PxCellPositionTop       = 1<<0,
+    PxCellPositionBottom    = 1<<1,
+    PxCellPositionFirst     = 1<<3,
+    PxCellPositionLast      = 1<<4,
+    PxCellPositionSingle    = 1<<5,
+} PxCellPosition;
 
+@interface PxCollectionViewCell : UICollectionViewCell
+@property(nonatomic, weak) UICollectionView *collectionView;
+@property(nonatomic, assign) id delegate;
+@property(nonatomic, strong) id data;
 
+- (void)setData:(id)data setUI:(BOOL)setUI;
 
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
+- (PxCellPosition)cellPosition;
+- (BOOL)hasPosition:(PxCellPosition)position;
 
+@end
+
+@interface PxCollectionViewCell (SubclassingHooks)
+
++ (CGSize)cellSizeWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView;
+
+- (void)buildUI;
+- (void)setUI;
+
+@end

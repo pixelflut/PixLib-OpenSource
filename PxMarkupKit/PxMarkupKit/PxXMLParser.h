@@ -19,46 +19,18 @@
  */
 
 //
-//  PxXMLHelper.h
+//  PxXMLParser.h
 //  PixLib OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import <Foundation/Foundation.h>
 
-- (NSString *)stringForXMLAttribute;
+@interface PxXMLParser : NSObject
 
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
++ (id)parseFile:(NSString*)path mapping:(NSDictionary *)mapping;
++ (id)parseData:(NSData*)data mapping:(NSDictionary *)mapping;
++ (id)parseString:(NSString*)data mapping:(NSDictionary *)mapping;
 
 @end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-

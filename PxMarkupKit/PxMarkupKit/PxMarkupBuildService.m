@@ -19,46 +19,28 @@
  */
 
 //
-//  PxXMLHelper.h
+//  PxMarkupBuildService.m
 //  PixLib OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "PxMarkupBuildService.h"
+#import "PxCXMLBuilder.h"
+#import <PxCore/PxCore.h>
 
-- (NSString *)stringForXMLAttribute;
+@implementation PxMarkupBuildService
 
-@end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
++ (NSString *)generateMarkup:(NSDictionary*)dict type:(PxContentType)type {
+    switch (type) {
+        case PxContentTypeCXML:
+            return [PxCXMLBuilder markup:dict];
+            break;
+        default:
+            PxError(@"PxMarkupBuildService:generateMarkup: contentType not supported (%d)", type);
+            return nil;
+            break;
     }
-    return PxContentTypeNone;
 }
 
+@end

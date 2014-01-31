@@ -19,46 +19,37 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxImageStorage.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 31.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import <Foundation/Foundation.h>
 
-- (NSString *)stringForXMLAttribute;
+@interface PxImageStorage : NSObject
+@property (nonatomic, strong, readonly) NSString *cacheDir;
+@property (nonatomic, assign, readonly) BOOL keepInMemory;
+
+- (id)initWithCacheDir:(NSString *)cacheDir
+          keepInMemory:(BOOL)keepInMemory;
+
+
++ (NSString *)identifierForURL:(NSURL *)url;
+
+/*
+ Getting and Setting Images from Memory
+ */
+- (UIImage *)imageForIdentifier:(NSString *)identifier;
+- (void)storeImage:(UIImage *)image withIdentifier:(NSString *)identifier;
+
+
+/*
+ Getting and Setting Images from File
+ */
+- (NSString *)imagePathForIdentifier:(NSString *)identifier;
+- (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier;
+- (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier copy:(BOOL)copy;
 
 @end
-
-@protocol PxXMLMapping <NSObject>
-
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
-
-@end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-

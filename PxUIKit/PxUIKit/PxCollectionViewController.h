@@ -19,46 +19,34 @@
  */
 
 //
-//  PxXMLHelper.h
-//  PixLib OpenSource
+//  PxCollectionViewController.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 31.01.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-@protocol PxXMLAttribute <NSObject>
+#import "PxViewController.h"
+#import "PxDataCollectionGridView.h"
 
-- (NSString *)stringForXMLAttribute;
+@interface PxCollectionViewController : PxViewController <PxDataCollectionGridViewDelegate, PxDataCollectionGridViewDataSource>
+@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong, readonly) PxDataCollectionGridView *collectionView;
+
+#pragma mark - Providing Data
+- (void)setData:(NSArray *)data reload:(BOOL)reload;
 
 @end
 
-@protocol PxXMLMapping <NSObject>
+@interface PxCollectionViewController (SubclassingHooks)
 
-+ (id)objectForXMLAttributes:(NSDictionary *)attributes parentObject:(id<PxXMLMapping>)parent;
+#pragma mark - Configurate Collection Appeareance
++ (BOOL)dynamicSize;
++ (BOOL)sectional;
++ (BOOL)alternating;
++ (BOOL)oneDimensional;
+
++ (PxCollectionViewGridLayout *)collectionViewLayout;
++ (Class)collectionViewClass;
 
 @end
-
-typedef enum {
-    PxContentTypeNone   = 0,
-    PxContentTypeCXML   = 1,
-    PxContentTypeJSON   = 2,
-    PxContentTypeXML    = 3,
-    PxContentTypePlain  = 4
-} PxContentType;
-
-
-
-static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"text/json"]) {
-        return PxContentTypeJSON;
-    } else if ([string isEqualToString:@"text/plain"]) {
-        return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
-        return PxContentTypeXML;
-    }
-    return PxContentTypeNone;
-}
-
