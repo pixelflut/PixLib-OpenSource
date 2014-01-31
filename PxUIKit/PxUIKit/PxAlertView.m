@@ -45,7 +45,7 @@
         block(_config);
         [self.config reorderButtons];
         
-        NSInteger c = [self.config cancelIndex];
+        NSUInteger c = [self.config cancelIndex];
         
         for (int i = 0; i<self.config.visibleButtonCount; i++) {
             NSString *title = [self.config titleAtIndex:i];

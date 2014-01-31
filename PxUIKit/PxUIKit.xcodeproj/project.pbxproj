@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		DB06F3C4189BFACC00F8C52E /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB06F3C5189BFACC00F8C52E /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				DB06F3CA189BFB4500F8C52E /* Build Framework */,
+			);
+			dependencies = (
+				DB06F3C9189BFB2E00F8C52E /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		DB06F37D189BA6E100F8C52E /* PxCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F37C189BA6E100F8C52E /* PxCollectionView.m */; };
 		DB06F380189BA72900F8C52E /* PxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F37F189BA72900F8C52E /* PxCollectionViewCell.m */; };
@@ -20,6 +35,35 @@
 		DB06F39E189BF35900F8C52E /* PxActionButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F39D189BF35900F8C52E /* PxActionButtonConfig.m */; };
 		DB06F3A1189BF43C00F8C52E /* PxInputAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F3A0189BF43C00F8C52E /* PxInputAnimation.m */; };
 		DB06F3A4189BF61F00F8C52E /* PxAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F3A3189BF61F00F8C52E /* PxAlertView.m */; };
+		DB06F3A6189BF9A900F8C52E /* PxUIkitSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BBFB189A683600FC2211 /* PxUIkitSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3A7189BF9AB00F8C52E /* PxUIKitImageSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC23189A6FFA00FC2211 /* PxUIKitImageSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3A8189BF9B600F8C52E /* PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BBD6189A67A700FC2211 /* PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3A9189BF9BD00F8C52E /* NSAttributedString+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC06189A694100FC2211 /* NSAttributedString+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AA189BF9C000F8C52E /* NSMutableAttributedString+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC03189A692A00FC2211 /* NSMutableAttributedString+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AB189BF9C300F8C52E /* NSString+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC00189A690700FC2211 /* NSString+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AC189BF9C700F8C52E /* UIApplication+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC09189A696600FC2211 /* UIApplication+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AD189BF9CA00F8C52E /* UIColor+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC0C189A69BA00FC2211 /* UIColor+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AE189BF9CD00F8C52E /* UIDevice+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC0F189A69CB00FC2211 /* UIDevice+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3AF189BF9D000F8C52E /* UIImage+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC12189A69DC00FC2211 /* UIImage+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B0189BF9D300F8C52E /* UIImageView+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC15189A69EB00FC2211 /* UIImageView+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B1189BF9D600F8C52E /* UILabel+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC18189A69F900FC2211 /* UILabel+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B2189BF9D900F8C52E /* UIScrollView+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC1B189A6A0700FC2211 /* UIScrollView+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B3189BF9DC00F8C52E /* UIView+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC1E189A6A1400FC2211 /* UIView+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B4189BF9F700F8C52E /* PxCollectionViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F389189BB38600F8C52E /* PxCollectionViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B5189BFA0000F8C52E /* PxSuperViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC26189A7BB000FC2211 /* PxSuperViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B6189BFA0300F8C52E /* PxViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = DB26BC29189A7BFC00FC2211 /* PxViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B7189BFA0800F8C52E /* PxActionButtonConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F39C189BF35900F8C52E /* PxActionButtonConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B8189BFA0A00F8C52E /* PxInputAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F39F189BF43C00F8C52E /* PxInputAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3B9189BFA0F00F8C52E /* PxDrawService.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F38C189BB5DD00F8C52E /* PxDrawService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BA189BFA1200F8C52E /* PxRemoteImageService.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F392189BC78E00F8C52E /* PxRemoteImageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BB189BFA1700F8C52E /* PxImageStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F38F189BBD1500F8C52E /* PxImageStorage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BC189BFA1C00F8C52E /* PxActionSheet.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F398189BF31E00F8C52E /* PxActionSheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BD189BFA2000F8C52E /* PxAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F3A2189BF61F00F8C52E /* PxAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BE189BFA2500F8C52E /* PxRemoteImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F395189BC9E400F8C52E /* PxRemoteImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3BF189BFA2A00F8C52E /* PxCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F37B189BA6E100F8C52E /* PxCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3C0189BFA2E00F8C52E /* PxCollectionView.m in Headers */ = {isa = PBXBuildFile; fileRef = DB06F37C189BA6E100F8C52E /* PxCollectionView.m */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3C1189BFA3300F8C52E /* PxCollectionViewGridLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F381189BA8F000F8C52E /* PxCollectionViewGridLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB06F3C2189BFA3900F8C52E /* PxDataCollectionGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F384189BA93400F8C52E /* PxDataCollectionGridView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB26BBD2189A67A700FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BBD1189A67A700FC2211 /* Foundation.framework */; };
 		DB26BBD7189A67A700FC2211 /* PxUIKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB26BBD6189A67A700FC2211 /* PxUIKit.h */; };
 		DB26BBE0189A67A700FC2211 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BBDF189A67A700FC2211 /* XCTest.framework */; };
@@ -46,6 +90,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DB06F3C8189BFB2E00F8C52E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB26BBC6189A67A700FC2211 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB26BBCD189A67A700FC2211;
+			remoteInfo = PxUIKit;
+		};
 		DB26BBE4189A67A800FC2211 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB26BBC6189A67A700FC2211 /* Project object */;
@@ -363,6 +414,45 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DB06F3A5189BF99B00F8C52E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB06F3A8189BF9B600F8C52E /* PxUIKit.h in Headers */,
+				DB06F3A9189BF9BD00F8C52E /* NSAttributedString+PxUIKit.h in Headers */,
+				DB06F3AA189BF9C000F8C52E /* NSMutableAttributedString+PxUIKit.h in Headers */,
+				DB06F3AB189BF9C300F8C52E /* NSString+PxUIKit.h in Headers */,
+				DB06F3AC189BF9C700F8C52E /* UIApplication+PxUIKit.h in Headers */,
+				DB06F3AD189BF9CA00F8C52E /* UIColor+PxUIKit.h in Headers */,
+				DB06F3AE189BF9CD00F8C52E /* UIDevice+PxUIKit.h in Headers */,
+				DB06F3AF189BF9D000F8C52E /* UIImage+PxUIKit.h in Headers */,
+				DB06F3B0189BF9D300F8C52E /* UIImageView+PxUIKit.h in Headers */,
+				DB06F3B1189BF9D600F8C52E /* UILabel+PxUIKit.h in Headers */,
+				DB06F3B2189BF9D900F8C52E /* UIScrollView+PxUIKit.h in Headers */,
+				DB06F3B3189BF9DC00F8C52E /* UIView+PxUIKit.h in Headers */,
+				DB06F3B4189BF9F700F8C52E /* PxCollectionViewController.h in Headers */,
+				DB06F3B5189BFA0000F8C52E /* PxSuperViewController.h in Headers */,
+				DB06F3B6189BFA0300F8C52E /* PxViewController.h in Headers */,
+				DB06F3B7189BFA0800F8C52E /* PxActionButtonConfig.h in Headers */,
+				DB06F3B8189BFA0A00F8C52E /* PxInputAnimation.h in Headers */,
+				DB06F3B9189BFA0F00F8C52E /* PxDrawService.h in Headers */,
+				DB06F3BA189BFA1200F8C52E /* PxRemoteImageService.h in Headers */,
+				DB06F3BB189BFA1700F8C52E /* PxImageStorage.h in Headers */,
+				DB06F3BC189BFA1C00F8C52E /* PxActionSheet.h in Headers */,
+				DB06F3BD189BFA2000F8C52E /* PxAlertView.h in Headers */,
+				DB06F3BE189BFA2500F8C52E /* PxRemoteImageView.h in Headers */,
+				DB06F3BF189BFA2A00F8C52E /* PxCollectionView.h in Headers */,
+				DB06F3C0189BFA2E00F8C52E /* PxCollectionView.m in Headers */,
+				DB06F3C1189BFA3300F8C52E /* PxCollectionViewGridLayout.h in Headers */,
+				DB06F3C2189BFA3900F8C52E /* PxDataCollectionGridView.h in Headers */,
+				DB06F3A6189BF9A900F8C52E /* PxUIkitSupport.h in Headers */,
+				DB06F3A7189BF9AB00F8C52E /* PxUIKitImageSupport.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		DB26BBCD189A67A700FC2211 /* PxUIKit */ = {
 			isa = PBXNativeTarget;
@@ -371,6 +461,8 @@
 				DB26BBCA189A67A700FC2211 /* Sources */,
 				DB26BBCB189A67A700FC2211 /* Frameworks */,
 				DB26BBCC189A67A700FC2211 /* CopyFiles */,
+				DB06F3A5189BF99B00F8C52E /* Headers */,
+				DB06F3C3189BFA8400F8C52E /* Prepare Framework */,
 			);
 			buildRules = (
 			);
@@ -422,6 +514,7 @@
 			targets = (
 				DB26BBCD189A67A700FC2211 /* PxUIKit */,
 				DB26BBDD189A67A700FC2211 /* PxUIKitTests */,
+				DB06F3C4189BFACC00F8C52E /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -436,6 +529,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DB06F3C3189BFA8400F8C52E /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		DB06F3CA189BFB4500F8C52E /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DB26BBCA189A67A700FC2211 /* Sources */ = {
@@ -483,6 +607,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DB06F3C9189BFB2E00F8C52E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB26BBCD189A67A700FC2211 /* PxUIKit */;
+			targetProxy = DB06F3C8189BFB2E00F8C52E /* PBXContainerItemProxy */;
+		};
 		DB26BBE5189A67A800FC2211 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB26BBCD189A67A700FC2211 /* PxUIKit */;
@@ -502,6 +631,24 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DB06F3C6189BFACC00F8C52E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Debug;
+		};
+		DB06F3C7189BFACC00F8C52E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
+			};
+			name = Release;
+		};
 		DB26BBEF189A67A800FC2211 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -520,6 +667,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -536,7 +684,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
@@ -557,7 +707,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -567,7 +718,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -645,6 +798,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB06F3C5189BFACC00F8C52E /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB06F3C6189BFACC00F8C52E /* Debug */,
+				DB06F3C7189BFACC00F8C52E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DB26BBC9189A67A700FC2211 /* Build configuration list for PBXProject "PxUIKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
