@@ -52,6 +52,7 @@
 /*
  * Classes
  */
+#import "PxLocalize.h"
 #import "PxLogger.h"
 #import "PxMutableIntegerDictionary.h"
 #import "PxPair.h"

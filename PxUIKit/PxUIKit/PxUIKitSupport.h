@@ -19,7 +19,7 @@
  */
 
 //
-//  PxUIkitSupport.h
+//  PxUIKitSupport.h
 //  PixLib OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.

@@ -77,6 +77,8 @@
 		DB829DC8189A49F600349292 /* NSObject+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB5189A49F600349292 /* NSObject+PxCore.m */; };
 		DB829DC9189A49F600349292 /* NSSet+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB7189A49F600349292 /* NSSet+PxCore.m */; };
 		DB829DCA189A49F600349292 /* NSString+PxCore.m in Sources */ = {isa = PBXBuildFile; fileRef = DB829DB9189A49F600349292 /* NSString+PxCore.m */; };
+		DBF3FFBD18A8CFFE0080EA01 /* PxLocalize.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3FFBB18A8CFFE0080EA01 /* PxLocalize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBF3FFBE18A8CFFE0080EA01 /* PxLocalize.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3FFBC18A8CFFE0080EA01 /* PxLocalize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +170,8 @@
 		DB829DB7189A49F600349292 /* NSSet+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSSet+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DB829DB8189A49F600349292 /* NSString+PxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSString+PxCore.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		DB829DB9189A49F600349292 /* NSString+PxCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSString+PxCore.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		DBF3FFBB18A8CFFE0080EA01 /* PxLocalize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxLocalize.h; sourceTree = "<group>"; };
+		DBF3FFBC18A8CFFE0080EA01 /* PxLocalize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxLocalize.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +317,8 @@
 		DB829D7C189A46D400349292 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DBF3FFBB18A8CFFE0080EA01 /* PxLocalize.h */,
+				DBF3FFBC18A8CFFE0080EA01 /* PxLocalize.m */,
 				DB829D83189A498400349292 /* PxLogger.h */,
 				DB829D84189A498400349292 /* PxLogger.m */,
 				DB829D85189A498400349292 /* PxMutableIntegerDictionary.h */,
@@ -366,6 +372,7 @@
 				DB26BB34189A54C100FC2211 /* NSNull+PxCore.h in Headers */,
 				DB26BB35189A54C500FC2211 /* NSNumber+PxCore.h in Headers */,
 				DB26BB36189A54C800FC2211 /* NSObject+PxCore.h in Headers */,
+				DBF3FFBD18A8CFFE0080EA01 /* PxLocalize.h in Headers */,
 				DB26BB37189A54CA00FC2211 /* NSSet+PxCore.h in Headers */,
 				DB26BB38189A54CD00FC2211 /* NSString+PxCore.h in Headers */,
 				DB26BB39189A54D500FC2211 /* PxLogger.h in Headers */,
@@ -493,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBF3FFBE18A8CFFE0080EA01 /* PxLocalize.m in Sources */,
 				DB829DBD189A49F600349292 /* NSData+PxCore.m in Sources */,
 				DB829DCA189A49F600349292 /* NSString+PxCore.m in Sources */,
 				DB829D90189A498400349292 /* PxRange.m in Sources */,
@@ -723,6 +731,7 @@
 				DB26BB44189A564B00FC2211 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB829D4C189A45FB00349292 /* Build configuration list for PBXProject "PxCore" */ = {
 			isa = XCConfigurationList;

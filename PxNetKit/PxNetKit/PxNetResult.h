@@ -19,34 +19,20 @@
  */
 
 //
-//  PxViewController.m
-//  PxUIKit
+//  PxNetResult.h
+//  PxNetKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import "PxViewController.h"
-#import "PxUIKitSupport.h"
-#import "UIView+PxUIKit.h"
+#import <Foundation/Foundation.h>
 
-@implementation PxViewController
+@interface PxNetResult : NSObject
+@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, strong) id returnObject;
+@property (nonatomic, strong) NSString *filePath;
 
-- (UIView *)loadStdView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    UIView *v = [[UIView alloc] initWithFrame:frame];
-	[v setAutoresizesSubviews:YES];
-    [v setDefaultResizingMask];
-	[self setView:v];
-    return v;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self reloadData];
-}
-
-- (void)updateView {}
-- (void)reloadData {}
+- (BOOL)isSuccess;
 
 @end

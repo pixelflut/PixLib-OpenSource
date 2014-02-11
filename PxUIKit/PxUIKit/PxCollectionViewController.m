@@ -30,7 +30,7 @@
 #import <PxCore/PxCore.h>
 #import "PxCollectionViewCell.h"
 #import <objc/runtime.h>
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 #import "UIView+PxUIKit.h"
 
 @interface PxCollectionViewController ()

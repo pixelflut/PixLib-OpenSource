@@ -19,34 +19,34 @@
  */
 
 //
-//  PxViewController.m
-//  PxUIKit
+//  PxNetService.h
+//  PxNetKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import "PxViewController.h"
-#import "PxUIKitSupport.h"
-#import "UIView+PxUIKit.h"
+#import <Foundation/Foundation.h>
+#import "PxNetRequest.h"
+#import "PxNetResult.h"
+#import "PxNetCache.h"
 
-@implementation PxViewController
+typedef void (^PxNetResultBlock)(BOOL success, NSUInteger status, PxNetResult *result);
+typedef void (^PxNetMultiResultBlock)(BOOL success, NSUInteger status, NSDictionary *results);
 
-- (UIView *)loadStdView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    UIView *v = [[UIView alloc] initWithFrame:frame];
-	[v setAutoresizesSubviews:YES];
-    [v setDefaultResizingMask];
-	[self setView:v];
-    return v;
-}
+@interface PxNetService : NSObject
+@property (nonatomic, strong, readonly) PxNetCache *cache;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self reloadData];
-}
+- (void)fetchDataWithRequests:(NSArray *)requests background:(BOOL)background completion:(PxNetMultiResultBlock)completion;
 
-- (void)updateView {}
-- (void)reloadData {}
+- (void)fetchDataWithRequest:(PxNetRequest *)request background:(BOOL)background completion:(PxNetResultBlock)completion;
+
+@end
+
+@interface PxNetService (SubclassingHooks)
+- (Class)cacheClass;
+- (NSDictionary *)orMapping;
+- (NSMutableURLRequest *)requestForURLString:(NSString *)URLString;
+- (void)setUserAgent:(NSMutableURLRequest *)request;
 
 @end

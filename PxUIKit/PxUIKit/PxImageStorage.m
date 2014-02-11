@@ -28,7 +28,7 @@
 
 #import "PxImageStorage.h"
 #import <PxCore/PxCore.h>
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 
 @interface PxImageStorage ()
 @property (nonatomic, strong) NSCache *inMemoryCache;

@@ -29,7 +29,7 @@
 #import "PxRemoteImageView.h"
 #import "UIView+PxUIKit.h"
 #import "UIImage+PxUIKit.h"
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 #import "PxImageStorage.h"
 #import "PxRemoteImageService.h"
 

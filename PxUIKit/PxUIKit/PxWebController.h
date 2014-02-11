@@ -18,35 +18,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  */
 
+
 //
-//  PxViewController.m
+//  PxWebController.h
 //  PxUIKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
 #import "PxViewController.h"
-#import "PxUIKitSupport.h"
-#import "UIView+PxUIKit.h"
 
-@implementation PxViewController
+/** PxWebController */
+@interface PxWebController : PxViewController <UIWebViewDelegate>
+@property(nonatomic, strong, readonly) UIWebView *webView;
+@property(nonatomic, strong) NSString *urlString;
 
-- (UIView *)loadStdView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    UIView *v = [[UIView alloc] initWithFrame:frame];
-	[v setAutoresizesSubviews:YES];
-    [v setDefaultResizingMask];
-	[self setView:v];
-    return v;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self reloadData];
-}
-
-- (void)updateView {}
-- (void)reloadData {}
+- (id)initWithURL:(NSString*)urlString title:(NSString*)title;
+- (id)initWithURL:(NSString*)urlString;
 
 @end

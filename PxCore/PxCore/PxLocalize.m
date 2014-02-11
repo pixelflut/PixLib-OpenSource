@@ -20,13 +20,13 @@
 
 //
 //  PxLocalize.m
-//  PixLib OpenSource
+//  PxCore
 //
-//  Created by Jonathan Cichon on 18.02.13.
+//  Created by Jonathan Cichon on 10.02.14.
+//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
 #import "PxLocalize.h"
-#import "PxCore.h"
 
 @interface PxLocalize ()
 @property(nonatomic, strong) NSString *language;

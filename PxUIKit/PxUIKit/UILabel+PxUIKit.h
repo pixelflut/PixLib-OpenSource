@@ -27,7 +27,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 
 /**
  * PxUIKit Category for UILabel

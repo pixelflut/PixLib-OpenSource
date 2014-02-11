@@ -28,7 +28,7 @@
 
 #import "NSMutableAttributedString+PxUIKit.h"
 #import <PxCore/PxCore.h>
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 
 /*
  NSTextAlignmentLeft = 0,

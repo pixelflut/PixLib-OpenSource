@@ -8,7 +8,7 @@
 
 #import "UIImage+PxUIKit.h"
 #import <PxCore/PxCore.h>
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 #import "PxUIKitImageSupport.h"
 
 @implementation UIImage (PxUIKit)

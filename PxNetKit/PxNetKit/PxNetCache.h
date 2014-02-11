@@ -19,34 +19,41 @@
  */
 
 //
-//  PxViewController.m
-//  PxUIKit
+//  PxNetCache.h
+//  PxNetKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import "PxViewController.h"
-#import "PxUIKitSupport.h"
-#import "UIView+PxUIKit.h"
+#import <Foundation/Foundation.h>
 
-@implementation PxViewController
+extern NSString *const PxHTTPHeaderMimeType;
+extern NSString *const PxHTTPHeaderIfModified;
+extern NSString *const PxHTTPHeaderLastModified;
+extern NSString *const PxHTTPHeaderIfRange;
+extern NSString *const PxHTTPHeaderRange;
 
-- (UIView *)loadStdView {
-    CGRect frame = [[UIScreen mainScreen] bounds];
-    UIView *v = [[UIView alloc] initWithFrame:frame];
-	[v setAutoresizesSubviews:YES];
-    [v setDefaultResizingMask];
-	[self setView:v];
-    return v;
-}
+@interface PxNetCache : NSObject
+@property (nonatomic, strong, readonly) NSString *cacheDir;
+@property (nonatomic, assign) BOOL shouldClearAutomatic;
+@property (nonatomic, assign) NSUInteger automaticClearInterval;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self reloadData];
-}
+- (id)initWithCacheDir:(NSString *)cacheDir;
 
-- (void)updateView {}
-- (void)reloadData {}
+- (void)clear;
+- (void)clearFilesForURL:(NSURL *)url;
+- (void)clearFilesOlderThan:(NSDate *)date;
+
+- (NSString *)pathForURL:(NSURL *)url header:(NSDictionary **)header creationDate:(NSDate **)creationDate;
+
+- (void)storeData:(NSData *)data forURL:(NSURL *)url header:(NSDictionary *)header;
+- (void)storeDataFromFile:(NSString *)filePath forURL:(NSURL *)url header:(NSDictionary *)header;
+
+@end
+
+@interface PxNetCache (SubclassingHooks)
+
++ (NSString *)shouldClearCacheNotificationName; //UIApplicationWillTerminateNotification
 
 @end

@@ -27,7 +27,7 @@
 //
 
 #import "PxDrawService.h"
-#import "PxUIkitSupport.h"
+#import "PxUIKitSupport.h"
 #import "PxImageStorage.h"
 
 @interface PxDrawService ()
