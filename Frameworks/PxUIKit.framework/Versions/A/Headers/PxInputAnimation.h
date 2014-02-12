@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,29 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  PxInputAnimation.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 31.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
+#import <Foundation/Foundation.h>
+
+/**
+ Wrapps the informations from keyboard (or picker) show/hide notifications to get access in an object-oriented way.
  */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+@interface PxInputAnimation : NSObject
+@property (nonatomic, assign) CGRect startFrame;
+@property (nonatomic, assign) CGRect endFrame;
+@property (nonatomic, assign) CGFloat duration;
+@property (nonatomic, assign) UIViewAnimationCurve curve;
+@property (nonatomic, strong) NSString *name;
 
+- (id)initWithStartFrame:(CGRect)startFrame endFrame:(CGRect)endFrame duration:(CGFloat)duration curve:(UIViewAnimationCurve)curve name:(NSString *)name;
+//- (id)initWithPickerNotification:(NSNotification *)notification;
+- (id)initWithKeyboardNotification:(NSNotification *)notification;
 
-#pragma mark - Classes
-/*
- * Classes
- */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (BOOL)willShow;
 
-
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
-
-
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+@end

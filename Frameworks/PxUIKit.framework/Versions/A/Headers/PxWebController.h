@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -18,57 +18,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  */
 
+
 //
-//  PxCore.h
-//  PxCore
+//  PxWebController.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
- */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+#import "PxViewController.h"
 
+/** PxWebController */
+@interface PxWebController : PxViewController <UIWebViewDelegate>
+@property(nonatomic, strong, readonly) UIWebView *webView;
+@property(nonatomic, strong) NSString *urlString;
 
-#pragma mark - Classes
-/*
- * Classes
- */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (id)initWithURL:(NSString*)urlString title:(NSString*)title;
+- (id)initWithURL:(NSString*)urlString;
 
-
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
-
-
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+@end

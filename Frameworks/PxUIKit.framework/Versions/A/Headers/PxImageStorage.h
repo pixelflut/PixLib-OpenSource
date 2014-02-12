@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,37 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  PxImageStorage.h
+//  PxUIKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 31.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
+#import <Foundation/Foundation.h>
+
+@interface PxImageStorage : NSObject
+@property (nonatomic, strong, readonly) NSString *cacheDir;
+@property (nonatomic, assign, readonly) BOOL keepInMemory;
+
+- (id)initWithCacheDir:(NSString *)cacheDir
+          keepInMemory:(BOOL)keepInMemory;
+
+
++ (NSString *)identifierForURL:(NSURL *)url;
+
 /*
- * Categories
+ Getting and Setting Images from Memory
  */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+- (UIImage *)imageForIdentifier:(NSString *)identifier;
+- (void)storeImage:(UIImage *)image withIdentifier:(NSString *)identifier;
 
 
-#pragma mark - Classes
 /*
- * Classes
+ Getting and Setting Images from File
  */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (NSString *)imagePathForIdentifier:(NSString *)identifier;
+- (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier;
+- (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier copy:(BOOL)copy;
 
-
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
-
-
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+@end

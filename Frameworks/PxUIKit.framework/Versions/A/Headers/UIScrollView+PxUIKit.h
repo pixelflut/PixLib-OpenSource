@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,35 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  UIScrollView+PxUIKit.h
+//  PxUIKit
 //
 //  Created by Jonathan Cichon on 30.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
+#import <UIKit/UIKit.h>
+
+/**
+ * PxUIKit Category for UIScrollView
  */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+@interface UIScrollView (PxUIKit)
 
+- (CGFloat)verticalScrollPercentage;
+- (CGFloat)horizontalScrollPercentage;
+- (void)setVerticalScrollPercentage:(CGFloat)percentage;
+- (void)setHorizontalScrollPercentage:(CGFloat)percentage;
 
-#pragma mark - Classes
-/*
- * Classes
- */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (void)setVerticalScrollPercentage:(CGFloat)percentage animated:(BOOL)animated;
+- (void)setHorizontalScrollPercentage:(CGFloat)percentage animated:(BOOL)animated;
 
+- (CGFloat)verticalScrollPercentagePlain;
+- (CGFloat)horizontalScrollPercentagePlain;
+- (void)setVerticalScrollPercentagePlain:(CGFloat)percentage;
+- (void)setHorizontalScrollPercentagePlain:(CGFloat)percentage;
+- (void)setVerticalScrollPercentagePlain:(CGFloat)percentage animated:(BOOL)animated;
+- (void)setHorizontalScrollPercentagePlain:(CGFloat)percentage animated:(BOOL)animated;
 
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
+- (CGPoint)pagingTargetOffset;
 
-
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+@end

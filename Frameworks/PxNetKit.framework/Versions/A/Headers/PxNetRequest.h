@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,34 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  PxNetRequest.h
+//  PxNetKit
 //
-//  Created by Jonathan Cichon on 30.01.14.
+//  Created by Jonathan Cichon on 10.02.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
- */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+#import <Foundation/Foundation.h>
+#import "PxNetResult.h"
 
+extern NSString *kNetRequestIdentifierKey;
+extern NSString *kNetRequestClassKey;
+extern NSString *kNetRequestURLRequestKey;
+extern NSString *kNetRequestParseDataKey;
+extern NSString *kNetRequestCacheIntervalKey;
 
-#pragma mark - Classes
-/*
- * Classes
- */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+@interface PxNetRequest : NSObject
+@property (nonatomic, strong, readonly) NSString *identifier;
+@property (nonatomic, assign, readonly) Class expectedClass;
+@property (nonatomic, strong, readonly) NSMutableURLRequest *request;
+@property (nonatomic, assign, readonly) BOOL finished;
+@property (nonatomic, assign, readonly) BOOL parseData;
+@property (nonatomic, assign, readonly) BOOL noCache;
+@property (nonatomic, assign, readonly) NSTimeInterval cacheInterval;
+@property (nonatomic, strong, readonly) PxNetResult *result;
 
++ (instancetype)requestWithConfiguration:(NSDictionary *)configurationDictionary;
 
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
+- (BOOL)canQueue;
 
-
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+@end

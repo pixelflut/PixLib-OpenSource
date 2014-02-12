@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,40 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  UIDevice+PxUIKit.h
+//  PxUIKit
 //
 //  Created by Jonathan Cichon on 30.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
+#import <UIKit/UIKit.h>
+
+/**
+ * PxUIKit Category for UIDevice
  */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+@interface UIDevice (PxUIKit)
 
+#pragma mark - Getting Device Informations
+/** @name Getting Device Informations */
 
-#pragma mark - Classes
-/*
- * Classes
+/** Returns a string identifying the hardware of the receiver.
+ @return A string identifying the hardware of the receiver.
+ @see agentIdentifier
  */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (NSString *)hardwareIdentifier;
 
-
-#pragma mark - Runtime
-/*
- * Runtime
+/** Returns a string identifying the hardware of the receiver, as well the current executable and os.
+ 
+ Format of the string: px|{executableName}|{bundleVersion}|{hardwareIdentifier}|{os-version}|{locale-identifier}.
+ @return A string identifying the hardware of the receiver, as well the current executable and os.
+ see hardwareIdentifier
  */
-#import "PxRuntimeHelper.h"
+- (NSString *)agentIdentifier;
 
-
-#pragma mark - Support
-/*
- * Support
+/** Returns the mac address of the receiver in hex-notation.
+ @return The mac address of the receiver in hex-notation.
  */
-#import "PxCoreSupport.h"
+- (NSString *)macAddress NS_DEPRECATED_IOS(2_0, 6_0);
+
+@end

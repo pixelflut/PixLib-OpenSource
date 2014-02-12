@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,56 +19,44 @@
  */
 
 //
-//  PxCore.h
-//  PxCore
+//  UIView+PxUIKit.h
+//  PxUIKit
 //
 //  Created by Jonathan Cichon on 30.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#pragma mark - Categories
-/*
- * Categories
+#import <UIKit/UIKit.h>
+
+#define PxAddView(superView, Class, frame) [superView addView:[[Class alloc] initWithFrame:frame]]
+
+/**
+ * PxUIKit Category for UIView
  */
-#import "NSArray+PxCore.h"
-#import "NSAttributedString+PxCore.h"
-#import "NSCalendar+PxCore.h"
-#import "NSData+PxCore.h"
-#import "NSDate+PxCore.h"
-#import "NSDictionary+PxCore.h"
-#import "NSFileManager+PxCore.h"
-#import "NSMutableArray+PxCore.h"
-#import "NSMutableDictionary+PxCore.h"
-#import "NSMutableSet+PxCore.h"
-#import "NSMutableURLRequest+PxCore.h"
-#import "NSNull+PxCore.h"
-#import "NSNumber+PxCore.h"
-#import "NSObject+PxCore.h"
-#import "NSSet+PxCore.h"
-#import "NSString+PxCore.h"
+@interface UIView (PxUIKit)
 
+- (void)buildUI;
+- (void)setUI;
 
-#pragma mark - Classes
-/*
- * Classes
- */
-#import "PxLocalize.h"
-#import "PxLogger.h"
-#import "PxMutableIntegerDictionary.h"
-#import "PxPair.h"
-#import "PxRange.h"
-#import "PxWeakValue.h"
+- (CGPoint)extents;
+- (CGPoint)origin;
+- (CGSize)size;
 
+- (void)setOrigin:(CGPoint)origin;
+- (void)setX:(float)x;
+- (void)setY:(float)y;
+- (void)setSize:(CGSize)size;
+- (void)setWidth:(float)width;
+- (void)setHeight:(float)height;
+- (void)removeSubviews;
+- (void)setDefaultResizingMask;
+- (void)drawInContext:(CGContextRef)c;
 
-#pragma mark - Runtime
-/*
- * Runtime
- */
-#import "PxRuntimeHelper.h"
+- (UIImageView *)addImage:(UIImage *)image position:(CGPoint)point;
+- (UIImageView *)addImageWithName:(NSString *)imageName position:(CGPoint)point;
 
+- (id)addView:(UIView *)view;
 
-#pragma mark - Support
-/*
- * Support
- */
-#import "PxCoreSupport.h"
+- (UIView *)searchSubviews:(BOOL (^)(UIView *obj))block;
+
+@end
