@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,22 +19,16 @@
  */
 
 //
-//  PxNetResult.h
-//  PxNetKit
+//  NSString+PxMarkupKit.h
+//  PxMarkupKit
 //
-//  Created by Jonathan Cichon on 10.02.14.
+//  Created by Jonathan Cichon on 30.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "PxMarkupKitMapping.h"
 
-@interface PxNetResult : NSObject
-@property (nonatomic, assign, readonly) NSInteger status;
-@property (nonatomic, strong, readonly) id returnObject;
-@property (nonatomic, strong, readonly) NSString *filePath;
-
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
-
-- (BOOL)isSuccess;
+@interface NSString (PxMarkupKit) <PxMarkupAttribute>
 
 @end

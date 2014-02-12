@@ -50,7 +50,7 @@
  @param block The block to determine if a element should be removed.
  @return self.
  */
-- (NSMutableArray*)deleteIf:(BOOL (^)(id obj))block;
+- (NSMutableArray *)deleteIf:(BOOL (^)(id obj))block;
 
 
 #pragma mark - Rearranging Content
@@ -60,6 +60,6 @@
  @param block The block to determine the sort-order.
  @return self.
  */
-- (NSMutableArray*)sort:(NSComparisonResult (^)(id a, id b))block;
+- (NSMutableArray *)sort:(NSComparisonResult (^)(id a, id b))block;
 
 @end

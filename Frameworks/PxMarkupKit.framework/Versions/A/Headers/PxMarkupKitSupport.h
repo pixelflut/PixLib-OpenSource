@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 pixelflut GmbH, http://pixelflut.net
+ * Copyright (c) 2014 pixelflut GmbH, http://pixelflut.net
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -19,22 +19,34 @@
  */
 
 //
-//  PxNetResult.h
-//  PxNetKit
+//  PxMarkupKitSupport.h
+//  PxMarkupKit
 //
-//  Created by Jonathan Cichon on 10.02.14.
+//  Created by Jonathan Cichon on 30.01.14.
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface PxNetResult : NSObject
-@property (nonatomic, assign, readonly) NSInteger status;
-@property (nonatomic, strong, readonly) id returnObject;
-@property (nonatomic, strong, readonly) NSString *filePath;
+typedef enum {
+    PxContentTypeNone   = 0,
+    PxContentTypeCXML   = 1,
+    PxContentTypeJSON   = 2,
+    PxContentTypeXML    = 3,
+    PxContentTypePlain  = 4
+} PxContentType;
 
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
-
-- (BOOL)isSuccess;
-
-@end
+static inline PxContentType PxContentTypeFromNSString(NSString *string) {
+    if ([string isEqualToString:@"text/cxml"]) {
+        return PxContentTypeCXML;
+    } else if ([string isEqualToString:@"cxml"]) {
+        return PxContentTypeCXML;
+    } else if ([string isEqualToString:@"text/json"]) {
+        return PxContentTypeJSON;
+    } else if ([string isEqualToString:@"text/plain"]) {
+        return PxContentTypePlain;
+    } else if ([string isEqualToString:@"text/xml"]) {
+        return PxContentTypeXML;
+    }
+    return PxContentTypeNone;
+}

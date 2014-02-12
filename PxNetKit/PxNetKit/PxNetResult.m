@@ -28,7 +28,24 @@
 
 #import "PxNetResult.h"
 
+@interface PxNetResult ()
+@property (nonatomic, assign) NSInteger status;
+@property (nonatomic, strong) id returnObject;
+@property (nonatomic, strong) NSString *filePath;
+
+@end
+
 @implementation PxNetResult
+
+- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath {
+    self = [super init];
+    if (self) {
+        _status = status;
+        _returnObject = returnObject;
+        _filePath = filePath;
+    }
+    return self;
+}
 
 - (BOOL)isSuccess {
     return (self.status < 400);

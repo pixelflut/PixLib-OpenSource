@@ -29,7 +29,7 @@
 #import "PxRemoteImageService.h"
 #import "PxImageStorage.h"
 
-dispatch_queue_t getSerialWorkQueue();
+dispatch_queue_t getSerialWorkQueue__remoteImageService();
 
 typedef void (^CompletionHandler)();
 
@@ -72,13 +72,13 @@ PxSingletonImp(defaultService)
         self.downloadQueue = [[NSOperationQueue alloc] init];
         self.downloadSession = [NSURLSession sessionWithConfiguration:configObject delegate:self delegateQueue:self.downloadQueue];
         
-        getSerialWorkQueue();
+        getSerialWorkQueue__remoteImageService();
     }
     return self;
 }
 
 - (void)fetchLocalImagePathForURL:(NSURL *)imageURL completionBlock:(void (^)(NSString *filePath, NSURL *originalURL))completionBlock {
-    dispatch_async(getSerialWorkQueue(), ^{
+    dispatch_async(getSerialWorkQueue__remoteImageService(), ^{
         NSString *filePath = [self.imageStorage imagePathForIdentifier:[PxImageStorage identifierForURL:imageURL]];
         if (filePath) {
             completionBlock(filePath, imageURL);
@@ -102,7 +102,7 @@ PxSingletonImp(defaultService)
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionDownloadTask *)task didCompleteWithError:(NSError *)error {
-    dispatch_async(getSerialWorkQueue(), ^{
+    dispatch_async(getSerialWorkQueue__remoteImageService(), ^{
         NSArray *completionBlocks = [self completionBlocksForTaskIdentifier:[task taskDescription]];
         [self cleanupTask:task];
         
@@ -157,7 +157,7 @@ PxSingletonImp(defaultService)
 @end
 
 dispatch_queue_t serialQueue;
-dispatch_queue_t getSerialWorkQueue() {
+dispatch_queue_t getSerialWorkQueue__remoteImageService() {
     if (!serialQueue) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{

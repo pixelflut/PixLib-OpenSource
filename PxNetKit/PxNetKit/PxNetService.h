@@ -30,12 +30,28 @@
 #import "PxNetRequest.h"
 #import "PxNetResult.h"
 #import "PxNetCache.h"
+#import "PxNetConnection.h"
+#import <PxMarkupKit/PxMarkupKit.h>
+
+
+// TODO: implement noCache options etc.
+// The first PxRemoteOptionDisk can not combined with PxRemoteOptionRAM and PxRemoteOptionNoCache
+typedef enum {
+    PxNetOptionDisk    = 1<<0,   // Data will be stored in the Filesystem. Only way to add new cache-entries
+    PxNetOptionRAM     = 1<<1,   // Data should be keept in Memory rather than be stored in the Filesystem. Result will not be cached, but if a cached value is available, the cached Value will be returned
+    PxNetOptionNoCache = 1<<2,   // Should not be read from cache, no matter what
+    PxNetOptionParse   = 1<<3    // Result should be parsed
+} PxNetOption;
+
+typedef enum {
+    PxHTTPStatusCodeCache = 304,
+	PxHTTPStatusCodeCacheRequestFailed = 313
+} PxHTTPStatusCode;
 
 typedef void (^PxNetResultBlock)(BOOL success, NSUInteger status, PxNetResult *result);
 typedef void (^PxNetMultiResultBlock)(BOOL success, NSUInteger status, NSDictionary *results);
 
-@interface PxNetService : NSObject
-@property (nonatomic, strong, readonly) PxNetCache *cache;
+@interface PxNetService : NSObject <PxNetConnectionDelegate, PxAsyncParserDelegate>
 
 - (void)fetchDataWithRequests:(NSArray *)requests background:(BOOL)background completion:(PxNetMultiResultBlock)completion;
 

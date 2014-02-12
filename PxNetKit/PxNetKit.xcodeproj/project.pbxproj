@@ -6,7 +6,30 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		DB5C8D9618AB93E80063E4D7 /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = DB5C8D9718AB93E80063E4D7 /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				DB5C8D9C18AB94830063E4D7 /* Build Framework */,
+			);
+			dependencies = (
+				DB5C8D9B18AB946F0063E4D7 /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
+		DB20DE4418AA222100567955 /* PxNetConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20DE4318AA222100567955 /* PxNetConnection.m */; };
+		DB5C8D8D18AB72E20063E4D7 /* PxMarkupKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5C8D8C18AB72E20063E4D7 /* PxMarkupKit.framework */; };
+		DB5C8D8F18AB93660063E4D7 /* PxNetKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3000F18A8D3620080EA01 /* PxNetKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5C8D9018AB936C0063E4D7 /* PxNetCache.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3003718A8D46D0080EA01 /* PxNetCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5C8D9118AB936E0063E4D7 /* PxNetConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = DB20DE4218AA222100567955 /* PxNetConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5C8D9218AB93710063E4D7 /* PxNetRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3003D18A8D4B50080EA01 /* PxNetRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5C8D9318AB93740063E4D7 /* PxNetResult.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3003418A8D3AD0080EA01 /* PxNetResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB5C8D9418AB93770063E4D7 /* PxNetService.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3003A18A8D4890080EA01 /* PxNetService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBF3000B18A8D3620080EA01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF3000A18A8D3620080EA01 /* Foundation.framework */; };
 		DBF3001018A8D3620080EA01 /* PxNetKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DBF3000F18A8D3620080EA01 /* PxNetKit.h */; };
 		DBF3001918A8D3620080EA01 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF3001818A8D3620080EA01 /* XCTest.framework */; };
@@ -23,6 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DB5C8D9A18AB946F0063E4D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBF3FFFF18A8D3620080EA01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DBF3000618A8D3620080EA01;
+			remoteInfo = PxNetKit;
+		};
 		DBF3001D18A8D3620080EA01 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DBF3FFFF18A8D3620080EA01 /* Project object */;
@@ -46,6 +76,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		DB20DE4218AA222100567955 /* PxNetConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxNetConnection.h; sourceTree = "<group>"; };
+		DB20DE4318AA222100567955 /* PxNetConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxNetConnection.m; sourceTree = "<group>"; };
+		DB5C8D8C18AB72E20063E4D7 /* PxMarkupKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PxMarkupKit.framework; path = ../Frameworks/PxMarkupKit.framework; sourceTree = "<group>"; };
 		DBF3000718A8D3620080EA01 /* libPxNetKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPxNetKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF3000A18A8D3620080EA01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DBF3000E18A8D3620080EA01 /* PxNetKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PxNetKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -74,6 +107,7 @@
 			files = (
 				DBF3000B18A8D3620080EA01 /* Foundation.framework in Frameworks */,
 				DBF3004118A8D9600080EA01 /* PxCore.framework in Frameworks */,
+				DB5C8D8D18AB72E20063E4D7 /* PxMarkupKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +137,7 @@
 		DBF3000918A8D3620080EA01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB5C8D8C18AB72E20063E4D7 /* PxMarkupKit.framework */,
 				DBF3004018A8D9600080EA01 /* PxCore.framework */,
 				DBF3000A18A8D3620080EA01 /* Foundation.framework */,
 				DBF3001818A8D3620080EA01 /* XCTest.framework */,
@@ -152,6 +187,8 @@
 			children = (
 				DBF3003718A8D46D0080EA01 /* PxNetCache.h */,
 				DBF3003818A8D46D0080EA01 /* PxNetCache.m */,
+				DB20DE4218AA222100567955 /* PxNetConnection.h */,
+				DB20DE4318AA222100567955 /* PxNetConnection.m */,
 				DBF3003D18A8D4B50080EA01 /* PxNetRequest.h */,
 				DBF3003E18A8D4B50080EA01 /* PxNetRequest.m */,
 				DBF3003418A8D3AD0080EA01 /* PxNetResult.h */,
@@ -174,6 +211,22 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DB5C8D8E18AB93580063E4D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB5C8D8F18AB93660063E4D7 /* PxNetKit.h in Headers */,
+				DB5C8D9018AB936C0063E4D7 /* PxNetCache.h in Headers */,
+				DB5C8D9118AB936E0063E4D7 /* PxNetConnection.h in Headers */,
+				DB5C8D9218AB93710063E4D7 /* PxNetRequest.h in Headers */,
+				DB5C8D9318AB93740063E4D7 /* PxNetResult.h in Headers */,
+				DB5C8D9418AB93770063E4D7 /* PxNetService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		DBF3000618A8D3620080EA01 /* PxNetKit */ = {
 			isa = PBXNativeTarget;
@@ -182,6 +235,8 @@
 				DBF3000318A8D3620080EA01 /* Sources */,
 				DBF3000418A8D3620080EA01 /* Frameworks */,
 				DBF3000518A8D3620080EA01 /* CopyFiles */,
+				DB5C8D8E18AB93580063E4D7 /* Headers */,
+				DB5C8D9518AB93BD0063E4D7 /* Prepare Framework */,
 			);
 			buildRules = (
 			);
@@ -233,6 +288,7 @@
 			targets = (
 				DBF3000618A8D3620080EA01 /* PxNetKit */,
 				DBF3001618A8D3620080EA01 /* PxNetKitTests */,
+				DB5C8D9618AB93E80063E4D7 /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -248,6 +304,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DB5C8D9518AB93BD0063E4D7 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		DB5C8D9C18AB94830063E4D7 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nxcrun lipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DBF3000318A8D3620080EA01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -257,6 +344,7 @@
 				DBF3003F18A8D4B50080EA01 /* PxNetRequest.m in Sources */,
 				DBF3003918A8D46D0080EA01 /* PxNetCache.m in Sources */,
 				DBF3003618A8D3AD0080EA01 /* PxNetResult.m in Sources */,
+				DB20DE4418AA222100567955 /* PxNetConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +359,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DB5C8D9B18AB946F0063E4D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DBF3000618A8D3620080EA01 /* PxNetKit */;
+			targetProxy = DB5C8D9A18AB946F0063E4D7 /* PBXContainerItemProxy */;
+		};
 		DBF3001E18A8D3620080EA01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DBF3000618A8D3620080EA01 /* PxNetKit */;
@@ -290,6 +383,23 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		DB5C8D9818AB93E80063E4D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i368";
+			};
+			name = Debug;
+		};
+		DB5C8D9918AB93E80063E4D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "arm64 armv7 armv7s i368";
+			};
+			name = Release;
+		};
 		DBF3002818A8D3620080EA01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -308,6 +418,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -324,7 +435,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 			};
 			name = Debug;
 		};
@@ -345,7 +458,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -355,7 +469,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
+				STRIP_STYLE = "non-global";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -433,6 +549,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB5C8D9718AB93E80063E4D7 /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB5C8D9818AB93E80063E4D7 /* Debug */,
+				DB5C8D9918AB93E80063E4D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DBF3000218A8D3620080EA01 /* Build configuration list for PBXProject "PxNetKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

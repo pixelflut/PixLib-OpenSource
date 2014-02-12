@@ -19,22 +19,20 @@
  */
 
 //
-//  PxNetResult.h
-//  PxNetKit
+//  PxParseService.h
+//  PixLib OpenSource
 //
-//  Created by Jonathan Cichon on 10.02.14.
-//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
+//  Created by Jonathan Cichon on 18.02.13.
 //
 
 #import <Foundation/Foundation.h>
+#import "PxMarkupKitSupport.h"
 
-@interface PxNetResult : NSObject
-@property (nonatomic, assign, readonly) NSInteger status;
-@property (nonatomic, strong, readonly) id returnObject;
-@property (nonatomic, strong, readonly) NSString *filePath;
+@interface PxParseService : NSObject
 
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
-
-- (BOOL)isSuccess;
++ (id)parseObject:(id)object type:(PxContentType)type mapping:(NSDictionary *)mapping error:(NSError **)error;
++ (id)parseFile:(NSURL *)fileUrl type:(PxContentType)type mapping:(NSDictionary *)mapping;
++ (id)parseData:(NSData *)data type:(PxContentType)type mapping:(NSDictionary *)mapping;
++ (id)parseString:(NSString *)data type:(PxContentType)type mapping:(NSDictionary *)mapping;
 
 @end

@@ -19,22 +19,25 @@
  */
 
 //
-//  PxNetResult.h
-//  PxNetKit
+//  PxHTMLParser.h
+//  PixLib OpenSource
 //
-//  Created by Jonathan Cichon on 10.02.14.
-//  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
+//  Created by Jonathan Cichon on 18.02.13.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface PxNetResult : NSObject
-@property (nonatomic, assign, readonly) NSInteger status;
-@property (nonatomic, strong, readonly) id returnObject;
-@property (nonatomic, strong, readonly) NSString *filePath;
+typedef enum {
+    PxHTMLStyleNone     = 0,
+    PxHTMLStyleItalic   = 1<<0,
+    PxHTMLStyleBold     = 1<<1,
+    PxHTMLStyleLink     = 1<<2
+} PxHTMLStyle;
 
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
+typedef void (^PxHTMLStyleBlock)(NSMutableAttributedString *string, int activeStyles, NSRange range, NSString *tagName, NSDictionary *tagAttributes, id userInfos);
 
-- (BOOL)isSuccess;
+@interface PxHTMLParser : NSObject
+
++ (NSMutableAttributedString *)attributedStringWithString:(NSString *)input userInfos:(id)userInfos styleBlock:(PxHTMLStyleBlock)block;
 
 @end
