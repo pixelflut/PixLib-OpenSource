@@ -26,7 +26,7 @@
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /**
  * Adds convinient methods for drawing NSAttributedStrings in bezierpaths
