@@ -29,6 +29,7 @@
 #import "UIView+PxUIKit.h"
 #import <QuartzCore/QuartzCore.h>
 #import <PxCore/PxCore.h>
+#import "PxUIKitSupport.h"
 
 @implementation UIView (PxUIKit)
 
@@ -133,5 +134,65 @@
     }
     return nil;
 }
+
+- (CGRect)normalizedFrame {
+	return CGRectNormalizeForDevice(self.frame);
+}
+
+- (void)normalizeFrame {
+	[self setFrame:[self normalizedFrame]];
+}
+
+#pragma mark - Animations
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations {
+    if (duration != 0) {
+        [self animateWithDuration:duration animations:animations];
+    } else {
+        if (animations) {
+            animations();
+        }
+    }
+}
+
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(BOOL))completion {
+    if (duration != 0) {
+        [self animateWithDuration:duration animations:animations completion:completion];
+    } else {
+        if (animations) {
+            animations();
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL))completion {
+    if (duration != 0 || delay != 0) {
+        [self animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
+    } else {
+        if (animations) {
+            animations();
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion {
+    if (duration != 0 || delay != 0) {
+        [self animateWithDuration:duration delay:delay usingSpringWithDamping:dampingRatio initialSpringVelocity:velocity options:options animations:animations completion:completion];
+    } else {
+        if (animations) {
+            animations();
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
+
 
 @end

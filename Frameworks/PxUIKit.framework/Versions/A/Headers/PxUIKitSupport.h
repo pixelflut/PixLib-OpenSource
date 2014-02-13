@@ -65,22 +65,6 @@ static inline CGSize CGSizeNormalizeForDevice(CGSize size);
 
 
 #pragma mark - CGRect
-static inline CGRect CGRectFromSize(CGSize s) {
-	return CGRectMake(0, 0, s.width, s.height);
-}
-
-static inline CGRect CGRectCenter(CGRect bounds, CGRect rect) {
-    return CGRectMake((int)(bounds.size.width-rect.size.width)/2+bounds.origin.x, (int)(bounds.size.height-rect.size.height)/2+bounds.origin.y, rect.size.width, rect.size.height);
-}
-
-static inline CGRect CGRectCenterHorizontal(CGRect bounds, CGRect rect) {
-    return CGRectMake((int)(bounds.size.width-rect.size.width)/2+bounds.origin.x, (int)rect.origin.y, rect.size.width, rect.size.height);
-}
-
-static inline CGRect CGRectCenterVertical(CGRect bounds, CGRect rect) {
-    return CGRectMake((int)rect.origin.x, (int)(bounds.size.height-rect.size.height)/2+bounds.origin.y, rect.size.width, rect.size.height);
-}
-
 static inline UIEdgeInsets UIEdgeInsetsFlipHorizontal(UIEdgeInsets insets) {
 	float tmp = insets.left;
 	insets.left = insets.right;
@@ -99,28 +83,14 @@ static inline CGRect CGRectNormalizeForDevice(CGRect rect) {
 	return CGRectMake(CGFloatNormalizeForDevice(rect.origin.x), CGFloatNormalizeForDevice(rect.origin.y), CGFloatNormalizeForDevice(rect.size.width), CGFloatNormalizeForDevice(rect.size.height));
 }
 
-static inline CGPoint CGRectGetCenter(CGRect rect) {
-    return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-}
-
 #pragma mark - CGSize
 static inline CGSize CGSizeNormalizeForDevice(CGSize size) {
 	return CGSizeMake(CGFloatNormalizeForDevice(size.width), CGFloatNormalizeForDevice(size.height));
 }
 
 #pragma mark - CGPoint
-static inline CGFloat CGPointDistance(CGPoint p1, CGPoint p2) {
-    CGFloat dx = p1.x-p2.x;
-    CGFloat dy = p1.y-p2.y;
-    return sqrtf(dx*dx+dy*dy);
-}
-
 static inline CGPoint CGPointNormalizeForDevice(CGPoint point) {
 	return CGPointMake(CGFloatNormalizeForDevice(point.x), CGFloatNormalizeForDevice(point.y));
-}
-
-static inline CGPoint CGPointAdd(CGPoint point1, CGPoint point2) {
-    return CGPointMake(point1.x + point2.x, point1.y + point2.y);
 }
 
 #pragma mark - CGFloat

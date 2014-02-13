@@ -59,4 +59,13 @@
 
 - (UIView *)searchSubviews:(BOOL (^)(UIView *obj))block;
 
+- (CGRect)normalizedFrame;
+- (void)normalizeFrame;
+
+#pragma mark - Animations
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations;
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration animations:(void (^)(void))animations completion:(void (^)(BOOL))completion;
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL))completion;
++ (void)pxAnimateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion NS_AVAILABLE_IOS(7_0);
+
 @end

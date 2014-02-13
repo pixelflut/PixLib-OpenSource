@@ -87,14 +87,12 @@ PxSingleton(defaultLogger)
 }
 
 + (void)debugRuntime:(NSString *)msg repeatCount:(NSUInteger)repeatCount block:(void (^)(void))debugBlock {
-#ifdef DEBUG
     NSDate *startTime = [NSDate date];
     for (int i = 0; i<repeatCount; i++) {
         debugBlock();
     }
     NSDate *endTime = [NSDate date];
     PxDebug(@"%@\n\tTime: %f\n\trepeats: %lu", msg, [endTime timeIntervalSinceReferenceDate] - [startTime timeIntervalSinceReferenceDate], (unsigned long)repeatCount);
-#endif
 }
 
 - (id)init {
