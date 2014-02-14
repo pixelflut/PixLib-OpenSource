@@ -29,11 +29,12 @@
 #import <Foundation/Foundation.h>
 #import "PxNetResult.h"
 
-extern NSString *kNetRequestIdentifierKey;
-extern NSString *kNetRequestClassKey;
-extern NSString *kNetRequestURLRequestKey;
-extern NSString *kNetRequestParseDataKey;
-extern NSString *kNetRequestCacheIntervalKey;
+extern NSString *kPxNetRequestIdentifierKey;
+extern NSString *kPxNetRequestClassKey;
+extern NSString *kPxNetRequestURLRequestKey;
+extern NSString *kPxNetRequestParseDataKey;
+extern NSString *kPxNetRequestNoCacheKey;
+extern NSString *kPxNetRequestCacheIntervalKey;
 
 @interface PxNetRequest : NSObject
 @property (nonatomic, strong, readonly) NSString *identifier;

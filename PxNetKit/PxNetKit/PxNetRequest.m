@@ -28,11 +28,12 @@
 
 #import "PxNetRequest.h"
 
-NSString *kNetRequestIdentifierKey = @"identifier";
-NSString *kNetRequestClassKey = @"class";
-NSString *kNetRequestURLRequestKey = @"urlRequest";
-NSString *kNetRequestParseDataKey = @"parseData";
-NSString *kNetRequestCacheIntervalKey = @"cacheInterval";
+NSString *kPxNetRequestIdentifierKey = @"identifier";
+NSString *kPxNetRequestClassKey = @"class";
+NSString *kPxNetRequestURLRequestKey = @"urlRequest";
+NSString *kPxNetRequestParseDataKey = @"parseData";
+NSString *kPxNetRequestNoCacheKey = @"noCache";
+NSString *kPxNetRequestCacheIntervalKey = @"cacheInterval";
 
 @interface PxNetRequest ()
 @property (nonatomic, strong) NSString *identifier;
@@ -51,11 +52,17 @@ NSString *kNetRequestCacheIntervalKey = @"cacheInterval";
 
 + (instancetype)requestWithConfiguration:(NSDictionary *)configurationDictionary {
     PxNetRequest *request = [[self alloc] init];
-    request.identifier = configurationDictionary[kNetRequestIdentifierKey];
-    request.expectedClass = NSClassFromString(configurationDictionary[kNetRequestClassKey]);
-    request.request = configurationDictionary[kNetRequestURLRequestKey];
-    request.parseData = [configurationDictionary[kNetRequestParseDataKey] boolValue];
-    request.cacheInterval = [configurationDictionary[kNetRequestCacheIntervalKey] doubleValue];
+    request.identifier = configurationDictionary[kPxNetRequestIdentifierKey];
+    request.expectedClass = NSClassFromString(configurationDictionary[kPxNetRequestClassKey]);
+    request.request = configurationDictionary[kPxNetRequestURLRequestKey];
+    request.parseData = [configurationDictionary[kPxNetRequestParseDataKey] boolValue];
+    request.noCache = [configurationDictionary[kPxNetRequestNoCacheKey] boolValue];
+    if (request.noCache) {
+        request.cacheInterval = 0;
+    } else {
+        request.cacheInterval = [configurationDictionary[kPxNetRequestCacheIntervalKey] doubleValue];
+    }
+    
     if (!request.identifier) {
         request.identifier = [[NSUUID UUID] UUIDString];
     }
