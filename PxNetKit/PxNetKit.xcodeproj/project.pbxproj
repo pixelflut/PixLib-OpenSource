@@ -482,7 +482,7 @@
 				DSTROOT = /tmp/PxNetKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxNetKit/PxNetKit-Prefix.pch";
@@ -498,7 +498,7 @@
 				DSTROOT = /tmp/PxNetKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxNetKit/PxNetKit-Prefix.pch";
