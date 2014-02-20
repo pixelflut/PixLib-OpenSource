@@ -54,7 +54,7 @@
     if (self) {
         _URLString = [[request.request URL] absoluteString];
         
-        NSMutableURLRequest *tmp = [request mutableCopy];
+        NSMutableURLRequest *tmp = [request.request mutableCopy];
         [tmp setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
         _request = tmp;
         
