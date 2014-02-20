@@ -73,7 +73,7 @@ PxSingletonImp(defaultService)
         img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        if (internalIdentifier) {
+        if (internalIdentifier && img) {
             [self storeImage:img identifier:internalIdentifier];
         }
     }

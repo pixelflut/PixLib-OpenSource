@@ -75,7 +75,7 @@
             if (PxDeviceScale() != 1.0) {
                 img = [[UIImage alloc] initWithCGImage:[img CGImage] scale:PxDeviceScale() orientation:UIImageOrientationUp];
             }
-            if (self.keepInMemory) {
+            if (self.keepInMemory && img) {
                 [self.inMemoryCache setObject:img forKey:identifier];
             }
         }
@@ -84,9 +84,11 @@
 }
 
 - (void)storeImage:(UIImage *)image withIdentifier:(NSString *)identifier {
-    [UIImagePNGRepresentation(image) writeToFile:[self filePath:identifier] atomically:YES];
-    if (self.keepInMemory) {
-        [self.inMemoryCache setObject:image forKey:identifier];
+    if (image) {
+        [UIImagePNGRepresentation(image) writeToFile:[self filePath:identifier] atomically:YES];
+        if (self.keepInMemory) {
+            [self.inMemoryCache setObject:image forKey:identifier];
+        }
     }
 }
 
