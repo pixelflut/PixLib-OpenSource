@@ -70,7 +70,12 @@ NSString *const PxHTTPHeaderRange = @"Range";
 #pragma mark - File access helper
 
 - (NSString *)fileName:(NSURL *)url {
-    return [[[url absoluteString] stringByAddingSHA1Encoding] stringByAppendingPathExtension:[[url relativePath] pathExtension]];
+    NSString *extension = [[url relativePath] pathExtension];
+    NSString *fileName = [[url absoluteString] stringByAddingSHA1Encoding];
+    if (extension) {
+        return [fileName stringByAppendingPathExtension:extension];
+    }
+    return fileName;
 }
 
 - (NSString *)filePath:(NSURL *)url {

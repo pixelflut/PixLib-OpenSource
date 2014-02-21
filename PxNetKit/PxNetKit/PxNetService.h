@@ -60,7 +60,7 @@ typedef void (^PxNetMultiResultBlock)(BOOL success, NSUInteger status, NSDiction
 @end
 
 @interface PxNetService (SubclassingHooks)
-- (Class)cacheClass;
++ (Class)cacheClass;
 - (NSDictionary *)orMapping;
 - (NSMutableURLRequest *)requestForURLString:(NSString *)URLString;
 - (void)setUserAgent:(NSMutableURLRequest *)request;

@@ -325,7 +325,7 @@
 }
 
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)c didFailWithError:(NSError *)error {
     self.statusCode = 504;
     self.state = PxNetConnectionStateFailed;
     [self.delegate connection:self didCompleteWithStatus:self.statusCode];

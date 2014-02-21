@@ -94,7 +94,7 @@
 		DBF3003718A8D46D0080EA01 /* PxNetCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxNetCache.h; sourceTree = "<group>"; };
 		DBF3003818A8D46D0080EA01 /* PxNetCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxNetCache.m; sourceTree = "<group>"; };
 		DBF3003A18A8D4890080EA01 /* PxNetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxNetService.h; sourceTree = "<group>"; };
-		DBF3003B18A8D4890080EA01 /* PxNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxNetService.m; sourceTree = "<group>"; };
+		DBF3003B18A8D4890080EA01 /* PxNetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PxNetService.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		DBF3003D18A8D4B50080EA01 /* PxNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxNetRequest.h; sourceTree = "<group>"; };
 		DBF3003E18A8D4B50080EA01 /* PxNetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxNetRequest.m; sourceTree = "<group>"; };
 		DBF3004018A8D9600080EA01 /* PxCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PxCore.framework; path = ../Frameworks/PxCore.framework; sourceTree = "<group>"; };

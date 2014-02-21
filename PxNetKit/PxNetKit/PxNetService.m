@@ -80,7 +80,8 @@ dispatch_queue_t getSerialWorkQueue__netService();
 
 @interface PxNetService ()
 @property (nonatomic, strong) PxNetCache *cache;
-@property (nonatomic, strong) NSMutableArray *connectionQueue;
+@property (nonatomic, strong) NSMutableArray *currentConnections;
+@property (nonatomic, strong) NSOperationQueue *delegateQueue;
 @property (nonatomic, assign) NSInteger activeConnections;
 @property (nonatomic, assign) NSInteger maxSynchronouseConnections;
 
@@ -106,7 +107,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
     self = [super init];
     if (self) {
         _cache = [[[[self class] cacheClass] alloc] initWithCacheDir:[PxCacheDirectory() stringByAppendingPathComponent:@"pxNetService"]];
-        _connectionQueue = [[NSMutableArray alloc] init];
+        _currentConnections = [[NSMutableArray alloc] init];
         _activeConnections = 0;
         _maxSynchronouseConnections = 20;
     }
@@ -115,7 +116,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
 
 #pragma mark - Default implementations -
 
-- (Class)httpCacheClass {
++ (Class)cacheClass {
     return [PxNetCache class];
 }
 
@@ -155,7 +156,6 @@ dispatch_queue_t getSerialWorkQueue__netService();
 }
 
 - (void)fetchDataWithRequest:(PxNetRequest *)request background:(BOOL)background completion:(PxNetResultBlock)completion {
-    
     dispatch_async(getSerialWorkQueue__netService(), ^{
         if (![NSURLConnection canHandleRequest:request.request]) {
             if (!background) {
@@ -167,7 +167,6 @@ dispatch_queue_t getSerialWorkQueue__netService();
             }
             return;
         }
-        
         PxNetUserInfo *info = [[PxNetUserInfo alloc] initWithResultBlock:completion request:request];
         [self fetchRequests:info background:background];
     });
@@ -202,17 +201,17 @@ dispatch_queue_t getSerialWorkQueue__netService();
 
 - (void)connection:(PxNetConnection *)c didStop:(BOOL)connectionCleaned {
     // Dont know ...
+    PxDebug(@"connection:didStop: %@", c);
 }
 
 - (void)connection:(PxNetConnection *)c didCompleteWithStatus:(NSInteger)status {
     dispatch_async(getSerialWorkQueue__netService(), ^{
-        
-        NSUInteger index = [_connectionQueue index:^BOOL(PxNetConnectionQueueEntry *entry) {
+        NSUInteger index = [_currentConnections index:^BOOL(PxNetConnectionQueueEntry *entry) {
             return entry.connection == c;
         }];
         if (index != NSNotFound) {
-            PxNetConnectionQueueEntry *entry = [_connectionQueue objectAtIndex:index];
-            [_connectionQueue removeObjectAtIndex:index];
+            PxNetConnectionQueueEntry *entry = [_currentConnections objectAtIndex:index];
+            [_currentConnections removeObjectAtIndex:index];
             if( status < 400 ) {
                 [self handleSuccess:entry];
             } else {
@@ -221,6 +220,13 @@ dispatch_queue_t getSerialWorkQueue__netService();
         }
         [self evalConnenctionQueue];
     });
+}
+
+- (NSOperationQueue *)queueForConnection:(PxNetConnection *)connection {
+    if (!self.delegateQueue) {
+        self.delegateQueue = [[NSOperationQueue alloc] init];
+    }
+    return self.delegateQueue;
 }
 
 #pragma mark PxAsyncParserDelegate
@@ -249,7 +255,6 @@ dispatch_queue_t getSerialWorkQueue__netService();
 
 #pragma mark - Private Methods -
 - (void)finischRequest:(PxNetRequestWrapper *)wrapper {
-    
     PxNetRequest *currentRequest = wrapper.currentRequest;
     [currentRequest setFinished:YES];
     [currentRequest setResult:wrapper.result];
@@ -300,14 +305,14 @@ dispatch_queue_t getSerialWorkQueue__netService();
     NSString *_id = [[requestWrapper.currentRequest.request URL] absoluteString];
     PxNetConnectionQueueEntry *availableConnection = nil;
     if ([requestWrapper.currentRequest canQueue]) {
-        availableConnection = [_connectionQueue find:^BOOL(PxNetConnectionQueueEntry *entry) {
+        availableConnection = [_currentConnections find:^BOOL(PxNetConnectionQueueEntry *entry) {
             return [[entry.connection URLString] isEqualToString:_id] && ![entry.connection canQueue];
         }];
     }
     
     if (!availableConnection) {
         availableConnection = [[PxNetConnectionQueueEntry alloc] initWithConnection:[[PxNetConnection alloc] initWithRequest:requestWrapper.currentRequest delegate:self]];
-        [_connectionQueue addObject:availableConnection];
+        [_currentConnections addObject:availableConnection];
     }
     [availableConnection addRequestWrapper:requestWrapper];
     
@@ -315,7 +320,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
 }
 
 - (void)evalConnenctionQueue {
-    [_connectionQueue eachWithIndex:^(PxNetConnectionQueueEntry *entry, NSUInteger index) {
+    [_currentConnections eachWithIndex:^(PxNetConnectionQueueEntry *entry, NSUInteger index) {
         if (index < self.maxSynchronouseConnections) {
             [entry.connection startOrResumeConnection];
         }else {
@@ -470,6 +475,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
 - (id)initWithConnection:(PxNetConnection *)connection {
     self = [super init];
     if (self) {
+        _connection = connection;
         self.requestWrappers = [[NSMutableArray alloc] init];
     }
     return self;
