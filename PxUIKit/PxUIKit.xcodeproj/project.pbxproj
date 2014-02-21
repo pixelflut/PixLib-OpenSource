@@ -739,7 +739,7 @@
 				DSTROOT = /tmp/PxUIKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxUIKit/PxUIKit-Prefix.pch";
@@ -755,7 +755,7 @@
 				DSTROOT = /tmp/PxUIKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxUIKit/PxUIKit-Prefix.pch";
