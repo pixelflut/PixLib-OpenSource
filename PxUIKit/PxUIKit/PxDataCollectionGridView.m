@@ -155,7 +155,7 @@ typedef struct {
     
     PxCollectionViewCell *cell = [self dequeueReusableCellWithReuseIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
 	[cell setCollectionView:self];
-	[cell setDelegate:self];
+	[cell setDelegate:self.delegate];
     [cell setData:[self dataForItemAtIndexPath:indexPath]];
     return cell;
 }
