@@ -51,7 +51,7 @@ typedef enum {
 
 @interface PxCollectionViewCell (SubclassingHooks)
 
-+ (CGSize)cellSizeWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView;
++ (CGSize)sizeWithData:(id)data reuseIdentifier:(NSString *)reuseIdentifier collectionView:(UICollectionView *)collectionView;
 
 - (void)buildUI;
 - (void)setUI;

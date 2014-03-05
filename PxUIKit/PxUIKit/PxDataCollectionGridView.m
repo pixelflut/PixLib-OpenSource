@@ -28,7 +28,11 @@
 
 #import "PxDataCollectionGridView.h"
 #import <PxCore/PxCore.h>
+#import "PxCollectionReusableView.h"
 #import "PxCollectionViewCell.h"
+
+NSString *PxCollectionSectionHeaderIdentifier = @"header";
+NSString *PxCollectionSectionFooterIdentifier = @"footer";
 
 #define SELECTOR_COUNT 1
 typedef struct {
@@ -39,6 +43,10 @@ typedef struct {
 @interface PxDataCollectionGridView () <UICollectionViewDataSource>
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, assign) BOOL dynamicSize;
+@property (nonatomic, assign) BOOL dynamicHeaderSize;
+@property (nonatomic, assign) BOOL dynamicFooterSize;
+@property (nonatomic, assign) BOOL needsHeader;
+@property (nonatomic, assign) BOOL needsFooter;
 @property (nonatomic, assign) BOOL dynamicIdentifier;
 @property (nonatomic, assign) SELInfo *selectorLookUp;
 
@@ -71,10 +79,24 @@ typedef struct {
 }
 
 - (void)reloadData {
-	if (!_dynamicSize && self.delegate) {
-		Class klass = [self.delegate collectionView:self classForCellAtIndexPath:nil];
-		[(PxCollectionViewGridLayout *)self.collectionViewLayout setItemSize:[klass cellSizeWithData:nil reuseIdentifier:nil collectionView:self]];
-        [self.collectionViewLayout invalidateLayout];
+	if (self.delegate) {
+        if (!_dynamicSize) {
+            Class klass = [self.delegate collectionView:self classForCellAtIndexPath:nil];
+            [(PxCollectionViewGridLayout *)self.collectionViewLayout setItemSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
+        }
+        
+        if (!_dynamicHeaderSize && _needsHeader) {
+            Class klass = [self.delegate collectionView:self classForHeaderAtSection:0];
+            [(PxCollectionViewGridLayout *)self.collectionViewLayout setHeaderReferenceSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
+        }
+        
+        if (!_dynamicFooterSize && _needsFooter) {
+            Class klass = [self.delegate collectionView:self classForFooterAtSection:0];
+            [(PxCollectionViewGridLayout *)self.collectionViewLayout setFooterReferenceSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
+        }
+		if (!_dynamicSize || (!_dynamicHeaderSize && _needsHeader) || (!_dynamicFooterSize && _needsFooter)) {
+            [self.collectionViewLayout invalidateLayout];
+        }
 	}
     self.data = [self.pxDataSource dataForCollectionView:self];
     [super reloadData];
@@ -136,7 +158,7 @@ typedef struct {
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_dynamicSize) {
         Class klass = [self.delegate collectionView:self classForCellAtIndexPath:indexPath];
-        return [klass cellSizeWithData:[self dataForItemAtIndexPath:indexPath] reuseIdentifier:[self identifierForCellAtIndexPath:indexPath] collectionView:self];
+        return [klass sizeWithData:[self dataForItemAtIndexPath:indexPath] reuseIdentifier:[self identifierForCellAtIndexPath:indexPath] collectionView:self];
     }else {
         return [(PxCollectionViewGridLayout *)self.collectionViewLayout itemSize];
     }
@@ -158,6 +180,33 @@ typedef struct {
 	[cell setDelegate:self.delegate];
     [cell setData:[self dataForItemAtIndexPath:indexPath]];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if ([self.pxDataSource respondsToSelector:@selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:)]) {
+        return [self.pxDataSource collectionView:self viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+    } else {
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader] && _needsHeader) {
+            Class klass = [self.delegate collectionView:self classForHeaderAtSection:indexPath.section];
+            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionHeaderIdentifier];
+            
+            PxCollectionReusableView *header = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionHeaderIdentifier forIndexPath:indexPath];
+            [header setCollectionView:self];
+            [header setDelegate:self.delegate];
+            [header setData:[self dataForSection:indexPath.section]];
+            return header;
+        } else if ([kind isEqualToString:UICollectionElementKindSectionFooter] && _needsFooter) {
+            Class klass = [self.delegate collectionView:self classForFooterAtSection:indexPath.section];
+            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionFooterIdentifier];
+            
+            PxCollectionReusableView *footer = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionFooterIdentifier forIndexPath:indexPath];
+            [footer setCollectionView:self];
+            [footer setDelegate:self.delegate];
+            [footer setData:[self dataForSection:indexPath.section]];
+            return footer;
+        }
+    }
+    return nil;
 }
 
 - (void)removeEntriesFromCollection:(NSArray *)entries {
@@ -360,6 +409,11 @@ typedef struct {
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
+    if (sel_isEqual(aSelector, @selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:))) {
+        if (_needsFooter || _needsHeader) {
+            return YES;
+        }
+    }
     for (int i=0; i<SELECTOR_COUNT && _selectorLookUp; i++) {
         if (_selectorLookUp[i].exist && sel_isEqual(aSelector, _selectorLookUp[i].selector)) {
             return YES;
@@ -392,12 +446,36 @@ typedef struct {
 
 - (void)setDelegate:(id<PxDataCollectionGridViewDelegate>)delegate {
     if (delegate) {
+        _needsHeader = [delegate respondsToSelector:@selector(collectionView:classForHeaderAtSection:)];
+        _needsFooter = [delegate respondsToSelector:@selector(collectionView:classForFooterAtSection:)];
+        
         _dynamicSize = [delegate respondsToSelector:@selector(collectionView:layout:sizeForItemAtIndexPath:)];
-        if (!_dynamicSize && delegate) {
+        if (!_dynamicSize) {
             Class klass = [delegate collectionView:self classForCellAtIndexPath:nil];
-            [(PxCollectionViewGridLayout *)self.collectionViewLayout setItemSize:[klass cellSizeWithData:nil reuseIdentifier:nil collectionView:self]];
+            [(PxCollectionViewGridLayout *)self.collectionViewLayout setItemSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
             [self.collectionViewLayout invalidateLayout];
         }
+        
+        if (_needsHeader) {
+            _dynamicHeaderSize = [delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)];
+            if (!_dynamicHeaderSize) {
+                Class klass = [delegate collectionView:self classForHeaderAtSection:0];
+                [(PxCollectionViewGridLayout *)self.collectionViewLayout setHeaderReferenceSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
+            }
+        } else {
+            _dynamicHeaderSize = NO;
+        }
+        
+        if (_needsFooter) {
+            _dynamicFooterSize = [delegate respondsToSelector:@selector(collectionView:layout:referenceSizeForFooterInSection:)];
+            if (!_dynamicFooterSize) {
+                Class klass = [delegate collectionView:self classForFooterAtSection:0];
+                [(PxCollectionViewGridLayout *)self.collectionViewLayout setFooterReferenceSize:[klass sizeWithData:nil reuseIdentifier:nil collectionView:self]];
+            }
+        } else {
+            _dynamicFooterSize = NO;
+        }
+        
     }
     [super setDelegate:delegate];
     if (delegate) {

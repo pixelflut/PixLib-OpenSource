@@ -86,6 +86,8 @@
 		DB26BC25189A6FFA00FC2211 /* PxUIKitImageSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BC24189A6FFA00FC2211 /* PxUIKitImageSupport.m */; };
 		DB26BC28189A7BB000FC2211 /* PxSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BC27189A7BB000FC2211 /* PxSuperViewController.m */; };
 		DB26BC2B189A7BFC00FC2211 /* PxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BC2A189A7BFC00FC2211 /* PxViewController.m */; };
+		DB53334B18C72D7400527EC7 /* PxCollectionReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB53334918C72D7400527EC7 /* PxCollectionReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB53334C18C72D7400527EC7 /* PxCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB53334A18C72D7400527EC7 /* PxCollectionReusableView.m */; };
 		DB5C8E4118ABB8370063E4D7 /* PxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F37E189BA72900F8C52E /* PxCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBF3FF8718A8CDFE0080EA01 /* PxWebController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3FF8518A8CDFE0080EA01 /* PxWebController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBF3FF8818A8CDFE0080EA01 /* PxWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3FF8618A8CDFE0080EA01 /* PxWebController.m */; };
@@ -188,6 +190,8 @@
 		DB26BC27189A7BB000FC2211 /* PxSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxSuperViewController.m; sourceTree = "<group>"; };
 		DB26BC29189A7BFC00FC2211 /* PxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxViewController.h; sourceTree = "<group>"; };
 		DB26BC2A189A7BFC00FC2211 /* PxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxViewController.m; sourceTree = "<group>"; };
+		DB53334918C72D7400527EC7 /* PxCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCollectionReusableView.h; sourceTree = "<group>"; };
+		DB53334A18C72D7400527EC7 /* PxCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCollectionReusableView.m; sourceTree = "<group>"; };
 		DBF3FF8518A8CDFE0080EA01 /* PxWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxWebController.h; sourceTree = "<group>"; };
 		DBF3FF8618A8CDFE0080EA01 /* PxWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxWebController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +223,8 @@
 		DB06F374189BA54100F8C52E /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				DB53334918C72D7400527EC7 /* PxCollectionReusableView.h */,
+				DB53334A18C72D7400527EC7 /* PxCollectionReusableView.m */,
 				DB06F37B189BA6E100F8C52E /* PxCollectionView.h */,
 				DB06F37C189BA6E100F8C52E /* PxCollectionView.m */,
 				DB06F37E189BA72900F8C52E /* PxCollectionViewCell.h */,
@@ -430,6 +436,7 @@
 				DB06F3AA189BF9C000F8C52E /* NSMutableAttributedString+PxUIKit.h in Headers */,
 				DB06F3AB189BF9C300F8C52E /* NSString+PxUIKit.h in Headers */,
 				DB06F3AC189BF9C700F8C52E /* UIApplication+PxUIKit.h in Headers */,
+				DB53334B18C72D7400527EC7 /* PxCollectionReusableView.h in Headers */,
 				DBF3FF8718A8CDFE0080EA01 /* PxWebController.h in Headers */,
 				DB06F3AD189BF9CA00F8C52E /* UIColor+PxUIKit.h in Headers */,
 				DB06F3AE189BF9CD00F8C52E /* UIDevice+PxUIKit.h in Headers */,
@@ -584,6 +591,7 @@
 				DB26BC14189A69DC00FC2211 /* UIImage+PxUIKit.m in Sources */,
 				DB26BC2B189A7BFC00FC2211 /* PxViewController.m in Sources */,
 				DB06F386189BA93400F8C52E /* PxDataCollectionGridView.m in Sources */,
+				DB53334C18C72D7400527EC7 /* PxCollectionReusableView.m in Sources */,
 				DB06F383189BA8F000F8C52E /* PxCollectionViewGridLayout.m in Sources */,
 				DB06F3A4189BF61F00F8C52E /* PxAlertView.m in Sources */,
 				DB26BC1A189A69F900FC2211 /* UILabel+PxUIKit.m in Sources */,

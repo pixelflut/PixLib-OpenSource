@@ -59,6 +59,7 @@
 #import "PxActionSheet.h"
 #import "PxAlertView.h"
 #import "PxRemoteImageView.h"
+#import "PxCollectionReusableView.h"
 #import "PxCollectionView.h"
 #import "PxCollectionViewCell.h"
 #import "PxCollectionViewGridLayout.h"

@@ -58,6 +58,11 @@
 
 @protocol PxDataCollectionGridViewDelegate <UICollectionViewDelegateFlowLayout>
 - (Class)collectionView:(PxDataCollectionGridView *)collectionView classForCellAtIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForHeaderAtSection:(NSUInteger)section;
+- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForFooterAtSection:(NSUInteger)section;
+
 @end
 
 @protocol PxDataCollectionGridViewDataSource <NSObject>
