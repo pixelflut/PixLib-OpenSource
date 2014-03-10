@@ -45,10 +45,30 @@
         IMP __imp__ = method_getImplementation(__template__);
         class_addMethod([self class], @selector(collectionView:layout:sizeForItemAtIndexPath:), __imp__, method_getTypeEncoding(__template__));
     }
+    
+    if ([[self class] dynamicHeaderSize] && ![[self class] instancesRespondToSelector:@selector(collectionView:layout:referenceSizeForHeaderInSection:)]) {
+        Method __template__ = class_getInstanceMethod([self class], @selector(__template__collectionView:layout:referenceSizeForHeaderInSection:));
+        IMP __imp__ = method_getImplementation(__template__);
+        class_addMethod([self class], @selector(collectionView:layout:referenceSizeForHeaderInSection:), __imp__, method_getTypeEncoding(__template__));
+    }
+    
+    if ([[self class] dynamicFooterSize] && ![[self class] instancesRespondToSelector:@selector(collectionView:layout:referenceSizeForFooterInSection:)]) {
+        Method __template__ = class_getInstanceMethod([self class], @selector(__template__collectionView:layout:referenceSizeForFooterInSection:));
+        IMP __imp__ = method_getImplementation(__template__);
+        class_addMethod([self class], @selector(collectionView:layout:referenceSizeForFooterInSection:), __imp__, method_getTypeEncoding(__template__));
+    }
 }
 
 #pragma mark - Configurate Collection Appeareance
 + (BOOL)dynamicSize {
+    return NO;
+}
+
++ (BOOL)dynamicHeaderSize {
+    return NO;
+}
+
++ (BOOL)dynamicFooterSize {
     return NO;
 }
 
@@ -119,6 +139,14 @@
 
 - (CGSize)__template__collectionView:(PxDataCollectionGridView *)collectionView layout:(PxCollectionViewGridLayout *)layout sizeForItemAtIndexPath:(NSIndexPath *)path {
     return [self.collectionView sizeForItemAtIndexPath:path];
+}
+
+- (CGSize)__template__collectionView:(PxDataCollectionGridView *)collectionView layout:(PxCollectionViewGridLayout *)layout referenceSizeForHeaderInSection:(NSInteger)section {
+    return [self.collectionView sizeForHeaderAtSection:section];
+}
+
+- (CGSize)__template__collectionView:(PxDataCollectionGridView *)collectionView layout:(PxCollectionViewGridLayout *)layout referenceSizeForFooterInSection:(NSInteger)section {
+    return [self.collectionView sizeForFooterAtSection:section];
 }
 
 - (NSArray *)dataForCollectionView:(PxDataCollectionGridView *)collectionView {

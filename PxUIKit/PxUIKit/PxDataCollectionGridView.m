@@ -48,6 +48,11 @@ typedef struct {
 @property (nonatomic, assign) BOOL needsHeader;
 @property (nonatomic, assign) BOOL needsFooter;
 @property (nonatomic, assign) BOOL dynamicIdentifier;
+@property (nonatomic, assign) BOOL dynamicHeaderIdentifier;
+@property (nonatomic, assign) BOOL dynamicFooterIdentifier;
+@property (nonatomic, assign) BOOL dequeueCellCallback;
+@property (nonatomic, assign) BOOL dequeueHeaderCallback;
+@property (nonatomic, assign) BOOL dequeueFooterCallback;
 @property (nonatomic, assign) SELInfo *selectorLookUp;
 
 - (NSMutableArray *)removeEntriesFromData:(NSArray *)entries;
@@ -155,12 +160,44 @@ typedef struct {
     return @"default";
 }
 
+- (NSString *)identifierForHeaderAtSection:(NSUInteger)section {
+    if (_dynamicHeaderIdentifier) {
+        return [self.pxDataSource collectionView:self identfierForHeaderAtSection:section identifier:PxCollectionSectionHeaderIdentifier];
+    }
+    return PxCollectionSectionHeaderIdentifier;
+}
+
+- (NSString *)identifierForFooterAtSection:(NSUInteger)section {
+    if (_dynamicFooterIdentifier) {
+        return [self.pxDataSource collectionView:self identfierForFooterAtSection:section identifier:PxCollectionSectionFooterIdentifier];
+    }
+    return PxCollectionSectionFooterIdentifier;
+}
+
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_dynamicSize) {
         Class klass = [self.delegate collectionView:self classForCellAtIndexPath:indexPath];
         return [klass sizeWithData:[self dataForItemAtIndexPath:indexPath] reuseIdentifier:[self identifierForCellAtIndexPath:indexPath] collectionView:self];
-    }else {
+    } else {
         return [(PxCollectionViewGridLayout *)self.collectionViewLayout itemSize];
+    }
+}
+
+- (CGSize)sizeForHeaderAtSection:(NSUInteger)section {
+    if (_dynamicHeaderSize) {
+        Class klass = [self.delegate collectionView:self classForHeaderAtSection:section];
+        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:PxCollectionSectionHeaderIdentifier collectionView:self];
+    } else {
+        return [(PxCollectionViewGridLayout *)self.collectionViewLayout headerReferenceSize];
+    }
+}
+
+- (CGSize)sizeForFooterAtSection:(NSUInteger)section {
+    if (_dynamicFooterSize) {
+        Class klass = [self.delegate collectionView:self classForFooterAtSection:section];
+        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:PxCollectionSectionFooterIdentifier collectionView:self];
+    } else {
+        return [(PxCollectionViewGridLayout *)self.collectionViewLayout footerReferenceSize];
     }
 }
 
@@ -173,9 +210,15 @@ typedef struct {
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     Class klass = [self.delegate collectionView:self classForCellAtIndexPath:indexPath];
-    [self registerClass:klass forCellWithReuseIdentifier:[self identifierForCellAtIndexPath:indexPath]];
+    NSString *identifier = [self identifierForCellAtIndexPath:indexPath];
+    [self registerClass:klass forCellWithReuseIdentifier:identifier];
     
-    PxCollectionViewCell *cell = [self dequeueReusableCellWithReuseIdentifier:[self identifierForCellAtIndexPath:indexPath] forIndexPath:indexPath];
+    PxCollectionViewCell *cell = [self dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    
+    if (_dequeueCellCallback) {
+        [self.delegate collectionView:self didDequeueReusableCell:cell forItemAtIndexPath:indexPath];
+    }
+    
 	[cell setCollectionView:self];
 	[cell setDelegate:self.delegate];
     [cell setData:[self dataForItemAtIndexPath:indexPath]];
@@ -188,18 +231,27 @@ typedef struct {
     } else {
         if ([kind isEqualToString:UICollectionElementKindSectionHeader] && _needsHeader) {
             Class klass = [self.delegate collectionView:self classForHeaderAtSection:indexPath.section];
-            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionHeaderIdentifier];
+            NSString *identifier = [self identifierForHeaderAtSection:indexPath.section];
+            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
             
-            PxCollectionReusableView *header = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionHeaderIdentifier forIndexPath:indexPath];
+            PxCollectionReusableView *header = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
+            if (_dequeueHeaderCallback) {
+                [self.delegate collectionView:self didDequeueReusableView:header forHeaderAtSection:indexPath.section];
+            }
+            
             [header setCollectionView:self];
             [header setDelegate:self.delegate];
             [header setData:[self dataForSection:indexPath.section]];
             return header;
         } else if ([kind isEqualToString:UICollectionElementKindSectionFooter] && _needsFooter) {
             Class klass = [self.delegate collectionView:self classForFooterAtSection:indexPath.section];
-            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionFooterIdentifier];
+            NSString *identifier = [self identifierForFooterAtSection:indexPath.section];
+            [self registerClass:klass forSupplementaryViewOfKind:kind withReuseIdentifier:identifier];
             
-            PxCollectionReusableView *footer = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:PxCollectionSectionFooterIdentifier forIndexPath:indexPath];
+            PxCollectionReusableView *footer = [self dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:identifier forIndexPath:indexPath];
+            if (_dequeueFooterCallback) {
+                [self.delegate collectionView:self didDequeueReusableView:footer forFooterAtSection:indexPath.section];
+            }
             [footer setCollectionView:self];
             [footer setDelegate:self.delegate];
             [footer setData:[self dataForSection:indexPath.section]];
@@ -428,6 +480,8 @@ typedef struct {
     if (dataSource != _pxDataSource) {
         _pxDataSource = dataSource;
         _dynamicIdentifier = [dataSource respondsToSelector:@selector(collectionView:identfierForCellAtIndexPath:identifier:)];
+        _dynamicHeaderIdentifier = [dataSource respondsToSelector:@selector(collectionView:identfierForFooterAtSection:identifier:)];
+        _dynamicFooterIdentifier = [dataSource respondsToSelector:@selector(collectionView:identfierForFooterAtSection:identifier:)];
         for (int i=0; i<SELECTOR_COUNT; i++) {
             _selectorLookUp[i].exist = [dataSource respondsToSelector:_selectorLookUp[i].selector];
         }
@@ -475,6 +529,10 @@ typedef struct {
         } else {
             _dynamicFooterSize = NO;
         }
+        
+        _dequeueCellCallback = [delegate respondsToSelector:@selector(collectionView:didDequeueReusableCell:forItemAtIndexPath:)];
+        _dequeueHeaderCallback = [delegate respondsToSelector:@selector(collectionView:didDequeueReusableView:forHeaderAtSection:)];
+        _dequeueFooterCallback = [delegate respondsToSelector:@selector(collectionView:didDequeueReusableView:forFooterAtSection:)];
         
     }
     [super setDelegate:delegate];

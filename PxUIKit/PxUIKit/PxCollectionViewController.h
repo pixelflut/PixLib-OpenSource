@@ -42,6 +42,8 @@
 
 #pragma mark - Configurate Collection Appeareance
 + (BOOL)dynamicSize;
++ (BOOL)dynamicHeaderSize;
++ (BOOL)dynamicFooterSize;
 + (BOOL)sectional;
 + (BOOL)alternating;
 + (BOOL)oneDimensional;

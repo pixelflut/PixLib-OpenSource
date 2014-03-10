@@ -45,10 +45,16 @@
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(PxCollectionViewGridLayout *)layout;
 
 - (NSString *)identifierForCellAtIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)identifierForHeaderAtSection:(NSUInteger)section;
+- (NSString *)identifierForFooterAtSection:(NSUInteger)section;
+
 - (id)dataForItemAtIndexPath:(NSIndexPath *)indexPath;
 - (id)dataForSection:(NSUInteger)section;
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath;
+- (CGSize)sizeForHeaderAtSection:(NSUInteger)section;
+- (CGSize)sizeForFooterAtSection:(NSUInteger)section;
+
 - (NSIndexPath *)indexPathForItem:(id)item;
 - (NSInteger)numberOfItemsInSection:(NSUInteger)section useData:(BOOL)useData;
 
@@ -63,6 +69,11 @@
 - (Class)collectionView:(PxDataCollectionGridView *)collectionView classForHeaderAtSection:(NSUInteger)section;
 - (Class)collectionView:(PxDataCollectionGridView *)collectionView classForFooterAtSection:(NSUInteger)section;
 
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forHeaderAtSection:(NSUInteger)section;
+
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forFooterAtSection:(NSUInteger)section;
 @end
 
 @protocol PxDataCollectionGridViewDataSource <NSObject>
@@ -70,6 +81,8 @@
 
 @optional
 - (NSString *)collectionView:(PxDataCollectionGridView *)collectionView identfierForCellAtIndexPath:(NSIndexPath *)indexPath identifier:(NSString *)identifier;
+- (NSString *)collectionView:(PxDataCollectionGridView *)collectionView identfierForHeaderAtSection:(NSUInteger)section identifier:(NSString *)identifier;
+- (NSString *)collectionView:(PxDataCollectionGridView *)collectionView identfierForFooterAtSection:(NSUInteger)section identifier:(NSString *)identifier;
 
 - (void)collectionView:(PxDataCollectionGridView *)collectionView didUpdateData:(NSArray *)data;
 - (void)collectionViewDidStartDeleteAnimation:(PxDataCollectionGridView *)collectionView;
