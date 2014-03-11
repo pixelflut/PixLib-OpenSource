@@ -51,4 +51,6 @@
  */
 - (void)addPxAgent;
 
++ (void)setPxAgentIdentifier:(NSString *)agentIdentifier;
+
 @end
