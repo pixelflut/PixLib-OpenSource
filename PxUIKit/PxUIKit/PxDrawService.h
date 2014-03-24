@@ -62,4 +62,16 @@ PxSingleton(defaultService)
  */
 - (void)drawBlock:(void (^)(CGContextRef ctx))drawBlock;
 
+/** Removes the cached images from the filesystem and from memory
+ */
+- (void)clearCache;
+
+/** Removes the image with the corresponding reuseIdentifier and size from the filesystem and from memory
+ 
+ The internal reuseIdentifier is calculated by combining the sizen and reuseIdentifier parameter.
+ @param size The size of the image to remove.
+ @param reuseIdentifier A string identifying the image object to be reused. If this parameter is **nil** no image will be removed.
+ */
+- (void)removeImageWithSize:(CGSize)size reuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

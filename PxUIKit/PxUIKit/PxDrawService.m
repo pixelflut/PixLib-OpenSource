@@ -85,6 +85,17 @@ PxSingletonImp(defaultService)
     drawBlock(ctx);
 }
 
+- (void)clearCache {
+    [self.imageCache clearCache];
+}
+
+- (void)removeImageWithSize:(CGSize)size reuseIdentifier:(NSString *)reuseIdentifier {
+    if ([reuseIdentifier isNotBlank]) {
+        CGSize actualSize = CGSizeMake(CGFloatNormalizeForDevice(size.width), CGFloatNormalizeForDevice(size.height));
+        [self.imageCache removeImageForIdentifier:[self internalIdentifier:reuseIdentifier size:actualSize]];
+    }
+}
+
 #pragma mark - Private
 - (NSString *)internalIdentifier:(NSString *)reuseId size:(CGSize)size {
     return [reuseId stringByAppendingFormat:@"_%f_%f", size.width, size.height];

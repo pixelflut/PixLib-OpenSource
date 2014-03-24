@@ -52,4 +52,10 @@
 - (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier;
 - (void)storeImageFromLocalURL:(NSURL *)fileURL withIdentifier:(NSString *)identifier copy:(BOOL)copy;
 
+/*
+ Removing Images and Clearing Cache
+ */
+- (void)removeImageForIdentifier:(NSString *)identifier;
+- (void)clearCache;
+
 @end

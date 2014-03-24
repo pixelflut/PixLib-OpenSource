@@ -124,6 +124,42 @@
     }
 }
 
+/*
+ Removing Images and Clearing Cache
+ */
+- (void)removeImageForIdentifier:(NSString *)identifier {
+    NSString *filePath = [self filePath:identifier];
+    NSError *error;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
+        if (error) {
+            PxError(@"%@", error);
+        }
+    }
+    [self.inMemoryCache removeObjectForKey:identifier];
+}
+
+- (void)clearCache {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSError *error;
+    NSArray *files = [fm contentsOfDirectoryAtPath:[self cacheDir]
+                                             error:&error];
+    if (error) {
+        PxError(@"%@", error);
+    } else {
+        [files each:^(NSURL *url) {
+            NSError *error;
+            [fm removeItemAtURL:url error:&error];
+            if (error) {
+                PxError(@"%@", error);
+            }
+        }];
+    }
+    
+    [self.inMemoryCache removeAllObjects];
+}
+
 #pragma mark - private
 
 - (NSString *)filePath:(NSString *)identifier {
