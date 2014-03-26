@@ -52,6 +52,7 @@
 #import "PxViewController.h"
 #import "PxWebController.h"
 #import "PxActionButtonConfig.h"
+#import "PxAnimation.h"
 #import "PxInputAnimation.h"
 #import "PxDrawService.h"
 #import "PxRemoteImageService.h"

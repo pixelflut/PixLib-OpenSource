@@ -66,6 +66,14 @@ static PxInterpolationBlock squareEaseOut = ^double_t(double_t t, double_t start
     return end*(t * t + 1.f) + start;
 };
 
+static inline CGFloat cubeInterp(CGFloat t, CGFloat p0, CGFloat p1, CGFloat p2, CGFloat p3) {
+    return powf(1-t, 3)*p0 + 3*powf(1-t, 2)*t*p1 + 3*(1-t)*powf(t, 2)*p2 + powf(t, 3)*p3;
+}
+
+static inline CGFloat quadInterp(CGFloat t, CGFloat p0, CGFloat p1, CGFloat p2) {
+    return powf(1-t, 2)*p0 + 2*(1-t)*t*p1 + powf(t, 2)*p2;
+}
+
 #pragma mark - CGRect
 static inline CGRect CGRectFromSize(CGSize s) {
 	return CGRectMake(0, 0, s.width, s.height);
