@@ -27,17 +27,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <PxCore/PxCore.h>
 
 @interface PxAnimation : NSObject
 
 + (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                                  curve:(CAMediaTimingFunction *)curve
+                         timingFunction:(PxTimingFunction)timingFunction
                              animations:(void (^)(void))animations
                              completion:(void (^)(BOOL finished))completion;
 
 
 + (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                                  curve:(CAMediaTimingFunction *)curve
+                         timingFunction:(PxTimingFunction)timingFunction
                    numberOfOscilattions:(NSUInteger)numberOfOscilattions
                        overBounceFactor:(CGFloat)overBounceFactor
                              animations:(void (^)(void))animations

@@ -62,8 +62,6 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 }
 
 @interface PxAnimation () {
-    float c1y;
-    float c2y;
     NSTimeInterval currentBlockTime;
 }
 
@@ -71,9 +69,10 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, strong) NSMutableArray *animationBlocks;
+@property (nonatomic, copy) PxTimingFunction timingFunction;
 @property (nonatomic, copy) void (^completion)(BOOL finished);
 
-- (id)initWithCurve:(CAMediaTimingFunction *)curve;
+- (id)initWithTimingFunction:(PxTimingFunction)function;
 
 - (void)addAnimations:(void (^)(NSTimeInterval time))animations;
 - (void)startLinkedAnimation;
@@ -90,7 +89,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
     CGFloat overBounceFactor;
 }
 
-- (id)initWithCurve:(CAMediaTimingFunction *)curve numberOfOscilattions:(NSUInteger)numberOfOscilattions overBounceFactor:(CGFloat)overBounceFactor;
+- (id)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)numberOfOscilattions overBounceFactor:(CGFloat)overBounceFactor;
 
 @end
 
@@ -122,11 +121,11 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 
 
 + (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                                  curve:(CAMediaTimingFunction *)curve
+                         timingFunction:(PxTimingFunction)timingFunction
                              animations:(void (^)(void))animations
                              completion:(void (^)(BOOL finished))completion {
     
-    PxAnimation *animator = [[PxAnimation alloc] initWithCurve:curve];
+    PxAnimation *animator = [[PxAnimation alloc] initWithTimingFunction:timingFunction];
     animator.completion = completion;
     animator.duration = duration;
     [self pxAnimationPush:animator];
@@ -143,13 +142,13 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 
 
 + (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                                  curve:(CAMediaTimingFunction *)curve
+                         timingFunction:(PxTimingFunction)timingFunction
                    numberOfOscilattions:(NSUInteger)numberOfOscilattions
                        overBounceFactor:(CGFloat)overBounceFactor
                              animations:(void (^)(void))animations
                              completion:(void (^)(BOOL finished))completion {
     
-    PxOscilattionAnimator *animator = [[PxOscilattionAnimator alloc] initWithCurve:curve numberOfOscilattions:numberOfOscilattions overBounceFactor:overBounceFactor];
+    PxOscilattionAnimator *animator = [[PxOscilattionAnimator alloc] initWithTimingFunction:timingFunction numberOfOscilattions:numberOfOscilattions overBounceFactor:overBounceFactor];
     animator.completion = completion;
     animator.duration = duration;
     [self pxAnimationPush:animator];
@@ -170,20 +169,16 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 }
 
 
-- (id)initWithCurve:(CAMediaTimingFunction *)curve {
+- (id)initWithTimingFunction:(PxTimingFunction)function {
     self = [super init];
     if (self) {
-        
-        float c1[2];
-        float c2[2];
-        [curve getControlPointAtIndex:1 values:c1];
-        [curve getControlPointAtIndex:2 values:c2];
-        c1y = c1[1];
-        c2y = c2[1];
+        if (!function) {
+            function = PxEaseInOutCubic;
+        }
+        self.timingFunction = function;
         
         self.animationBlocks = [[NSMutableArray alloc] init];
         currentBlockTime = NAN;
-        
     }
     return self;
 }
@@ -227,8 +222,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
     }
     
     CGFloat t = time/self.duration;
-    CGFloat y = cubeInterp(t, 0, c1y, c2y, 1);
-    [self applyAnimationSteps:y];
+    [self applyAnimationSteps:self.timingFunction(t)];
     
     if (finished && self.completion) {
         self.completion(finished);
@@ -254,8 +248,8 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 
 @implementation PxOscilattionAnimator
 
-- (id)initWithCurve:(CAMediaTimingFunction *)curve numberOfOscilattions:(NSUInteger)n overBounceFactor:(CGFloat)o {
-    self = [super initWithCurve:curve];
+- (id)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)n overBounceFactor:(CGFloat)o {
+    self = [super initWithTimingFunction:function];
     if (self) {
         numberOfOscilattions = n;
         overBounceFactor = o;

@@ -74,6 +74,193 @@ static inline CGFloat quadInterp(CGFloat t, CGFloat p0, CGFloat p1, CGFloat p2) 
     return powf(1-t, 2)*p0 + 2*(1-t)*t*p1 + powf(t, 2)*p2;
 }
 
+typedef double_t (^PxTimingFunction)(double_t t);
+
+static PxTimingFunction PxEaseLinear = ^double_t(double_t t) {
+    return t;
+};
+
+static PxTimingFunction PxEaseInQuad = ^double_t(double_t t) {
+    return t*t;
+};
+
+static PxTimingFunction PxEaseOutQuad = ^double_t(double_t t) {
+    return -1*t*(t-2);
+};
+
+static PxTimingFunction PxEaseInOutQuad = ^double_t(double_t t) {
+    t *= 2.;
+    if (t < 1) return 0.5*t*t;
+    --t;
+    return -0.5 * (t*(t-2) - 1);
+};
+
+static PxTimingFunction PxEaseInCubic = ^double_t(double_t t) {
+    return t*t*t;
+};
+
+static PxTimingFunction PxEaseOutCubic = ^double_t(double_t t) {
+    --t;
+    return t*t*t + 1;
+};
+
+static PxTimingFunction PxEaseInOutCubic = ^double_t(double_t t) {
+    t *= 2.;
+    if (t < 1) return 0.5*t*t*t;
+    t -=2;
+    return 0.5*(t*t*t + 2);
+};
+
+static PxTimingFunction PxEaseInQuart = ^double_t(double_t t) {
+    return t*t*t*t;
+};
+
+static PxTimingFunction PxEaseOutQuart = ^double_t(double_t t) {
+    --t;
+    return -1 * (t*t*t*t - 1);
+};
+
+static PxTimingFunction PxEaseInOutQuart = ^double_t(double_t t) {
+    t *= 2.0;
+    if (t < 1) return 0.5*t*t*t*t;
+    t -= 2;
+    return -0.5 * (t*t*t*t - 2);
+};
+
+static PxTimingFunction PxEaseInQuint = ^double_t(double_t t) {
+    return t*t*t*t*t;
+};
+
+static PxTimingFunction PxEaseOutQuint = ^double_t(double_t t) {
+    --t;
+    return t*t*t*t*t + 1;
+};
+
+static PxTimingFunction PxEaseInOutQuint = ^double_t(double_t t) {
+    t *= 2.0;
+    if (t < 1) return 0.5*t*t*t*t*t;
+    t-=2;
+    return 0.5*(t*t*t*t*t + 2);
+};
+
+static PxTimingFunction PxEaseInSine = ^double_t(double_t t) {
+    return -1 * cos(t * (M_PI_2)) + 1;
+};
+
+static PxTimingFunction PxEaseOutSine = ^double_t(double_t t) {
+    return sin(t * (M_PI_2));
+};
+
+static PxTimingFunction PxEaseInOutSine = ^double_t(double_t t) {
+    return -0.5 * (cos(M_PI*t) - 1);
+};
+
+static PxTimingFunction PxEaseInExpo = ^double_t(double_t t) {
+    return (t==0) ? 0 : pow(2, 10 * (t - 1));
+};
+
+static PxTimingFunction PxEaseOutExpo = ^double_t(double_t t) {
+    return (t==1) ? 1 : (-pow(2, -10 * t) + 1);
+};
+
+static PxTimingFunction PxEaseInOutExpo = ^double_t(double_t t) {
+    if (t==0) return 0;
+    if (t==1) return 1;
+    t *= 2.0;
+    if (t < 1) return 0.5 * pow(2, 10 * (t - 1));
+    return 0.5 * (-pow(2, -10 * --t) + 2);
+};
+
+static PxTimingFunction PxEaseInCirc = ^double_t(double_t t) {
+    return -1 * (sqrt(1 - t*t) - 1);
+};
+
+static PxTimingFunction PxEaseOutCirc = ^double_t(double_t t) {
+    --t;
+    return sqrt(1 - t*t);
+};
+
+static PxTimingFunction PxEaseInOutCirc = ^double_t(double_t t) {
+    t *= 2.0;
+    if (t < 1) return -0.5 * (sqrt(1 - t*t) - 1);
+    t -= 2;
+    return 0.5 * (sqrt(1 - t*t) + 1);
+};
+
+static PxTimingFunction PxEaseInElastic = ^double_t(double_t t) {
+    double_t s = 1.70158; double_t p=0; double_t a=1;
+    
+    if (t==0) return 0;  if (t==1) return 1;  if (!p) p=.3;
+    if (a < 1) { a=1; s=p/4; }
+    else s = p/(2*M_PI) * asin (1.0/a);
+    return -(a*pow(2,10*(t-=1)) * sin( (t-s)*(2*M_PI)/p ));
+};
+
+static PxTimingFunction PxEaseOutElastic = ^double_t(double_t t) {
+    double_t s=1.70158, p=0, a=1;
+    
+    if (t==0) return 0;  if (t==1) return 1;  if (!p) p=.3;
+    if (a < 1) { a=1; s=p/4; }
+    else s = p/(2*M_PI) * asin (1.0/a);
+    return a*pow(2,-10*t) * sin( (t-s)*(2*M_PI)/p ) + 1;
+};
+
+static PxTimingFunction PxEaseInOutElastic = ^double_t(double_t t) {
+    double_t s=1.70158, p=0, a=1;
+    t *= 2.0;
+    if (t==0) return 0;  if (t==2) return 1;  if (!p) p=(.3*1.5);
+    if (a < 1) { a=1; s=p/4; }
+    else s = p/(2*M_PI) * asin(1.0/a);
+    if (t < 1) return -.5*(a*pow(2,10*(t-=1)) * sin( (t-s)*(2*M_PI)/p ));
+    return a*pow(2,-10*(t-=1)) * sin( (t-s)*(2*M_PI)/p )*.5 + 1;
+};
+
+static PxTimingFunction PxEaseInBack = ^double_t(double_t t) {
+    const double_t s = 1.70158;
+    return t*t*((s+1)*t - s);
+};
+
+static PxTimingFunction PxEaseOutBack = ^double_t(double_t t) {
+    const double_t s = 1.70158;
+    t--;
+    return (t*t*((s+1)*t + s) + 1);
+};
+
+static PxTimingFunction PxEaseInOutBack = ^double_t(double_t t) {
+    double_t s = 1.70158 * 1.525;
+    t *= 2.0;
+    
+    if (t < 1) return 0.5*(t*t*((s+1)*t - s));
+    t -= 2;
+    return 0.5*(t*t*((s+1)*t + s) + 2);
+};
+
+static PxTimingFunction PxEaseOutBounce = ^double_t(double_t t) {
+    if (t < (1/2.75)) {
+        return (7.5625*t*t);
+    } else if (t < (2/2.75)) {
+        t-=(1.5/2.75);
+        return (7.5625*t*t + .75);
+    } else if (t < (2.5/2.75)) {
+        t-=(2.25/2.75);
+        return (7.5625*t*t + .9375);
+    } else {
+        t-=(2.625/2.75);
+        return (7.5625*t*t + .984375);
+    }
+};
+
+static PxTimingFunction PxEaseInBounce = ^double_t(double_t t) {
+    return 1 - PxEaseOutBounce(1-t);
+};
+
+static PxTimingFunction PxEaseInOutBounce = ^double_t(double_t t) {
+    if (t < 0.5)
+        return PxEaseInBounce(t*2) * .5;
+    else
+        return PxEaseOutBounce(t*2-1) * .5 + .5;
+};
+
 #pragma mark - CGRect
 static inline CGRect CGRectFromSize(CGSize s) {
 	return CGRectMake(0, 0, s.width, s.height);
