@@ -74,7 +74,7 @@
  @return The first item _block_ returns **true**
  @see include:
  */
-- (PxPair *)find:(BOOL (^)(NSInteger key, id value))block;
+- (id)find:(BOOL (^)(NSInteger key, id value))block;
 
 /** Returns either or not the receiver contains an element for which the block evals **true**.
  @param block The block to call on the elements in self

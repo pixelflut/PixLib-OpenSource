@@ -104,7 +104,7 @@ CFHashCode keyHashCallBack(const void *value);
 }
 
 #pragma mark - Searching Items
-- (PxPair *)find:(BOOL (^)(NSInteger key, id value))block {
+- (id)find:(BOOL (^)(NSInteger key, id value))block {
     if ([self count] > 0) {
         int **keys = malloc([self count] * sizeof(int *));
         CFDictionaryGetKeysAndValues(__backingDictionary, (const void **)keys, NULL);
