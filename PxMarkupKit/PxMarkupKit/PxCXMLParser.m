@@ -67,7 +67,7 @@ static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionar
         Class klass = (__bridge Class)CFDictionaryGetValue(mapping, (__bridge const void*)tag);
         if (klass) {
             
-            if ([klass conformsToProtocol:NSProtocolFromString(@"PxXMLMapping")]) {
+            if ([klass conformsToProtocol:NSProtocolFromString(@"PxMarkupMapping")]) {
                 return [klass objectForMarkupAttributes:attributes parentObject:parent];
             }
             
@@ -132,7 +132,7 @@ static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack
             *current = value;
             *ret = *current;
         }
-        if ([value conformsToProtocol:NSProtocolFromString(@"PxXMLMapping")]) {
+        if ([value conformsToProtocol:NSProtocolFromString(@"PxMarkupMapping")]) {
             *parent = value;
             CFArrayAppendValue(parentStack, (__bridge const void*)value);
         }
