@@ -40,25 +40,12 @@
 
 #define CLEAN_DATA_BEFORE_RETURN CFRelease(stack);CFRelease(parentStack);
 
-static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping);
 static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping);
 static inline BOOL checkXML(unichar *buffer, int *position);
 static inline BOOL checkXMLFile(FILE *file);
 static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *ret, NSString **nextTag, NSString **nextType, NSDictionary **nextAttributes, id *parent, id *current, CFDictionaryRef map);
 static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current);
 static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *parent, id *current);
-
-static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping) {
-    if ([type isEqualToString:@"array"]) {
-        return [NSMutableArray array];
-    } else if(mapping){
-        Class klass = (__bridge Class)CFDictionaryGetValue(mapping, (__bridge const void*)tag);
-        if (klass) {
-            return [[klass alloc] init];
-        }
-    }
-    return [NSMutableDictionary dictionary];
-}
 
 static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping) {
     if ([type isEqualToString:@"array"]) {
@@ -216,7 +203,6 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
     }
     
     while ( (character=getc_unlocked(file)) != (unsigned char)EOF) {
-        
         if (character == '<') {// start or end an Object
             GETC_UNLOCKED_SAVE(character,file);
             
@@ -243,8 +229,9 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 nextTag = [[NSString alloc] initWithBytes:CFDataGetBytePtr(tagName) length:j encoding:NSUTF8StringEncoding];
                 CFRelease(tagName);
                 
+                
                 // get type attribute. This MUST be the first attribute for performance issues
-                {
+                if (c == ' ') {
                     fpos_t pos; 
                     fgetpos(file, &pos);
                     
@@ -280,6 +267,8 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
 
                     }
                     fsetpos(file, &pos);
+                } else if (c == '>') {
+                    endTag(stack, parentStack, &ret, &nextTag, &nextType, &nextAttributes, &parent, &current, map);
                 }
             }
         }else if(character == '/') {// end an Inline-Object.
@@ -292,7 +281,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
         }else if(character == '>') {//tag ended
             endTag(stack, parentStack, &ret, &nextTag, &nextType, &nextAttributes, &parent, &current, map);
         }else if(character == ' ' || character == '\n' || character == '\t') {//whitespace consumed. Nothing to do right now
-            
+
         }else {
             if (!nextTag) {
                 PxError(@"CXML Syntax Error durring Attribute-Parsing: No Working Object");
@@ -390,14 +379,9 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
 
                 for(;bytes[i] != '>';i++) {}
             }else {// start an Object, get the tag-name first
-                if (nextTag) {
-                    PxError(@"CXML Syntax Error durring Tag-Parsing: New tag inside existing tag?");
-                    CLEAN_DATA_BEFORE_RETURN
-                    return nil;
-                }
-                
                 unsigned char c = bytes[i];
                 int j=0;
+                
                 
                 CFMutableDataRef tagName = CFDataCreateMutable(NULL, 0);
                 for (; c != ' ' && c != '>' && c != '/'; j++) {
@@ -409,7 +393,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 CFRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
-                {
+                if (c == ' ') {
                     j = 0;
                     BOOL t = YES;
                     
@@ -438,6 +422,8 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         nextType = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:k encoding:NSUTF8StringEncoding]; // Improvement: Dont use NSString
                         CFRelease(attrValue);
                     }
+                } else if (c == '>') {
+                    endTag(stack, parentStack, &ret, &nextTag, &nextType, &nextAttributes, &parent, &current, map);
                 }
             }
         }else if(character == '/') {// end an Inline-Object.
@@ -539,21 +525,18 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             
             if (bytes[i] == '/') { // end an Object. Dont even care for correct syntax... only support valid xmls
                 checkParent(stack, parentStack, &parent, &current);
+                
                 if (checkEndTag(stack, &ret, &current)) {
                     CLEAN_STRING_BEFORE_RETURN
                     return ret;
                 }
+                
                 for(;bytes[i] != '>';i++) {}
             }else {// start an Object, get the tag-name first
-                if (nextTag) {
-                    PxError(@"CXML Syntax Error durring Tag-Parsing: New tag inside existing tag?");
-                    CLEAN_STRING_BEFORE_RETURN
-                    return nil;
-                }
-                
                 unichar c = bytes[i];
                 int j=0;
-                                
+                
+                
                 CFMutableStringRef tagName = CFStringCreateMutable(NULL, 0);
                 for (; c != ' ' && c != '>' && c != '/'; j++) {
                     CFStringAppendCharacters(tagName, &c, 1);
@@ -562,7 +545,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 nextTag = CFBridgingRelease(tagName);
                 
                 // get type attribute. This MUST be the first attribute for performance issues
-                {
+                if (c == ' ') {
                     j = 0;
                     BOOL t = YES;
                     
@@ -589,6 +572,8 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         }
                         nextType = CFBridgingRelease(attrValue);
                     }
+                } else if (c == '>') {
+                    endTag(stack, parentStack, &ret, &nextTag, &nextType, &nextAttributes, &parent, &current, map);
                 }
             }
         }else if(character == '/') {// end an Inline-Object.
