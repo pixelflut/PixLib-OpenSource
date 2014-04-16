@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PxMarkupKitMapping.h"
 
-#define XML_VERSION_HEAD @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-#define XML_VERSION_HEAD_2 @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+extern NSString *kPxMarkupXMLVersionHead1;
+extern NSString *kPxMarkupXMLVersionHead2;
+
+extern NSString *kPxMarkupTagKey;
+extern NSString *kPxMarkupCXMLRootKey;
 
 NSString *PxXMLEscape(id<PxMarkupAttribute> object);
 NSString *PxXMLUnescape(NSString *string);

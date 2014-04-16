@@ -40,14 +40,14 @@
 
 #define CLEAN_DATA_BEFORE_RETURN CFRelease(stack);CFRelease(parentStack);
 
-static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping);
+static inline id startAdvancedElement(NSString *tag, NSString *type, NSMutableDictionary *attributes, id parent, CFDictionaryRef mapping);
 static inline BOOL checkXML(unichar *buffer, int *position);
 static inline BOOL checkXMLFile(FILE *file);
-static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *ret, NSString **nextTag, NSString **nextType, NSDictionary **nextAttributes, id *parent, id *current, CFDictionaryRef map);
+static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *ret, NSString **nextTag, NSString **nextType, NSMutableDictionary **nextAttributes, id *parent, id *current, CFDictionaryRef map);
 static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current);
 static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *parent, id *current);
 
-static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping) {
+static inline id startAdvancedElement(NSString *tag, NSString *type, NSMutableDictionary *attributes, id parent, CFDictionaryRef mapping) {
     if ([type isEqualToString:@"array"]) {
         return [NSMutableArray array];
     } else if(mapping){
@@ -59,16 +59,18 @@ static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionar
             }
             
             id element = [[klass alloc] init];
+            [attributes setValue:tag forKey:kPxMarkupTagKey];
             [element setValuesForKeysWithDictionary:attributes];
             return element;
         }
     }
+    [attributes setValue:tag forKey:kPxMarkupTagKey];
     return [NSMutableDictionary dictionaryWithDictionary:attributes];
 }
 
 static inline BOOL checkXML(unichar *buffer, int *position) {
-    NSString *xmlHead   = XML_VERSION_HEAD;
-    NSString *xmlHead2  = XML_VERSION_HEAD_2;
+    NSString *xmlHead   = kPxMarkupXMLVersionHead1;
+    NSString *xmlHead2  = kPxMarkupXMLVersionHead2;
     int i = 0;
     for (; i<[xmlHead length]; i++) {
         if (buffer[i] != [xmlHead characterAtIndex:i] && buffer[i] != [xmlHead2 characterAtIndex:i]) {
@@ -80,8 +82,8 @@ static inline BOOL checkXML(unichar *buffer, int *position) {
 }
 
 static inline BOOL checkXMLc(char *buffer, int *position) {
-    NSString *xmlHead   = XML_VERSION_HEAD;
-    NSString *xmlHead2  = XML_VERSION_HEAD_2;
+    NSString *xmlHead   = kPxMarkupXMLVersionHead1;
+    NSString *xmlHead2  = kPxMarkupXMLVersionHead2;
     int i = 0;
     for (; i<[xmlHead length]; i++) {
         if (buffer[i] != [xmlHead characterAtIndex:i] && buffer[i] != [xmlHead2 characterAtIndex:i]) {
@@ -93,8 +95,8 @@ static inline BOOL checkXMLc(char *buffer, int *position) {
 }
 
 static inline BOOL checkXMLFile(FILE *file) {
-    NSString *xmlHead   = XML_VERSION_HEAD;
-    NSString *xmlHead2  = XML_VERSION_HEAD_2;
+    NSString *xmlHead   = kPxMarkupXMLVersionHead1;
+    NSString *xmlHead2  = kPxMarkupXMLVersionHead2;
     unichar c;
     for (int i = 0; i<[xmlHead length]; i++) {
         c = fgetc(file);
@@ -105,7 +107,7 @@ static inline BOOL checkXMLFile(FILE *file) {
     return YES;
 }
 
-static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *ret, NSString **nextTag, NSString **nextType, NSDictionary **nextAttributes, id *parent, id *current, CFDictionaryRef map) {
+static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *ret, NSString **nextTag, NSString **nextType, NSMutableDictionary **nextAttributes, id *parent, id *current, CFDictionaryRef map) {
     if (*nextTag) {
         id value = startAdvancedElement(*nextTag, *nextType, *nextAttributes, *parent, map);
         if (*current) {

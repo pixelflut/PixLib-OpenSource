@@ -72,14 +72,13 @@
                 } else {
                     result = nil;
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
-                    
-                    // clean retain
-                    _path = nil;
-                    _userInfos = nil;
-                    result = nil;
-                });
+                
+                [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
+                
+                // clean retain
+                _path = nil;
+                _userInfos = nil;
+                result = nil;
             }
         }else {
             // clean retain
@@ -113,14 +112,12 @@
                     result = nil;
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
-                    
-                    // clean retain
-                    _data = nil;
-                    _userInfos = nil;
-                    result = nil;
-                });
+                [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
+                
+                // clean retain
+                _data = nil;
+                _userInfos = nil;
+                result = nil;
             }
         }else {
             // clean retain
@@ -154,14 +151,12 @@
                     result = nil;
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
-                    
-                    // clean retain
-                    _data = nil;
-                    _userInfos = nil;
-                    result = nil;
-                });
+                [_delegate asyncParsingDidFinish:result userInfos:_userInfos];
+                
+                // clean retain
+                _data = nil;
+                _userInfos = nil;
+                result = nil;
             }
         }else {
             // clean retain

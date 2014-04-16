@@ -8,6 +8,12 @@
 
 #import "PxMarkupKitXMLSupport.h"
 
+NSString *kPxMarkupXMLVersionHead1 = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+NSString *kPxMarkupXMLVersionHead2 = @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+
+NSString *kPxMarkupTagKey = @"&px_markup_tag&";
+NSString *kPxMarkupCXMLRootKey = @"pxCXMLroot";
+
 
 #define ADD_ESCAPE_SEQUENCE(__BUFFER__, __SEQ__) __BUFFER__[b++] = '&';for (int j=0; j<sizeof(__SEQ__)/sizeof(__SEQ__[0]); j++) {__BUFFER__[b++] = __SEQ__[j];}; __BUFFER__[b++] = ';';
 #define COMP_ESCAPE_SEQUENCE(__BUFFER__, __SEQ__) compareEscapeSequence(__BUFFER__, __SEQ__, sizeof(__SEQ__)/sizeof(__SEQ__[0]))
