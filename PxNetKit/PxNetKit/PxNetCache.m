@@ -72,7 +72,7 @@ NSString *const PxHTTPHeaderRange = @"Range";
 - (NSString *)fileName:(NSURL *)url {
     NSString *extension = [[url relativePath] pathExtension];
     NSString *fileName = [[url absoluteString] stringByAddingSHA1Encoding];
-    if (extension) {
+    if ([extension isNotBlank]) {
         return [fileName stringByAppendingPathExtension:extension];
     }
     return fileName;
@@ -183,20 +183,25 @@ NSString *const PxHTTPHeaderRange = @"Range";
 - (void)storeDataFromFile:(NSString *)filePath forURL:(NSURL *)url header:(NSDictionary *)header {
     NSFileManager *fm = [NSFileManager defaultManager];
     
+    if (![fm fileExistsAtPath:filePath]) {
+        PxError(@"storeDataFromFile File does not Exist:\nfilePath: %@\nurl: %@\nheader: %@", filePath, url, header);
+        return;
+    }
+    
+    
     NSString *destinationPath   = [self filePath:url];
     
     NSError *error = nil;
     if ([fm fileExistsAtPath:destinationPath]) {
-        [fm removeItemAtPath:destinationPath error:&error];
-        if (error) {
+        
+        if (![fm removeItemAtPath:destinationPath error:&error] || error) {
             PxError(@"storeDataFromFile remove old File:\nfilePath: %@\nurl: %@\nheader: %@\nerror: %@", filePath, url, header, error);
         }
     }
     error = nil;
     
-    [fm moveItemAtPath:filePath toPath:destinationPath error:&error];
-    if (error && [error code] != 512) {
-        PxError(@"storeDataFromFile:\nfilePath: %@\nurl: %@\nheader: %@\nerror: %@", filePath, url, header, error);
+    if ([fm moveItemAtPath:filePath toPath:destinationPath error:&error] || (error && [error code] != 512)) {
+        PxError(@"storeDataFromFile move File:\nfilePath: %@\nurl: %@\nheader: %@\nerror: %@", filePath, url, header, error);
     }
     
     if (header != nil) {

@@ -61,10 +61,10 @@
         _delegate = d;
         
         _options = 0;
-        if (request.cacheInterval) {
-            _options = _options | PxNetOptionDisk;
-        } else {
+        if (request.noCache) {
             _options = _options | PxNetOptionRAM;
+        } else {
+            _options = _options | PxNetOptionDisk;
         }
         
         _state = PxNetConnectionStatePending;
@@ -110,7 +110,6 @@
 //    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self.connection cancel];
     self.connection = nil;
-    self.response = nil;
 }
 
 - (void)startConnection {
@@ -141,7 +140,7 @@
             _options = _options | PxNetOptionDisk;
             self.tmpFile = [NSFileHandle fileHandleForWritingAtPath:[self tmpFilePath]];
             if (!self.tmpFile) {
-                PxError(@"<PxHTTPConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
+                PxError(@"<PxNetConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
             }else {
                 [self.tmpFile writeData:self.inMemoryStore];
             }
@@ -167,7 +166,7 @@
             [self resumeConnection];
         }else {
             // Nothing todo or Something went wrong for now?
-            PxError(@"<PxHTTPConnection> Wrong state in startOrResumeConnection: %d", self.state);
+            PxError(@"<PxNetConnection> Wrong state in startOrResumeConnection: %d", self.state);
         }
     }
 }
@@ -199,8 +198,11 @@
                 self.expectedByteCount = [r expectedContentLength];
                 [self cleanStorage];
             }
-        }else {
-            PxError(@"<PxHTTPConnection> Unsupported Response-Class in setResponse: %@", NSStringFromClass([r class]));
+        } else if (r == nil) {
+            _response = nil;
+            [self cleanConnection];
+        } else {
+            PxError(@"<PxNetConnection> Unsupported Response-Class in setResponse: %@", NSStringFromClass([r class]));
             _response = nil;
             [self cleanConnection];
             [self cleanStorage];
@@ -232,7 +234,7 @@
     if ([self shouldFileStore]) {
         self.tmpFile = [NSFileHandle fileHandleForWritingAtPath:[self tmpFilePath]];
         if (!self.tmpFile) {
-            PxError(@"<PxHTTPConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
+            PxError(@"<PxNetConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
         }
     }
     if ([self shouldMemoryStore]) {
@@ -242,7 +244,7 @@
         }else {
             length = 1024;
         }
-        self.inMemoryStore = [[NSMutableData alloc] initWithCapacity:length];
+        self.inMemoryStore = [[NSMutableData alloc] initWithCapacity:(NSUInteger)length];
     }
     self.storeIsReady = YES;
 }
@@ -280,7 +282,7 @@
         if (!self.tmpFile) {
             self.tmpFile = [NSFileHandle fileHandleForWritingAtPath:[self tmpFilePath]];
             if (!self.tmpFile) {
-                PxError(@"<PxHTTPConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
+                PxError(@"<PxNetConnection> Could not Create filehandler for writing at path:\n\t\t%@", [self tmpFilePath]);
             }else {
                 [self.tmpFile writeData:self.inMemoryStore];
             }
@@ -326,7 +328,8 @@
 
 
 - (void)connection:(NSURLConnection *)c didFailWithError:(NSError *)error {
-    self.statusCode = 504;
+    PxError(@"<PxNetConnection> connection:didFailWithError:\n\t\t%@", error);
+    self.statusCode = 906;
     self.state = PxNetConnectionStateFailed;
     [self.delegate connection:self didCompleteWithStatus:self.statusCode];
 }

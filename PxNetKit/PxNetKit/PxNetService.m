@@ -197,7 +197,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
     }];
 }
 
-#pragma mark PxHTTPConnectionDelegate
+#pragma mark PxNetConnectionDelegate
 
 - (void)connection:(PxNetConnection *)c didStop:(BOOL)connectionCleaned {
     // Dont know ...
