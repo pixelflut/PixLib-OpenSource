@@ -200,7 +200,7 @@ NSString *const PxHTTPHeaderRange = @"Range";
     }
     error = nil;
     
-    if ([fm moveItemAtPath:filePath toPath:destinationPath error:&error] || (error && [error code] != 512)) {
+    if (![fm moveItemAtPath:filePath toPath:destinationPath error:&error] || (error && [error code] != 512)) {
         PxError(@"storeDataFromFile move File:\nfilePath: %@\nurl: %@\nheader: %@\nerror: %@", filePath, url, header, error);
     }
     

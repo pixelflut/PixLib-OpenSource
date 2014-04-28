@@ -237,6 +237,7 @@ dispatch_queue_t getSerialWorkQueue__netService();
     
     NSString *cachefilePath;
     if (connection && [connection filePath]) {
+        
         cachefilePath = [connection storeInCache:self.cache];
     }
     
@@ -287,16 +288,20 @@ dispatch_queue_t getSerialWorkQueue__netService();
     PxPair *parseAndNotParse = [self partitionedRequests:requestWrappers filePath:file status:status];
     NSURL *fileURL = [NSURL fileURLWithPath:file isDirectory:NO];
     
-    [PxAsyncParseService parseFile:fileURL
-                              type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
-                          delegate:self
-                         userInfos:[PxPair pairWithFirst:[parseAndNotParse first] second:nil]];
+    if ([[parseAndNotParse first] count] > 0) {
+        [PxAsyncParseService parseFile:fileURL
+                                  type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
+                              delegate:self
+                             userInfos:[PxPair pairWithFirst:[parseAndNotParse first] second:nil]];
+    }
     
     // a little bit hacky but so i dont need to implement a small amount of code twice and still get nice asynchronouse behavior
-    [PxAsyncParseService parseFile:fileURL
-                              type:PxContentTypeNone
-                          delegate:self
-                         userInfos:[PxPair pairWithFirst:[parseAndNotParse second] second:nil]];
+    if ([[parseAndNotParse second] count] > 0) {
+        [PxAsyncParseService parseFile:fileURL
+                                  type:PxContentTypeNone
+                              delegate:self
+                             userInfos:[PxPair pairWithFirst:[parseAndNotParse second] second:nil]];
+    }
 }
 
 #pragma mark ConnectionQueue
@@ -352,26 +357,32 @@ dispatch_queue_t getSerialWorkQueue__netService();
     PxPair *parseAndNotParse = [self partitionedRequests:requestWrappers filePath:filePath status:status];
     
     
-    [PxAsyncParseService parseObject:parseInput
-                                type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
-                            delegate:self
-                           userInfos:[PxPair pairWithFirst:[parseAndNotParse first] second:connection]
-                               error:&error];
-    if (error) {
-        PxError(@"handleSuccess 1");
-        error = nil;
+    if ([[parseAndNotParse first] count] > 0) {
+        [PxAsyncParseService parseObject:parseInput
+                                    type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
+                                delegate:self
+                               userInfos:[PxPair pairWithFirst:[parseAndNotParse first] second:connection]
+                                   error:&error];
+        if (error) {
+            PxError(@"handleSuccess 1");
+            error = nil;
+        }
     }
     
-    [PxAsyncParseService parseObject:parseInput
-                                type:PxContentTypeNone
-                            delegate:self
-                           userInfos:[PxPair pairWithFirst:[parseAndNotParse second] second:connection]
-                               error:&error];
     
-    if (error) {
-        PxError(@"handleSuccess 2");
-        error = nil;
+    if ([[parseAndNotParse second] count] > 0) {
+        [PxAsyncParseService parseObject:parseInput
+                                    type:PxContentTypeNone
+                                delegate:self
+                               userInfos:[PxPair pairWithFirst:[parseAndNotParse second] second:connection]
+                                   error:&error];
+        
+        if (error) {
+            PxError(@"handleSuccess 2");
+            error = nil;
+        }
     }
+
 }
 
 - (void)handleFailure:(PxNetConnectionQueueEntry *)entry {
