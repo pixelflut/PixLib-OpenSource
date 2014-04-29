@@ -218,6 +218,14 @@ typedef struct {
 
 /** set paragraph stylings of the string.
  @param optionBlock The block to configure the paragraph styling.
+ @param range The range of characters the kerning should apply to.
+ @see setParagraphStyle:
+ */
+- (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock range:(NSRange)range;
+
+/** set paragraph stylings of the string.
+ @param optionBlock The block to configure the paragraph styling.
+ @see setParagraphStyle:range:
  */
 - (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock;
 

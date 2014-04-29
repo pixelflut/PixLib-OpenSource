@@ -37,15 +37,14 @@ typedef enum {
 } PxContentType;
 
 static inline PxContentType PxContentTypeFromNSString(NSString *string) {
-    if ([string isEqualToString:@"text/cxml"]) {
-        return PxContentTypeCXML;
-    } else if ([string isEqualToString:@"cxml"]) {
+    string = [[string componentsSeparatedByString:@";"] firstObject];
+    if ([string isEqualToString:@"text/cxml"] || [string isEqualToString:@"cxml"]) {
         return PxContentTypeCXML;
     } else if ([string isEqualToString:@"text/json"]) {
         return PxContentTypeJSON;
     } else if ([string isEqualToString:@"text/plain"]) {
         return PxContentTypePlain;
-    } else if ([string isEqualToString:@"text/xml"]) {
+    } else if ([string isEqualToString:@"text/xml"] || [string isEqualToString:@"application/xml"]) {
         return PxContentTypeXML;
     }
     return PxContentTypeNone;

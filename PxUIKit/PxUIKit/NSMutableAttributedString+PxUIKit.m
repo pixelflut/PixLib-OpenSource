@@ -138,7 +138,7 @@ CTTextAlignment alignmentMapping[4] = {
 }
 
 #pragma mark - ParagraphStyle
-- (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock {
+- (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock range:(NSRange)range {
     PxParagraphStyleOptions opts = PxDefaultParagraphOptions;
     optionBlock(&opts);
     int n = 0;
@@ -194,8 +194,12 @@ CTTextAlignment alignmentMapping[4] = {
     }
     
     CTParagraphStyleRef paragraph = CTParagraphStyleCreate(styleSettings, 7);
-    [self addAttribute:(__bridge NSString*)kCTParagraphStyleAttributeName value:(__bridge id)paragraph range:NSMakeRange(0, self.length)];
+    [self addAttribute:(__bridge NSString*)kCTParagraphStyleAttributeName value:(__bridge id)paragraph range:range];
     CFRelease(paragraph);
+}
+
+- (void)setParagraphStyle:(void (^)(PxParagraphStyleOptions *options))optionBlock {
+    [self setParagraphStyle:optionBlock range:NSMakeRange(0, self.length)];
 }
 
 @end
