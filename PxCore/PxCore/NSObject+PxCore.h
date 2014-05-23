@@ -148,4 +148,8 @@
 - (void)setPxProperty:(id)value name:(NSString *)name NS_DEPRECATED(10_0, 10_4, 2_0, 2_0);
 - (id)pxProperty:(NSString *)property NS_DEPRECATED(10_0, 10_4, 2_0, 2_0);
 
+- (void)addPxObserver:(id)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(void (^)(id object, NSDictionary *change))block;
+- (void)removePxObserver:(id)observer forKeyPath:(NSString *)keyPath;
+- (void)removePxObserver:(id)observer;
+
 @end

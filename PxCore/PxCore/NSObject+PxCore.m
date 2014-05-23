@@ -30,7 +30,22 @@
 #import <objc/message.h>
 #import <objc/runtime.h>
 
+static NSString *pxObserverPropertyKey = @"__px_observer_prop_key";
+static NSString *pxObserverSignaturKey = @"__px_observer_sig_key";
+
 static NSDictionary *__associationKeys = nil;
+
+@interface PxObserverInfo : NSObject
+@property (nonatomic, copy, readonly) void (^block)(id object, NSDictionary *change);
+@property (nonatomic, assign, readonly) NSKeyValueObservingOptions options;
+@property (nonatomic, strong, readonly) NSString *keyPath;
+@property (nonatomic, weak, readonly) id observedObject;
+@property (nonatomic, weak, readonly) id observer;
+@property (nonatomic, strong, readonly) NSString *observerSignatur;
+
+- (id)initWithObserver:(id)observer observedObject:(id)observedObject keyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(void (^)(id object, NSDictionary *change))block;
+
+@end
 
 @implementation NSObject (PxCore)
 
@@ -136,5 +151,94 @@ static NSDictionary *__associationKeys = nil;
     return [self runtimeProperty:property];
 }
 
+
+- (NSMutableDictionary *)pxObserver {
+    NSMutableDictionary *observer = [self runtimeProperty:pxObserverPropertyKey];
+    if (!observer) {
+        observer = [[NSMutableDictionary alloc] init];
+        [self setRuntimeProperty:observer name:pxObserverPropertyKey];
+    }
+    return observer;
+}
+
+- (void)addPxObserverInfo:(PxObserverInfo *)info {
+    [self addObserver:info forKeyPath:info.keyPath options:info.options context:(__bridge void *)(info)];
+    NSMutableArray *observer = [[self pxObserver] valueForKey:info.observerSignatur];
+    if (!observer) {
+        observer = [[NSMutableArray alloc] init];
+        [[self pxObserver] setValue:observer forKey:info.observerSignatur];
+    }
+    [observer addObject:info];
+}
+
+- (void)addPxObserver:(id)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(void (^)(id object, NSDictionary *change))block {
+    if (observer && keyPath && block) {
+        PxObserverInfo *info = [[PxObserverInfo alloc] initWithObserver:observer observedObject:self keyPath:keyPath options:options block:block];
+        [self addPxObserverInfo:info];
+    }
+}
+
+- (void)removePxObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath {
+    NSMutableArray *observerArray = [[self pxObserver] valueForKey:observer.pxObserverSignatur];
+    [observerArray deleteIf:^BOOL(PxObserverInfo *info) {
+        if ([info.keyPath isEqualToString:keyPath]) {
+            [self removeObserver:info forKeyPath:keyPath];
+            return YES;
+        }
+        return NO;
+    }];
+}
+
+- (void)removePxObserver:(NSObject *)observer {
+    [self removePxObserverWithSignatur:observer.pxObserverSignatur];
+}
+
+- (void)removePxObserverWithSignatur:(NSString *)signatur {
+    NSMutableArray *observerArray = [[self pxObserver] valueForKey:signatur];
+    for (PxObserverInfo *info in observerArray) {
+        [self removeObserver:info forKeyPath:info.keyPath];
+    }
+    [[self pxObserver] setValue:nil forKey:signatur];
+}
+
+- (NSString *)pxObserverSignatur {
+    NSString *sig = [self runtimeProperty:pxObserverSignaturKey];
+    if (!sig) {
+        sig = [[NSUUID UUID] UUIDString];
+        [self setRuntimeProperty:sig name:pxObserverSignaturKey];
+    }
+    return sig;
+}
+
+@end
+
+
+@implementation PxObserverInfo
+
+- (id)initWithObserver:(id)observer observedObject:(id)observedObject keyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(void (^)(id object, NSDictionary *change))block {
+    self = [super init];
+    if (self) {
+        _block = block;
+        _options = options;
+        _keyPath = keyPath;
+        _observer = observer;
+        _observedObject = observedObject;
+        _observerSignatur = [observer pxObserverSignatur];
+        
+    }
+    return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (self.observer) {
+        self.block(object, change);
+    } else {
+        [object removePxObserverWithSignatur:self.observerSignatur];
+    }
+}
+
+- (void)dealloc {
+    [self.observedObject removePxObserverWithSignatur:self.observerSignatur];
+}
 
 @end

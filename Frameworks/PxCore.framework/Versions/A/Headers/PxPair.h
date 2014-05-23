@@ -27,6 +27,9 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define PxPairMake(__first__, __second__) [PxPair pairWithFirst:__first__ second:__second__]
+
 /**
  * Use **PxPair** if you have to store a single key-value pair.
  */

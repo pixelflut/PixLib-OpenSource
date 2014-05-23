@@ -356,9 +356,13 @@ typedef struct {
 }
 
 - (NSIndexPath *)plainIndexPathForItem:(id)item {
-    return [NSIndexPath indexPathForRow:[self.data index:^BOOL(id obj) {
-        return obj == item;
-    }] inSection:0];
+    NSUInteger row = [self.data index:^BOOL(id obj) {
+        return [obj isEqual:item];
+    }];
+    if (row != NSNotFound) {
+        return [NSIndexPath indexPathForRow:row inSection:0];
+    }
+    return nil;
 }
 
 - (NSInteger)plainNumberOfSectionsInTCollectionView:(UICollectionView *)collectionView {
@@ -401,7 +405,7 @@ typedef struct {
     for (int section = 0; section<[self.data count]; section++) {
         PxPair *pair = [self.data objectAtIndex:section];
         for (int row = 0; row < [pair.second count]; row++) {
-            if ([pair.second objectAtIndex:row] == item) {
+            if ([[pair.second objectAtIndex:row] isEqual:item] ) {
                 return [NSIndexPath indexPathForRow:row inSection:section];
             }
         }

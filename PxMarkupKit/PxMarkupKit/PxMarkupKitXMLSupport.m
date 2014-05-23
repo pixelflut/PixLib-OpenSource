@@ -159,6 +159,13 @@ NSString *xmlUnescapedString(NSString *string) {
                 retBuffer[b++] = 246;
             }else if(COMP_ESCAPE_SEQUENCE(seqBuffer, __uuml)) {
                 retBuffer[b++] = 252;
+            } else if(seqBuffer[0] == '#') {
+                int l = j-1;
+                NSString *substring = [string substringWithRange:NSMakeRange(i-l, l)];
+                unichar value = [substring integerValue];
+                if (value != 0) {
+                    retBuffer[b++] = value;
+                }
             }
         }else {
             retBuffer[b++] = c;
