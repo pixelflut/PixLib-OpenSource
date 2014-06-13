@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		C5D218C7194B46A9002B314F /* UITextField+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C5D218C5194B46A9002B314F /* UITextField+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5D218C8194B46A9002B314F /* UITextField+PxUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D218C6194B46A9002B314F /* UITextField+PxUIKit.m */; };
 		DB06F37D189BA6E100F8C52E /* PxCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F37C189BA6E100F8C52E /* PxCollectionView.m */; };
 		DB06F380189BA72900F8C52E /* PxCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F37F189BA72900F8C52E /* PxCollectionViewCell.m */; };
 		DB06F383189BA8F000F8C52E /* PxCollectionViewGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DB06F382189BA8F000F8C52E /* PxCollectionViewGridLayout.m */; };
@@ -126,6 +128,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C5D218C5194B46A9002B314F /* UITextField+PxUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PxUIKit.h"; sourceTree = "<group>"; };
+		C5D218C6194B46A9002B314F /* UITextField+PxUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+PxUIKit.m"; sourceTree = "<group>"; };
 		DB06F37B189BA6E100F8C52E /* PxCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCollectionView.h; sourceTree = "<group>"; };
 		DB06F37C189BA6E100F8C52E /* PxCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCollectionView.m; sourceTree = "<group>"; };
 		DB06F37E189BA72900F8C52E /* PxCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCollectionViewCell.h; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 				DB26BC19189A69F900FC2211 /* UILabel+PxUIKit.m */,
 				DB26BC1B189A6A0700FC2211 /* UIScrollView+PxUIKit.h */,
 				DB26BC1C189A6A0800FC2211 /* UIScrollView+PxUIKit.m */,
+				C5D218C5194B46A9002B314F /* UITextField+PxUIKit.h */,
+				C5D218C6194B46A9002B314F /* UITextField+PxUIKit.m */,
 				DB26BC1E189A6A1400FC2211 /* UIView+PxUIKit.h */,
 				DB26BC1F189A6A1400FC2211 /* UIView+PxUIKit.m */,
 			);
@@ -449,6 +455,7 @@
 				DB06F3AF189BF9D000F8C52E /* UIImage+PxUIKit.h in Headers */,
 				DB06F3B0189BF9D300F8C52E /* UIImageView+PxUIKit.h in Headers */,
 				DB213F6318E304BE00F133C1 /* PxAnimation.h in Headers */,
+				C5D218C7194B46A9002B314F /* UITextField+PxUIKit.h in Headers */,
 				DB06F3B1189BF9D600F8C52E /* UILabel+PxUIKit.h in Headers */,
 				DB06F3B2189BF9D900F8C52E /* UIScrollView+PxUIKit.h in Headers */,
 				DB06F3B3189BF9DC00F8C52E /* UIView+PxUIKit.h in Headers */,
@@ -595,6 +602,7 @@
 				DB26BC20189A6A1400FC2211 /* UIView+PxUIKit.m in Sources */,
 				DB26BC11189A69CB00FC2211 /* UIDevice+PxUIKit.m in Sources */,
 				DB06F394189BC78E00F8C52E /* PxRemoteImageService.m in Sources */,
+				C5D218C8194B46A9002B314F /* UITextField+PxUIKit.m in Sources */,
 				DB26BC14189A69DC00FC2211 /* UIImage+PxUIKit.m in Sources */,
 				DB26BC2B189A7BFC00FC2211 /* PxViewController.m in Sources */,
 				DB06F386189BA93400F8C52E /* PxDataCollectionGridView.m in Sources */,

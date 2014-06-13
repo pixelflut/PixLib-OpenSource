@@ -40,6 +40,7 @@
 #import "UIImageView+PxUIKit.h"
 #import "UILabel+PxUIKit.h"
 #import "UIScrollView+PxUIKit.h"
+#import "UITextField+PxUIKit.h"
 #import "UIView+PxUIKit.h"
 
 
