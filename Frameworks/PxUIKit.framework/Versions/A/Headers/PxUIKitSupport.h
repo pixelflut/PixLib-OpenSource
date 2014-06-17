@@ -98,6 +98,14 @@ static inline CGFloat CGFloatNormalizeForDevice(CGFloat f) {
 	return roundf(f * PxDeviceScale()) / PxDeviceScale();
 }
 
+static inline CGFloat CGFloatFloorForDevice(CGFloat f) {
+	return floorf(f * PxDeviceScale()) / PxDeviceScale();
+}
+
+static inline CGFloat CGFloatCeilForDevice(CGFloat f) {
+	return ceilf(f * PxDeviceScale()) / PxDeviceScale();
+}
+
 #pragma mark - Device
 static inline CGFloat PxDeviceScale() {
 	static float scale = 0;
