@@ -35,6 +35,7 @@
 #import "NSString+PxUIKit.h"
 #import "UIApplication+PxUIKit.h"
 #import "UIColor+PxUIKit.h"
+#import "UIControl+PxUIKit.h"
 #import "UIDevice+PxUIKit.h"
 #import "UIImage+PxUIKit.h"
 #import "UIImageView+PxUIKit.h"

@@ -93,6 +93,8 @@
 		DB53334B18C72D7400527EC7 /* PxCollectionReusableView.h in Headers */ = {isa = PBXBuildFile; fileRef = DB53334918C72D7400527EC7 /* PxCollectionReusableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB53334C18C72D7400527EC7 /* PxCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB53334A18C72D7400527EC7 /* PxCollectionReusableView.m */; };
 		DB5C8E4118ABB8370063E4D7 /* PxCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = DB06F37E189BA72900F8C52E /* PxCollectionViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBE62D9019506CD50089535A /* UIControl+PxUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = DBE62D8E19506CD50089535A /* UIControl+PxUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBE62D9119506CD50089535A /* UIControl+PxUIKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DBE62D8F19506CD50089535A /* UIControl+PxUIKit.m */; };
 		DBF3FF8718A8CDFE0080EA01 /* PxWebController.h in Headers */ = {isa = PBXBuildFile; fileRef = DBF3FF8518A8CDFE0080EA01 /* PxWebController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBF3FF8818A8CDFE0080EA01 /* PxWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF3FF8618A8CDFE0080EA01 /* PxWebController.m */; };
 /* End PBXBuildFile section */
@@ -200,6 +202,8 @@
 		DB26BC2A189A7BFC00FC2211 /* PxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxViewController.m; sourceTree = "<group>"; };
 		DB53334918C72D7400527EC7 /* PxCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxCollectionReusableView.h; sourceTree = "<group>"; };
 		DB53334A18C72D7400527EC7 /* PxCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxCollectionReusableView.m; sourceTree = "<group>"; };
+		DBE62D8E19506CD50089535A /* UIControl+PxUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+PxUIKit.h"; sourceTree = "<group>"; };
+		DBE62D8F19506CD50089535A /* UIControl+PxUIKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+PxUIKit.m"; sourceTree = "<group>"; };
 		DBF3FF8518A8CDFE0080EA01 /* PxWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxWebController.h; sourceTree = "<group>"; };
 		DBF3FF8618A8CDFE0080EA01 /* PxWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxWebController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -339,6 +343,8 @@
 				DB26BC0A189A696600FC2211 /* UIApplication+PxUIKit.m */,
 				DB26BC0C189A69BA00FC2211 /* UIColor+PxUIKit.h */,
 				DB26BC0D189A69BA00FC2211 /* UIColor+PxUIKit.m */,
+				DBE62D8E19506CD50089535A /* UIControl+PxUIKit.h */,
+				DBE62D8F19506CD50089535A /* UIControl+PxUIKit.m */,
 				DB26BC0F189A69CB00FC2211 /* UIDevice+PxUIKit.h */,
 				DB26BC10189A69CB00FC2211 /* UIDevice+PxUIKit.m */,
 				DB26BC12189A69DC00FC2211 /* UIImage+PxUIKit.h */,
@@ -464,6 +470,7 @@
 				DB06F3B6189BFA0300F8C52E /* PxViewController.h in Headers */,
 				DB06F3B7189BFA0800F8C52E /* PxActionButtonConfig.h in Headers */,
 				DB06F3B8189BFA0A00F8C52E /* PxInputAnimation.h in Headers */,
+				DBE62D9019506CD50089535A /* UIControl+PxUIKit.h in Headers */,
 				DB06F3B9189BFA0F00F8C52E /* PxDrawService.h in Headers */,
 				DB06F3BA189BFA1200F8C52E /* PxRemoteImageService.h in Headers */,
 				DB06F3BB189BFA1700F8C52E /* PxImageStorage.h in Headers */,
@@ -600,6 +607,7 @@
 				DB26BC0E189A69BA00FC2211 /* UIColor+PxUIKit.m in Sources */,
 				DB26BC02189A690700FC2211 /* NSString+PxUIKit.m in Sources */,
 				DB26BC20189A6A1400FC2211 /* UIView+PxUIKit.m in Sources */,
+				DBE62D9119506CD50089535A /* UIControl+PxUIKit.m in Sources */,
 				DB26BC11189A69CB00FC2211 /* UIDevice+PxUIKit.m in Sources */,
 				DB06F394189BC78E00F8C52E /* PxRemoteImageService.m in Sources */,
 				C5D218C8194B46A9002B314F /* UITextField+PxUIKit.m in Sources */,
