@@ -148,9 +148,10 @@
     if (error) {
         PxError(@"%@", error);
     } else {
-        [files each:^(NSURL *url) {
+        [files each:^(NSString *filePath) {
             NSError *error;
-            [fm removeItemAtURL:url error:&error];
+            
+            [fm removeItemAtPath:[[self cacheDir] stringByAppendingPathComponent:filePath] error:&error];
             if (error) {
                 PxError(@"%@", error);
             }
