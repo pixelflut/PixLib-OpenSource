@@ -64,7 +64,7 @@ static inline CGPoint CGPointNormalizeForDevice(CGPoint point);
 static inline CGSize CGSizeNormalizeForDevice(CGSize size);
 
 
-#pragma mark - CGRect
+#pragma mark - UIEdgeInsets
 static inline UIEdgeInsets UIEdgeInsetsFlipHorizontal(UIEdgeInsets insets) {
 	float tmp = insets.left;
 	insets.left = insets.right;
@@ -79,8 +79,21 @@ static inline UIEdgeInsets UIEdgeInsetsFlipVertical(UIEdgeInsets insets) {
 	return insets;
 }
 
+#pragma mark - CGRect
 static inline CGRect CGRectNormalizeForDevice(CGRect rect) {
 	return CGRectMake(CGFloatNormalizeForDevice(rect.origin.x), CGFloatNormalizeForDevice(rect.origin.y), CGFloatNormalizeForDevice(rect.size.width), CGFloatNormalizeForDevice(rect.size.height));
+}
+
+static inline CGRect UIEdgeInsetsInsetRectHorizontal(CGRect rect, UIEdgeInsets insets) {
+	insets.top = 0;
+	insets.bottom = 0;
+	return UIEdgeInsetsInsetRect(rect, insets);
+}
+
+static inline CGRect UIEdgeInsetsInsetRectVertical(CGRect rect, UIEdgeInsets insets) {
+	insets.left = 0;
+	insets.right = 0;
+	return UIEdgeInsetsInsetRect(rect, insets);
 }
 
 #pragma mark - CGSize
