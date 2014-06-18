@@ -199,6 +199,9 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
         [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
         [self applyAnimationSteps:1];
+        if (self.completion) {
+            self.completion(YES);
+        }
     }
 }
 
