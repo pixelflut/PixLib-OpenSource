@@ -27,6 +27,7 @@
 
 #import <Foundation/Foundation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "PxPair.h"
 
 #pragma mark - Callculations
 
@@ -259,6 +260,10 @@ static PxTimingFunction PxEaseInOutBounce = ^double_t(double_t t) {
         return PxEaseInBounce(t*2) * .5;
     else
         return PxEaseOutBounce(t*2-1) * .5 + .5;
+};
+
+static inline CGFloat scale(CGFloat v, PxPair *src, PxPair *dst) {
+    return ((v - [[src first] floatValue]) / ([[src second] floatValue]-[[src first] floatValue])) * ([[dst second] floatValue]-[[dst first] floatValue]) + [[dst first] floatValue];
 };
 
 #pragma mark - CGRect
