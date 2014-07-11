@@ -60,6 +60,8 @@
 
 - (void)removeEntriesFromCollection:(NSArray *)entries;
 
+- (void)updateData;
+
 @end
 
 @protocol PxDataCollectionGridViewDelegate <UICollectionViewDelegateFlowLayout>

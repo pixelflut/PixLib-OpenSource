@@ -107,6 +107,10 @@ typedef struct {
     [super reloadData];
 }
 
+- (void)updateData {
+    self.data = [self.pxDataSource dataForCollectionView:self];
+}
+
 - (void)setSectional:(BOOL)sectional {
     if (sectional != _sectional) {
         _sectional = sectional;

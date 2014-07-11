@@ -127,6 +127,8 @@
         _data = data;
         if (reload) {
             [self.collectionView reloadData];
+        } else {
+            [self.collectionView updateData];
         }
     }
 }
