@@ -168,9 +168,9 @@ typedef struct {
     int cellPosition = PxCellPositionMiddle;
 	NSInteger sectionCount = [self numberOfSections];
 	
-	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
+	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast|PxCellPositionBottom;}
     if(section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
-    if(section == 0) {cellPosition |= PxCellPositionFirst;}
+    if(section == 0) {cellPosition |= PxCellPositionFirst|PxCellPositionTop;}
     
     NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, PxCollectionSectionHeaderIdentifier];
     

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 pixelflut GmbH. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PxCollectionViewCell.h"
 
 @interface PxCollectionReusableView : UICollectionReusableView
 @property(nonatomic, weak) UICollectionView *collectionView;
@@ -14,6 +14,9 @@
 @property(nonatomic, strong) id data;
 
 - (void)setData:(id)data setUI:(BOOL)setUI;
+
+- (PxCellPosition)cellPosition;
+- (BOOL)hasPosition:(PxCellPosition)position;
 
 @end
 
