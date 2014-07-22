@@ -37,6 +37,8 @@ typedef enum {
     PxCellPositionSingle    = 1<<5,
 } PxCellPosition;
 
+#define hasPosition(__identifier__, __position__) ([__identifier__ intValue] & __position__ || [__identifier__ intValue] == __position__)
+
 @interface PxCollectionViewCell : UICollectionViewCell
 @property(nonatomic, weak) UICollectionView *collectionView;
 @property(nonatomic, assign) id delegate;
