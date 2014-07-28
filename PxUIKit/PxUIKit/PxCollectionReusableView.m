@@ -31,4 +31,13 @@
     }
 }
 
+- (PxCellPosition)cellPosition {
+    return [self.reuseIdentifier intValue];
+}
+
+- (BOOL)hasPosition:(PxCellPosition)position {
+    NSInteger identifier = [self.reuseIdentifier integerValue];
+    return (identifier & position || identifier == position);
+}
+
 @end

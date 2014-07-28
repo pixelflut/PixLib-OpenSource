@@ -165,17 +165,36 @@ typedef struct {
 }
 
 - (NSString *)identifierForHeaderAtSection:(NSUInteger)section {
+    int cellPosition = PxCellPositionMiddle;
+	NSInteger sectionCount = [self numberOfSections];
+	
+	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast|PxCellPositionBottom;}
+    if(section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
+    if(section == 0) {cellPosition |= PxCellPositionFirst|PxCellPositionTop;}
+    
+    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, PxCollectionSectionHeaderIdentifier];
+    
     if (_dynamicHeaderIdentifier) {
-        return [self.pxDataSource collectionView:self identfierForHeaderAtSection:section identifier:PxCollectionSectionHeaderIdentifier];
+        return [self.pxDataSource collectionView:self identfierForHeaderAtSection:section identifier:identifier];
     }
-    return PxCollectionSectionHeaderIdentifier;
+    return identifier;
 }
 
 - (NSString *)identifierForFooterAtSection:(NSUInteger)section {
+    
+    int cellPosition = PxCellPositionMiddle;
+	NSInteger sectionCount = [self numberOfSections];
+	
+	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
+    if(section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
+    if(section == 0) {cellPosition |= PxCellPositionFirst;}
+    
+    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, PxCollectionSectionFooterIdentifier];
+    
     if (_dynamicFooterIdentifier) {
-        return [self.pxDataSource collectionView:self identfierForFooterAtSection:section identifier:PxCollectionSectionFooterIdentifier];
+        return [self.pxDataSource collectionView:self identfierForFooterAtSection:section identifier:identifier];
     }
-    return PxCollectionSectionFooterIdentifier;
+    return identifier;
 }
 
 - (CGSize)sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
