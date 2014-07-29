@@ -209,7 +209,7 @@ typedef struct {
 - (CGSize)sizeForHeaderAtSection:(NSUInteger)section {
     if (_dynamicHeaderSize) {
         Class klass = [self.delegate collectionView:self classForHeaderAtSection:section];
-        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:PxCollectionSectionHeaderIdentifier collectionView:self];
+        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:[self identifierForHeaderAtSection:section] collectionView:self];
     } else {
         return [(PxCollectionViewGridLayout *)self.collectionViewLayout headerReferenceSize];
     }
@@ -218,7 +218,7 @@ typedef struct {
 - (CGSize)sizeForFooterAtSection:(NSUInteger)section {
     if (_dynamicFooterSize) {
         Class klass = [self.delegate collectionView:self classForFooterAtSection:section];
-        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:PxCollectionSectionFooterIdentifier collectionView:self];
+        return [klass sizeWithData:[self dataForSection:section] reuseIdentifier:[self identifierForFooterAtSection:section] collectionView:self];
     } else {
         return [(PxCollectionViewGridLayout *)self.collectionViewLayout footerReferenceSize];
     }
