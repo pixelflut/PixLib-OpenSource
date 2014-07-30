@@ -263,23 +263,23 @@ static PxTimingFunction PxEaseInOutBounce = ^double_t(double_t t) {
 };
 
 typedef struct _PxTimingRange {
-    CGFloat start;
-    CGFloat end;
+    CGFloat location;
+    CGFloat length;
 } PxTimingRange;
 
-NS_INLINE PxTimingRange PxMakeTimingRange(CGFloat start, CGFloat end) {
+NS_INLINE PxTimingRange PxTimingMakeRange(CGFloat loc, CGFloat len) {
     PxTimingRange r;
-    r.start = start;
-    r.end = end;
+    r.location = loc;
+    r.length = len;
     return r;
 }
 
-static inline CGFloat pxMapTimingExtended(CGFloat t, PxTimingRange src, PxTimingRange dst) {
-    return ((t - src.start) / (src.end - src.start)) * (dst.end - dst.start) + dst.start;
+static inline CGFloat pxMapTimingExtended(CGFloat v, PxTimingRange src, PxTimingRange dst) {
+    return ((v - src.location) / src.length) * (dst.length) + dst.location;
 };
 
-static inline CGFloat pxMapTiming(CGFloat t, PxTimingRange src) {
-    return pxMapTimingExtended(t, src, PxMakeTimingRange(0, 1));
+static inline CGFloat pxMapTiming(CGFloat v, PxTimingRange src) {
+    return pxMapTimingExtended(v, src, PxTimingMakeRange(0, 1));
 };
 
 #pragma mark - CGRect
@@ -318,7 +318,7 @@ static inline CGPoint CGPointAdd(CGPoint point1, CGPoint point2) {
 
 #pragma mark - Macro Helpers
 
-#define PxTimingRangeMake(start, end) PxMakeTimingRange(start, end)
+#define PxTimingRangeMake(location, length) PxTimingMakeRange(location, length)
 
 #define PxCompare(a,b) ( a<b ? NSOrderedAscending : a>b ? NSOrderedDescending : NSOrderedSame)
 

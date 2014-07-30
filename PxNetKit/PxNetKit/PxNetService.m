@@ -335,7 +335,6 @@ dispatch_queue_t getSerialWorkQueue__netService();
 }
 
 #pragma mark Connection finished
-
 - (void)handleSuccess:(PxNetConnectionQueueEntry *)entry {
     PxNetConnection *connection = entry.connection;
     NSArray *requestWrappers = entry.requestWrappers;

@@ -393,7 +393,6 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                 
                 nextTag = [[NSString alloc] initWithBytes:CFDataGetBytePtr(tagName) length:j encoding:NSUTF8StringEncoding];
                 CFRelease(tagName);
-                
                 // get type attribute. This MUST be the first attribute for performance issues
                 if (c == ' ') {
                     j = 0;
@@ -419,7 +418,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
                         CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
                         for (; bytes[i+1+j+k] != '"'; k++) {
                             unsigned char c = bytes[i+1+j+k];
-                            CFDataAppendBytes(attrValue, &c, 0);
+                            CFDataAppendBytes(attrValue, &c, 1);
                         }
                         nextType = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:k encoding:NSUTF8StringEncoding]; // Improvement: Dont use NSString
                         CFRelease(attrValue);
@@ -438,7 +437,7 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
         }else if(character == '>') {//tag ended
             endTag(stack, parentStack, &ret, &nextTag, &nextType, &nextAttributes, &parent, &current, map);
         }else if(character == ' ' || character == '\n' || character == '\t'){ //whitespace consumed. Nothing to do right now
-            
+
         }else {
             if (!nextTag) {
                 PxError(@"CXML Syntax Error durring Attribute-Parsing: No Working Object");
@@ -451,10 +450,11 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             CFMutableDataRef attrName = CFDataCreateMutable(NULL, 0);
             for (; bytes[i] != '='; j++, i++) {
                 unsigned char c = bytes[i];
-                CFDataAppendBytes(attrName, &c, 0);
+                CFDataAppendBytes(attrName, &c, 1);
             }
             
             NSString *attr = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrName) length:j encoding:NSUTF8StringEncoding];
+            
             CFRelease(attrName);
             
             // Skip starting Quote
@@ -471,14 +471,17 @@ static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parent
             CFMutableDataRef attrValue = CFDataCreateMutable(NULL, 0);
             for (; bytes[i] != '"'; j++, i++) {
                 unsigned char c = bytes[i];
-                CFDataAppendBytes(attrValue, &c, 0);
+                CFDataAppendBytes(attrValue, &c, 1);
             }
             
             if (!nextAttributes) {
                 nextAttributes = [[NSMutableDictionary alloc] init];
             }
             
+            
+            
             NSString *value = [[NSString alloc] initWithBytes:CFDataGetBytePtr(attrValue) length:j encoding:NSUTF8StringEncoding];
+            
             [nextAttributes setValue:PxXMLUnescape(value) forKey:attr];
             CFRelease(attrValue);
         }

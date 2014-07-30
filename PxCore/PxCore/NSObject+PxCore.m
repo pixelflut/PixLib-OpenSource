@@ -233,7 +233,7 @@ static NSDictionary *__associationKeys = nil;
     if (self.observer) {
         self.block(object, change);
     } else {
-        [object removePxObserverWithSignatur:self.observerSignatur];
+        [self.observedObject removePxObserverWithSignatur:self.observerSignatur];
     }
 }
 
