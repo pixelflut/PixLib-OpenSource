@@ -151,5 +151,6 @@
 - (void)addPxObserver:(id)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options block:(void (^)(id object, NSDictionary *change))block;
 - (void)removePxObserver:(id)observer forKeyPath:(NSString *)keyPath;
 - (void)removePxObserver:(id)observer;
+- (void)removeAllPxObserver;
 
 @end
