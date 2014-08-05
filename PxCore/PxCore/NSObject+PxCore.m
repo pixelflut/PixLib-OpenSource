@@ -210,6 +210,12 @@ static NSDictionary *__associationKeys = nil;
     return sig;
 }
 
+- (void)removeAllPxObserver {
+    [[self pxObserver] eachPair:^(NSString *key, id value) {
+        [self removePxObserverWithSignatur:key];
+    }];
+}
+
 @end
 
 
