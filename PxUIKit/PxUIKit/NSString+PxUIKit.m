@@ -10,22 +10,51 @@
 
 @implementation NSString (PxUIKit)
 
-- (float)heightForWidth:(float)width config:(PxFontConfig)config {
-    if(config.adjustsFontSizeToFitWidth) {
-        return [self sizeWithFont:config.font minFontSize:config.minimumScaleFactor actualFontSize:nil forWidth:width lineBreakMode:config.lineBreakMode].height;
-    } else {
-        if (config.numberOfLines == 1) {
-            return [self sizeWithFont:config.font forWidth:width lineBreakMode:config.lineBreakMode].height;
-        } else {
-            float h1 = [self sizeWithFont:config.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:config.lineBreakMode].height;
-            if (config.numberOfLines == 0) {
-                return h1;
-            }
-            float h2 = [self sizeWithFont:config.font].height * config.numberOfLines;
-            return MIN(h1, h2);
-        }
+- (CGFloat)heightForWidth:(CGFloat)width config:(PxFontConfig)config {
+    CGSize size = CGSizeMake(width, INT_MAX);
+    CGFloat height;
+    CGFloat multiLineHeight;
+    NSMutableDictionary *fontAttributes = [NSMutableDictionary dictionary];
+    NSMutableParagraphStyle *paragraph = [[NSMutableParagraphStyle alloc] init];
+    NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+    
+    if (config.font) {
+        fontAttributes[NSFontAttributeName] = config.font;
     }
-    return 0;
+    
+    if (config.lineBreakMode) {
+        paragraph.lineBreakMode = config.lineBreakMode;
+        
+        fontAttributes[NSParagraphStyleAttributeName] = paragraph;
+    }
+    
+    if (config.adjustsFontSizeToFitWidth) {
+        context.minimumScaleFactor = config.minimumScaleFactor;
+    }
+    
+    height = [self boundingRectWithSize:size options:0 attributes:fontAttributes context:context].size.height;
+    
+    if (config.numberOfLines != 1) {
+        if (
+            paragraph.lineBreakMode == NSLineBreakByTruncatingHead ||
+            paragraph.lineBreakMode == NSLineBreakByTruncatingMiddle ||
+            paragraph.lineBreakMode == NSLineBreakByTruncatingTail
+            ) {
+            paragraph.lineBreakMode = NSLineBreakByWordWrapping;
+        }
+        
+        multiLineHeight = [self boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:fontAttributes context:context].size.height;
+        
+        if (config.numberOfLines == 0) {
+            height = multiLineHeight;
+        } else {
+            height *= config.numberOfLines;
+        }
+        
+        height = MIN(height, multiLineHeight);
+    }
+    
+    return height;
 }
 
 @end

@@ -18,9 +18,10 @@
 /** @name Computing Metrics for Drawing Strings */
 
 /** Returns the height of the string if it were rendered and constrained to the specified width and font informations.
+ This method returns a fractional height; to use a returned height to size views, you must raise its value to the nearest higher integer using the ceil function.
  @param width The maximum acceptable width for the string. This value is used to calculate where line breaks and wrapping would occur.
  @param config The font and Linebreak informations to use for rendering the string.
  */
-- (float)heightForWidth:(float)width config:(PxFontConfig)config;
+- (CGFloat)heightForWidth:(CGFloat)width config:(PxFontConfig)config;
 
 @end

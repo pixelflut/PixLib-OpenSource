@@ -66,39 +66,39 @@
     return PxFontConfigMake(self.font, 0.0, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines, 1);
 }
 
-- (float)heightToFitWidth:(float)width {
-#warning calculate height when attributed string is not nil. see widthToFitHeight:
+- (CGFloat)heightToFitWidth:(CGFloat)width {
     return [self.text heightForWidth:width config:self.fontConfig];
 }
 
-- (float)heightToFit {
+- (CGFloat)heightToFit {
 	return [self heightToFitWidth:self.frame.size.width];
 }
 
-- (void)setHeightToFitWidth:(float)width {
-    [self setSize:CGSizeMake(width, [self heightToFitWidth:width])];
+- (void)setHeightToFitWidth:(CGFloat)width {
+    [self setSize:CGSizeMake(width, CGFloatCeilForDevice([self heightToFitWidth:width]))];
 }
 
 - (void)setHeightToFit {
     [self setHeightToFitWidth:self.frame.size.width];
 }
 
-- (float)widthToFitHeight:(float)height {
-    //	if([self attributedText]) {
-#warning test when ios7 is final
-    //		NSLog(@"%@", [self attributedText]);
-    //		return CGFloatNormalizeForDevice([[self attributedText] boundingRectWithSize:CGSizeMake(INT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading context:nil].size.width);
-    //	} else {
-    return [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(INT_MAX, height) lineBreakMode:[self lineBreakMode]].width;
-    //	}
+- (CGFloat)widthToFitHeight:(CGFloat)height {
+    CGSize size = CGSizeMake(INT_MAX, height);
+    NSMutableDictionary *fontAttributes = [NSMutableDictionary dictionary];
+    
+    if (self.font) {
+        fontAttributes[NSFontAttributeName] = self.font;
+    }
+    
+    return [self.text boundingRectWithSize:size options:0 attributes:fontAttributes context:nil].size.width;
 }
 
-- (float)widthToFit {
+- (CGFloat)widthToFit {
 	return [self widthToFitHeight:self.frame.size.height];
 }
 
-- (void)setWidthToFitHeight:(float)height {
-    [self setSize:CGSizeMake([self widthToFitHeight:height], height)];
+- (void)setWidthToFitHeight:(CGFloat)height {
+    [self setSize:CGSizeMake(CGFloatCeilForDevice([self widthToFitHeight:height]), height)];
 }
 
 - (void)setWidthToFit {
@@ -106,7 +106,7 @@
 }
 
 - (void)sizeToFit {
-	float width = [self widthToFit];
+	CGFloat width = [self widthToFit];
 	[self setSize:CGSizeMake(width, [self heightToFitWidth:width])];
 }
 
@@ -115,23 +115,6 @@
     
 	if(self.frame.size.width > maxWidth) {
 		[self setHeightToFitWidth:maxWidth];
-	}
-}
-
-
-#pragma mark - Wrapper for deprecated methods
-
-- (void)setMinimumScaleFactorIfAvailable:(float)minimumScaleFactor {
-	if([self respondsToSelector:@selector(setMinimumScaleFactor:)]) {
-		[(id)self setMinimumScaleFactor:minimumScaleFactor];
-	} else if([self respondsToSelector:@selector(setMinimumFontSize:)]) {
-		[(id)self setMinimumFontSize:(int)self.font.pointSize*minimumScaleFactor];
-	}
-}
-
-- (void)setAdjustsLetterSpacingToFitWidthIfAvailable:(BOOL)adjustLetterSpacingToFitWidth {
-	if([self respondsToSelector:@selector(setAdjustsLetterSpacingToFitWidth:)]) {
-		[(id)self setAdjustsLetterSpacingToFitWidth:adjustLetterSpacingToFitWidth];
 	}
 }
 

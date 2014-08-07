@@ -54,38 +54,42 @@
 /** @name Calculating Content Metrics */
 
 /** Returns the height the receiver needs if its text were rendered complete and constrained to the receivers width.
+ This method returns a fractional height; to use a returned height to size views, you must raise its value to the nearest higher integer using the ceil function.
  @return The height the receiver needs if its text were rendered complete and constrained to the receivers width.
  @see heightToFitWidth:
  @see widthToFit
  @see widthToFitHeight:
  */
-- (float)heightToFit;
+- (CGFloat)heightToFit;
 
 /** Returns the height the receiver needs if its text were rendered complete and constrained to the specified width.
+ This method returns a fractional height; to use a returned height to size views, you must raise its value to the nearest higher integer using the ceil function.
  @param width The maximum acceptable width for the label.
  @return The height the receiver needs if its text were rendered complete and constrained to the specified width.
  @see heightToFit
  @see widthToFit
  @see widthToFitHeight:
  */
-- (float)heightToFitWidth:(float)width;
+- (CGFloat)heightToFitWidth:(CGFloat)width;
 
 /** Returns the width the receiver needs if its text were rendered complete and constrained to the receivers height.
+ This method returns a fractional height; to use a returned height to size views, you must raise its value to the nearest higher integer using the ceil function.
  @return The width the receiver needs if its text were rendered complete and constrained to the receivers height.
  @see heightToFit
  @see heightToFitWidth:
  @see widthToFitHeight:
  */
-- (float)widthToFit;
+- (CGFloat)widthToFit;
 
 /** Returns the width the receiver needs if its text were rendered complete and constrained to the specified height.
+ This method returns a fractional height; to use a returned height to size views, you must raise its value to the nearest higher integer using the ceil function.
  @param height The maximum acceptable width for the label.
  @return The width the receiver needs if its text were rendered complete and constrained to the specified height.
  @see heightToFit
  @see heightToFitWidth:
  @see widthToFit
  */
-- (float)widthToFitHeight:(float)height;
+- (CGFloat)widthToFitHeight:(CGFloat)height;
 
 /** Sets the height of the receiver constrained to the receivers width so its text can be completly rendered
  @see setHeightToFitWidth:
@@ -100,7 +104,7 @@
  @see setWidthToFit
  @see setWidthToFitHeight:
  */
-- (void)setHeightToFitWidth:(float)width;
+- (void)setHeightToFitWidth:(CGFloat)width;
 
 /** Sets the width of the receiver constrained to the receivers height so its text can be completly rendered
  @see setHeightToFit
@@ -115,7 +119,7 @@
  @see setHeightToFitWidth:
  @see setWidthToFit
  */
-- (void)setWidthToFitHeight:(float)height;
+- (void)setWidthToFitHeight:(CGFloat)height;
 
 /** Sets the size of the receiver so its text can be completly rendered, if possible, in one line.
  
@@ -123,9 +127,5 @@
  @param maxWidth The maximum acceptable width for the label.
  */
 - (void)sizeToFitWithMaxWidth:(int)maxWidth;
-
-
-- (void)setMinimumScaleFactorIfAvailable:(float)minimumScaleFactor;
-- (void)setAdjustsLetterSpacingToFitWidthIfAvailable:(BOOL)adjustLetterSpacingToFitWidth;
 
 @end
