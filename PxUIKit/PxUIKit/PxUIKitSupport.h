@@ -96,6 +96,14 @@ static inline CGRect UIEdgeInsetsInsetRectVertical(CGRect rect, UIEdgeInsets ins
 	return UIEdgeInsetsInsetRect(rect, insets);
 }
 
+static inline UIEdgeInsets UIEdgeInsetsInsideOut(UIEdgeInsets insets) {
+	insets.top = -insets.top;
+    insets.left = -insets.left;
+	insets.bottom = -insets.bottom;
+    insets.right = -insets.right;
+	return insets;
+}
+
 #pragma mark - CGSize
 static inline CGSize CGSizeNormalizeForDevice(CGSize size) {
 	return CGSizeMake(CGFloatNormalizeForDevice(size.width), CGFloatNormalizeForDevice(size.height));
