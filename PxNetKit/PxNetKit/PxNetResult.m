@@ -29,6 +29,7 @@
 #import "PxNetResult.h"
 
 @interface PxNetResult ()
+@property (nonatomic, strong) id returnObject;
 
 @end
 
