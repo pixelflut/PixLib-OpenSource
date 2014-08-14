@@ -29,20 +29,22 @@
 #import "PxNetResult.h"
 
 @interface PxNetResult ()
-@property (nonatomic, assign) NSInteger status;
-@property (nonatomic, strong) id returnObject;
-@property (nonatomic, strong) NSString *filePath;
 
 @end
 
 @implementation PxNetResult
 
 - (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath {
+    return [self initWithStatus:status returnObject:returnObject filePath:filePath errorObject:nil];
+}
+
+- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath errorObject:(id)errorObject {
     self = [super init];
     if (self) {
         _status = status;
         _returnObject = returnObject;
         _filePath = filePath;
+        _errorObject = errorObject;
     }
     return self;
 }

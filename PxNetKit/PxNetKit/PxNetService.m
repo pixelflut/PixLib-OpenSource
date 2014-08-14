@@ -355,7 +355,6 @@ dispatch_queue_t getSerialWorkQueue__netService();
     
     PxPair *parseAndNotParse = [self partitionedRequests:requestWrappers filePath:filePath status:status];
     
-    
     if ([[parseAndNotParse first] count] > 0) {
         [PxAsyncParseService parseObject:parseInput
                                     type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
@@ -394,8 +393,25 @@ dispatch_queue_t getSerialWorkQueue__netService();
         return !wrapper.currentRequest.noCache;
     }];
     
+    // TODO: move to async version from parser and solve conflict with success
+    NSDictionary *header = [connection httpHeader];
+    NSString *filePath = [connection filePath];
+    NSError *error = nil;
+    id parseInput = nil;
+    
+    if ([filePath isNotBlank]) {
+        parseInput = [NSURL fileURLWithPath:filePath isDirectory:NO];
+    }else {
+        parseInput = [connection rawData];
+    }
+    
+    id errorObject = [PxParseService parseObject:parseInput
+                                            type:PxContentTypeFromNSString([header valueForKey:PxHTTPHeaderMimeType])
+                                         mapping:self.orMapping
+                                           error:&error];
+    
     void (^noCacheBlock)(id obj) = ^(PxNetRequestWrapper *wrapper) {
-        [wrapper setResult:[[PxNetResult alloc] initWithStatus:status returnObject:nil filePath:nil]];
+        [wrapper setResult:[[PxNetResult alloc] initWithStatus:status returnObject:nil filePath:nil errorObject:errorObject]];
         [self finischRequest:wrapper];
     };
     
