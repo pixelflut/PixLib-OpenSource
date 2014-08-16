@@ -30,6 +30,7 @@
 
 @interface PxNetResult ()
 @property (nonatomic, strong) id returnObject;
+@property (nonatomic, strong) NSString *filePath;
 
 @end
 
