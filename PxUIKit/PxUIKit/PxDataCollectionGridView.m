@@ -379,11 +379,13 @@ typedef struct {
 }
 
 - (NSIndexPath *)plainIndexPathForItem:(id)item {
-    NSUInteger row = [self.data index:^BOOL(id obj) {
-        return [obj isEqual:item];
-    }];
-    if (row != NSNotFound) {
-        return [NSIndexPath indexPathForRow:row inSection:0];
+    if ([self.data isNotBlank]) {
+        NSUInteger row = [self.data index:^BOOL(id obj) {
+            return [obj isEqual:item];
+        }];
+        if (row != NSNotFound) {
+            return [NSIndexPath indexPathForRow:row inSection:0];
+        }
     }
     return nil;
 }
