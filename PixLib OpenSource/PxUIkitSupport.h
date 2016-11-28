@@ -37,20 +37,59 @@ typedef struct {
     NSLineBreakMode lineBreakMode;
     BOOL adjustsFontSizeToFitWidth;
     NSInteger numberOfLines;
-	CGFloat amountOfKerning;
+    BOOL allowsDefaultTighteningForTruncation;
+    NSTextAlignment textAlignment;
 } PxFontConfig;
 
-#warning add amountOfKerning to PxFontConfigMake
 static inline PxFontConfig
-PxFontConfigMake(UIFont *font, CGFloat minimumScaleFactor, NSLineBreakMode lineBreakMode, BOOL adjustsFontSizeToFitWidth, NSInteger numberOfLines) {
+PxFontConfigMake(UIFont *font, CGFloat minimumScaleFactor, NSLineBreakMode lineBreakMode, BOOL adjustsFontSizeToFitWidth, NSInteger numberOfLines, BOOL allowsDefaultTighteningForTruncation, NSTextAlignment textAlignment) {
     PxFontConfig config;
     config.font = font;
     config.minimumScaleFactor = minimumScaleFactor;
     config.lineBreakMode = lineBreakMode;
     config.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
     config.numberOfLines = numberOfLines;
+    config.allowsDefaultTighteningForTruncation = allowsDefaultTighteningForTruncation;
+    config.textAlignment = textAlignment;
     return config;
 }
+
+static inline NSDictionary * PxFontConfigDrawingAttributes(PxFontConfig config, UIColor *textColor) {
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = config.lineBreakMode;
+    if ([paragraphStyle respondsToSelector:@selector(allowsDefaultTighteningForTruncation)]) {
+        paragraphStyle.allowsDefaultTighteningForTruncation = config.allowsDefaultTighteningForTruncation;
+    }
+    paragraphStyle.alignment = config.textAlignment;
+    if (textColor) {
+        return @{
+                 NSForegroundColorAttributeName: textColor,
+                 NSFontAttributeName: config.font,
+                 NSParagraphStyleAttributeName: paragraphStyle,
+                 };
+    } else {
+        return @{
+                 NSFontAttributeName: config.font,
+                 NSParagraphStyleAttributeName: paragraphStyle,
+                 };
+    }
+}
+
+static inline NSStringDrawingContext * PxFontConfigDrawingContext(PxFontConfig config) {
+    if (config.minimumScaleFactor && config.adjustsFontSizeToFitWidth) {
+        NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+        context.minimumScaleFactor = config.minimumScaleFactor;
+        return context;
+    }
+    return nil;
+}
+
+static inline NSStringDrawingOptions PxFontConfigDrawingOptions(PxFontConfig config) {
+    return (NSStringDrawingUsesLineFragmentOrigin |
+            NSStringDrawingUsesFontLeading);
+}
+
+
 
 // Statusbar
 #define STATUS_BAR_STYLE_BLACK_TRANSLUCENT_OPACITY 0.6

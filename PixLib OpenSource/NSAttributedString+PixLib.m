@@ -132,7 +132,7 @@
     // TODO: Maybe support precalculated link boundaries
     if (storeLines) {
         CGRect contextBounds = CGContextGetClipBoundingBox(c);
-        _lines = [(__bridge NSArray*)lines collectWithIndex:^id(id obj, unsigned int index) {
+        _lines = [(__bridge NSArray*)lines collectWithIndex:^id(id obj, NSUInteger index) {
             CGPoint origin;
             CTFrameGetLineOrigins(frame, CFRangeMake(index, 1), &origin);
             CGRect bounds = CTLineGetImageBounds((__bridge CTLineRef)obj, c);

@@ -38,15 +38,8 @@
  kCTCenterTextAlignment = 2,
  */
 
-CTTextAlignment alignmentMapping[4] = {
-    kCTLeftTextAlignment, 
-    kCTCenterTextAlignment, 
-    kCTRightTextAlignment,
-    kCTLeftTextAlignment // default at least
-};
 
-
-#define PxDefaultParagraphOptions {kCTLeftTextAlignment, 0.0, 0.0, 0.0, 0.0}
+#define PxDefaultParagraphOptions {kCTTextAlignmentLeft, 0.0, 0.0, 0.0, 0.0}
 
 @implementation NSMutableAttributedString (PixLib)
 

@@ -34,37 +34,28 @@
     self = [self initWithFrame:frame];
     if (self) {
         self.font = fontConfig.font;
-        
-        if ([self respondsToSelector:@selector(minimumScaleFactor)]) {
-            self.minimumScaleFactor = fontConfig.minimumScaleFactor;
-        } else if([self respondsToSelector:@selector(minimumFontSize)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-            [self setMinimumFontSize:fontConfig.minimumScaleFactor/self.font.pointSize];
-#pragma clang diagnostic pop
-        }
-        
-        self.lineBreakMode = fontConfig.lineBreakMode;
+        self.minimumScaleFactor = fontConfig.minimumScaleFactor;
         self.adjustsFontSizeToFitWidth = fontConfig.adjustsFontSizeToFitWidth;
+        self.lineBreakMode = fontConfig.lineBreakMode;
         self.numberOfLines = fontConfig.numberOfLines;
+        if ([self respondsToSelector:@selector(allowsDefaultTighteningForTruncation)]) {
+            self.allowsDefaultTighteningForTruncation = fontConfig.allowsDefaultTighteningForTruncation;
+        }
+        self.textAlignment = fontConfig.textAlignment;
     }
     return self;
 }
 
 - (PxFontConfig)fontConfig {
-    if ([self respondsToSelector:@selector(minimumScaleFactor)]) {
-        return PxFontConfigMake(self.font, self.minimumScaleFactor, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
-    } else if([self respondsToSelector:@selector(minimumFontSize)]){
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        return PxFontConfigMake(self.font, self.minimumFontSize/self.font.pointSize, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
-#pragma clang diagnostic pop
+    if ([self respondsToSelector:@selector(allowsDefaultTighteningForTruncation)]) {
+        return PxFontConfigMake(self.font, self.minimumScaleFactor, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines, self.allowsDefaultTighteningForTruncation, self.textAlignment);
     }
-    return PxFontConfigMake(self.font, 0.0, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines);
+    return PxFontConfigMake(self.font, self.minimumScaleFactor, self.lineBreakMode, self.adjustsFontSizeToFitWidth, self.numberOfLines, NO, self.textAlignment);
 }
 
 - (float)heightToFitWidth:(float)width {
 #warning calculate height when attributed string is not nil. see widthToFitHeight:
+//    NSLog(@"%@ %@", self.text, self.attributedText);
     return [self.text heightForWidth:width config:self.fontConfig];
 }
 
@@ -81,13 +72,7 @@
 }
 
 - (float)widthToFitHeight:(float)height {
-//	if([self attributedText]) {
-#warning test when ios7 is final
-//		NSLog(@"%@", [self attributedText]);
-//		return CGFloatNormalizeForDevice([[self attributedText] boundingRectWithSize:CGSizeMake(INT_MAX, height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading context:nil].size.width);
-//	} else {
-		return [[self text] sizeWithFont:[self font] constrainedToSize:CGSizeMake(INT_MAX, height) lineBreakMode:[self lineBreakMode]].width;
-//	}
+    return [[self text] widthForHeight:height config:self.fontConfig];
 }
 
 - (float)widthToFit {
@@ -109,26 +94,8 @@
 
 - (void)sizeToFitWithMaxWidth:(int)maxWidth {
 	[self sizeToFit];
-
-	if(self.frame.size.width > maxWidth) {
+	if (self.frame.size.width > maxWidth) {
 		[self setHeightToFitWidth:maxWidth];
-	}
-}
-
-
-#pragma mark - Wrapper for deprecated methods
-
-- (void)setMinimumScaleFactorIfAvailable:(float)minimumScaleFactor {
-	if([self respondsToSelector:@selector(setMinimumScaleFactor:)]) {
-		[(id)self setMinimumScaleFactor:minimumScaleFactor];
-	} else if([self respondsToSelector:@selector(setMinimumFontSize:)]) {
-		[(id)self setMinimumFontSize:(int)self.font.pointSize*minimumScaleFactor];
-	}
-}
-
-- (void)setAdjustsLetterSpacingToFitWidthIfAvailable:(BOOL)adjustLetterSpacingToFitWidth {
-	if([self respondsToSelector:@selector(setAdjustsLetterSpacingToFitWidth:)]) {
-		[(id)self setAdjustsLetterSpacingToFitWidth:adjustLetterSpacingToFitWidth];
 	}
 }
 

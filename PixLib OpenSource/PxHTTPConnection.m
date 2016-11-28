@@ -242,13 +242,13 @@
         }
     }
     if ([self shouldMemoryStore]) {
-        NSInteger length;
+        long long length;
         if (_expectedByteCount != NSURLResponseUnknownLength) {
             length = _expectedByteCount;
         }else {
             length = 1024;
         }
-        _inMemoryStore = [[NSMutableData alloc] initWithCapacity:length];
+        _inMemoryStore = [[NSMutableData alloc] initWithCapacity:(NSUInteger)length];
     }
     _storeIsReady = YES;
 }

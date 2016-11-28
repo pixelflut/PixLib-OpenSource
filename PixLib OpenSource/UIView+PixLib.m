@@ -114,7 +114,7 @@
     return img;
 }
 
-- (id)addView:(UIView *)view {
+- (__kindof UIView *)addView:(UIView *)view {
     [self addSubview:view];
     return view;
 }

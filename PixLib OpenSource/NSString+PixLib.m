@@ -75,22 +75,79 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     return [emailTest evaluateWithObject:self];
 }
 
-- (float)heightForWidth:(float)width config:(PxFontConfig)config {
-    if(config.adjustsFontSizeToFitWidth) {
-        return [self sizeWithFont:config.font minFontSize:config.minimumScaleFactor actualFontSize:nil forWidth:width lineBreakMode:config.lineBreakMode].height;
-    } else {
-        if (config.numberOfLines == 1) {
-            return [self sizeWithFont:config.font forWidth:width lineBreakMode:config.lineBreakMode].height;
-        } else {
-            float h1 = [self sizeWithFont:config.font constrainedToSize:CGSizeMake(width, INT_MAX) lineBreakMode:config.lineBreakMode].height;
-            if (config.numberOfLines == 0) {
-                return h1;
-            }
-            float h2 = [self sizeWithFont:config.font].height * config.numberOfLines;
-            return MIN(h1, h2);
-        }
+
+- (void)drawAtPoint:(CGPoint)point config:(PxFontConfig)config textColor:(UIColor *)textColor {
+    if (![self length]) {
+        return;
     }
-    return 0;
+    [self drawAtPoint:point withAttributes:PxFontConfigDrawingAttributes(config, textColor)];
+}
+
+- (void)drawInRect:(CGRect)rect config:(PxFontConfig)config textColor:(UIColor *)textColor {
+    if (![self length]) {
+        return;
+    }
+    [self drawInRect:rect withAttributes:PxFontConfigDrawingAttributes(config, textColor)];
+}
+
+- (void)drawWithRect:(CGRect)rect config:(PxFontConfig)config textColor:(UIColor *)textColor {
+    if (![self length]) {
+        return;
+    }
+    [self drawWithRect:rect options:PxFontConfigDrawingOptions(config) attributes:PxFontConfigDrawingAttributes(config, textColor) context:PxFontConfigDrawingContext(config)];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size config:(PxFontConfig)config {
+    if (![self length]) {
+        return CGSizeZero;
+    }
+    
+    UIFont *font = config.font;
+    CGFloat maxHeight = FLT_MAX;
+    if (config.numberOfLines) {
+        maxHeight = config.numberOfLines * font.lineHeight;
+    }
+    size.height = MIN(maxHeight, size.height);
+    
+    NSStringDrawingContext *context = PxFontConfigDrawingContext(config);
+    NSDictionary *attributes = PxFontConfigDrawingAttributes(config, nil);
+    NSStringDrawingOptions options = PxFontConfigDrawingOptions(config);
+    size = [self boundingRectWithSize:size
+                                     options:options
+                                  attributes:attributes context:context].size;
+    size.height = ceil(size.height);
+    size.width = ceil(size.width);
+    
+    if (context) {
+        CGFloat actual = context.actualScaleFactor;
+        CGFloat height = MIN(ceil(actual*maxHeight), size.height);
+        size.height = height;
+    }
+    return size;
+}
+
+- (CGSize)sizeForWidth:(CGFloat)width config:(PxFontConfig)config {
+    if (![self length]) {
+        return CGSizeZero;
+    }
+    NSStringDrawingContext *context = PxFontConfigDrawingContext(config);
+    NSDictionary *attributes = PxFontConfigDrawingAttributes(config, nil);
+    NSStringDrawingOptions options = PxFontConfigDrawingOptions(config);
+    return [self boundingRectWithSize:CGSizeMake(width, FLT_MAX) options:options attributes:attributes context:context].size;
+}
+
+- (CGFloat)heightForWidth:(CGFloat)width config:(PxFontConfig)config {
+    if (![self length]) {
+        return 0;
+    }
+    return [self sizeThatFits:CGSizeMake(width, FLT_MAX) config:config].height;
+}
+
+- (CGFloat)widthForHeight:(CGFloat)height config:(PxFontConfig)config {
+    if (![self length]) {
+        return 0;
+    }
+    return [self sizeThatFits:CGSizeMake(FLT_MAX, height) config:config].width;
 }
 
 - (NSString *)stringByAddingMD5Encoding {
@@ -174,7 +231,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
 }
 
 - (NSString *)stringByCamelizeString:(BOOL)upperCaseFirstLetter {
-    return [[[self componentsSeparatedByString:@"_"] collectWithIndex:^id(id obj, unsigned int index) {
+    return [[[self componentsSeparatedByString:@"_"] collectWithIndex:^id(id obj, NSUInteger index) {
         if ((upperCaseFirstLetter && index == 0) || index > 0) {
             return [obj capitalizedString];
         }

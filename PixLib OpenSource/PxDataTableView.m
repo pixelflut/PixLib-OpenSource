@@ -44,7 +44,7 @@ typedef struct {
 @end
 
 @implementation PxDataTableView
-
+@dynamic dataSource;
 
 
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -107,8 +107,8 @@ typedef struct {
 #pragma mark - Shared Table Handling
 - (NSString*)identifierForCellAtIndexPath:(NSIndexPath *)indexPath {
     int cellPosition = PxCellPositionMiddle;
-    NSInteger rowCount = [self tableView:nil numberOfRowsInSection:indexPath.section];
-	NSInteger sectionCount = [self numberOfSectionsInTableView:nil];
+    NSInteger rowCount = [self tableView:self numberOfRowsInSection:indexPath.section];
+	NSInteger sectionCount = [self numberOfSectionsInTableView:self];
 	
 	if(indexPath.row == rowCount-1 && indexPath.section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
     if(indexPath.row == rowCount-1 && indexPath.row == 0) {cellPosition |= PxCellPositionSingle;}
@@ -277,7 +277,7 @@ typedef struct {
 - (NSMutableArray *)plainRemoveEntriesFromData:(NSArray *)entries {
     NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:[entries count]];
     NSMutableArray *lookUp = [entries mutableCopy];
-    self.data = [self.data collectWithIndex:^id(id obj, unsigned int index) {
+    self.data = [self.data collectWithIndex:^id(id obj, NSUInteger index) {
         if ([lookUp include:^BOOL(id obj2) {
             return obj2 == obj;
         }]) {
@@ -328,7 +328,7 @@ typedef struct {
     
     for (int i = 0; i < [self.data count]; i++) {
         PxPair *pair = [self.data objectAtIndex:i];
-        [pair setSecond:[(NSArray*)[pair second] collectWithIndex:^id(id obj, unsigned int index) {
+        [pair setSecond:[(NSArray*)[pair second] collectWithIndex:^id(id obj, NSUInteger index) {
             if ([lookUp include:^BOOL(id obj2) {
                 return obj2 == obj;
             }]) {
@@ -344,7 +344,7 @@ typedef struct {
 
 - (NSIndexSet *)sectionalRemoveEmptySectionsFromData {
     NSMutableIndexSet *indexSet = [NSMutableIndexSet indexSet];
-    [self setData:[self.data collectWithIndex:^id(PxPair *pair, unsigned int section) {
+    [self setData:[self.data collectWithIndex:^id(PxPair *pair, NSUInteger section) {
         if ([[pair second] count] > 0) {
             return pair;
         }else {

@@ -88,13 +88,17 @@
 	for (id obj in self) {
 		id key = block(obj);
         if (key || !skipNil) {
-            NSMutableSet *tmp = [ret objectForKey:key];
-            
-            if (tmp == nil) {
-                tmp = [[NSMutableSet alloc] init];
-                [ret setObject:tmp forKey:key];
+            if (key) {
+                NSMutableSet *tmp = [ret objectForKey:key];
+                
+                if (tmp == nil) {
+                    tmp = [[NSMutableSet alloc] init];
+                    [ret setObject:tmp forKey:key];
+                }
+                [tmp addObject:obj];
+            } else {
+                [NSException raise:@"nil class exception" format:@"nil key during groupBy"];
             }
-            [tmp addObject:obj];
         }
 	}
 	return ret;

@@ -114,21 +114,9 @@ static inline BOOL PxDeviceIsScale2() {
 	return PxDeviceScale() == 2.0;
 }
 
-static inline CGSize PxScreenSize() {
-	static CGSize screen = {0,0};
-	if (screen.width == 0 && screen.height == 0) {
-		screen = [[UIScreen mainScreen] bounds].size;
-	}
-	return screen;
-}
+CGSize PxScreenSize();
 
-static inline CGRect PxApplicationFrame() {
-	static CGRect appFrame = {{0,0},{0,0}};
-	if (CGRectIsEmpty(appFrame)) {
-		appFrame = [[UIScreen mainScreen] applicationFrame];
-	}
-	return appFrame;
-}
+CGRect PxApplicationFrame();
 
 static inline BOOL PxDeviceIsLandscape() {
 	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
@@ -154,7 +142,7 @@ static inline BOOL PxOSAvailable(int os) {
 	}
 }
 
-static inline BOOL PxOSVersionMajor() {
+static inline int PxOSVersionMajor() {
     return [[[UIDevice currentDevice] systemVersion] intValue];
 }
 

@@ -20,7 +20,7 @@
 
 //
 //  PxLogger.h
-//  PixLib OpenSource
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
@@ -67,7 +67,7 @@ typedef enum {
  */
 + (NSArray *)silenceFiles;
 
-+ (void)debugRuntime:(NSString *)msg repeatCount:(unsigned int)repeatCount block:(void (^)(void))debugBlock;
++ (void)debugRuntime:(NSString *)msg repeatCount:(NSUInteger)repeatCount block:(void (^)(void))debugBlock;
 
 @end
 
@@ -82,18 +82,10 @@ void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix,
 /** Logging Infos */
 #define PxInfo(...) PxReport(PxLogLevelInfo, __FILE__, __LINE__, @"[INFO]", __VA_ARGS__)
 
-#ifdef DEBUG
 /** Logging Debug Infos */
 #define PxDebug(...) PxReport(PxLogLevelDebug, __FILE__, __LINE__, @"[DEBUG]", __VA_ARGS__)
 
 /** Logging Infos */
 #define NSLog(...) PxReport(PxLogLevelLog, __FILE__, __LINE__, @"", __VA_ARGS__)
-#else
-/** Logging Debug Infos */
-#define PxDebug(...)
-
-/** Logging Infos */
-#define NSLog(...)
-#endif
 
 #define PxAssert(condition, ...) do { if(!(condition)){PxError(__VA_ARGS__);}}while(0)

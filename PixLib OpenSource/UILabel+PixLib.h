@@ -124,7 +124,4 @@
 - (void)sizeToFitWithMaxWidth:(int)maxWidth;
 
 
-- (void)setMinimumScaleFactorIfAvailable:(float)minimumScaleFactor;
-- (void)setAdjustsLetterSpacingToFitWidthIfAvailable:(BOOL)adjustLetterSpacingToFitWidth;
-
 @end

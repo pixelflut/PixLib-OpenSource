@@ -27,7 +27,12 @@
 
 #import "PxTableView.h"
 
-@protocol PxDataTableDelegate;
+@class PxDataTableView;
+
+@protocol PxDataTableDelegate <UITableViewDelegate>
+- (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @protocol PxDataTableDataSource;
 
 @interface PxDataTableView : PxTableView
@@ -49,9 +54,7 @@
 @end
 
 
-@protocol PxDataTableDelegate <UITableViewDelegate>
-- (Class)tableView:(PxDataTableView *)tableView classForCellAtIndexPath:(NSIndexPath *)indexPath;
-@end
+
 
 
 @protocol PxDataTableDataSource <NSObject>

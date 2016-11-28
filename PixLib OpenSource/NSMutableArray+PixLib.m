@@ -32,7 +32,11 @@
 
 - (void)addObject:(id)obj skipNil:(BOOL)skipNil {
     if (obj || !skipNil) {
-        [self addObject:obj];
+        if (obj) {
+            [self addObject:obj];
+        } else {
+            [NSException raise:@"nil class exception" format:@"nil value during addObject"];
+        }
     }
 }
 

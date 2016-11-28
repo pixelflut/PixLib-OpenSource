@@ -401,6 +401,8 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
         case UIInterfaceOrientationPortraitUpsideDown:// 2
             return CGRectMake(0, 0, windowSize.width, 216);
             break;
+        default:
+            break;
     }
     return CGRectNull;
 }
@@ -420,7 +422,10 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
         case UIInterfaceOrientationPortraitUpsideDown:// 2
             return CGRectMake(0, -216, windowSize.width, 216);
             break;
+        default:
+            break;
     }
+    return CGRectNull;
 }
 
 - (void)postRotationNotifications:(UIInterfaceOrientation)orientation {

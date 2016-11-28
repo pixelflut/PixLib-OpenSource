@@ -52,12 +52,8 @@
 		DB626F3316D25E870014B5B7 /* PxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2C16D25E870014B5B7 /* PxTableViewController.m */; };
 		DB626F3516D25E870014B5B7 /* PxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F2E16D25E870014B5B7 /* PxViewController.m */; };
 		DB626F3716D25E870014B5B7 /* PxWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3016D25E870014B5B7 /* PxWebController.m */; };
-		DB626F3D16D25EA80014B5B7 /* PxActionButtonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3A16D25EA80014B5B7 /* PxActionButtonConfig.m */; };
 		DB626F3F16D25EA80014B5B7 /* PxInputAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F3C16D25EA80014B5B7 /* PxInputAnimation.m */; };
-		DB626F4816D25F140014B5B7 /* PxTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4516D25F140014B5B7 /* PxTextField.m */; };
 		DB626F4A16D25F140014B5B7 /* PxTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4716D25F140014B5B7 /* PxTextView.m */; };
-		DB626F6116D25FA50014B5B7 /* PxActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F4E16D25FA50014B5B7 /* PxActionSheet.m */; };
-		DB626F6316D25FA50014B5B7 /* PxAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5016D25FA50014B5B7 /* PxAlertView.m */; };
 		DB626F6516D25FA50014B5B7 /* PxAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5216D25FA50014B5B7 /* PxAttributedLabel.m */; };
 		DB626F6716D25FA50014B5B7 /* PxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5416D25FA50014B5B7 /* PxButton.m */; };
 		DB626F6916D25FA50014B5B7 /* PxControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F5616D25FA50014B5B7 /* PxControl.m */; };
@@ -79,6 +75,8 @@
 		DB626FA516D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626F9E16D2605E0014B5B7 /* PxHTTPRemoteService.m */; };
 		DB626FA916D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DB626FA816D260B10014B5B7 /* PxCellDeleteLayer.m */; };
 		DB792B2F17B8F2E700E195C4 /* UIApplication+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DB792B2E17B8F2E700E195C4 /* UIApplication+PixLib.m */; };
+		DB8671F71DE5D38800515E34 /* PxSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8671F61DE5D38800515E34 /* PxSupport.m */; };
+		DBAE5AF01DEB01520062A03E /* UIAlertController+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAE5AEF1DEB01520062A03E /* UIAlertController+PixLib.m */; };
 		DBB10141178179D600DF196D /* NSCalendar+PixLib.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB10140178179D600DF196D /* NSCalendar+PixLib.m */; };
 		DBB101471781946200DF196D /* PxMutableIntegerDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = DBB101461781946200DF196D /* PxMutableIntegerDictionary.m */; };
 		DBBC9A3316D663EE00C92649 /* PxDrawService.m in Sources */ = {isa = PBXBuildFile; fileRef = DBBC9A3216D663EE00C92649 /* PxDrawService.m */; };
@@ -200,18 +198,10 @@
 		DB626F2E16D25E870014B5B7 /* PxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxViewController.m; sourceTree = "<group>"; };
 		DB626F2F16D25E870014B5B7 /* PxWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxWebController.h; sourceTree = "<group>"; };
 		DB626F3016D25E870014B5B7 /* PxWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxWebController.m; sourceTree = "<group>"; };
-		DB626F3916D25EA80014B5B7 /* PxActionButtonConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxActionButtonConfig.h; sourceTree = "<group>"; };
-		DB626F3A16D25EA80014B5B7 /* PxActionButtonConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxActionButtonConfig.m; sourceTree = "<group>"; };
 		DB626F3B16D25EA80014B5B7 /* PxInputAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxInputAnimation.h; sourceTree = "<group>"; };
 		DB626F3C16D25EA80014B5B7 /* PxInputAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxInputAnimation.m; sourceTree = "<group>"; };
-		DB626F4416D25F140014B5B7 /* PxTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxTextField.h; sourceTree = "<group>"; };
-		DB626F4516D25F140014B5B7 /* PxTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxTextField.m; sourceTree = "<group>"; };
 		DB626F4616D25F140014B5B7 /* PxTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxTextView.h; sourceTree = "<group>"; };
 		DB626F4716D25F140014B5B7 /* PxTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxTextView.m; sourceTree = "<group>"; };
-		DB626F4D16D25FA50014B5B7 /* PxActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxActionSheet.h; sourceTree = "<group>"; };
-		DB626F4E16D25FA50014B5B7 /* PxActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxActionSheet.m; sourceTree = "<group>"; };
-		DB626F4F16D25FA50014B5B7 /* PxAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxAlertView.h; sourceTree = "<group>"; };
-		DB626F5016D25FA50014B5B7 /* PxAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxAlertView.m; sourceTree = "<group>"; };
 		DB626F5116D25FA50014B5B7 /* PxAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxAttributedLabel.h; sourceTree = "<group>"; };
 		DB626F5216D25FA50014B5B7 /* PxAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxAttributedLabel.m; sourceTree = "<group>"; };
 		DB626F5316D25FA50014B5B7 /* PxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxButton.h; sourceTree = "<group>"; };
@@ -255,6 +245,9 @@
 		DB626FAB16D260DE0014B5B7 /* PxEditableCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxEditableCellProtocol.h; sourceTree = "<group>"; };
 		DB792B2D17B8F2E700E195C4 /* UIApplication+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+PixLib.h"; sourceTree = "<group>"; };
 		DB792B2E17B8F2E700E195C4 /* UIApplication+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+PixLib.m"; sourceTree = "<group>"; };
+		DB8671F61DE5D38800515E34 /* PxSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PxSupport.m; sourceTree = "<group>"; };
+		DBAE5AEE1DEB01520062A03E /* UIAlertController+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+PixLib.h"; sourceTree = "<group>"; };
+		DBAE5AEF1DEB01520062A03E /* UIAlertController+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+PixLib.m"; sourceTree = "<group>"; };
 		DBB1013F178179D600DF196D /* NSCalendar+PixLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCalendar+PixLib.h"; sourceTree = "<group>"; };
 		DBB10140178179D600DF196D /* NSCalendar+PixLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCalendar+PixLib.m"; sourceTree = "<group>"; };
 		DBB101451781946200DF196D /* PxMutableIntegerDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PxMutableIntegerDictionary.h; sourceTree = "<group>"; };
@@ -359,6 +352,7 @@
 				DB626EBF16D22AE70014B5B7 /* PxRuntimeHelper.h */,
 				DB626EC016D22AE70014B5B7 /* PxRuntimeHelper.m */,
 				DB626EC116D22AE70014B5B7 /* PxSupport.h */,
+				DB8671F61DE5D38800515E34 /* PxSupport.m */,
 				DB626EC516D22AE80014B5B7 /* PxWeakValue.h */,
 				DB626EC616D22AE80014B5B7 /* PxWeakValue.m */,
 			);
@@ -418,6 +412,8 @@
 				DB626E8816D22ABD0014B5B7 /* UIScrollView+PixLib.m */,
 				DB626E8916D22ABD0014B5B7 /* UIView+PixLib.h */,
 				DB626E8A16D22ABD0014B5B7 /* UIView+PixLib.m */,
+				DBAE5AEE1DEB01520062A03E /* UIAlertController+PixLib.h */,
+				DBAE5AEF1DEB01520062A03E /* UIAlertController+PixLib.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -560,8 +556,6 @@
 		DB626F2716D25E520014B5B7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DB626F3916D25EA80014B5B7 /* PxActionButtonConfig.h */,
-				DB626F3A16D25EA80014B5B7 /* PxActionButtonConfig.m */,
 				DB626F3B16D25EA80014B5B7 /* PxInputAnimation.h */,
 				DB626F3C16D25EA80014B5B7 /* PxInputAnimation.m */,
 			);
@@ -611,8 +605,6 @@
 		DB626F4316D25F030014B5B7 /* InputViews */ = {
 			isa = PBXGroup;
 			children = (
-				DB626F4416D25F140014B5B7 /* PxTextField.h */,
-				DB626F4516D25F140014B5B7 /* PxTextField.m */,
 				DB626F4616D25F140014B5B7 /* PxTextView.h */,
 				DB626F4716D25F140014B5B7 /* PxTextView.m */,
 			);
@@ -622,10 +614,6 @@
 		DB626F4C16D25F590014B5B7 /* Basics */ = {
 			isa = PBXGroup;
 			children = (
-				DB626F4D16D25FA50014B5B7 /* PxActionSheet.h */,
-				DB626F4E16D25FA50014B5B7 /* PxActionSheet.m */,
-				DB626F4F16D25FA50014B5B7 /* PxAlertView.h */,
-				DB626F5016D25FA50014B5B7 /* PxAlertView.m */,
 				DB626F5116D25FA50014B5B7 /* PxAttributedLabel.h */,
 				DB626F5216D25FA50014B5B7 /* PxAttributedLabel.m */,
 				DB626F5316D25FA50014B5B7 /* PxButton.h */,
@@ -706,7 +694,7 @@
 		DB626E2816D224070014B5B7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "pixelflut GmbH";
 			};
 			buildConfigurationList = DB626E2B16D224070014B5B7 /* Build configuration list for PBXProject "PixLib-OpenSource" */;
@@ -752,6 +740,7 @@
 				DB626EAF16D22ABD0014B5B7 /* UIImage+PixLib.m in Sources */,
 				DB626EB116D22ABD0014B5B7 /* UIImageView+PixLib.m in Sources */,
 				DB626EB316D22ABD0014B5B7 /* UILabel+PixLib.m in Sources */,
+				DB8671F71DE5D38800515E34 /* PxSupport.m in Sources */,
 				DB626EB516D22ABD0014B5B7 /* UIScrollView+PixLib.m in Sources */,
 				DB626EB716D22ABD0014B5B7 /* UIView+PixLib.m in Sources */,
 				DB626EC716D22AE80014B5B7 /* PxPair.m in Sources */,
@@ -775,12 +764,8 @@
 				DB626F3316D25E870014B5B7 /* PxTableViewController.m in Sources */,
 				DB626F3516D25E870014B5B7 /* PxViewController.m in Sources */,
 				DB626F3716D25E870014B5B7 /* PxWebController.m in Sources */,
-				DB626F3D16D25EA80014B5B7 /* PxActionButtonConfig.m in Sources */,
 				DB626F3F16D25EA80014B5B7 /* PxInputAnimation.m in Sources */,
-				DB626F4816D25F140014B5B7 /* PxTextField.m in Sources */,
 				DB626F4A16D25F140014B5B7 /* PxTextView.m in Sources */,
-				DB626F6116D25FA50014B5B7 /* PxActionSheet.m in Sources */,
-				DB626F6316D25FA50014B5B7 /* PxAlertView.m in Sources */,
 				DB626F6516D25FA50014B5B7 /* PxAttributedLabel.m in Sources */,
 				DB626F6716D25FA50014B5B7 /* PxButton.m in Sources */,
 				DB626F6916D25FA50014B5B7 /* PxControl.m in Sources */,
@@ -799,6 +784,7 @@
 				DB626F9F16D2605E0014B5B7 /* PxHTTPCache.m in Sources */,
 				DB626FA116D2605E0014B5B7 /* PxHTTPConnection.m in Sources */,
 				DB626FA316D2605E0014B5B7 /* PxHTTPImageCache.m in Sources */,
+				DBAE5AF01DEB01520062A03E /* UIAlertController+PixLib.m in Sources */,
 				DB626FA516D2605E0014B5B7 /* PxHTTPRemoteService.m in Sources */,
 				DB626FA916D260B20014B5B7 /* PxCellDeleteLayer.m in Sources */,
 				DBF81D8C16D4C479003D0453 /* PxImageKitHelper.m in Sources */,
@@ -819,24 +805,33 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -845,13 +840,12 @@
 		C545FAE017E9C9CF003A467C /* ContentDe */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -869,24 +863,33 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -895,13 +898,12 @@
 		C545FAE217E9C9D8003A467C /* ContentEn */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -919,24 +921,34 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -949,17 +961,26 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -968,13 +989,12 @@
 		DB626E5616D224070014B5B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -988,13 +1008,12 @@
 		DB626E5716D224070014B5B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/PixLib_OpenSource.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PixLib OpenSource/PixLib-OpenSource-Prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

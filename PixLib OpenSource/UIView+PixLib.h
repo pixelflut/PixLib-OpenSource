@@ -54,7 +54,7 @@
 - (UIImageView *)addImage:(UIImage *)image position:(CGPoint)point;
 - (UIImageView *)addImageWithName:(NSString *)imageName position:(CGPoint)point;
 
-- (id)addView:(UIView *)view;
+- (__kindof UIView *)addView:(UIView *)view;
 
 - (UIView *)searchSubviews:(BOOL (^)(UIView *obj))block;
 

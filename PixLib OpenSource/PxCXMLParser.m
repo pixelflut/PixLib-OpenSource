@@ -39,7 +39,7 @@
 
 #define CLEAN_DATA_BEFORE_RETURN CFRelease(stack);CFRelease(parentStack);
 
-static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping);
+//static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping);
 static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping);
 static inline BOOL checkXML(unichar *buffer, int *position);
 static inline BOOL checkXMLFile(FILE *file);
@@ -47,17 +47,17 @@ static inline void endTag(CFMutableArrayRef stack, CFMutableArrayRef parentStack
 static inline BOOL checkEndTag(CFMutableArrayRef stack, id *ret, id *current);
 static inline void checkParent(CFMutableArrayRef stack, CFMutableArrayRef parentStack, id *parent, id *current);
 
-static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping) {
-    if ([type isEqualToString:@"array"]) {
-        return [NSMutableArray array];
-    } else if(mapping){
-        Class klass = (__bridge Class)CFDictionaryGetValue(mapping, (__bridge const void*)tag);
-        if (klass) {
-            return [[klass alloc] init];
-        }
-    }
-    return [NSMutableDictionary dictionary];
-}
+//static inline id startElement(NSString *tag, NSString *type, CFDictionaryRef mapping) {
+//    if ([type isEqualToString:@"array"]) {
+//        return [NSMutableArray array];
+//    } else if(mapping){
+//        Class klass = (__bridge Class)CFDictionaryGetValue(mapping, (__bridge const void*)tag);
+//        if (klass) {
+//            return [[klass alloc] init];
+//        }
+//    }
+//    return [NSMutableDictionary dictionary];
+//}
 
 static inline id startAdvancedElement(NSString *tag, NSString *type, NSDictionary *attributes, id parent, CFDictionaryRef mapping) {
     if ([type isEqualToString:@"array"]) {

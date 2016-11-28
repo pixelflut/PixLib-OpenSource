@@ -83,11 +83,11 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return ret;
 }
 
-- (NSMutableArray*)collectWithIndex:(id (^)(id obj, unsigned int index))block {
+- (NSMutableArray*)collectWithIndex:(id (^)(id obj, NSUInteger index))block {
     return [self collectWithIndex:block skipNil:NO]; 
 }
 
-- (NSMutableArray*)collectWithIndex:(id (^)(id obj, unsigned int index))block skipNil:(BOOL)skipNil {
+- (NSMutableArray*)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil {
     NSMutableArray* ret = [[NSMutableArray alloc] initWithCapacity:[self count]];
     int i = 0;
     for (id obj in self) {
@@ -97,7 +97,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return ret;
 }
 
-- (NSMutableArray*)collectWithIndex:(id (^)(id obj, unsigned int index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten {
+- (NSMutableArray*)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten {
     NSMutableArray *ret = [[NSMutableArray alloc] initWithCapacity:[self count]];
     int i = 0;
     for (id obj in self) {
@@ -105,8 +105,12 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
         if (tmp || skipNil) {
             if (flatten && [tmp isKindOfClass:[NSArray class]]) {
                 [ret addObjectsFromArray:tmp];
-            }else {
-                [ret addObject:tmp];
+            } else {
+                if (tmp) {
+                    [ret addObject:tmp];
+                } else {
+                    [NSException raise:@"nil class exception" format:@"nil value during collect"];
+                }
             }
         }
         i++;
@@ -124,7 +128,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return c;
 }
 
-- (NSMutableArray*)drop:(BOOL (^)(id obj, unsigned int index))block {
+- (NSMutableArray*)drop:(BOOL (^)(id obj, NSUInteger index))block {
     int c = 0;
     for (id obj in self) {
         if (block(obj, c)) {
@@ -170,7 +174,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return self;
 }
 
-- (NSArray*)eachWithIndex:(void (^)(id obj, unsigned int index))block {
+- (NSArray*)eachWithIndex:(void (^)(id obj, NSUInteger index))block {
     int i = 0;
     for (id obj in self) {
         block(obj, i);
@@ -230,7 +234,11 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     for (id obj in self) {
         id key = block(obj);
         if (key || !skipNil) {
-            [ret setObject:obj forKey:key];
+            if (key) {
+                [ret setObject:obj forKey:key];
+            } else {
+                [NSException raise:@"nil class exception" format:@"nil key during indexBy"];
+            }
         }
     }
 	return ret;
@@ -248,13 +256,17 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 	for (id obj in self) {
 		id key = block(obj);
         if (key || !skipNil) {
-            NSMutableArray *tmp = [ret objectForKey:key];
-            
-            if (tmp == nil) {
-                tmp = [[NSMutableArray alloc] init];
-                [ret setObject:tmp forKey:key];
+            if (key) {
+                NSMutableArray *tmp = [ret objectForKey:key];
+                
+                if (tmp == nil) {
+                    tmp = [[NSMutableArray alloc] init];
+                    [ret setObject:tmp forKey:key];
+                }
+                [tmp addObject:obj];
+            } else {
+                [NSException raise:@"nil class exception" format:@"nil key during groupBy"];
             }
-            [tmp addObject:obj];
         }
 	}
 	return ret;
@@ -296,7 +308,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return [PxPair pairWithFirst:[self min:block] second:[self max:block]];
 }
 
-- (id)objectAtIndex:(unsigned int)index handleBounds:(BOOL)handleBounds {
+- (id)objectAtIndex:(NSUInteger)index handleBounds:(BOOL)handleBounds {
     if (handleBounds) {
         if (index < self.count) {
             return [self objectAtIndex:index];

@@ -26,7 +26,7 @@ static NSString *__calendarKey__ = @"__pxSharedCalendar__";
     NSThread *thread = [NSThread currentThread];
     NSCalendar *calendar = [[thread threadDictionary] valueForKey:__calendarKey__];
     if (!calendar) {
-        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
         [[thread threadDictionary] setValue:calendar forKey:__calendarKey__];
     }
     return calendar;

@@ -90,7 +90,17 @@
  @param width The maximum acceptable width for the string. This value is used to calculate where line breaks and wrapping would occur.
  @param config The font and Linebreak informations to use for rendering the string.
  */
-- (float)heightForWidth:(float)width config:(PxFontConfig)config;
+- (CGFloat)heightForWidth:(CGFloat)width config:(PxFontConfig)config;
+
+- (CGFloat)widthForHeight:(CGFloat)height config:(PxFontConfig)config;
+
+- (CGSize)sizeThatFits:(CGSize)size config:(PxFontConfig)config;
+
+- (void)drawInRect:(CGRect)rect config:(PxFontConfig)config textColor:(UIColor *)textColor;
+- (void)drawAtPoint:(CGPoint)point config:(PxFontConfig)config textColor:(UIColor *)textColor;
+- (void)drawWithRect:(CGRect)rect config:(PxFontConfig)config textColor:(UIColor *)textColor;
+
+- (CGSize)sizeForWidth:(CGFloat)width config:(PxFontConfig)config;
 
 
 #pragma mark - Misc

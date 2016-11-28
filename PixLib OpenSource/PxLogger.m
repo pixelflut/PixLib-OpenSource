@@ -20,7 +20,7 @@
 
 //
 //  PxLogger.m
-//  PixLib OpenSource
+//  PxCore OpenSource
 //
 //  Created by Jonathan Cichon on 18.02.13.
 //
@@ -43,13 +43,19 @@ static inline void PxReportv(BOOL doLog, char const *file, int line, NSString *p
             }
         }
         
+        NSString *print;
         if ([prefix isNotBlank]) {
-            printf("%s ", [prefix cStringUsingEncoding:NSUTF8StringEncoding]);
+            print = [prefix stringByAppendingString:@" "];
         }
         
-        NSString *print = [[[NSString alloc] initWithFormat:[[NSString alloc] initWithFormat:@"<%@ [%d]> %@\n", fileNameWithExtension, (int32_t)line, fmt] arguments:argList] stringByReplacingOccurrencesOfString:@"%" withString:@"%%"];
+        if (print) {
+            print = [print stringByAppendingString:[[[NSString alloc] initWithFormat:[[NSString alloc] initWithFormat:@"<%@ [%d]> %@\n", fileNameWithExtension, (int32_t)line, fmt] arguments:argList] stringByReplacingOccurrencesOfString:@"%" withString:@"%%"]];
+        } else {
+            print = [[[NSString alloc] initWithFormat:[[NSString alloc] initWithFormat:@"<%@ [%d]> %@\n", fileNameWithExtension, (int32_t)line, fmt] arguments:argList] stringByReplacingOccurrencesOfString:@"%" withString:@"%%"];
+        }
+        
         const char *string = [print cStringUsingEncoding:NSUTF8StringEncoding];
-        printf(string);
+        printf("%s", string);
         print = nil;
     }
 }
@@ -57,9 +63,9 @@ static inline void PxReportv(BOOL doLog, char const *file, int line, NSString *p
 void PxReport(PxLogLevel logLevel, char const *file, int line, NSString *prefix, NSString *fmt, ...) {
     BOOL doLog = (logLevel <= [PxLogger logLevel]);
     va_list ap;
-	va_start(ap, fmt);
+    va_start(ap, fmt);
     PxReportv(doLog, file, line, prefix, fmt, ap);
-	va_end(ap);
+    va_end(ap);
 }
 
 @interface PxLogger ()
@@ -86,15 +92,13 @@ PxSingleton(defaultLogger)
     return [[self defaultLogger] silenceFiles];
 }
 
-+ (void)debugRuntime:(NSString *)msg repeatCount:(unsigned int)repeatCount block:(void (^)(void))debugBlock {
-#ifdef DEBUG
++ (void)debugRuntime:(NSString *)msg repeatCount:(NSUInteger)repeatCount block:(void (^)(void))debugBlock {
     NSDate *startTime = [NSDate date];
     for (int i = 0; i<repeatCount; i++) {
         debugBlock();
     }
     NSDate *endTime = [NSDate date];
-    PxDebug(@"%@\n\tTime: %f\n\trepeats: %d", msg, [endTime timeIntervalSinceReferenceDate] - [startTime timeIntervalSinceReferenceDate], repeatCount);
-#endif
+    PxDebug(@"%@\n\tTime: %f\n\trepeats: %lu", msg, [endTime timeIntervalSinceReferenceDate] - [startTime timeIntervalSinceReferenceDate], (unsigned long)repeatCount);
 }
 
 - (id)init {

@@ -31,17 +31,11 @@
 @implementation PxViewController
 
 - (UIView *)loadStdView {
-    CGRect frame;
-    if (self.wantsFullScreenLayout) {
-        frame = [[UIScreen mainScreen] bounds];
-    }else {
-        frame = CGRectFromSize([[UIScreen mainScreen] applicationFrame].size);
-    }
+    CGRect frame = PxApplicationFrame();
     UIView *v = [[UIView alloc] initWithFrame:frame];
 	[v setAutoresizesSubviews:YES];
     [v setDefaultResizingMask];
 	[self setView:v];
-	
     return v;
 }
 

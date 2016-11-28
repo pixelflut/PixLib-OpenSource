@@ -88,7 +88,7 @@
  @see collectWithIndex:skipNil:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, unsigned int index))block;
+- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -101,7 +101,7 @@
  @see collectWithIndex:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, unsigned int index))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -115,14 +115,14 @@
  @see collectWithIndex:
  @see collectWithIndex:skipNil:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, unsigned int index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten;
+- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten;
 
 /** Invokes block on each element of self until the block returns **false**. Creates a new array containing the remaining items 
  @param block The block to call on the elements in the Array
  @return Array containing the remaining values
  @see take:
  */
-- (NSMutableArray *)drop:(BOOL (^)(id obj, unsigned int index))block;
+- (NSMutableArray *)drop:(BOOL (^)(id obj, NSUInteger index))block;
 
 /** Invokes block once for each element of self. Creates a Dictionary containing the values returned by the block as keys for the elements.
  @param block The block to call on each elements in the Array
@@ -295,7 +295,7 @@
  @see eachCons:block:
  @see eachSlice:block:
  */
-- (NSArray *)eachWithIndex:(void (^)(id obj, unsigned int index))block;
+- (NSArray *)eachWithIndex:(void (^)(id obj, NSUInteger index))block;
 
 #pragma mark - Counting Items
 /** @name Counting Items */
@@ -328,7 +328,7 @@
  @return The object located at _index_ or **nil**
  @warning If _index_ is beyond the end of the array (that is, if _index_ is greater than or equal to the value returned by **count**) and _handleBounds_ is **false**, an NSRangeException is raised.
  */
-- (id)objectAtIndex:(unsigned int)index handleBounds:(BOOL)handleBounds;
+- (id)objectAtIndex:(NSUInteger)index handleBounds:(BOOL)handleBounds;
 
 
 #pragma mark - Ordering and reorganizing Items

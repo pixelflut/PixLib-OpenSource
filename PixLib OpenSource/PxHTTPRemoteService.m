@@ -274,7 +274,7 @@
 }
 
 - (void)evalConnenctionQueue {
-    [_connectionQueue eachWithIndex:^(PxHTTPConnection *connection, unsigned int index) {
+    [_connectionQueue eachWithIndex:^(PxHTTPConnection *connection, NSUInteger index) {
         if (index < _maxSynchronouseConnections) {
             [connection startOrResumeConnection];
         }else {
