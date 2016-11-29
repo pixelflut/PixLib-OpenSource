@@ -124,7 +124,7 @@ static inline BOOL PxDeviceIsLandscape() {
 }
 
 static inline BOOL PxDeviceIsWide() {
-	return PxScreenSize().height == 568;
+	return PxScreenSize().height >= 568;
 }
 
 static inline BOOL PxDeviceIsPad() {
