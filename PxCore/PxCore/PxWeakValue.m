@@ -29,11 +29,11 @@
 
 @implementation PxWeakValue
 
-+ (id)weakValueWithValue:(id)value {
++ (instancetype)weakValueWithValue:(id)value {
     return [[self alloc] initWithValue:value];
 }
 
-- (id)initWithValue:(id)value {
+- (instancetype)initWithValue:(id)value {
     self = [super init];
     if (self) {
         _value = value;

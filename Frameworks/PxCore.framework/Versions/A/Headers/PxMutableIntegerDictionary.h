@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PxPair.h"
 
-@interface PxMutableIntegerDictionary : NSObject
+@class PxPair<FirstType,SecontType>;
+
+@interface PxMutableIntegerDictionary<ValueType> : NSObject
 
 - (NSUInteger)count;
-- (void)setObject:(id)object forKey:(NSInteger)key;
-- (id)objectForKey:(NSInteger)key;
+- (void)setObject:(ValueType)object forKey:(NSInteger)key;
+- (ValueType)objectForKey:(NSInteger)key;
 
 #pragma mark - Testing Object Contents
 /** @name Testing Object Contents */
@@ -34,7 +35,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil**.
  @see collect:skipNil:
  */
-- (NSMutableArray *)collect:(id (^)(NSInteger key, id value))block;
+- (NSMutableArray *)collect:(id (^)(NSInteger key, ValueType value))block;
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
  @param block The block to call on each element in self.
@@ -43,7 +44,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil** and _skipNil_ is not **true**.
  @see collect:
  */
-- (NSMutableArray *)collect:(id (^)(NSInteger key, id value))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collect:(id (^)(NSInteger key, ValueType value))block skipNil:(BOOL)skipNil;
 
 
 #pragma mark - Iterating Items
@@ -53,7 +54,7 @@
  @param block The block called on each element.
  @return self
  */
-- (PxMutableIntegerDictionary *)eachPair:(void (^)(NSInteger key, id value))block;
+- (PxMutableIntegerDictionary *)eachPair:(void (^)(NSInteger key, ValueType value))block;
 
 
 #pragma mark - Accessing Items
@@ -63,7 +64,7 @@
  @param key The key for which to return the corresponding value.
  @return The Pair associated with _key_, or **nil** if no value is associated with _key_.
  */
-- (PxPair *)pairForKey:(NSInteger)key;
+- (PxPair<NSNumber*, ValueType> *)pairForKey:(NSInteger)key;
 
 
 #pragma mark - Searching Items
@@ -74,13 +75,13 @@
  @return The first item _block_ returns **true**
  @see include:
  */
-- (id)find:(BOOL (^)(NSInteger key, id value))block;
+- (ValueType)find:(BOOL (^)(NSInteger key, ValueType value))block;
 
 /** Returns either or not the receiver contains an element for which the block evals **true**.
  @param block The block to call on the elements in self
  @return Boolean either or not _self_ contains an Element meeting the conditions of _block_
  @see find:
  */
-- (BOOL)include:(BOOL (^)(NSInteger key, id value))block;
+- (BOOL)include:(BOOL (^)(NSInteger key, ValueType value))block;
 
 @end

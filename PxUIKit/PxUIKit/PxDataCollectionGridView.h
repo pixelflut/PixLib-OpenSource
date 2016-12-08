@@ -29,7 +29,23 @@
 #import "PxCollectionView.h"
 #import "PxCollectionViewGridLayout.h"
 
-@protocol PxDataCollectionGridViewDelegate;
+@class PxDataCollectionGridView;
+
+@protocol PxDataCollectionGridViewDelegate <UICollectionViewDelegateFlowLayout>
+- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForCellAtIndexPath:(NSIndexPath *)indexPath;
+
+@optional
+- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForHeaderAtSection:(NSUInteger)section;
+- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForFooterAtSection:(NSUInteger)section;
+
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
+
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forHeaderAtSection:(NSUInteger)section;
+
+- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forFooterAtSection:(NSUInteger)section;
+@end
+
+
 @protocol PxDataCollectionGridViewDataSource;
 
 
@@ -41,6 +57,7 @@
 @property (nonatomic, weak) id<PxDataCollectionGridViewDataSource> pxDataSource;
 @property (nonatomic, assign) id<PxDataCollectionGridViewDelegate> delegate;
 @property (nonatomic, assign) id<UICollectionViewDataSource> dataSource OBJC2_UNAVAILABLE;
+@property (nonatomic, strong, readonly) UILongPressGestureRecognizer *reorderRecognizer;
 
 - (id)initWithFrame:(CGRect)frame collectionViewLayout:(PxCollectionViewGridLayout *)layout;
 
@@ -64,19 +81,7 @@
 
 @end
 
-@protocol PxDataCollectionGridViewDelegate <UICollectionViewDelegateFlowLayout>
-- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForCellAtIndexPath:(NSIndexPath *)indexPath;
 
-@optional
-- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForHeaderAtSection:(NSUInteger)section;
-- (Class)collectionView:(PxDataCollectionGridView *)collectionView classForFooterAtSection:(NSUInteger)section;
-
-- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath;
-
-- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forHeaderAtSection:(NSUInteger)section;
-
-- (void)collectionView:(UICollectionView *)collectionView didDequeueReusableView:(UICollectionReusableView *)view forFooterAtSection:(NSUInteger)section;
-@end
 
 @protocol PxDataCollectionGridViewDataSource <NSObject>
 - (NSArray *)dataForCollectionView:(PxDataCollectionGridView *)collectionView;
@@ -88,6 +93,9 @@
 
 - (void)collectionView:(PxDataCollectionGridView *)collectionView didUpdateData:(NSArray *)data;
 - (void)collectionViewDidStartDeleteAnimation:(PxDataCollectionGridView *)collectionView;
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath;
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath;
 
 #pragma mark - UICollectionViewDataSource forwarding
 - (UICollectionReusableView *)collectionView:(PxDataCollectionGridView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;

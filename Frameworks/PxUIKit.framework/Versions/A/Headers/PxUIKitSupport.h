@@ -151,7 +151,7 @@ static inline CGSize PxScreenSize() {
 static inline CGRect PxApplicationFrame() {
 	static CGRect appFrame = {{0,0},{0,0}};
 	if (CGRectIsEmpty(appFrame)) {
-		appFrame = [[UIScreen mainScreen] applicationFrame];
+		appFrame = [[UIScreen mainScreen] bounds];
 	}
 	return appFrame;
 }

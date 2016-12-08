@@ -30,8 +30,6 @@
 #import "hyphen.h"
 #import <CommonCrypto/CommonDigest.h>
 
-unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '%', '#', '[', ']', '%', ' '};
-
 @implementation NSString (PxCore)
 
 - (NSComparisonResult)compare:(id)object context:(void *)context {
@@ -43,7 +41,7 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     [[self componentsSeparatedByString:@"&"] each:^void(NSString *param) {
         NSArray *tmp = [param componentsSeparatedByString:@"="];
         if ([tmp count] != 2) {PxError(@"dictionaryFromQueryString: missformated queryString");}
-        [dict setValue:[[tmp objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forKey:[tmp objectAtIndex:0]];
+        [dict setValue:[[tmp objectAtIndex:1] stringByRemovingPercentEncoding] forKey:[tmp objectAtIndex:0]];
     }];
     return dict;
 }
@@ -120,12 +118,8 @@ unichar __legalURLEscapeChars[] = { '!', '*', '\'', '\\', '"', '(', ')', ';', ':
     return nil;
 }
 
-- (NSString*)stringByAddingURLEncoding {
-    CFStringRef ignore = CFStringCreateWithCharacters(NULL, __legalURLEscapeChars, sizeof(__legalURLEscapeChars)/sizeof(__legalURLEscapeChars[0]));
-    CFStringRef input = (__bridge CFStringRef)self;
-    CFStringRef s = CFURLCreateStringByAddingPercentEscapes(NULL, input, NULL, ignore, CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
-    CFRelease(ignore);
-    return [NSString stringWithString:(__bridge_transfer NSString*)s];
+- (NSString *)stringByAddingURLEncoding {
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
 - (NSString *)stringByApplyingKFC:(BOOL)compact {

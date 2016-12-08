@@ -50,7 +50,7 @@ NSString *const PxHTTPHeaderRange = @"Range";
     return nil;
 }
 
-- (id)initWithCacheDir:(NSString *)cacheDir {
+- (instancetype)initWithCacheDir:(NSString *)cacheDir {
     self = [super init];
     if (self) {
         _cacheDir = cacheDir;

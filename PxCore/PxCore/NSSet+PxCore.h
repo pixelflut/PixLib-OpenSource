@@ -26,12 +26,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PxPair.h"
+
+@class PxPair<FirstType, SecondType>;
 
 /**
  * Most of the methods found here are similar to methods in Ruby Class [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html)
  */
-@interface NSSet (PxCore)
+@interface NSSet<ObjectType> (PxCore)
 
 #pragma mark - Testing Object Contents
 /** @name Testing Object Contents */
@@ -52,7 +53,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil**.
  @see collect:skipNil:
  */
-- (NSMutableSet *)collect:(id (^)(id obj))block;
+- (NSMutableSet *)collect:(id (^)(ObjectType obj))block;
 
 /** Invokes block once for each element in the receiver. Creates a new set containing the values returned by the block.
  @param block The block to call on each element in the receiver.
@@ -61,7 +62,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil** and _skipNil_ is **false**.
  @see collect:
  */
-- (NSMutableSet *)collect:(id (^)(id obj))block skipNil:(BOOL)skipNil;
+- (NSMutableSet *)collect:(id (^)(ObjectType obj))block skipNil:(BOOL)skipNil;
 
 /** Returns a **NSMutableDictionary**, which keys are evaluated result from the block, and values are **NSMutableSets** of elements in the receiver corresponding to the key.
  @param block The block to call on each elements in the receiver.
@@ -69,27 +70,27 @@
  @return The Dictionary containing the grouped values.
  @warning Raises an NSInvalidArgumentException if the _block_ returns **nil** and _skipNil_ is not **true**.
  */
-- (NSMutableDictionary *)groupBy:(id<NSCopying> (^)(id obj))block skipNil:(BOOL)skipNil;
+- (NSMutableDictionary *)groupBy:(id<NSCopying> (^)(ObjectType obj))block skipNil:(BOOL)skipNil;
 
 /** Returns two sets, the first containing the elements in the receiver for which the _block_ evaluates to **true**, the second containing the rest.
  @param block The block to call on each elements in the receiver.
  @return two sets stored in a PxPair.
  */
-- (PxPair *)partition:(BOOL (^)(id obj))block;
+- (PxPair<NSSet<ObjectType> *, NSSet<ObjectType>*> *)partition:(BOOL (^)(ObjectType obj))block;
 
 /** Returns an set containing all elements in the receiver for which block returns **false**.
  @param block The block to call on each elements in the receiver.
  @return Set containing the elements for which _block_ returns **false**.
  @see selectAll:
  */
-- (NSMutableSet *)reject:(BOOL (^)(id obj))block;
+- (NSMutableSet<ObjectType> *)reject:(BOOL (^)(ObjectType obj))block;
 
 /** Returns an set containing all elements in the receiver for which block returns **true**.
  @param block The block to call on each elements in the receiver.
  @return Set containing the elements for which _block_ returns **true**.
  @see selectAll:
  */
-- (NSMutableSet *)selectAll:(BOOL (^)(id obj))block;
+- (NSMutableSet<ObjectType> *)selectAll:(BOOL (^)(ObjectType obj))block;
 
 
 #pragma mark - Iterating Items
@@ -99,7 +100,7 @@
  @param block The block called on each element.
  @return self
  */
-- (NSSet *)each:(void (^)(id obj))block;
+- (instancetype)each:(void (^)(ObjectType obj))block;
 
 
 #pragma mark - Searching Items
@@ -110,14 +111,14 @@
  @return The first item _block_ returns **true**
  @see include:
  */
-- (id)find:(BOOL (^)(id obj))block;
+- (ObjectType)find:(BOOL (^)(ObjectType obj))block;
 
 /** Check either or not the receiver contains an object for which the block evals **true**.
  @param block The block to call on the elements in the Set
  @return Boolean either or not _self_ contains an object meeting the conditions of _block_
  @see find:
  */
-- (BOOL)include:(BOOL (^)(id obj))block;
+- (BOOL)include:(BOOL (^)(ObjectType obj))block;
 
 /** Returns the element in the receiver which the block evals as max value.
  @param block The block to compare the current max-value element with the next element
@@ -125,7 +126,7 @@
  @see min:
  @see minMax:
  */
-- (id)max:(NSComparisonResult (^)(id a, id b))block;
+- (ObjectType)max:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 /** Returns the element in the receiver which the block evals as min-value.
  @param block The block to compare the current min-value element with the next element
@@ -133,7 +134,7 @@
  @see max:
  @see minMax:
  */
-- (id)min:(NSComparisonResult (^)(id a, id b))block;
+- (ObjectType)min:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 /** Returns the elements in the receiver which the block evals as min-value and max-value.
  @param block The block to compare the current min(max)-value element with the next element
@@ -141,7 +142,7 @@
  @see max:
  @see min:
  */
-- (PxPair *)minMax:(NSComparisonResult (^)(id a, id b))block;
+- (PxPair<ObjectType, ObjectType> *)minMax:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 #pragma mark - Counting Items
 /** @name Counting Items */
@@ -151,14 +152,14 @@
  @return The number of elements in self for which the _block_ evals **true**.
  @see sum:
  */
-- (NSUInteger)count:(BOOL (^)(id obj))block;
+- (NSUInteger)count:(BOOL (^)(ObjectType obj))block;
 
 /** Calls _block_ on each element in the receiver, sums the values returned by _block_.
  @param block The block called on each element.
  @return The sum.
  @see count:
  */
-- (float)sum:(float (^)(id obj))block;
+- (double)sum:(double (^)(ObjectType obj))block;
 
 #pragma mark - Ordering Items
 /** @name Ordering and reorganizing Items */
@@ -167,7 +168,7 @@
  @param block The block to determine the sort-order.
  @return The sorted Array.
  */
-- (NSMutableArray *)sort:(NSComparisonResult (^)(id a, id b))block;
+- (NSMutableArray *)sort:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 
 @end

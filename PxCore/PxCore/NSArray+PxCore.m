@@ -145,7 +145,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     }
 }
 
-- (NSArray*)eachCons:(NSUInteger)number block:(void (^)(NSArray *objs))block {
+- (instancetype)eachCons:(NSUInteger)number block:(void (^)(NSArray<id> *objs))block {
     NSUInteger count = [self count];
     if (number>=count) {
         block(self);
@@ -157,7 +157,7 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return self;
 }
 
-- (NSArray*)eachSlice:(NSUInteger)number block:(void (^)(NSArray *objs))block {
+- (instancetype)eachSlice:(NSUInteger)number block:(void (^)(NSArray<id> *objs))block {
     NSUInteger count = [self count];
     for (int i = 0; i<count; i+=number) {
         block([self subarrayWithRange:NSMakeRange(i, MIN(number, count-i))]);
@@ -165,14 +165,14 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
     return self;
 }
 
-- (NSArray*)each:(void (^)(id obj))block {
+- (instancetype)each:(void (^)(id obj))block {
     for (id obj in self) {
         block(obj);
     }
     return self;
 }
 
-- (NSArray*)eachWithIndex:(void (^)(id obj, NSUInteger index))block {
+- (instancetype)eachWithIndex:(void (^)(id obj, NSUInteger index))block {
     int i = 0;
     for (id obj in self) {
         block(obj, i);
@@ -387,8 +387,8 @@ void _recursiveFlatten_(id src, NSMutableArray *dest, int maxLevel, int currentL
 	return nil;
 }
 
-- (float)sum:(float (^)(id obj))block {
-	float sum = 0;
+- (double)sum:(double (^)(id obj))block {
+	double sum = 0;
 	for (id obj in self) {
 		sum += block(obj);
 	}

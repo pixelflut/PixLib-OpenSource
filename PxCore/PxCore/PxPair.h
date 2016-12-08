@@ -33,13 +33,13 @@
 /**
  * Use **PxPair** if you have to store a single key-value pair.
  */
-@interface PxPair : NSObject <NSCoding>
+@interface PxPair<FirstObjectType, SecontObjectType> : NSObject <NSCoding>
 
 /** The first element of the pair */
-@property(nonatomic, strong) id first;
+@property(nonatomic, strong) FirstObjectType first;
 
 /** The second element of the pair */
-@property(nonatomic, strong) id second;
+@property(nonatomic, strong) SecontObjectType second;
 
 #pragma mark - Creating a Pair
 /** @name Creating a Pair */
@@ -49,7 +49,7 @@
  @param second The second object.
  @return A pair containing the given objects.
  */
-+ (id)pairWithFirst:(id)first second:(id)second;
++ (instancetype)pairWithFirst:(FirstObjectType)first second:(SecontObjectType)second;
 
 
 #pragma mark - Initializing a Pair
@@ -60,7 +60,7 @@
  @param second The second object.
  @return A pair initialized to include the objects _first_ and _second_.
  */
-- (id)initWithFirst:(id)first second:(id)second;
+- (instancetype)initWithFirst:(FirstObjectType)first second:(SecontObjectType)second;
 
 
 #pragma mark - Comparing Pairs

@@ -41,6 +41,7 @@ typedef enum {
 @property(nonatomic, weak) UICollectionView *collectionView;
 @property(nonatomic, assign) id delegate;
 @property(nonatomic, strong) id data;
+@property(nonatomic, assign, readonly) PxCellPosition cellPosition;
 
 - (void)setData:(id)data setUI:(BOOL)setUI;
 
@@ -55,5 +56,13 @@ typedef enum {
 
 - (void)buildUI;
 - (void)setUI;
+- (void)didBeginInteractiveMovement;
+- (void)didEndInteractiveMovement;
 
 @end
+
+
+static inline BOOL PxCellHasPosition(NSString *reuseIdentifier, PxCellPosition position) {
+    NSInteger identifier = [reuseIdentifier integerValue];
+    return (identifier & position || identifier == position);
+}

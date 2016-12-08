@@ -38,7 +38,7 @@
 
 @implementation PxWebController
 
-- (id)initWithURL:(NSString*)url title:(NSString*)t {
+- (instancetype)initWithURL:(NSString*)url title:(NSString*)t {
     self = [super init];
     if (self) {
         _urlString = url;
@@ -47,7 +47,7 @@
     return self;
 }
 
-- (id)initWithURL:(NSString*)url {
+- (instancetype)initWithURL:(NSString*)url {
     return [self initWithURL:url title:nil];
 }
 

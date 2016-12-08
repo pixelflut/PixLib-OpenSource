@@ -31,8 +31,8 @@
 /**
  * Use this class to store weak-references where you have not the option to set the reference weak, for example in arrays.
  */
-@interface PxWeakValue : NSObject
-@property(nonatomic, weak) id value;
+@interface PxWeakValue<ObjectType> : NSObject
+@property(nonatomic, weak) ObjectType value;
 
 #pragma mark - Creating a WeakValue
 /** @name Creating a WeakValue */
@@ -41,7 +41,7 @@
  @param value The value.
  @return A weakValue with the given _value_.
  */
-+ (id)weakValueWithValue:(id)value;
++ (instancetype)weakValueWithValue:(ObjectType)value;
 
 
 #pragma mark - Initializing a WeakValue
@@ -51,7 +51,7 @@
  @param value The value.
  @return A weakValue initialized by assigning the given _value_.
  */
-- (id)initWithValue:(id)value;
+- (instancetype)initWithValue:(ObjectType)value;
 
 #pragma mark - Comparing WeakValues
 /** @name Comparing WeakValues */
@@ -62,7 +62,7 @@
  @param otherValue A weakValue.
  @return **YES** if the _value_ of otherValue are equal to the contents of the receiving weakValue, otherwise **NO**.
  */
-- (BOOL)isEqualToValue:(PxWeakValue *)otherValue;
+- (BOOL)isEqualToValue:(PxWeakValue<ObjectType> *)otherValue;
 
 
 - (NSComparisonResult)compare:(id)anObject context:(void *)context;

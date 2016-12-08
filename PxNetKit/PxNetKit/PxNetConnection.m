@@ -49,7 +49,7 @@
 
 @implementation PxNetConnection
 
-- (id)initWithRequest:(PxNetRequest *)request delegate:(id<PxNetConnectionDelegate>)d {
+- (instancetype)initWithRequest:(PxNetRequest *)request delegate:(id<PxNetConnectionDelegate>)d {
     self = [super init];
     if (self) {
         _URLString = [[request.request URL] absoluteString];

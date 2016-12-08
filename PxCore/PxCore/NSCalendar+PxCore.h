@@ -10,7 +10,7 @@
 
 @interface NSCalendar (PxCore)
 
-+ (id)sharedCalendar;
-+ (id)gregorianCalendar;
++ (instancetype)sharedCalendar;
++ (instancetype)gregorianCalendar;
 
 @end

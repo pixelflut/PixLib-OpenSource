@@ -46,5 +46,5 @@ static inline void *pointerToInstanceVariable(id object, char *variableName) {
     if (!instanceVar) {
         return nil;
     }
-    return (size_t *)(__bridge void *)object + ivar_getOffset(instanceVar);
+    return (__bridge void *)object + ivar_getOffset(instanceVar);
 }

@@ -28,6 +28,7 @@
 #import "NSData+PxCore.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 static char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 @implementation NSData (PxCore)

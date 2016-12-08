@@ -156,13 +156,12 @@ PxSingletonImp(defaultService)
 
 @end
 
-dispatch_queue_t serialQueue;
+
 dispatch_queue_t getSerialWorkQueue__remoteImageService() {
-    if (!serialQueue) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            serialQueue = dispatch_queue_create("net.pixelflut.remoteImageService", NULL);
-        });
-    }
+    static dispatch_queue_t serialQueue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        serialQueue = dispatch_queue_create("net.pixelflut.remoteImageService", NULL);
+    });
     return serialQueue;
 }

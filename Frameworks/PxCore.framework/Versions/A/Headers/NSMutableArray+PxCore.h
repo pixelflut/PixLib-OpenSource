@@ -30,7 +30,7 @@
 /**
  * Most of the methods found here are similar to methods in Ruby Classes [Array](http://www.ruby-doc.org/core-1.9.3/Array.html) and [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html)
  */
-@interface NSMutableArray (PxCore)
+@interface NSMutableArray<ObjectType> (PxCore)
 
 #pragma mark - Adding Objects
 /** @name Adding Objects */
@@ -40,7 +40,7 @@
  @param skipNil Boolean either or not nil-Values should be ignored.
  @warning Raises an NSInvalidArgumentException if _obj_ is **nil** and _skipNil_ is not **true**
  */
-- (void)addObject:(id)obj skipNil:(BOOL)skipNil;
+- (void)addObject:(ObjectType)obj skipNil:(BOOL)skipNil;
 
 
 #pragma mark - Removing Objects
@@ -50,7 +50,7 @@
  @param block The block to determine if a element should be removed.
  @return self.
  */
-- (NSMutableArray*)deleteIf:(BOOL (^)(id obj))block;
+- (NSMutableArray<ObjectType> *)deleteIf:(BOOL (^)(ObjectType obj))block;
 
 
 #pragma mark - Rearranging Content
@@ -60,6 +60,6 @@
  @param block The block to determine the sort-order.
  @return self.
  */
-- (NSMutableArray*)sort:(NSComparisonResult (^)(id a, id b))block;
+- (NSMutableArray<ObjectType> *)sort:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 @end

@@ -176,7 +176,7 @@
 	return nil;
 }
 
-- (float)sum:(float (^)(id obj))block {
+- (double)sum:(double (^)(id obj))block {
     float sum = 0;
 	for (id obj in self) {
 		sum += block(obj);

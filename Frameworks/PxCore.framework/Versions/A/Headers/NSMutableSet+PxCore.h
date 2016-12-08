@@ -30,7 +30,7 @@
 /**
  * PxCore Category for NSData
  */
-@interface NSMutableSet (PxCore)
+@interface NSMutableSet<ObjectType> (PxCore)
 
 #pragma mark - Adding Objects
 /** @name Adding Objects */
@@ -40,6 +40,6 @@
  @param skipNil Boolean either or not nil-Values should be ignored.
  @warning Raises an NSInvalidArgumentException if _obj_ is **nil** and _skipNil_ is not **true**
  */
-- (void)addObject:(id)obj skipNil:(BOOL)skipNil;
+- (void)addObject:(ObjectType)obj skipNil:(BOOL)skipNil;
 
 @end

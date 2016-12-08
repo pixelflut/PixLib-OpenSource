@@ -34,8 +34,8 @@
 @property (nonatomic, strong, readonly) NSString *filePath;
 @property (nonatomic, strong, readonly) id errorObject;
 
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
-- (id)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath errorObject:(id)errorObject;
+- (instancetype)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath;
+- (instancetype)initWithStatus:(NSInteger)status returnObject:(id)returnObject filePath:(NSString *)filePath errorObject:(id)errorObject;
 
 - (BOOL)isSuccess;
 

@@ -39,7 +39,7 @@ extern NSString *const PxHTTPHeaderRange;
 @property (nonatomic, assign) BOOL shouldClearAutomatic;
 @property (nonatomic, assign) NSUInteger automaticClearInterval;
 
-- (id)initWithCacheDir:(NSString *)cacheDir;
+- (instancetype)initWithCacheDir:(NSString *)cacheDir;
 
 - (void)clear;
 - (void)clearFilesForURL:(NSURL *)url;

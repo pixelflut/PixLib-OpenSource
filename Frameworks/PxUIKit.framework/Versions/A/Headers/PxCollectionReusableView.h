@@ -12,6 +12,7 @@
 @property(nonatomic, weak) UICollectionView *collectionView;
 @property(nonatomic, assign) id delegate;
 @property(nonatomic, strong) id data;
+@property(nonatomic, assign, readonly) PxCellPosition cellPosition;
 
 - (void)setData:(id)data setUI:(BOOL)setUI;
 

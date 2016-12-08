@@ -24,11 +24,6 @@
 /* Begin PBXBuildFile section */
 		DB26BB55189A57DB00FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB54189A57DB00FC2211 /* Foundation.framework */; };
 		DB26BB5A189A57DB00FC2211 /* PxMarkupKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */; };
-		DB26BB63189A57DB00FC2211 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB62189A57DB00FC2211 /* XCTest.framework */; };
-		DB26BB64189A57DB00FC2211 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB54189A57DB00FC2211 /* Foundation.framework */; };
-		DB26BB69189A57DB00FC2211 /* libPxMarkupKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */; };
-		DB26BB6F189A57DB00FC2211 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */; };
-		DB26BB71189A57DB00FC2211 /* PxMarkupKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */; };
 		DB26BB7D189A583500FC2211 /* NSDate+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB7C189A583500FC2211 /* NSDate+PxMarkupKit.m */; };
 		DB26BB80189A585A00FC2211 /* NSNumber+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB7F189A585A00FC2211 /* NSNumber+PxMarkupKit.m */; };
 		DB26BB83189A588000FC2211 /* NSString+PxMarkupKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DB26BB82189A588000FC2211 /* NSString+PxMarkupKit.m */; };
@@ -60,13 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB26BB67189A57DB00FC2211 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DB26BB49189A57DB00FC2211 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DB26BB50189A57DB00FC2211;
-			remoteInfo = PxMarkupKit;
-		};
 		DB26BBC2189A61CF00FC2211 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB26BB49189A57DB00FC2211 /* Project object */;
@@ -94,11 +82,7 @@
 		DB26BB54189A57DB00FC2211 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB26BB58189A57DB00FC2211 /* PxMarkupKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PxMarkupKit-Prefix.pch"; sourceTree = "<group>"; };
 		DB26BB59189A57DB00FC2211 /* PxMarkupKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PxMarkupKit.h; sourceTree = "<group>"; };
-		DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PxMarkupKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB26BB62189A57DB00FC2211 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		DB26BB6C189A57DB00FC2211 /* PxMarkupKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PxMarkupKitTests-Info.plist"; sourceTree = "<group>"; };
-		DB26BB6E189A57DB00FC2211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PxMarkupKitTests.m; sourceTree = "<group>"; };
 		DB26BB7B189A583500FC2211 /* NSDate+PxMarkupKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+PxMarkupKit.h"; sourceTree = "<group>"; };
 		DB26BB7C189A583500FC2211 /* NSDate+PxMarkupKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+PxMarkupKit.m"; sourceTree = "<group>"; };
 		DB26BB7E189A585A00FC2211 /* NSNumber+PxMarkupKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+PxMarkupKit.h"; sourceTree = "<group>"; };
@@ -138,16 +122,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB26BB5E189A57DB00FC2211 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB26BB63189A57DB00FC2211 /* XCTest.framework in Frameworks */,
-				DB26BB69189A57DB00FC2211 /* libPxMarkupKit.a in Frameworks */,
-				DB26BB64189A57DB00FC2211 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -155,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				DB26BB56189A57DB00FC2211 /* PxMarkupKit */,
-				DB26BB6A189A57DB00FC2211 /* PxMarkupKitTests */,
 				DB26BB53189A57DB00FC2211 /* Frameworks */,
 				DB26BB52189A57DB00FC2211 /* Products */,
 			);
@@ -165,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */,
-				DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,24 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				DB26BB58189A57DB00FC2211 /* PxMarkupKit-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DB26BB6A189A57DB00FC2211 /* PxMarkupKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				DB26BB70189A57DB00FC2211 /* PxMarkupKitTests.m */,
-				DB26BB6B189A57DB00FC2211 /* Supporting Files */,
-			);
-			path = PxMarkupKitTests;
-			sourceTree = "<group>";
-		};
-		DB26BB6B189A57DB00FC2211 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DB26BB6C189A57DB00FC2211 /* PxMarkupKitTests-Info.plist */,
-				DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -360,31 +314,13 @@
 			productReference = DB26BB51189A57DB00FC2211 /* libPxMarkupKit.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		DB26BB60189A57DB00FC2211 /* PxMarkupKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB26BB77189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKitTests" */;
-			buildPhases = (
-				DB26BB5D189A57DB00FC2211 /* Sources */,
-				DB26BB5E189A57DB00FC2211 /* Frameworks */,
-				DB26BB5F189A57DB00FC2211 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DB26BB68189A57DB00FC2211 /* PBXTargetDependency */,
-			);
-			name = PxMarkupKitTests;
-			productName = PxMarkupKitTests;
-			productReference = DB26BB61189A57DB00FC2211 /* PxMarkupKitTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DB26BB49189A57DB00FC2211 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "pixelflut GmbH";
 			};
 			buildConfigurationList = DB26BB4C189A57DB00FC2211 /* Build configuration list for PBXProject "PxMarkupKit" */;
@@ -400,22 +336,10 @@
 			projectRoot = "";
 			targets = (
 				DB26BB50189A57DB00FC2211 /* PxMarkupKit */,
-				DB26BB60189A57DB00FC2211 /* PxMarkupKitTests */,
 				DB26BBBE189A619200FC2211 /* Framework */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		DB26BB5F189A57DB00FC2211 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB26BB6F189A57DB00FC2211 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		DB26BBBD189A613B00FC2211 /* Prepare Framework */ = {
@@ -468,39 +392,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB26BB5D189A57DB00FC2211 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB26BB71189A57DB00FC2211 /* PxMarkupKitTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DB26BB68189A57DB00FC2211 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DB26BB50189A57DB00FC2211 /* PxMarkupKit */;
-			targetProxy = DB26BB67189A57DB00FC2211 /* PBXContainerItemProxy */;
-		};
 		DB26BBC3189A61CF00FC2211 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB26BB50189A57DB00FC2211 /* PxMarkupKit */;
 			targetProxy = DB26BBC2189A61CF00FC2211 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DB26BB6D189A57DB00FC2211 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DB26BB6E189A57DB00FC2211 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DB26BB72189A57DB00FC2211 /* Debug */ = {
@@ -516,13 +416,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -535,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
@@ -556,20 +462,25 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = NO;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(PROJECT_NAME)Headers";
 				SDKROOT = iphoneos;
 				STRIP_STYLE = "non-global";
@@ -583,7 +494,7 @@
 				DSTROOT = /tmp/PxMarkupKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
@@ -599,7 +510,7 @@
 				DSTROOT = /tmp/PxMarkupKit.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/skar/Documents/pixelflut/PixLib-OpenSource/Frameworks",
+					../Frameworks,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
@@ -609,48 +520,12 @@
 			};
 			name = Release;
 		};
-		DB26BB78189A57DB00FC2211 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "PxMarkupKitTests/PxMarkupKitTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		DB26BB79189A57DB00FC2211 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PxMarkupKit/PxMarkupKit-Prefix.pch";
-				INFOPLIST_FILE = "PxMarkupKitTests/PxMarkupKitTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 		DB26BBC0189A619200FC2211 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -659,7 +534,7 @@
 			buildSettings = {
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
+				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
 			};
 			name = Release;
 		};
@@ -680,15 +555,6 @@
 			buildConfigurations = (
 				DB26BB75189A57DB00FC2211 /* Debug */,
 				DB26BB76189A57DB00FC2211 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB26BB77189A57DB00FC2211 /* Build configuration list for PBXNativeTarget "PxMarkupKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB26BB78189A57DB00FC2211 /* Debug */,
-				DB26BB79189A57DB00FC2211 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

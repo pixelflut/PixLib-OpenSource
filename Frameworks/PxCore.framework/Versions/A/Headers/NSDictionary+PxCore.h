@@ -26,12 +26,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PxPair.h"
+
+@class PxPair<FirstType, SecondType>;
 
 /**
  * Most of the methods found here are similar to methods in Ruby Classes [Hash](http://www.ruby-doc.org/core-1.9.3/Hash.html) and [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html)
  */
-@interface NSDictionary (PxCore)
+@interface NSDictionary<KeyType, ValueType> (PxCore)
 
 #pragma mark - Testing Object Contents
 /** @name Testing Object Contents */
@@ -52,7 +53,7 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil**.
  @see collect:skipNil:
  */
-- (NSMutableArray *)collect:(id (^)(id key, id value))block;
+- (NSMutableArray *)collect:(id (^)(KeyType key, ValueType value))block;
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
  @param block The block to call on each element in self.
@@ -61,28 +62,28 @@
  @warning Raises an NSInvalidArgumentException if _block_ returns **nil** and _skipNil_ is not **true**.
  @see collect:
  */
-- (NSMutableArray *)collect:(id (^)(id key, id value))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collect:(id (^)(KeyType key, ValueType value))block skipNil:(BOOL)skipNil;
 
 /** Invokes block once for each element of self. Creates a new Dictionary with the same keys containing the coresponding values returned by the block.
  @param block The block to call on each elements in the Array.
  @return Dictionary with the same keys containing the coresponding values returned by the block.
  @warning Raises an NSInvalidArgumentException if the _block_ returns **nil**
  */
-- (NSMutableDictionary *)map:(id (^)(id key, id value))block;
+- (NSMutableDictionary<KeyType, id> *)map:(id (^)(KeyType key, ValueType value))block;
 
 /** Returns a new Dictionary containing all elements of the receiver for which block returns **false**.
  @param block The block to call on each elements in self.
  @return Dictionary containing the elements for which _block_ returns **false**
  @see selectAll:
  */
-- (NSMutableDictionary *)reject:(BOOL (^)(id key, id value))block;
+- (NSMutableDictionary<KeyType, ValueType> *)reject:(BOOL (^)(KeyType key, ValueType value))block;
 
 /** Returns a new Dictionary containing all elements of the receiver for which block returns **true**.
  @param block The block to call on each elements in self.
  @return Dictionary containing the elements for which _block_ returns **true**
  @see reject:
  */
-- (NSMutableDictionary *)selectAll:(BOOL (^)(id key, id value))block;
+- (NSMutableDictionary<KeyType, ValueType> *)selectAll:(BOOL (^)(KeyType key, ValueType value))block;
 
 
 #pragma mark - Iterating Items
@@ -92,7 +93,7 @@
  @param block The block called on each element.
  @return self
  */
-- (NSDictionary *)eachPair:(void (^)(id key, id value))block;
+- (NSDictionary *)eachPair:(void (^)(KeyType key, ValueType value))block;
 
 
 #pragma mark - Accessing Items
@@ -102,7 +103,7 @@
  @param key The key for which to return the corresponding value.
  @return The Pair associated with _key_, or **nil** if no value is associated with _key_.
  */
-- (PxPair *)pairForKey:(NSString *)key;
+- (PxPair<KeyType, ValueType> *)pairForKey:(NSString *)key;
 
 
 #pragma mark - Searching Items
@@ -113,14 +114,14 @@
  @return The first item _block_ returns **true**
  @see include:
  */
-- (PxPair *)find:(BOOL (^)(id key, id value))block;
+- (PxPair<KeyType, ValueType> *)find:(BOOL (^)(KeyType key, ValueType value))block;
 
 /** Returns either or not the receiver contains an element for which the block evals **true**.
  @param block The block to call on the elements in self
  @return Boolean either or not _self_ contains an Element meeting the conditions of _block_
  @see find:
  */
-- (BOOL)include:(BOOL (^)(id key, id value))block;
+- (BOOL)include:(BOOL (^)(KeyType key, ValueType value))block;
 
 
 #pragma mark - Working with Query-Strings (Get Parameters)

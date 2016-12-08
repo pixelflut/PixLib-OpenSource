@@ -28,15 +28,14 @@
 
 #import "PxCollectionViewCell.h"
 
-@implementation PxCollectionViewCell
+@interface PxCollectionViewCell ()
+@property (nonatomic, assign) BOOL didBuildUI;
 
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	if(self) {
-		[self buildUI];
-	}
-	return self;
-}
+- (void)setCellPosition:(PxCellPosition)position;
+
+@end
+
+@implementation PxCollectionViewCell
 
 - (void)setData:(id)data {
     [self setData:data setUI:YES];
@@ -51,13 +50,29 @@
     }
 }
 
-- (PxCellPosition)cellPosition {
-    return [self.reuseIdentifier intValue];
+- (void)setCellPosition:(PxCellPosition)position {
+    if (_cellPosition == position) {
+        _cellPosition = position;
+        if (_didBuildUI) {
+            [self setUI];
+        }
+    }
+    if (!_didBuildUI) {
+        _didBuildUI = YES;
+        [self buildUI];
+    }
 }
 
 - (BOOL)hasPosition:(PxCellPosition)position {
-    NSInteger identifier = [self.reuseIdentifier integerValue];
-    return (identifier & position || identifier == position);
+    return (_cellPosition & position || _cellPosition == position);
+}
+
+- (void)didBeginInteractiveMovement {
+    
+}
+
+- (void)didEndInteractiveMovement {
+    
 }
 
 @end

@@ -26,12 +26,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PxPair.h"
+
+@class PxPair<FirstType,SecontType>;
 
 /**
  * Most of the methods found here are similar to methods in Ruby Classes [Array](http://www.ruby-doc.org/core-1.9.3/Array.html) and [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html)
  */
-@interface NSArray (PxCore)
+@interface NSArray<ObjectType> (PxCore)
 
 #pragma mark - Testing Object Contents
 /** @name Testing Object Contents */
@@ -48,7 +49,7 @@
  @param block The block to call on each element in self
  @return Array containing arrays of consecutive elements.
  */
-- (NSMutableArray *)cluster:(BOOL (^)(id obj))block;
+- (NSMutableArray<ObjectType> *)cluster:(BOOL (^)(ObjectType obj))block;
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
  
@@ -61,7 +62,7 @@
  @see collectWithIndex:skipNil:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collect:(id (^)(id obj))block;
+- (NSMutableArray *)collect:(id (^)(ObjectType obj))block;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -74,7 +75,7 @@
  @see collectWithIndex:skipNil:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collect:(id (^)(id obj))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collect:(id (^)(ObjectType obj))block skipNil:(BOOL)skipNil;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -88,7 +89,7 @@
  @see collectWithIndex:skipNil:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block;
+- (NSMutableArray *)collectWithIndex:(id (^)(ObjectType obj, NSUInteger index))block;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -101,7 +102,7 @@
  @see collectWithIndex:
  @see collectWithIndex:skipNil:flatten:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil;
+- (NSMutableArray *)collectWithIndex:(id (^)(ObjectType obj, NSUInteger index))block skipNil:(BOOL)skipNil;
 
 
 /** Invokes block once for each element of self. Creates a new array containing the values returned by the block.
@@ -115,14 +116,14 @@
  @see collectWithIndex:
  @see collectWithIndex:skipNil:
  */
-- (NSMutableArray *)collectWithIndex:(id (^)(id obj, NSUInteger index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten;
+- (NSMutableArray *)collectWithIndex:(id (^)(ObjectType obj, NSUInteger index))block skipNil:(BOOL)skipNil flatten:(BOOL)flatten;
 
 /** Invokes block on each element of self until the block returns **false**. Creates a new array containing the remaining items 
  @param block The block to call on the elements in the Array
  @return Array containing the remaining values
  @see take:
  */
-- (NSMutableArray *)drop:(BOOL (^)(id obj, NSUInteger index))block;
+- (NSMutableArray<ObjectType> *)drop:(BOOL (^)(ObjectType obj, NSUInteger index))block;
 
 /** Invokes block once for each element of self. Creates a Dictionary containing the values returned by the block as keys for the elements.
  @param block The block to call on each elements in the Array
@@ -130,7 +131,7 @@
  @warning Raises an NSInvalidArgumentException if the _block_ returns **nil**
  @see indexBy:skipNil:
  */
-- (NSMutableDictionary *)indexBy:(id<NSCopying> (^)(id obj))block;
+- (NSMutableDictionary *)indexBy:(id<NSCopying> (^)(ObjectType obj))block;
 
 /** Invokes block once for each element of self. Creates a Dictionary containing the values returned by the block as keys for the elements.
  @param block The block to call on each elements in the Array
@@ -139,14 +140,14 @@
  @warning Raises an NSInvalidArgumentException if the _block_ returns **nil** and _skipNil_ is not **true**
  @see indexBy:
  */
-- (NSMutableDictionary *)indexBy:(id<NSCopying> (^)(id obj))block skipNil:(BOOL)skipNil;
+- (NSMutableDictionary *)indexBy:(id<NSCopying> (^)(ObjectType obj))block skipNil:(BOOL)skipNil;
 
 /** Invokes block once for each element of self. The returnvalue of the previous element is given to the current element as parameter _memo_.
  @param initial The _memo_ for the first element
  @param block The block to call on each elements in the Array
  @return The returnvalue of the last element
  */
-- (id)inject:(id)initial block:(id (^)(id memo, id obj))block;
+- (id)inject:(id)initial block:(id (^)(id memo, ObjectType obj))block;
 
 /** Returns a **NSMutableDictionary**, which keys are evaluated result from the block, and values are **NSMutableArrays** of elements in self corresponding to the key.
  @param block The block to call on each elements in the Array
@@ -154,19 +155,19 @@
  @return The Dictionary containing the grouped values
  @warning Raises an NSInvalidArgumentException if the _block_ returns **nil** and _skipNil_ is not **true**
  */
-- (NSMutableDictionary *)groupBy:(id<NSCopying> (^)(id obj))block skipNil:(BOOL)skipNil;
+- (NSMutableDictionary *)groupBy:(id<NSCopying> (^)(id ObjectType))block skipNil:(BOOL)skipNil;
 
 /** Returns _pageSize_-length arrays containing the elements of self. The last array might be smaller than _pageSize_.
  @param pageSize Number of elements stored in one array
  @return The **pages**
  */
-- (NSMutableArray *)paginate:(int)pageSize;
+- (NSMutableArray<ObjectType> *)paginate:(int)pageSize;
 
 /** Returns two arrays, the first containing the elements of self for which the _block_ evaluates to **true**, the second containing the rest.
  @param block The block to call on each elements in the Array
  @return two arrays
  */
-- (PxPair *)partition:(BOOL (^)(id obj))block;
+- (PxPair<NSMutableArray<ObjectType>*, NSMutableArray<ObjectType>*>  *)partition:(BOOL (^)(ObjectType obj))block;
 
 /** Returns an array containing all elements of self for which block returns **false**.
  @param block The block to call on each elements in the Array
@@ -174,12 +175,12 @@
  @see selectAll:
  @see selectExpectOrdered:
  */
-- (NSMutableArray *)reject:(BOOL (^)(id obj))block;
+- (NSMutableArray<ObjectType> *)reject:(BOOL (^)(ObjectType obj))block;
 
 /** Returns an array containing all elements of self in an random order.
  @return Array containing the elements in random order
  */
-- (NSMutableArray *)random;
+- (NSMutableArray<ObjectType> *)random;
 
 /** Returns an array containing all elements of self for which block returns **true**.
  @param block The block to call on each elements in the Array
@@ -187,7 +188,7 @@
  @see reject:
  @see selectExpectOrdered:
  */
-- (NSMutableArray *)selectAll:(BOOL (^)(id obj))block;
+- (NSMutableArray<ObjectType> *)selectAll:(BOOL (^)(ObjectType obj))block;
 
 /** Returns an array containing all elements of self for which block returns **true**. If stop evals **true**, the enumaration stops and the current result is returned. This is espacialy helpfull if a range of elements in an ordered Array should be selected.
  @param block The block to call on each elements in the Array.
@@ -195,14 +196,14 @@
  @see reject:
  @see selectAll:
  */
-- (NSMutableArray *)selectExpectOrdered:(BOOL (^)(id obj, BOOL *stop))block;
+- (NSMutableArray<ObjectType> *)selectExpectOrdered:(BOOL (^)(ObjectType obj, BOOL *stop))block;
 
 /** Invokes block on each element of self until the block returns **false**.
  @param block The block to call on the elements in the Array
  @return Array containing the values until _block_ returned **false**
  @see drop:
  */
-- (NSMutableArray*)take:(BOOL (^)(id obj, NSUInteger index))block;
+- (NSMutableArray<ObjectType> *)take:(BOOL (^)(ObjectType obj, NSUInteger index))block;
 
 
 #pragma mark - Searching Items
@@ -214,7 +215,7 @@
  @see index:
  @see include:
  */
-- (id)find:(BOOL (^)(id obj))block;
+- (ObjectType)find:(BOOL (^)(ObjectType obj))block;
 
 /** Check either or not the Array contains an Object.
  @param block The block to call on the elements in the Array
@@ -222,7 +223,7 @@
  @see index:
  @see find:
  */
-- (BOOL)include:(BOOL (^)(id obj))block;
+- (BOOL)include:(BOOL (^)(ObjectType obj))block;
 
 /** Searches for the index of the first item the block returns **true**.
  @param block The block to call on the elements in _self_
@@ -230,7 +231,7 @@
  @see find:
  @see include:
  */
-- (NSUInteger)index:(BOOL (^)(id obj))block;
+- (NSUInteger)index:(BOOL (^)(ObjectType obj))block;
 
 /** Returns the element in self which the block evals as max value.
  @param block The block to compare the current max-value element with the next element
@@ -238,7 +239,7 @@
  @see min:
  @see minMax:
  */
-- (id)max:(NSComparisonResult (^)(id a, id b))block;
+- (ObjectType)max:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 /** Returns the element in self which the block evals as min-value.
  @param block The block to compare the current min-value element with the next element
@@ -246,7 +247,7 @@
  @see max:
  @see minMax:
  */
-- (id)min:(NSComparisonResult (^)(id a, id b))block;
+- (ObjectType)min:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 /** Returns the elements in self which the block evals as min-value and max-value.
  @param block The block to compare the current min(max)-value element with the next element
@@ -254,7 +255,7 @@
  @see max:
  @see min:
  */
-- (PxPair *)minMax:(NSComparisonResult (^)(id a, id b))block;
+- (PxPair<ObjectType,ObjectType> *)minMax:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 #pragma mark - Iterating Items
 /** @name Iterating Items */
@@ -267,7 +268,7 @@
  @see eachWithIndex:
  @see eachSlice:block:
  */
-- (NSArray *)eachCons:(NSUInteger)number block:(void (^)(NSArray *objs))block;
+- (instancetype)eachCons:(NSUInteger)number block:(void (^)(NSArray<ObjectType> *objs))block;
 
 /** Iterates the given block for each slice of <n> elements.
  @param number The number of elements provided to _block_
@@ -277,7 +278,7 @@
  @see eachWithIndex:
  @see eachCons:block:
  */
-- (NSArray *)eachSlice:(NSUInteger)number block:(void (^)(NSArray *objs))block;
+- (instancetype)eachSlice:(NSUInteger)number block:(void (^)(NSArray<ObjectType> *objs))block;
 
 /** Calls _block_ on each element of self.
  @param block The block called on each element.
@@ -286,7 +287,7 @@
  @see eachCons:block:
  @see eachSlice:block:
  */
-- (NSArray *)each:(void (^)(id obj))block;
+- (instancetype)each:(void (^)(ObjectType obj))block;
 
 /** Calls _block_ on each element of self, also providing the index of the element in self.
  @param block The block called on each element.
@@ -295,7 +296,7 @@
  @see eachCons:block:
  @see eachSlice:block:
  */
-- (NSArray *)eachWithIndex:(void (^)(id obj, NSUInteger index))block;
+- (instancetype)eachWithIndex:(void (^)(ObjectType obj, NSUInteger index))block;
 
 #pragma mark - Counting Items
 /** @name Counting Items */
@@ -305,22 +306,16 @@
  @return The number of elements in self for which the _block_ evals **true**.
  @see sum:
  */
-- (NSUInteger)count:(BOOL (^)(id obj))block;
+- (NSUInteger)count:(BOOL (^)(ObjectType obj))block;
 
 /** Calls _block_ on each element of self, sums the values returned by _block_.
  @param block The block called on each element.
  @return The sum.
  @see count:
  */
-- (float)sum:(float (^)(id obj))block;
+- (double)sum:(double (^)(ObjectType obj))block;
 
 #pragma mark - Accessing Items
-/** @name Accessing Items */
-
-/** Accessing the first Object of self
- @return The object located at index _0_ or **nil** if self is empty.
- */
-- (id)firstObject;
 
 /** Returns the object located at _index_
  @param index Index of the Object
@@ -328,7 +323,7 @@
  @return The object located at _index_ or **nil**
  @warning If _index_ is beyond the end of the array (that is, if _index_ is greater than or equal to the value returned by **count**) and _handleBounds_ is **false**, an NSRangeException is raised.
  */
-- (id)objectAtIndex:(NSUInteger)index handleBounds:(BOOL)handleBounds;
+- (ObjectType)objectAtIndex:(NSUInteger)index handleBounds:(BOOL)handleBounds;
 
 
 #pragma mark - Ordering and reorganizing Items
@@ -344,19 +339,19 @@
  @param block The block to determine the sort-order.
  @return The sorted Array.
  */
-- (NSMutableArray *)sort:(NSComparisonResult (^)(id a, id b))block;
+- (NSMutableArray<ObjectType> *)sort:(NSComparisonResult (^)(ObjectType a, ObjectType b))block;
 
 /** Returns a new array by removing duplicate values in self. If a block is given, it will use the return value of the block for comparison. 
  @return Array with removed duplicates.
  @see uniq:
  */
-- (NSMutableArray *)uniq;
+- (NSMutableArray<ObjectType> *)uniq;
 
 /** Returns a new array by removing duplicate values in self. The return value of the block will be used for comparison.
  @param block The block to compare elements.
  @return Array with removed duplicates
  @see uniq
  */
-- (NSMutableArray *)uniq:(id<NSCopying> (^)(id obj))block;
+- (NSMutableArray<ObjectType> *)uniq:(id<NSCopying> (^)(ObjectType obj))block;
 
 @end

@@ -30,7 +30,7 @@
 /**
  * Most of the methods found here are similar to methods in Ruby Classes [Hash](http://www.ruby-doc.org/core-1.9.3/Hash.html) and [Enumerable](http://www.ruby-doc.org/core-1.9.3/Enumerable.html)
  */
-@interface NSMutableDictionary (PxCore)
+@interface NSMutableDictionary<KeyType, ValueType> (PxCore)
 
 #pragma mark - Removing Objects
 /** @name Removing Objects */
@@ -39,6 +39,6 @@
  @param block The block to determine if a key-value-pair should be removed.
  @return self.
  */
-- (NSDictionary*)deleteIf:(BOOL (^)(id key, id value))block;
+- (NSDictionary<KeyType, ValueType> *)deleteIf:(BOOL (^)(KeyType key, ValueType value))block;
 
 @end

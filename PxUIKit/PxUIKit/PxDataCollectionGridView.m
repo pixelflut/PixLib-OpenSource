@@ -40,6 +40,18 @@ typedef struct {
     BOOL exist;
 } SELInfo;
 
+@interface PxCollectionViewCell ()
+
+- (void)setCellPosition:(PxCellPosition)position;
+
+@end
+
+@interface PxCollectionReusableView ()
+
+- (void)setCellPosition:(PxCellPosition)position;
+
+@end
+
 @interface PxDataCollectionGridView () <UICollectionViewDataSource>
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, assign) BOOL dynamicSize;
@@ -54,6 +66,8 @@ typedef struct {
 @property (nonatomic, assign) BOOL dequeueHeaderCallback;
 @property (nonatomic, assign) BOOL dequeueFooterCallback;
 @property (nonatomic, assign) SELInfo *selectorLookUp;
+@property (nonatomic, strong) NSIndexPath *movingIndexPath;
+@property (nonatomic, strong) PxCollectionViewCell *pickedCell;
 
 - (NSMutableArray *)removeEntriesFromData:(NSArray *)entries;
 - (NSMutableArray *)sectionalRemoveEntriesFromData:(NSArray *)entries;
@@ -66,6 +80,7 @@ typedef struct {
 @end
 
 @implementation PxDataCollectionGridView
+@dynamic dataSource;
 
 - (id)initWithFrame:(CGRect)frame {
     PxCollectionViewGridLayout *gridLayout = [[PxCollectionViewGridLayout alloc] init];
@@ -79,6 +94,9 @@ typedef struct {
         
         _selectorLookUp[0].selector = @selector(collectionView:viewForSupplementaryElementOfKind:atIndexPath:);
         _selectorLookUp[0].exist    = NO;
+        
+        _reorderRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPress:)];
+        [self addGestureRecognizer:_reorderRecognizer];
     }
     return self;
 }
@@ -133,18 +151,30 @@ typedef struct {
 }
 
 #pragma mark - Shared Collection Handling
-- (NSString*)identifierForCellInTableStyleAtIndexPath:(NSIndexPath *)indexPath {
-    int cellPosition = PxCellPositionMiddle;
+
+- (PxCellPosition)cellpositionForCellInTableStyleAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger cellPosition = PxCellPositionMiddle;
     NSInteger rowCount = [self numberOfItemsInSection:indexPath.section];
-	NSInteger sectionCount = [self numberOfSections];
-	
-	if(indexPath.row == rowCount-1 && indexPath.section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
-    if(indexPath.row == rowCount-1 && indexPath.row == 0) {cellPosition |= PxCellPositionSingle;}
-    if(indexPath.row == 0 && indexPath.section == 0) {cellPosition |= PxCellPositionFirst;}
-    if(indexPath.row == rowCount-1){cellPosition |= PxCellPositionBottom;}
-    if(indexPath.row == 0) {cellPosition |= PxCellPositionTop;}
+    NSInteger sectionCount = [self numberOfSections];
     
-    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, NSStringFromClass([self.delegate collectionView:self classForCellAtIndexPath:indexPath])];
+    if (indexPath.row == rowCount-1 && indexPath.section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
+    if (indexPath.row == rowCount-1 && indexPath.row == 0) {cellPosition |= PxCellPositionSingle;}
+    if (indexPath.row == 0 && indexPath.section == 0) {cellPosition |= PxCellPositionFirst;}
+    if (indexPath.row == rowCount-1){cellPosition |= PxCellPositionBottom;}
+    if (indexPath.row == 0) {cellPosition |= PxCellPositionTop;}
+    return (PxCellPosition)cellPosition;
+}
+
+- (PxCellPosition)cellPositionForCellAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.oneDimensional) {
+        return [self cellpositionForCellInTableStyleAtIndexPath:indexPath];
+    }
+    return PxCellPositionMiddle;
+}
+
+- (NSString*)identifierForCellInTableStyleAtIndexPath:(NSIndexPath *)indexPath {
+    NSUInteger cellPosition = [self cellpositionForCellInTableStyleAtIndexPath:indexPath];
+    NSString *identifier = [NSString stringWithFormat:@"%lu_%@", (unsigned long)cellPosition, NSStringFromClass([self.delegate collectionView:self classForCellAtIndexPath:indexPath])];
     
     if (self.alternating) {
         return [identifier stringByAppendingFormat:@"_%d", (int32_t)indexPath.row%2];
@@ -164,15 +194,19 @@ typedef struct {
     return @"default";
 }
 
-- (NSString *)identifierForHeaderAtSection:(NSUInteger)section {
-    int cellPosition = PxCellPositionMiddle;
-	NSInteger sectionCount = [self numberOfSections];
-	
-	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast|PxCellPositionBottom;}
-    if(section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
-    if(section == 0) {cellPosition |= PxCellPositionFirst|PxCellPositionTop;}
+- (PxCellPosition)cellPositionForHeaderAtSection:(NSUInteger)section {
+    NSUInteger cellPosition = PxCellPositionMiddle;
+    NSInteger sectionCount = [self numberOfSections];
     
-    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, PxCollectionSectionHeaderIdentifier];
+    if (section == sectionCount-1) {cellPosition |= PxCellPositionLast|PxCellPositionBottom;}
+    if (section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
+    if (section == 0) {cellPosition |= PxCellPositionFirst|PxCellPositionTop;}
+    return (PxCellPosition)cellPosition;
+}
+
+- (NSString *)identifierForHeaderAtSection:(NSUInteger)section {
+    NSUInteger cellPosition = [self cellPositionForHeaderAtSection:section];
+    NSString *identifier = [NSString stringWithFormat:@"%lu_%@", (unsigned long)cellPosition, PxCollectionSectionHeaderIdentifier];
     
     if (_dynamicHeaderIdentifier) {
         return [self.pxDataSource collectionView:self identfierForHeaderAtSection:section identifier:identifier];
@@ -180,16 +214,19 @@ typedef struct {
     return identifier;
 }
 
-- (NSString *)identifierForFooterAtSection:(NSUInteger)section {
+- (PxCellPosition)cellPositionForFooterAtSection:(NSUInteger)section {
+    NSUInteger cellPosition = PxCellPositionMiddle;
+    NSInteger sectionCount = [self numberOfSections];
     
-    int cellPosition = PxCellPositionMiddle;
-	NSInteger sectionCount = [self numberOfSections];
-	
-	if(section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
+    if(section == sectionCount-1) {cellPosition |= PxCellPositionLast;}
     if(section == sectionCount-1 && section == 0) {cellPosition |= PxCellPositionSingle;}
     if(section == 0) {cellPosition |= PxCellPositionFirst;}
-    
-    NSString *identifier = [NSString stringWithFormat:@"%d_%@", cellPosition, PxCollectionSectionFooterIdentifier];
+    return (PxCellPosition)cellPosition;
+}
+
+- (NSString *)identifierForFooterAtSection:(NSUInteger)section {
+    NSUInteger cellPosition = [self cellPositionForFooterAtSection:section];
+    NSString *identifier = [NSString stringWithFormat:@"%lu_%@", (unsigned long)cellPosition, PxCollectionSectionFooterIdentifier];
     
     if (_dynamicFooterIdentifier) {
         return [self.pxDataSource collectionView:self identfierForFooterAtSection:section identifier:identifier];
@@ -243,7 +280,8 @@ typedef struct {
     }
     
 	[cell setCollectionView:self];
-	[cell setDelegate:self.delegate];
+    [cell setCellPosition:[self cellPositionForCellAtIndexPath:indexPath]];
+    [cell setDelegate:self.delegate];
     [cell setData:[self dataForItemAtIndexPath:indexPath]];
     return cell;
 }
@@ -263,6 +301,7 @@ typedef struct {
             }
             
             [header setCollectionView:self];
+            [header setCellPosition:[self cellPositionForHeaderAtSection:indexPath.section]];
             [header setDelegate:self.delegate];
             [header setData:[self dataForSection:indexPath.section]];
             return header;
@@ -276,6 +315,7 @@ typedef struct {
                 [self.delegate collectionView:self didDequeueReusableView:footer forFooterAtSection:indexPath.section];
             }
             [footer setCollectionView:self];
+            [footer setCellPosition:[self cellPositionForFooterAtSection:indexPath.section]];
             [footer setDelegate:self.delegate];
             [footer setData:[self dataForSection:indexPath.section]];
             return footer;
@@ -478,6 +518,63 @@ typedef struct {
     } skipNil:YES]];
     return indexSet;
 }
+
+
+#pragma mark - ReOrdering
+
+- (void)didLongPress:(UILongPressGestureRecognizer *)recognizer {
+    CGPoint location = [recognizer locationInView:self];
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            _movingIndexPath = [self indexPathForItemAtPoint:location];
+            if (![self collectionView:self canMoveItemAtIndexPath:_movingIndexPath]){
+                _movingIndexPath = nil;
+                return;
+            }
+            [self beginInteractiveMovementForItemAtIndexPath:_movingIndexPath];
+            _pickedCell = (PxCollectionViewCell *)[self cellForItemAtIndexPath:_movingIndexPath];
+            [_pickedCell didBeginInteractiveMovement];
+            break;
+        case UIGestureRecognizerStateChanged:
+            if (self.oneDimensional) {
+                if ([(PxCollectionViewGridLayout *)self.collectionViewLayout scrollDirection] == UICollectionViewScrollDirectionVertical) {
+                    location.x = self.frame.size.width/2.0;
+                } else {
+                    location.y = self.frame.size.height/2.0;
+                }
+            }
+            
+            [self updateInteractiveMovementTargetPosition:location];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [_pickedCell didEndInteractiveMovement];
+            [self endInteractiveMovement];
+            _movingIndexPath = nil;
+            _pickedCell = nil;
+            break;
+        default:
+            [_pickedCell didEndInteractiveMovement];
+            [self cancelInteractiveMovement];
+            _movingIndexPath = nil;
+            _pickedCell = nil;
+            break;
+    }
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([[self pxDataSource] respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:)] && [[self pxDataSource] collectionView:self canMoveItemAtIndexPath:indexPath]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    if ([[self pxDataSource] respondsToSelector:@selector(collectionView:moveItemAtIndexPath:toIndexPath:)]) {
+        [_pickedCell setCellPosition:[self cellPositionForCellAtIndexPath:destinationIndexPath]];
+        [[self pxDataSource] collectionView:self moveItemAtIndexPath:sourceIndexPath toIndexPath:destinationIndexPath];
+    }
+}
+
 
 #pragma mark - Message forwarding
 - (id)forwardingTargetForSelector:(SEL)aSelector {

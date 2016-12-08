@@ -34,7 +34,7 @@
 @property(nonatomic, strong, readonly) UIWebView *webView;
 @property(nonatomic, strong) NSString *urlString;
 
-- (id)initWithURL:(NSString*)urlString title:(NSString*)title;
-- (id)initWithURL:(NSString*)urlString;
+- (instancetype)initWithURL:(NSString*)urlString title:(NSString*)title;
+- (instancetype)initWithURL:(NSString*)urlString;
 
 @end

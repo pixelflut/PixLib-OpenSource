@@ -29,11 +29,11 @@
 
 @implementation PxPair
 
-+ (id)pairWithFirst:(id)first second:(id)second {
++ (instancetype)pairWithFirst:(id)first second:(id)second {
     return [[[self class] alloc] initWithFirst:first second:second];
 }
 
-- (id)initWithFirst:(id)f second:(id)s {
+- (instancetype)initWithFirst:(id)f second:(id)s {
     self = [super init];
     if (self) {
         self.first = f;
@@ -42,7 +42,7 @@
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+- (instancetype)initWithCoder:(NSCoder *)decoder {
     self = [super init];
     if (self) {
         self.first = [decoder decodeObjectForKey:@"first"];

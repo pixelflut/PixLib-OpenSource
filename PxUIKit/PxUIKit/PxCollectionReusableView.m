@@ -8,15 +8,15 @@
 
 #import "PxCollectionReusableView.h"
 
-@implementation PxCollectionReusableView
 
-- (id)initWithFrame:(CGRect)frame {
-	self = [super initWithFrame:frame];
-	if(self) {
-		[self buildUI];
-	}
-	return self;
-}
+@interface PxCollectionReusableView ()
+@property (nonatomic, assign) BOOL didBuildUI;
+
+- (void)setCellPosition:(PxCellPosition)position;
+
+@end
+
+@implementation PxCollectionReusableView
 
 - (void)setData:(id)data {
     [self setData:data setUI:YES];
@@ -31,13 +31,21 @@
     }
 }
 
-- (PxCellPosition)cellPosition {
-    return [self.reuseIdentifier intValue];
+- (void)setCellPosition:(PxCellPosition)position {
+    if (_cellPosition == position) {
+        _cellPosition = position;
+        if (_didBuildUI) {
+            [self setUI];
+        }
+    }
+    if (!_didBuildUI) {
+        _didBuildUI = YES;
+        [self buildUI];
+    }
 }
 
 - (BOOL)hasPosition:(PxCellPosition)position {
-    NSInteger identifier = [self.reuseIdentifier integerValue];
-    return (identifier & position || identifier == position);
+    return (_cellPosition & position || _cellPosition == position);
 }
 
 @end

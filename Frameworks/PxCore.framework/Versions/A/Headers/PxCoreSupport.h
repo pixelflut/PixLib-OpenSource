@@ -193,8 +193,8 @@ static PxTimingFunction PxEaseInElastic = ^double_t(double_t t) {
     
     if (t==0) return 0;  if (t==1) return 1;  if (!p) p=.3;
     if (a < 1) { a=1; s=p/4; }
-    else s = p/(2*M_PI) * asin (1.0/a);
-    return -(a*pow(2,10*(t-=1)) * sin( (t-s)*(2*M_PI)/p ));
+    else {s = p/(2*M_PI) * asin (1.0/a);}
+    return -(a*pow(2,10*(t-1)) * sin( (t-1-s)*(2*M_PI)/p ));
 };
 
 static PxTimingFunction PxEaseOutElastic = ^double_t(double_t t) {
@@ -211,9 +211,9 @@ static PxTimingFunction PxEaseInOutElastic = ^double_t(double_t t) {
     t *= 2.0;
     if (t==0) return 0;  if (t==2) return 1;  if (!p) p=(.3*1.5);
     if (a < 1) { a=1; s=p/4; }
-    else s = p/(2*M_PI) * asin(1.0/a);
-    if (t < 1) return -.5*(a*pow(2,10*(t-=1)) * sin( (t-s)*(2*M_PI)/p ));
-    return a*pow(2,-10*(t-=1)) * sin( (t-s)*(2*M_PI)/p )*.5 + 1;
+    else {s = p/(2*M_PI) * asin(1.0/a);}
+    if (t < 1) {return -.5*(a*pow(2,10*(t-1)) * sin( (t-1-s)*(2*M_PI)/p ));}
+    return a*pow(2,-10*(t-1)) * sin( (t-1-s)*(2*M_PI)/p )*.5 + 1;
 };
 
 static PxTimingFunction PxEaseInBack = ^double_t(double_t t) {

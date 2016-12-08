@@ -72,7 +72,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 @property (nonatomic, copy) PxTimingFunction timingFunction;
 @property (nonatomic, copy) void (^completion)(BOOL finished);
 
-- (id)initWithTimingFunction:(PxTimingFunction)function;
+- (instancetype)initWithTimingFunction:(PxTimingFunction)function;
 
 - (void)addAnimations:(void (^)(NSTimeInterval time))animations;
 - (void)startLinkedAnimation;
@@ -89,7 +89,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
     CGFloat overBounceFactor;
 }
 
-- (id)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)numberOfOscilattions overBounceFactor:(CGFloat)overBounceFactor;
+- (instancetype)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)numberOfOscilattions overBounceFactor:(CGFloat)overBounceFactor;
 
 @end
 
@@ -120,7 +120,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 }
 
 
-+ (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
++ (instancetype)pxAnimatePercentDriven:(NSTimeInterval)duration
                          timingFunction:(PxTimingFunction)timingFunction
                              animations:(void (^)(void))animations
                              completion:(void (^)(BOOL finished))completion {
@@ -141,7 +141,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 }
 
 
-+ (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
++ (instancetype)pxAnimatePercentDriven:(NSTimeInterval)duration
                          timingFunction:(PxTimingFunction)timingFunction
                    numberOfOscilattions:(NSUInteger)numberOfOscilattions
                        overBounceFactor:(CGFloat)overBounceFactor
@@ -169,7 +169,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 }
 
 
-- (id)initWithTimingFunction:(PxTimingFunction)function {
+- (instancetype)initWithTimingFunction:(PxTimingFunction)function {
     self = [super init];
     if (self) {
         if (!function) {
@@ -251,7 +251,7 @@ CGFloat oscilattedInterpolation(CGFloat t, NSUInteger numberOffRipples, CGFloat 
 
 @implementation PxOscilattionAnimator
 
-- (id)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)n overBounceFactor:(CGFloat)o {
+- (instancetype)initWithTimingFunction:(PxTimingFunction)function numberOfOscilattions:(NSUInteger)n overBounceFactor:(CGFloat)o {
     self = [super initWithTimingFunction:function];
     if (self) {
         numberOfOscilattions = n;

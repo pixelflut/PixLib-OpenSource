@@ -28,7 +28,7 @@ typedef enum {
 @property (nonatomic, assign, readonly) long long currentByteCount;
 @property (nonatomic, strong, readonly) NSString *URLString;
 
-- (id)initWithRequest:(PxNetRequest *)request delegate:(id<PxNetConnectionDelegate>)d;
+- (instancetype)initWithRequest:(PxNetRequest *)request delegate:(id<PxNetConnectionDelegate>)d;
 
 - (BOOL)canQueue;
 //- (void)startConnection;

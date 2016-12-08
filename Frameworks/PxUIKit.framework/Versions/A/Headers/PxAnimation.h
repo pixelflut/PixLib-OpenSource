@@ -31,18 +31,18 @@
 
 @interface PxAnimation : NSObject
 
-+ (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                         timingFunction:(PxTimingFunction)timingFunction
-                             animations:(void (^)(void))animations
-                             completion:(void (^)(BOOL finished))completion;
++ (instancetype)pxAnimatePercentDriven:(NSTimeInterval)duration
+                        timingFunction:(PxTimingFunction)timingFunction
+                            animations:(void (^)(void))animations
+                            completion:(void (^)(BOOL finished))completion;
 
 
-+ (PxAnimation *)pxAnimatePercentDriven:(NSTimeInterval)duration
-                         timingFunction:(PxTimingFunction)timingFunction
-                   numberOfOscilattions:(NSUInteger)numberOfOscilattions
-                       overBounceFactor:(CGFloat)overBounceFactor
-                             animations:(void (^)(void))animations
-                             completion:(void (^)(BOOL finished))completion;
++ (instancetype)pxAnimatePercentDriven:(NSTimeInterval)duration
+                        timingFunction:(PxTimingFunction)timingFunction
+                  numberOfOscilattions:(NSUInteger)numberOfOscilattions
+                      overBounceFactor:(CGFloat)overBounceFactor
+                            animations:(void (^)(void))animations
+                            completion:(void (^)(BOOL finished))completion;
 
 + (void)pxAddPercentAnimations:(void (^)(NSTimeInterval percent))animations;
 
