@@ -60,6 +60,27 @@ CGColorRef CreateCGColorWithPatternFromUIImage(UIImage *image, CGPoint phaseShif
     return ret;
 }
 
++ (UIColor *)colorWithPatternImageNamed:(NSString *)imageName {
+    static NSMutableDictionary *patternColors;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        patternColors = [[NSMutableDictionary alloc] init];
+    });
+    if (!imageName) {
+        return nil;
+    }
+    
+    UIColor *clr = patternColors[imageName];
+    if (!clr) {
+        clr = [UIColor colorWithPatternImage:[UIImage imageNamed:imageName]];
+        if (clr) {
+            patternColors[imageName] = clr;
+        }
+    }
+    
+    return clr;
+}
+
 - (void)getRGBA:(CGFloat*)buffer {
     CGColorRef clr = [self CGColor];
 	NSInteger n = CGColorGetNumberOfComponents(clr);

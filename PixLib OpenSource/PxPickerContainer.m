@@ -41,6 +41,7 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
 #define HIDE_ANIMATE_CURVE UIViewAnimationCurveEaseInOut
 
 @interface PxPickerContainerView : UIView
+@property (nonatomic) UIView *blurView;
 
 @end
 
@@ -476,6 +477,9 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        _blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        [self addSubview:_blurView];
         [self setClipsToBounds:YES];
     }
     return self;
@@ -484,8 +488,12 @@ NSString *const PxPickerAnimationCurveKey = @"animationCurve";
 - (void)layoutSubviews {
     CGRect frame = self.frame;
     [[self subviews] each:^(id obj) {
+        if (obj == _blurView) {
+            return;
+        }
         [obj setFrame:CGRectCenter(CGRectFromSize(frame.size), CGRectFromSize(CGSizeMake(600, frame.size.height)))];
     }];
+    _blurView.frame = CGRectFromSize(frame.size);
 }
 
 @end

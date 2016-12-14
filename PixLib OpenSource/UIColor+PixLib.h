@@ -79,6 +79,8 @@
  */
 + (UIColor *)colorWithPatternImage:(UIImage *)image phaseShift:(CGPoint)phaseShift;
 
++ (UIColor *)colorWithPatternImageNamed:(NSString *)imageName;
+
 
 #pragma mark - Getting Color Informations
 /** @name Getting Color Informations */
